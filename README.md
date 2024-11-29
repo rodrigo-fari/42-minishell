@@ -1,153 +1,153 @@
-# Minishell - Resumo e Organização do Projeto
+# Minishell - Project Summary and Organization
 
-## Partes principais do projeto (*Mandatory*)
-1. **Prompt interativo**:
-   - Deve exibir um *prompt* enquanto aguarda um comando.
+## Key parts of the project (*Mandatory*)
+1. **Interactive prompt**:
+   - Must display a prompt while waiting for a command.
 
-2. **Execução de comandos**:
-   - Deve buscar e executar o comando correto usando o `PATH` ou um caminho absoluto/relativo.
+2. **Command execution**:
+   - Must find and execute the correct command using the `PATH` or an absolute/relative path.
 
-3. **Manipulação de sinais**:
-   - `Ctrl+C`: Mostra um novo *prompt*.
-   - `Ctrl+D`: Sai do shell.
-   - `Ctrl+\`: Não faz nada.
+3. **Signal handling**:
+   - `Ctrl+C`: Displays a new prompt.
+   - `Ctrl+D`: Exits the shell.
+   - `Ctrl+\`: Does nothing.
 
-4. **Citações e caracteres especiais**:
-   - `'` (aspas simples): Ignora caracteres especiais no interior.
-   - `"` (aspas duplas): Interpreta `$` para variáveis, mas ignora outros caracteres especiais.
+4. **Quotes and special characters**:
+   - `'` (single quotes): Ignore special characters within the quotes.
+   - `"` (double quotes): Interpret `$` for variables but ignore other special characters.
 
-5. **Redirecionamento e *pipes***:
-   - `<`: Redireciona entrada.
-   - `>`: Redireciona saída.
-   - `>>`: Redireciona saída em modo *append*.
-   - `<<`: Lê até encontrar um delimitador.
-   - `|`: Conecta comandos via *pipe*.
+5. **Redirections and pipes**:
+   - `<`: Redirect input.
+   - `>`: Redirect output.
+   - `>>`: Redirect output in append mode.
+   - `<<`: Read until a delimiter is reached.
+   - `|`: Connect commands through a pipe.
 
-6. **Variáveis de ambiente**:
-   - Suporte a variáveis usando `$`.
-   - `?`: Expande para o *exit status* do último comando.
+6. **Environment variables**:
+   - Support variables using `$`.
+   - `?`: Expands to the exit status of the last command.
 
-7. **Comandos internos (*builtins*)**:
-   - `echo` (com `-n`).
-   - `cd` (com caminhos relativos ou absolutos).
-   - `pwd` (sem opções).
-   - `export` (sem opções).
-   - `unset` (sem opções).
-   - `env` (sem argumentos).
-   - `exit` (sem opções).
+7. **Built-in commands**:
+   - `echo` (with `-n`).
+   - `cd` (with relative or absolute paths).
+   - `pwd` (no options).
+   - `export` (no options).
+   - `unset` (no options).
+   - `env` (no arguments).
+   - `exit` (no options).
 
 ---
 
-## Regras importantes
-1. **Norma da 42**:
-   - Seguir as regras da *Norminette*.
+## Important rules
+1. **42 Norm**:
+   - Follow the *Norminette* rules.
 
-2. **Sem vazamentos de memória**:
-   - Toda memória alocada dinamicamente deve ser liberada corretamente.
+2. **No memory leaks**:
+   - All dynamically allocated memory must be properly freed.
 
-3. **Uso de funções externas permitidas**:
+3. **Allowed external functions**:
    - *Readline library*: `readline`, `add_history`, etc.
-   - Funções do sistema como: `fork`, `execve`, `pipe`, `dup2`, etc.
-   - Manipulação de arquivos: `open`, `close`, `read`, `write`.
+   - System calls such as: `fork`, `execve`, `pipe`, `dup2`, etc.
+   - File manipulation: `open`, `close`, `read`, `write`.
 
-4. **Uso limitado de variáveis globais**:
-   - Apenas uma variável global é permitida para tratar sinais.
+4. **Limited use of global variables**:
+   - Only one global variable is allowed for signal handling.
 
-5. **Readline pode vazar memória**:
-   - Não precisa corrigir vazamentos dela, mas todo o seu código deve estar livre de vazamentos.
+5. **Readline can leak memory**:
+   - You are not required to fix leaks in `readline`, but your code must not have leaks.
 
-6. **Sem comportamento indefinido**:
-   - Evitar falhas como *segmentation faults* ou *double frees*.
+6. **No undefined behavior**:
+   - Avoid issues such as segmentation faults or double frees.
 
 ---
 
-## Bibliotecas principais e funções associadas
-### Bibliotecas
+## Core libraries and associated functions
+### Libraries
 1. **<stdio.h>**
-   - Funções: `printf`, `perror`.
+   - Functions: `printf`, `perror`.
 
 2. **<stdlib.h>**
-   - Funções: `malloc`, `free`, `exit`, `getenv`.
+   - Functions: `malloc`, `free`, `exit`, `getenv`.
 
 3. **<unistd.h>**
-   - Funções: `write`, `access`, `read`, `close`, `fork`, `chdir`, `dup`, `dup2`, `isatty`, `ttyname`, `ttyslot`.
+   - Functions: `write`, `access`, `read`, `close`, `fork`, `chdir`, `dup`, `dup2`, `isatty`, `ttyname`, `ttyslot`.
 
 4. **<signal.h>**
-   - Funções: `signal`, `sigaction`, `sigemptyset`, `sigaddset`, `kill`.
+   - Functions: `signal`, `sigaction`, `sigemptyset`, `sigaddset`, `kill`.
 
 5. **<fcntl.h>**
-   - Funções: `open`, `fcntl`.
+   - Functions: `open`, `fcntl`.
 
 6. **<sys/types.h>**, **<sys/stat.h>**
-   - Funções: `stat`, `lstat`, `fstat`.
+   - Functions: `stat`, `lstat`, `fstat`.
 
 7. **<dirent.h>**
-   - Funções: `opendir`, `readdir`, `closedir`.
+   - Functions: `opendir`, `readdir`, `closedir`.
 
 8. **<string.h>**
-   - Funções: `strerror`.
+   - Functions: `strerror`.
 
 9. **<sys/ioctl.h>**
-   - Funções: `ioctl`.
+   - Functions: `ioctl`.
 
 10. **<termios.h>**
-    - Funções: `tcsetattr`, `tcgetattr`.
+    - Functions: `tcsetattr`, `tcgetattr`.
 
 11. **<readline/readline.h>**
-    - Funções: `readline`, `add_history`, `rl_clear_history`, `rl_on_new_line`, `rl_replace_line`, `rl_redisplay`.
+    - Functions: `readline`, `add_history`, `rl_clear_history`, `rl_on_new_line`, `rl_replace_line`, `rl_redisplay`.
 
-12. **<curses.h>** ou **<term.h>**
-    - Funções: `tgetent`, `tgetflag`, `tgetnum`, `tgetstr`, `tgoto`, `tputs`.
+12. **<curses.h>** or **<term.h>**
+    - Functions: `tgetent`, `tgetflag`, `tgetnum`, `tgetstr`, `tgoto`, `tputs`.
 
 ---
 
-## Observações importantes sobre as bibliotecas
-1. **Bibliotecas externas**:
-   - A biblioteca `readline` precisa estar instalada no sistema. Certifique-se de linká-la corretamente no *Makefile* com as flags apropriadas (exemplo: `-lreadline`).
+## Notes on libraries
+1. **External libraries**:
+   - The `readline` library must be installed on the system. Ensure it is correctly linked in the *Makefile* with appropriate flags (e.g., `-lreadline`).
 
 2. **Libft**:
-   - Você pode usar sua própria biblioteca `libft` para funções auxiliares como manipulação de strings (`ft_split`, `ft_strjoin`, etc.).
+   - You can use your own `libft` for utility functions such as string manipulation (`ft_split`, `ft_strjoin`, etc.).
 
-3. **Funções proibidas não mencionadas no *subject***:
-   - Qualquer função que não esteja explicitamente listada (ex.: `system`, `strtok`) não deve ser utilizada.
-
----
-
-## Como dividir o projeto em dupla
-1. **Parsing e interpretação de comandos**:
-   - Um membro pode focar no parsing de entrada do usuário (manipulação de strings, variáveis de ambiente, aspas, etc.).
-
-2. **Execução de comandos e redirecionamento**:
-   - O outro pode cuidar da execução dos comandos, incluindo redirecionamento e pipes.
-
-3. **Controle de processos e sinais**:
-   - Implementar o controle de processos (`fork`, `execve`, etc.) e manipulação de sinais.
-
-4. **Comandos internos**:
-   - Dividam os *builtins* (como `cd`, `echo`) entre vocês.
-
-5. **Integração e testes**:
-   - Ambos devem participar da integração das partes e realizar testes.
+3. **Forbidden functions**:
+   - Any function not explicitly listed (e.g., `system`, `strtok`) is not allowed.
 
 ---
 
-## O que estudar
-- **Processos e Syscalls**:
+## How to divide the project as a team
+1. **Parsing and command interpretation**:
+   - One teammate can focus on parsing user input (string handling, environment variables, quotes, etc.).
+
+2. **Command execution and redirections**:
+   - The other can handle command execution, including redirections and pipes.
+
+3. **Process and signal management**:
+   - Implement process control (`fork`, `execve`, etc.) and signal handling.
+
+4. **Built-in commands**:
+   - Split the implementation of built-ins (e.g., `cd`, `echo`) between teammates.
+
+5. **Integration and testing**:
+   - Both teammates should participate in integrating components and testing.
+
+---
+
+## What to study
+- **Processes and syscalls**:
   - `fork()`, `execve()`, `waitpid()`, `pipe()`, `dup2()`.
 
-- **Redirecionamento de I/O**:
-  - Manipulação de descritores de arquivos (`open`, `close`, `dup2`).
+- **Input/output redirection**:
+  - File descriptor manipulation (`open`, `close`, `dup2`).
 
-- **Sinais**:
-  - Uso de `signal` e `sigaction`.
+- **Signals**:
+  - Usage of `signal` and `sigaction`.
 
-- **Manipulação de variáveis de ambiente**:
+- **Environment variables**:
   - `getenv`, `setenv`.
 
 ---
 
-## Plano inicial
-1. Configure o **Makefile** com as regras básicas (`NAME`, `all`, `clean`, etc.).
-2. Divida o trabalho entre as principais funcionalidades.
-3. Comece implementando um *prompt* básico que exibe entrada do usuário.
-4. Expanda para incluir parsing, execução de comandos, e outros recursos obrigatórios.
+## Initial plan
+1. Set up the **Makefile** with basic rules (`NAME`, `all`, `clean`, etc.).
+2. Divide work into main functionalities.
+3. Start with a basic interactive prompt that displays user input.
+4. Expand to include parsing, command execution, and other required features.
