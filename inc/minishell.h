@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/11/29 21:36:39 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/11/30 16:21:37 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,10 @@
 # include <readline/readline.h>
 # include <curses.h>
 # include <term.h>
-//# include <LFT_PATH>
+# include "../src/ms_libft/libft/libft.h"
 
 //=====================================| Support Defines |
+
 
 
 //=====================================| Structs |
