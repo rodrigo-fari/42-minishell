@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_main.c                                          :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 16:01:47 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/11/30 16:09:15 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/03 18:45:06 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../../inc/minishell.h"
 
-int main(int ac, char **av)
+int main(void)
 {
-	(void)ac;
-	(void)av;
-	printf("Compilei c:\n");
+	const char*	input;
+	int i = 0;
+	input = NULL;
+	while(true)
+	{
+		input = readline("💻Minishell: ");
+		while (i++ <= 2)
+			printf("%s\n", input);
+	}
 	return (0);
 }

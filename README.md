@@ -151,3 +151,4 @@
 2. Divide work into main functionalities.
 3. Start with a basic interactive prompt that displays user input.
 4. Expand to include parsing, command execution, and other required features.
+
