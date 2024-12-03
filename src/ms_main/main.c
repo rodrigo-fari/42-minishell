@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 16:01:47 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/03 18:45:06 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/03 19:34:45 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,10 @@
 
 int main(void)
 {
-	const char*	input;
-	int i = 0;
-	input = NULL;
-	while(true)
-	{
-		input = readline("💻Minishell: ");
-		while (i++ <= 2)
-			printf("%s\n", input);
-	}
+	extern char	**environ;
+	env_to_struct(environ);
 	return (0);
 }
+
+//Finalizar o ms_init structs
+//Finalizar o env_to_struct

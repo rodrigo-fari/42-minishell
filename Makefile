@@ -74,7 +74,7 @@ clean:
 					@echo " "
 					@echo " "
 					@echo "🗑️ - Program has been cleaned!"
-					sleep 2
+					sleep 0.5
 					@clear
 
 fclean: 			clean

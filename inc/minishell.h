@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/03 18:32:02 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/03 19:31:59 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@
 # include <curses.h>
 # include <term.h>
 # include "../src/ms_libft/libft/libft.h"
+
+//#include "../../inc/minishell.h"
+//Para a criacao dos arquivos
 
 //=====================================| Support Defines |
 
@@ -76,8 +79,14 @@ typedef struct s_ast_node
 	struct s_ast_node	*right;
 }	t_ast_node;
 
-//=====================================| Function declaration (by file) |
-
+typedef struct s_env
+{
+	char	*key;
+	char	*value;
+	char	*next;
+}	t_env;
+//=====================================| ms_env.c |
+void	env_to_struct(char **env_arr, t_env *env_str);
 
 //=====================================| Endif |
 #endif
