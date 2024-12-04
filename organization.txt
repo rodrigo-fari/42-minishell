@@ -26,6 +26,21 @@
 │         └────────📄file2.c
 └──Makefile
 
+=======================================| Git commands |
+
+git pull : atualiza o ropositorio no seu computador
+
+git branch : lista todas as branchs do repostiorio
+
+git branch -b "nome da branch sem aspas" : Cria e troca para a branch criada
+
+git branch -d "nome da branch sem aspas" : Deleta a branch local ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
+
+Quando trocar para a branch, e realizar todas as alterações, lembrar de dar 
+git push na branch. Isso ira criar um pull request no github.
+
+Lembrar de dar git pull no começo de todo o dia de trabalho.
+
 =======================================| Necessidades do projeto |
 
 1.Prompt interativo:
