@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_parsing.c                                       :+:      :+:    :+:   */
+/*   ms_putils1.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/04 18:52:03 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/04 20:18:46 by rde-fari         ###   ########.fr       */
+/*   Created: 2024/12/04 14:22:33 by rde-fari          #+#    #+#             */
+/*   Updated: 2024/12/04 19:19:34 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-void	parsing(char *input)
+bool	parse_syntax(const char *input)
 {
-	char **user_input;
-
-	user_input = ft_split(input, ' ');
-	parse_syntax(user_input);
-	free_splits(user_input);
+	if (!input)
+		return false;
+	if (ft_strcmp((char *)input, "exit") == false)
+		exit (0);
+	return (true);
 }
