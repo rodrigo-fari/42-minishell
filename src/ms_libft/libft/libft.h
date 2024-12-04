@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 20:41:20 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/04 11:27:45 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/04 12:09:05 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_strmapi(char const *s, char (*f)(unsigned	int, char));
 char	*ft_strnstr(const char *big, const char *little, size_t len);
-char	*ftt_strnstr(const char *big, const char *little, size_t len);
 
 void	ft_putnbr_fd(int n, int fd);
 void	ft_bzero(void *s, size_t n);

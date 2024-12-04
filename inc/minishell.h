@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/04 11:29:57 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/04 12:17:06 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,20 @@ typedef struct s_ast_node
 
 typedef struct s_env
 {
-	char	*key;
-	char	*value;
-	char	*next;
+	char				*key;
+	char				*value;
+	struct	s_env		*next;
 }	t_env;
 //=====================================| ms_env.c |
 t_env	*env_to_struct(char **environ);
+
+//=====================================| ms_utils.c |
+t_env	*list_last(t_env *lst);
+void	print_env(t_env *head);
+void	listadd_back(t_env **lst, t_env *new);
+
+
+
 
 //=====================================| Endif |
 #endif
