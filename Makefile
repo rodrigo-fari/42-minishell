@@ -44,13 +44,18 @@ $(NAME): 			$(OBJS) $(LIBFT)
 					@echo "                                                                                                  " $(RESET)
 					@echo " "
 					@echo " "
-					@echo "✅ - Minishell compiled successfully!"
+					@echo "✅ - Minishell has been compiled successfully!"
 					sleep 3
 					@clear
 $(OBJ_DIR)%.o:		$(SRC_DIR)%.c
 					@mkdir -p $(@D)
 					@$(CC) $(CFLAGS) -c $< -o $@
+					@clear
+					@echo " "
+					@echo " "
 					@echo "🔧 Compiling... $<"
+					@echo " "
+					@echo " "
 
 $(LIBFT):
 					@make -C ./src/ms_libft/libft/
@@ -82,7 +87,10 @@ fclean: 			clean
 re: 				fclean all
 
 l:				re
-				valgrind --leak-check=full --show-leak-kinds=all
+				valgrind --leak-check=full --show-leak-kinds=all ./$(NAME)
+
+n:
+				norminette
 
 
 #===================================================================================| Ignore |

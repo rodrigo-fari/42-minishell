@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/04 12:17:06 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/04 13:00:52 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@
 
 //=====================================| Support Defines |
 
-
-
 //=====================================| Structs |
 typedef struct s_struct
 {
@@ -68,7 +66,7 @@ typedef struct s_token
 {
 	t_token_type		type;
 	char				value;
-	struct		s_token	*next;
+	struct s_token		*next;
 }	t_token;
 
 typedef struct s_ast_node
@@ -83,7 +81,7 @@ typedef struct s_env
 {
 	char				*key;
 	char				*value;
-	struct	s_env		*next;
+	struct s_env		*next;
 }	t_env;
 //=====================================| ms_env.c |
 t_env	*env_to_struct(char **environ);
@@ -92,9 +90,6 @@ t_env	*env_to_struct(char **environ);
 t_env	*list_last(t_env *lst);
 void	print_env(t_env *head);
 void	listadd_back(t_env **lst, t_env *new);
-
-
-
 
 //=====================================| Endif |
 #endif
