@@ -3,72 +3,99 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42poto.com>     +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 20:41:26 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/05/01 20:41:59 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/04 11:28:57 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	cw(const char	*str, char c)
+static size_t	ft_wordcount(char const *s, char c)
 {
 	size_t	i;
-	size_t	cw;
 
 	i = 0;
-	cw = 0;
-	while (str[i])
+	while (*s)
 	{
-		while (str[i] == c)
-			i++;
-		if (str[i])
-			cw++;
-		while (str[i] && str[i] != c)
-			i++;
-	}
-	return (cw);
-}
-
-char	**splitter(char const *s, char c, char **result)
-{
-	size_t	i;
-	size_t	j;
-	size_t	limit;
-	size_t	start;
-
-	j = 0;
-	i = 0;
-	limit = 0;
-	while (s[i])
-	{
-		while (s[i] == c)
-			i++;
-		start = i;
-		if (s[i] == '\0')
-			break ;
-		while (s[i] != c && s[i])
+		while (*s == c && *s)
+			s++;
+		if (*s != c && *s)
 		{
 			i++;
-			limit++;
+			while (*s != c && *s)
+				s++;
 		}
-		result[j++] = ft_substr(s, start, limit);
-		limit = 0;
 	}
-	result[j] = NULL;
-	return (result);
+	return (i);
+}
+
+static size_t	ft_wordlen(char	const *s, char c)
+{
+	size_t	i;
+
+	i = 0;
+	while (*s != c && *s)
+	{
+		s++;
+		i++;
+	}
+	return (i);
+}
+
+static void	ft_clean(char **split, size_t i)
+{
+	size_t	n;
+
+	n = 0;
+	while (n < i)
+		free(split[n++]);
+	free(split);
+}
+
+static char	**ft_splitting(char **split, char const *s, char c)
+{
+	size_t	len;
+	size_t	i;
+
+	i = 0;
+	while (*s)
+	{
+		while (*s == c && *s)
+			s++;
+		if (*s != c && *s)
+		{
+			len = ft_wordlen(s, c);
+			split[i] = ft_substr(s, 0, len);
+			if (!split[i])
+			{
+				ft_clean(split, i);
+				return (NULL);
+			}
+			s += len;
+			i++;
+		}
+	}
+	return (split);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**result;
+	char	*aux;
+	char	**split;
+	size_t	wc;
 
-	if (!s)
+	wc = ft_wordcount(s, c);
+	aux = ft_calloc(ft_strlen(s), 1);
+	if (!aux)
 		return (NULL);
-	result = ft_calloc(sizeof(char *), (cw(s, c) + 1));
-	if (!result)
+	free(aux);
+	split = (char **) ft_calloc(wc + 1, 8);
+	if (!split)
 		return (NULL);
-	result = splitter(s, c, result);
-	return (result);
+	split = ft_splitting(split, s, c);
+	if (!split)
+		return (NULL);
+	return (split);
 }

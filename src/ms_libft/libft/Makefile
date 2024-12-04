@@ -16,7 +16,8 @@ SRC= ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c \
 	ft_lstmap_bonus.c ft_printf.c ft_check_char.c ft_intncount.c \
 	ft_putncount.c ft_int_len.c ft_strncount.c ft_unsint.c \
 	ft_hexapplier.c ft_strcmp.c get_next_line.c get_next_line_utils.c \
-	ft_str_chr_count.c ft_strnlen.c ft_matrix_finder.c ftt_strnstr
+	ft_str_chr_count.c ft_strnlen.c ft_matrix_finder.c ftt_strnstr \
+	free_splits.c 
 
 all: $(NAME)
 

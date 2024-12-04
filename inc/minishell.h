@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/03 19:31:59 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/04 11:29:57 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ typedef struct s_env
 	char	*next;
 }	t_env;
 //=====================================| ms_env.c |
-void	env_to_struct(char **env_arr, t_env *env_str);
+t_env	*env_to_struct(char **environ);
 
 //=====================================| Endif |
 #endif
