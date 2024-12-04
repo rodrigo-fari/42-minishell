@@ -34,6 +34,8 @@ git branch : lista todas as branchs do repostiorio
 
 git branch -b "nome da branch sem aspas" : Cria e troca para a branch criada
 
+git push --set-upstream origin "nome da branch sem aspas" : Ativa a sua branch no repositorio.
+
 git branch -d "nome da branch sem aspas" : Deleta a branch local ⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️
 
 Quando trocar para a branch, e realizar todas as alterações, lembrar de dar 
