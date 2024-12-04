@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/04 14:37:03 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/04 19:22:21 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ typedef struct s_env
 	char				*value;
 	struct s_env		*next;
 }	t_env;
+
 //=====================================| ms_env.c |
 t_env	*env_to_struct(char **environ);
 
@@ -91,7 +92,10 @@ t_env	*list_last(t_env *lst);
 void	print_env(t_env *head);
 void	listadd_back(t_env **lst, t_env *new);
 
-//=====================================| ms_parsing1.c |
+//=====================================| ms_parsing.c |
+void	parsing(char *input);
+
+//=====================================| ms_putils1.c |
 bool	parse_syntax(const char *input);
 
 //=====================================| Endif |

@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ms_parsing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/30 16:01:47 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/04 19:19:16 by rde-fari         ###   ########.fr       */
+/*   Created: 2024/12/04 18:52:03 by rde-fari          #+#    #+#             */
+/*   Updated: 2024/12/04 19:19:03 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-int	main(void)
+void	parsing(char *input)
 {
-	char		*input;
-	t_env		*env;
-	extern char	**environ;
-
-	env = env_to_struct(environ);
-	(void)env;
-	while (true)
-	{
-		input = readline("🤏🐚⮕ ");
-		parsing(input);
-	}
+	parse_syntax(input);
 }
