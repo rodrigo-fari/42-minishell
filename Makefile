@@ -85,12 +85,14 @@ clean:
 fclean: 			clean
 
 re: 				fclean all
-
-l:				re
-				valgrind --leak-check=full --show-leak-kinds=all ./$(NAME)
+					./$(NAME)
 
 n:
-				norminette
+					norminette -R CheckForbiddenSourceHeader headers/*.h srcs/*.c srcs/**/*.c
+
+leak: re
+					valgrind --leak-check=full --show-leak-kinds=all \
+						--suppressions=readline_leaks ./$(NAME)
 
 
 #===================================================================================| Ignore |

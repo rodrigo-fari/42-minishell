@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   free_splits.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/30 16:01:47 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/04 14:48:37 by rde-fari         ###   ########.fr       */
+/*   Created: 2024/12/04 11:27:17 by rde-fari          #+#    #+#             */
+/*   Updated: 2024/12/04 13:07:38 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "libft.h"
 
-int	main(void)
+int	free_splits(char **line)
 {
-	char		*input;
-	t_env		*env;
-	extern char	**environ;
+	int	i;
 
-	env = env_to_struct(environ);
-	(void)env;
-	while (true)
-	{
-		input = readline("🤏🐚⮕ ");
-		parse_syntax(input);
-	}
+	i = 0;
+	if (!line)
+		return (0);
+	while (line[i])
+		free(line[i++]);
+	free(line);
+	return (0);
 }

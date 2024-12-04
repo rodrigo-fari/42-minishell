@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ms_utils1.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/30 16:01:47 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/04 14:48:37 by rde-fari         ###   ########.fr       */
+/*   Created: 2024/12/04 11:53:41 by rde-fari          #+#    #+#             */
+/*   Updated: 2024/12/04 13:07:50 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-int	main(void)
+void	listadd_back(t_env **lst, t_env *new)
 {
-	char		*input;
-	t_env		*env;
-	extern char	**environ;
+	if (*lst == NULL)
+		*lst = new;
+	else
+		list_last(*lst)->next = new;
+}
 
-	env = env_to_struct(environ);
-	(void)env;
-	while (true)
+t_env	*list_last(t_env *lst)
+{
+	if (lst == NULL)
+		return (NULL);
+	while (lst->next)
 	{
-		input = readline("🤏🐚⮕ ");
-		parse_syntax(input);
+		lst = lst->next;
 	}
+	return (lst);
 }

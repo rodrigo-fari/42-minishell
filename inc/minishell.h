@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/04 13:00:52 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/04 14:37:03 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,9 @@ t_env	*env_to_struct(char **environ);
 t_env	*list_last(t_env *lst);
 void	print_env(t_env *head);
 void	listadd_back(t_env **lst, t_env *new);
+
+//=====================================| ms_parsing1.c |
+bool	parse_syntax(const char *input);
 
 //=====================================| Endif |
 #endif
