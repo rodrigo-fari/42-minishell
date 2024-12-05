@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 11:46:29 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/05 17:18:22 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/05 19:50:43 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,23 @@ bool	quote_check(char *input, int i, int s_quote, int d_quote)
 	return (true);
 }
 
-bool	parse_syntax(char **user_input)
+bool	parse_pipes(char **user_input)
 {
-	if (!user_input)
+	int	i;
+
+	if (user_input[0][0] == '|')
 		return (false);
+	i = 0;
+	while (user_input[i])
+	{
+		if (user_input[i][0] == '|')
+		{
+			if (user_input[i + 1] && !ft_isalnum(user_input[i - 1][0]))
+				return (false);
+			if (!user_input[i + 1] || !ft_isalnum(user_input[i + 1][0]))
+				return (false);
+		}
+		i++;
+	}
 	return (true);
 }
