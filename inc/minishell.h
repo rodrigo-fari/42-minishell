@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/04 21:06:55 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/05 11:54:35 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,10 +94,11 @@ void	listadd_back(t_env **lst, t_env *new);
 
 //=====================================| ps_parsing.c |
 void	parsing(char *input);
+bool	quote_check(char *input);
+bool	parse_syntax(char **user_input);
 
 //=====================================| ps_utils1.c |
-bool	check_quotes(char *input);
-bool	parse_syntax(const char *input);
+void	error_hand(char *str);
 
 
 //=====================================| Endif |

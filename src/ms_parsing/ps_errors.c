@@ -1,33 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_utils1.c                                        :+:      :+:    :+:   */
+/*   ps_errors.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 14:22:33 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/04 21:08:28 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/04 23:31:33 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-bool	check_quotes(char *input)
+void	error_hand(char *str)
 {
-	(void)input;
-	//verificar aspas antes de splitar o input do usuario
-}
-
-bool	parse_syntax(char **user_input)
-{
-	int	i;
-
-	if (!user_input)
-		return false;
-	i = 0;
-	while (user_input[i])
-	{
-		
-	}
-	return (true);
+	printf(RED"[Error]"RESET);
+	printf("%s\n", str);
 }
