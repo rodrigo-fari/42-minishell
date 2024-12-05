@@ -88,7 +88,7 @@ re: 				fclean all
 					./$(NAME)
 
 n:
-					norminette -R CheckForbiddenSourceHeader headers/*.h srcs/*.c srcs/**/*.c
+					norminette -R CheckForbiddenSourceHeader
 
 leak: re
 					valgrind --leak-check=full --show-leak-kinds=all \
