@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 18:52:03 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/07 21:43:38 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/09 10:53:24 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ void	parsing(char *input)
 	validator(parse_pipes(user_input), "Pipes: ");
 	validator(parse_redin(user_input), "Redirects in: ");
 	validator(parse_redout(user_input), "Redirects out: ");
-	validator(-1, "Heredocs: ");
+	validator(parse_heredoc(user_input), "Heredocs: ");
 	free_splits(user_input);
 }

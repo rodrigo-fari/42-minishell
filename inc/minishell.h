@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/07 21:42:32 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/09 11:04:55 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ void	parsing(char *input);
 bool	parse_pipes(char **user_input);
 bool	parse_redin(char **user_input);
 bool	parse_redout(char **user_input);
+bool	parse_heredoc(char **user_input);
 bool	quote_check(char *input, int i, int s_quote, int d_quote);
 
 //=====================================| ps_errors.c |

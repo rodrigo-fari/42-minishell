@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 18:23:26 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/09 09:58:08 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/09 11:13:43 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,18 @@
  * Test: Invalid!
  * ```
  */
+/* 
+🟡 = Unavailable.
+🟢 = Valid.
+🔴 = Invalid.
+ */
 void	validator(int validator, char *str)
 {
 	printf("%s", str);
 	if (validator < 0)
-		printf(YELLOW"Unavailable!\n"RESET);
+		printf(YELLOW"🟡\n"RESET);
 	else if (validator == true)
-		printf(GREEN"Valid!\n"RESET);
+		printf(GREEN"🟢\n"RESET);
 	else
-		printf(RED"Invalid!\n"RESET);
+		printf(RED"🔴\n"RESET);
 }
