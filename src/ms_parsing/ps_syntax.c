@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 11:46:29 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/07 21:41:40 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/09 09:59:54 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,21 +122,22 @@ bool	parse_pipes(char **user_input)
 /**
  * @brief Validates the placement of input redirection (`<`) in the user input.
  * 
- * This function ensures that the input redirection (`<`) is properly placed in 
+ * This function ensures that the input redirection (`<`) is properly placed in
  * the user input. It checks that a redirection is not at the beginning or end 
  * and that it is followed by valid input.
  * 
- * @param user_input A null-terminated array of strings representing user input 
+ * @param user_input A null-terminated array of strings representing user input
  *                   split into segments.
  * 
- * @return Returns `true` if all redirections are correctly placed. Returns `false` 
- *         if any redirection is misplaced.
+ * @return Returns `true` if all redirections are correctly placed.
+ * Returns `false` if any redirection is misplaced.
  * 
  * @note 
  * - The first character of `user_input[0]` cannot be a redirection (`<`).
- * - A redirection must be followed by a valid input segment, not an invalid or 
+ * - A redirection must be followed by a valid input segment, not an invalid or
  *   empty one.
- * - The function uses `ft_isalnum` to verify if adjacent segments are alphanumeric.
+ * - The function uses `ft_isalnum` to verify if adjacent segments are
+ * alphanumeric.
  * 
  * @example
  * Input: {"echo", "<", "file.txt", NULL}
@@ -172,21 +173,22 @@ bool	parse_redin(char **user_input)
 /**
  * @brief Validates the placement of output redirection (`>`) in the user input.
  * 
- * This function ensures that the output redirection (`>`) is properly placed in 
+ * This function ensures that the output redirection (`>`) is properly placed in
  * the user input. It checks that a redirection is not at the beginning or end 
  * of the input and that it is followed by valid input.
  * 
- * @param user_input A null-terminated array of strings representing user input 
+ * @param user_input A null-terminated array of strings representing user input
  *                   split into segments.
  * 
- * @return Returns `true` if all redirections are correctly placed. Returns `false` 
- *         if any redirection is misplaced.
+ * @return Returns `true` if all redirections are correctly placed.
+ * Returns `false` if any redirection is misplaced.
  * 
  * @note 
  * - The first character of `user_input[0]` cannot be a redirection (`>`).
  * - A redirection must be followed by a valid input segment, not an invalid or 
  *   empty one.
- * - The function uses `ft_isalnum` to verify if adjacent segments are alphanumeric.
+ * - The function uses `ft_isalnum` to verify if adjacent segments are
+ * alphanumeric.
  * 
  * @example
  * Input: {"echo", ">", "file.txt", NULL}

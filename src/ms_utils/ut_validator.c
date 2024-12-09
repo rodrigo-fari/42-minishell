@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ut_validator.c                                     :+:      :+:    :+:   */
+/*   ut_validator.C                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 18:23:26 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/07 21:35:06 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/09 09:58:08 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 /**
  * @brief Prints a validation result message based on the validator value.
  * 
- * This function prints the given string followed by a validation result. If the 
- * validator is negative, it prints "Unavailable" in yellow. If the validator is 
+ * This function prints the given string followed by a validation result. If the
+ * validator is negative, it prints "Unavailable" in yellow. If the validator is
  * `true`, it prints "Valid" in green. Otherwise, it prints "Invalid" in red.
  * 
  * @param validator An integer representing the validation result. A negative 
