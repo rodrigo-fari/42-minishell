@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/09 14:53:27 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/09 15:46:39 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@
 
 //=====================================| Support Defines |
 
-
 //=====================================| Structs |
 typedef enum e_token_type
 {
@@ -83,12 +82,27 @@ typedef struct s_env
 //=====================================| ms_built-in |
 //[bi_echo.c]
 void	bi_echo(char **args);
+//[bi_cd.c]
+void	bi_cd(void);
+//[bi_exit.c]
+void	bi_exit(void);
+//[bi_export.c]
+void	bi_export(void);
+//[bi_ls.c]
+void	bi_ls(void);
+//[bi_pwd.c]
+void	bi_pwd(void);
+//[bi_unset.c]
+void	bi_unset(void);
+//[bi_utils.c]
 
 //=====================================| ms_env |
 //[ev_env_to_struct.c]
 t_env	*env_to_struct(char **environ);
 //[ev_utils.c]
 void	print_env(t_env *head);
+t_env	*list_last(t_env *lst);
+void	listadd_back(t_env **lst, t_env *new);
 
 //=====================================| ms_main |
 //[ms_exec.c]
@@ -105,11 +119,6 @@ bool	parse_redin(char **user_input);
 bool	parse_redout(char **user_input);
 bool	parse_heredoc(char **user_input);
 bool	parse_quotes(char *input, int i, int s_quote, int d_quote);
-
-//=====================================| ms_utils |
-//[ut_lists.c]
-t_env	*list_last(t_env *lst);
-void	listadd_back(t_env **lst, t_env *new);
 
 //=====================================| Endif |
 #endif

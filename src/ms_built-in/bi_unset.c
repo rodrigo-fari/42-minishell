@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_exec.c                                          :+:      :+:    :+:   */
+/*   bi_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/09 14:36:03 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/09 15:26:09 by rde-fari         ###   ########.fr       */
+/*   Created: 2024/12/09 15:39:38 by rde-fari          #+#    #+#             */
+/*   Updated: 2024/12/09 15:42:03 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-void	ms_exec(t_env *env, char *input)
+void	bi_unset(void)
 {
-	parsing(input);
-	(void)env;
+	
 }
