@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bi_pwd.c                                           :+:      :+:    :+:   */
+/*   bi_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/09 15:39:51 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/09 15:56:23 by rde-fari         ###   ########.fr       */
+/*   Created: 2024/12/09 15:51:50 by rde-fari          #+#    #+#             */
+/*   Updated: 2024/12/09 15:53:32 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-void	bi_pwd(void)
+void	bi_error(char *str)
 {
-	char	*cwd;
-
-	cwd = NULL;
-	cwd = getcwd(NULL, 0);
-	if (!cwd)
-	{
-		perror("cwd");
-		return ;
-	}
-	printf("%s\n", cwd);
-	free (cwd);
+	printf(RED"[Error]"RESET);
+	printf("%s\n", str);
 }

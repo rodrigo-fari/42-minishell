@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/09 15:46:39 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/09 15:53:41 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,9 @@ void	bi_pwd(void);
 void	bi_unset(void);
 //[bi_utils.c]
 
+//[bi_error.c]
+void	bi_error(char *str);
+
 //=====================================| ms_env |
 //[ev_env_to_struct.c]
 t_env	*env_to_struct(char **environ);
@@ -109,7 +112,7 @@ void	listadd_back(t_env **lst, t_env *new);
 void	ms_exec(t_env *env, char *input);
 
 //=====================================| ms_parsing |
-//[ps_errors.c]
+//[ps_error.c]
 void	ps_error(char *str, char **user_input);
 //[ps_parsing.c]
 bool	parsing(char *input);
