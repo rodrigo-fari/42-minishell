@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/09 15:53:41 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/09 18:15:00 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,11 @@ typedef struct s_token
 	struct s_token		*next;
 }	t_token;
 
+typedef struct s_command
+{
+	char				*command;
+}	t_command;
+
 typedef struct s_ast_node
 {
 	t_token_type		*type;
@@ -88,16 +93,15 @@ void	bi_cd(void);
 void	bi_exit(void);
 //[bi_export.c]
 void	bi_export(void);
-//[bi_ls.c]
-void	bi_ls(void);
 //[bi_pwd.c]
 void	bi_pwd(void);
 //[bi_unset.c]
 void	bi_unset(void);
-//[bi_utils.c]
-
 //[bi_error.c]
 void	bi_error(char *str);
+//[bi_commands.c]
+void	exec_builtins(char **user_input, t_env *env);
+void	exec_commands(char *command, char **user_input, t_env *env);
 
 //=====================================| ms_env |
 //[ev_env_to_struct.c]
@@ -105,6 +109,7 @@ t_env	*env_to_struct(char **environ);
 //[ev_utils.c]
 void	print_env(t_env *head);
 t_env	*list_last(t_env *lst);
+void	free_env_struct(t_env *env);
 void	listadd_back(t_env **lst, t_env *new);
 
 //=====================================| ms_main |

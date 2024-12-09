@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 11:18:50 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/09 11:30:40 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/09 17:40:06 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	bi_echo(char **args)
 	bool	flag;
 
 	flag = true;
-	i = 0;
+	i = 1;
 	while (args[i])
 	{
 		if (ft_strcmp(args[i], "-n") == 0)
@@ -37,3 +37,6 @@ void	bi_echo(char **args)
 			printf("\n");
 	}
 }
+
+//Necessario corrigir leitura de flag do -n
+//Ex: -nnnnnnnnn -nnnnnnn -nnnnnn -nnnnnn alow <- input valido

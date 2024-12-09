@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 14:36:03 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/09 15:26:09 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/09 17:41:55 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	ms_exec(t_env *env, char *input)
 {
+	char	**user_input;
+
+	user_input = ft_split(input, ' ');
 	parsing(input);
-	(void)env;
+	exec_builtins(user_input, env);
 }
