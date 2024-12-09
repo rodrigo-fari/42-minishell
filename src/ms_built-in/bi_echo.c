@@ -1,31 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   bi_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/30 16:01:47 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/09 11:40:30 by rde-fari         ###   ########.fr       */
+/*   Created: 2024/12/09 11:18:50 by rde-fari          #+#    #+#             */
+/*   Updated: 2024/12/09 11:30:40 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-int	main(void)
+void	bi_echo(char **args)
 {
-	char		*input;
-	t_env		*env;
-	extern char	**environ;
+	int		i;
+	bool	flag;
 
-	env = env_to_struct(environ);
-	(void)env;
-	while (true)
+	flag = true;
+	i = 0;
+	while (args[i])
 	{
-		input = readline("🤏🐚⮕ ");
-		if (input)
-			add_history(input);
-		parsing(input);
-		free(input);
+		if (ft_strcmp(args[i], "-n") == 0)
+		{
+			flag = false;
+			i++;
+		}
+		while (args[i])
+		{
+			printf("%s", args[i]);
+			if (args[i + 1])
+				printf(" ");
+			i++;
+		}
+		if (flag)
+			printf("\n");
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 11:46:29 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/09 11:04:36 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/09 11:36:07 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
  * For the input string: "This is an 'unmatched test."
  * - The function will return `false` due to an unclosed single quote.
  */
-bool	quote_check(char *input, int i, int s_quote, int d_quote)
+bool	parse_quotes(char *input, int i, int s_quote, int d_quote)
 {
 	char	quote;
 	int		validation;

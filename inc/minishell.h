@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/09 11:04:55 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/09 11:39:25 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,29 +84,34 @@ typedef struct s_env
 	struct s_env		*next;
 }	t_env;
 
-//=====================================| ms_env.c |
+//=====================================| ms_built-in |
+//[bi_echo.c]
+void	bi_echo(char **args);
+
+//=====================================| ms_env |
+//[ev_env_to_struct.c]
 t_env	*env_to_struct(char **environ);
+//[ev_utils.c]
 
-//=====================================| ms_utils.c |
-t_env	*list_last(t_env *lst);
-void	print_env(t_env *head);
-void	listadd_back(t_env **lst, t_env *new);
-
-//=====================================| ms_utils.c |
-void	validator(int validator, char *str);
-
-//=====================================| ps_parsing.c |
+//=====================================| ms_parsing |
+//[ps_errors.c]
+void	error_hand(char *str);
+//[ps_parsing.c]
 void	parsing(char *input);
-
-//=====================================| ps_syntax.c |
+//[ps_syntax.c]
 bool	parse_pipes(char **user_input);
 bool	parse_redin(char **user_input);
 bool	parse_redout(char **user_input);
 bool	parse_heredoc(char **user_input);
-bool	quote_check(char *input, int i, int s_quote, int d_quote);
+bool	parse_quotes(char *input, int i, int s_quote, int d_quote);
 
-//=====================================| ps_errors.c |
-void	error_hand(char *str);
+//=====================================| ms_utils |
+//[ut_lists.c]
+t_env	*list_last(t_env *lst);
+void	print_env(t_env *head);
+void	listadd_back(t_env **lst, t_env *new);
+//[ut_validator.c]
+void	validator(int validator, char *str);
 
 //=====================================| Endif |
 #endif

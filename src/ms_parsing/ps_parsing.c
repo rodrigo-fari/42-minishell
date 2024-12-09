@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 18:52:03 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/09 10:53:24 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/09 11:45:12 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	parsing(char *input)
 {
 	char	**user_input;
 
-	validator(quote_check(input, -1, 0, 0), "Quotes: ");
+	validator(parse_quotes(input, -1, 0, 0), "Quotes: ");
 	user_input = ft_split(input, ' ');
 	validator(parse_pipes(user_input), "Pipes: ");
 	validator(parse_redin(user_input), "Redirects in: ");
@@ -24,3 +24,6 @@ void	parsing(char *input)
 	validator(parse_heredoc(user_input), "Heredocs: ");
 	free_splits(user_input);
 }
+
+//comando echo realizado, falta regular.
+//estruturar codigo para saber ordens de iniciação.
