@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/09 11:39:25 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/09 13:22:44 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,12 +92,13 @@ void	bi_echo(char **args);
 //[ev_env_to_struct.c]
 t_env	*env_to_struct(char **environ);
 //[ev_utils.c]
+void	print_env(t_env *head);
 
 //=====================================| ms_parsing |
 //[ps_errors.c]
 void	error_hand(char *str);
 //[ps_parsing.c]
-void	parsing(char *input);
+bool	parsing(char *input);
 //[ps_syntax.c]
 bool	parse_pipes(char **user_input);
 bool	parse_redin(char **user_input);
@@ -108,10 +109,7 @@ bool	parse_quotes(char *input, int i, int s_quote, int d_quote);
 //=====================================| ms_utils |
 //[ut_lists.c]
 t_env	*list_last(t_env *lst);
-void	print_env(t_env *head);
 void	listadd_back(t_env **lst, t_env *new);
-//[ut_validator.c]
-void	validator(int validator, char *str);
 
 //=====================================| Endif |
 #endif

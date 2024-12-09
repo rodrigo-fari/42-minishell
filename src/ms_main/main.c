@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 16:01:47 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/09 11:40:30 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/09 13:22:26 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ int	main(void)
 		input = readline("🤏🐚⮕ ");
 		if (input)
 			add_history(input);
-		parsing(input);
+		if (!parsing(input))
+			error_hand("Parsing error");
 		free(input);
 	}
 }
