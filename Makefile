@@ -90,9 +90,13 @@ re: 				fclean all
 n:
 					norminette -R CheckForbiddenSourceHeader
 
-leak: re
+leak:				re
 					valgrind --leak-check=full --show-leak-kinds=all \
 						--suppressions=readline_leaks ./$(NAME)
+
+lmac:
+					leaks --atExit --list -- ./$(NAME)
+
 
 
 #===================================================================================| Ignore |

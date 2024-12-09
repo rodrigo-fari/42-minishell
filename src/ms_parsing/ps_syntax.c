@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 11:46:29 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/09 13:33:38 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/09 15:08:58 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ bool	parse_redout(char **user_input)
 	i = 0;
 	while (user_input[i])
 	{
-		if (user_input[i][0] == '>' || ft_strcmp(user_input[i], ">>"))
+		if (user_input[i][0] == '>' || ft_strcmp(user_input[i], ">>") == 0)
 		{
 			if (!user_input[i + 1] || !user_input[i - 1])
 				return (false);

@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 16:01:47 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/09 13:22:26 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/09 14:44:33 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,12 @@ int	main(void)
 	extern char	**environ;
 
 	env = env_to_struct(environ);
-	(void)env;
 	while (true)
 	{
 		input = readline("🤏🐚⮕ ");
 		if (input)
 			add_history(input);
-		if (!parsing(input))
-			error_hand("Parsing error");
+		ms_exec(env, input),
 		free(input);
 	}
 }

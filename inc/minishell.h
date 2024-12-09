@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/09 13:22:44 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/09 14:53:27 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,8 @@
 
 //=====================================| Support Defines |
 
-//=====================================| Structs |
-typedef struct s_struct
-{
-	void		*any_data;
-}				t_struct;
 
+//=====================================| Structs |
 typedef enum e_token_type
 {
 	TOKEN_WORD,// For commands and arguments
@@ -94,9 +90,13 @@ t_env	*env_to_struct(char **environ);
 //[ev_utils.c]
 void	print_env(t_env *head);
 
+//=====================================| ms_main |
+//[ms_exec.c]
+void	ms_exec(t_env *env, char *input);
+
 //=====================================| ms_parsing |
 //[ps_errors.c]
-void	error_hand(char *str);
+void	ps_error(char *str, char **user_input);
 //[ps_parsing.c]
 bool	parsing(char *input);
 //[ps_syntax.c]
