@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/09 18:15:00 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/10 10:56:09 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void	bi_unset(void);
 void	bi_error(char *str);
 //[bi_commands.c]
 void	exec_builtins(char **user_input, t_env *env);
-void	exec_commands(char *command, char **user_input, t_env *env);
+void	exec_exe(char *command, char **user_input, t_env *env);
 
 //=====================================| ms_env |
 //[ev_env_to_struct.c]
@@ -113,6 +113,8 @@ void	free_env_struct(t_env *env);
 void	listadd_back(t_env **lst, t_env *new);
 
 //=====================================| ms_main |
+//[main.c]
+void	validate_input(char *input, t_env *env);
 //[ms_exec.c]
 void	ms_exec(t_env *env, char *input);
 

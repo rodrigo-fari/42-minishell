@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 16:18:50 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/09 19:00:01 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/10 11:00:49 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,36 +16,35 @@ void	exec_builtins(char **user_input, t_env *env)
 {
 	if (ft_strcmp(user_input[0], "echo") == 0)
 		bi_echo(user_input);
-	if (ft_strcmp(user_input[0], "pwd") == 0)
+	else if (ft_strcmp(user_input[0], "pwd") == 0)
 		bi_pwd();
 	else
-		exec_commands(user_input[0], user_input, env);
+		exec_exe(user_input[0], user_input, env);
 }
 
-void	exec_commands(char *command, char **user_input, t_env *env)
+void	exec_exe(char *command, char **user_input, t_env *env)
 {
-	bool	absolute;
+	char	*full_command;
 	pid_t	execve_new_process;
+	int		status;
 
-	absolute = false;
-	if (ft_strchr(command, '/'))
-		absolute = true;
-	execve_new_process = fork();
-	if (absolute == true)
+	execve_new_process  = fork();
+	if (execve_new_process == 0)
 	{
-		if (execve_new_process)
+		if(ft_strchr(command, '/'))	
 			execve(command, user_input, NULL);
+		else
+		{
+			full_command = ft_strjoin("/bin/", command);
+			execve(full_command, user_input, NULL);
+			free(full_command);
+		}
+		perror("execve");
+		exit(EXIT_FAILURE);
 	}
+	else if (execve_new_process > 0)
+		waitpid(execve_new_process, &status, 0);
 	else
-	{
-		command = ft_strjoin("/bin/", command);
-		if (execve_new_process)
-			execve(command, user_input, NULL);
-	}
+		perror("fork");
 	(void)env;
-	//Criar variavel global para ultilizar o waitpid
-	//Saber como funciona o wait pid
-	//waitpid ira aguardar que o processo filho termine sua execução
-	//pois o execve apos o termino de sua execução ele termina o processo
-	//e se esse processo for o minishel, ja sabe ne ?
 }
