@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 16:01:47 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/10 11:02:03 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/10 11:48:42 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,9 @@ int	main(void)
 		input = readline("🤏🐚⮕ ");
 		if (input)
 		{
-			validate_input(input, env);
+			add_history(input);
+			ms_exec(env, input);
 			free(input);
 		}
-	}
-}
-
-void	validate_input(char *input, t_env *env)
-{
-	if (input)
-	{
-		add_history(input);
-		ms_exec(env, input);
 	}
 }

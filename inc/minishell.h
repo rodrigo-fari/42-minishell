@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/10 10:56:09 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/10 12:24:21 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@
 //Para a criacao dos arquivos
 
 //=====================================| Support Defines |
+//[clear.c]
+# define CLEAR_CODE "\033[2J\033[H"
 
 //=====================================| Structs |
 typedef enum e_token_type
@@ -112,9 +114,11 @@ t_env	*list_last(t_env *lst);
 void	free_env_struct(t_env *env);
 void	listadd_back(t_env **lst, t_env *new);
 
+//=====================================| ms_extra |
+//[ex_clear.c] LEMBRAR DE REMOVER ESTA FUNÇÃO! CLEAR TEM QUE BUSCAR O COMANDO NO ABSOLUTE E RELATIVE PATH! (NAO EXISTE NO MAC).
+void	ex_clear(void);
+
 //=====================================| ms_main |
-//[main.c]
-void	validate_input(char *input, t_env *env);
 //[ms_exec.c]
 void	ms_exec(t_env *env, char *input);
 

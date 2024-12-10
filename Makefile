@@ -45,9 +45,7 @@ $(NAME): 			$(OBJS) $(LIBFT)
 					@echo "                                                                                                  " $(RESET)
 					@echo " "
 					@echo " "
-					@echo "✅ - Minishell has been compiled successfully!"
-					sleep 3
-					@clear
+					sleep 1
 $(OBJ_DIR)%.o:		$(SRC_DIR)%.c
 					@mkdir -p $(@D)
 					@$(CC) $(CFLAGS) -c $< -o $@
