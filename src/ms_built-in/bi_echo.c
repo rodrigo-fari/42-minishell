@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 11:18:50 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/11 14:20:39 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/11 16:52:30 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	bi_echo(char **args)
 	i = 1;
 	while (args[i])
 	{
-		if (ft_strcmp(args[i], "-n") == 0)
+		while (args[i][0] == '-' && args[i][1] == 'n')
 		{
 			flag = false;
 			i++;
@@ -37,7 +37,6 @@ void	bi_echo(char **args)
 			printf("\n");
 	}
 }
-
 
 void	print_args(char *str)
 {

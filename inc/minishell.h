@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/11 15:25:36 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/11 16:47:19 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ typedef struct s_env
 //[bi_echo.c]
 void	bi_echo(char **args);
 void	print_args(char *str);
+int		flag_iter(char **args);
 //[bi_cd.c]
 void	bi_cd(void);
 //[bi_exit.c]
@@ -120,7 +121,7 @@ void	ex_clear(void);
 //[ms_exec.c]
 void	ms_exec(t_env *env, char *input);
 //[ms_utils.c]
-bool	string_seachr(const char *s, int c);
+bool	string_search(const char *s, int c);
 
 //=====================================| ms_parsing |
 //[ps_error.c]
