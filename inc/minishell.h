@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/10 12:24:21 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/11 15:25:36 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,6 @@ typedef struct s_token
 	struct s_token		*next;
 }	t_token;
 
-typedef struct s_command
-{
-	char				*command;
-}	t_command;
-
 typedef struct s_ast_node
 {
 	t_token_type		*type;
@@ -89,6 +84,7 @@ typedef struct s_env
 //=====================================| ms_built-in |
 //[bi_echo.c]
 void	bi_echo(char **args);
+void	print_args(char *str);
 //[bi_cd.c]
 void	bi_cd(void);
 //[bi_exit.c]
@@ -115,12 +111,16 @@ void	free_env_struct(t_env *env);
 void	listadd_back(t_env **lst, t_env *new);
 
 //=====================================| ms_extra |
-//[ex_clear.c] LEMBRAR DE REMOVER ESTA FUNÇÃO! CLEAR TEM QUE BUSCAR O COMANDO NO ABSOLUTE E RELATIVE PATH! (NAO EXISTE NO MAC).
+//!LEMBRAR DE REMOVER ESTA FUNÇÃO! CLEAR TEM QUE BUSCAR O COMANDO NO
+//!ABSOLUTE E RELATIVE PATH! (NAO EXISTE NO MAC).
+//[ex_clear.c]
 void	ex_clear(void);
 
 //=====================================| ms_main |
 //[ms_exec.c]
 void	ms_exec(t_env *env, char *input);
+//[ms_utils.c]
+bool	string_seachr(const char *s, int c);
 
 //=====================================| ms_parsing |
 //[ps_error.c]
@@ -131,7 +131,10 @@ bool	parsing(char *input);
 bool	parse_pipes(char **user_input);
 bool	parse_redin(char **user_input);
 bool	parse_redout(char **user_input);
-bool	parse_heredoc(char **user_input);
+
+// * Informação sobre a função em [ps_syntax.c].
+//bool	parse_heredoc(char **user_input);
+
 bool	parse_quotes(char *input, int i, int s_quote, int d_quote);
 
 //=====================================| Endif |

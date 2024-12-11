@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 16:18:50 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/10 12:17:13 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/11 09:39:30 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	exec_builtins(char **user_input, t_env *env)
 		bi_pwd();
 	else if (ft_strcmp(user_input[0], "clear") == 0)
 		ex_clear();
+	else if (ft_strcmp(user_input[0], "exit") == 0)
+		bi_exit();
 	else
 		exec_exe(user_input[0], user_input, env);
 }
@@ -30,10 +32,10 @@ void	exec_exe(char *command, char **user_input, t_env *env)
 	pid_t	execve_new_process;
 	int		status;
 
-	execve_new_process  = fork();
+	execve_new_process = fork();
 	if (execve_new_process == 0)
 	{
-		if(ft_strchr(command, '/'))	
+		if (ft_strchr(command, '/'))
 			execve(command, user_input, NULL);
 		else
 		{
@@ -50,3 +52,11 @@ void	exec_exe(char *command, char **user_input, t_env *env)
 		perror("fork");
 	(void)env;
 }
+
+// lembrar de tirar o null do execve para executavies que ultilizam variaveis
+// de ambiente. Se nao da erro.
+
+/*
+!Verificar execução do /bin/echo. Quando executado, comando esta printando as 
+!aspas!, na execução do comando no bash isso nao acontece.
+*/

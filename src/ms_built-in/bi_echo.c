@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 11:18:50 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/09 17:40:06 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/11 14:20:39 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	bi_echo(char **args)
 		}
 		while (args[i])
 		{
-			printf("%s", args[i]);
+			print_args(args[i]);
 			if (args[i + 1])
 				printf(" ");
 			i++;
@@ -38,5 +38,17 @@ void	bi_echo(char **args)
 	}
 }
 
-//Necessario corrigir leitura de flag do -n
-//Ex: -nnnnnnnnn -nnnnnnn -nnnnnn -nnnnnn alow <- input valido
+
+void	print_args(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] && str[i] == '\"')
+			i++;
+		printf("%c", str[i]);
+		i++;
+	}
+}
