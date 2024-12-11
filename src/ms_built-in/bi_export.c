@@ -6,13 +6,10 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 15:39:10 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/09 18:13:55 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/11 16:57:14 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-//void	bi_export(void)
-//{
 
-//}

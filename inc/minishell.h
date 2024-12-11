@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/11 16:47:19 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/11 17:05:25 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,10 +82,10 @@ typedef struct s_env
 }	t_env;
 
 //=====================================| ms_built-in |
-//[bi_echo.c]
+//[bi_echo.c] - 100% Ready
 void	bi_echo(char **args);
 void	print_args(char *str);
-int		flag_iter(char **args);
+bool	flag_verify(char *str);
 //[bi_cd.c]
 void	bi_cd(void);
 //[bi_exit.c]

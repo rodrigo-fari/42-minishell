@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 16:18:50 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/11 09:39:30 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/11 17:48:22 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	exec_builtins(char **user_input, t_env *env)
 	else if (ft_strcmp(user_input[0], "pwd") == 0)
 		bi_pwd();
 	else if (ft_strcmp(user_input[0], "clear") == 0)
+		ex_clear();
+	else if (ft_strcmp(user_input[0], "celar") == 0)
 		ex_clear();
 	else if (ft_strcmp(user_input[0], "exit") == 0)
 		bi_exit();
