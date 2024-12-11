@@ -1,32 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ms_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/30 16:01:47 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/10 15:25:17 by rde-fari         ###   ########.fr       */
+/*   Created: 2024/12/10 13:54:38 by rde-fari          #+#    #+#             */
+/*   Updated: 2024/12/11 15:25:44 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-int	main(void)
+bool	string_seachr(const char *s, int c)
 {
-	char		*input;
-	t_env		*env;
-	extern char	**environ;
+	int	i;
 
-	env = env_to_struct(environ);
-	while (true)
+	i = 0;
+	while (s[i])
 	{
-		input = readline("🤏🐚⮕ ");
-		if (input)
-		{
-			add_history(input);
-			ms_exec(env, input);
-			free(input);
-		}
+		if (s[i] == (char)c)
+			return (false);
+		i++;
 	}
+	return (true);
 }
+
+
+//passar da lista para um array:
+//aloca memoria pro arr** do damanho da lista + 1 (NULL)
+//poe a key na string
+//poe o "="
+//poe o value na string
+//poe o nulo n string
+//aloca memoria do tamanho da string no array
+//poe a string dentro do array[i]
+//free da string
+//env = env->next
