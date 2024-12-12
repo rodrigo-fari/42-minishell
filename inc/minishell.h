@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/12 10:34:35 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/12 11:32:49 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	bi_echo(char **args);
 void	print_args(char *str);
 bool	flag_verify(char *str);
 //[bi_cd.c]
-void	bi_cd(void);
+void	bi_cd(char **user_input, t_env *env);
 //[bi_exit.c]
 void	bi_exit(void);
 //[bi_export.c]

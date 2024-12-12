@@ -6,13 +6,14 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 15:38:24 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/10 15:24:42 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/12 11:33:28 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-//void	bi_cd(void)
-//{
-
-//}
+void	bi_cd(char **user_input, t_env *env)
+{
+	(void)user_input;
+	(void)env;
+}

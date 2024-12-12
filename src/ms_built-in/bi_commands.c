@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 16:18:50 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/12 10:23:48 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/12 11:32:11 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	exec_builtins(char **user_input, t_env *env)
 		bi_exit();
 	else if (ft_strcmp(user_input[0], "env") == 0)
 		print_env(env);
+	else if (ft_strcmp(user_input[0], "cd") == 0)
+		bi_cd(user_input, env);
 	else
 		exec_exe(user_input[0], user_input, env);
 }
