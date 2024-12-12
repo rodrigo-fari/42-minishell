@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 13:54:38 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/11 16:47:14 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/12 10:33:49 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,31 @@ bool	string_search	(const char *s, int c)
 	return (true);
 }
 
+char	**list_to_array(t_env *env)
+{
+	char	**arr_env;
+	int		size;
+	int		i;
 
-//passar da lista para um array:
+	size = listsize(env);
+	arr_env = malloc(sizeof(char *) * (size + 1));
+	if (!arr_env)
+		return (NULL);
+	i = 0;
+	while (i <= size)
+		arr_env[i++] = NULL;
+	i = 0;
+	while (env)
+	{
+		arr_env[i] = ft_strjoin(env->key, "=");
+		arr_env[i] = ft_strjoin(arr_env[i], env->value);
+		env = env->next;
+		i++;
+	}
+	arr_env[i] = NULL;
+	return (arr_env);
+}
+
 //aloca memoria pro arr** do damanho da lista + 1 (NULL)
 //poe a key na string
 //poe o "="

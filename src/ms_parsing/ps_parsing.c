@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 18:52:03 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/11 15:39:06 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/12 10:06:00 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,3 @@ bool	parsing(char *input)
 		free_splits(user_input);
 	return (true);
 }
-
-//comando echo realizado, falta regular.
-//estruturar codigo para saber ordens de iniciação.

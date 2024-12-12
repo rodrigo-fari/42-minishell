@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/11 17:05:25 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/12 10:34:35 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ void	exec_exe(char *command, char **user_input, t_env *env);
 //[ev_env_to_struct.c]
 t_env	*env_to_struct(char **environ);
 //[ev_utils.c]
+int		listsize(t_env *env);
 void	print_env(t_env *head);
 t_env	*list_last(t_env *lst);
 void	free_env_struct(t_env *env);
@@ -121,6 +122,7 @@ void	ex_clear(void);
 //[ms_exec.c]
 void	ms_exec(t_env *env, char *input);
 //[ms_utils.c]
+char	**list_to_array(t_env *env);
 bool	string_search(const char *s, int c);
 
 //=====================================| ms_parsing |
@@ -132,10 +134,6 @@ bool	parsing(char *input);
 bool	parse_pipes(char **user_input);
 bool	parse_redin(char **user_input);
 bool	parse_redout(char **user_input);
-
-// * Informação sobre a função em [ps_syntax.c].
-//bool	parse_heredoc(char **user_input);
-
 bool	parse_quotes(char *input, int i, int s_quote, int d_quote);
 
 //=====================================| Endif |

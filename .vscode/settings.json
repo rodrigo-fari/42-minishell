@@ -1,8 +1,5 @@
 {
 	"files.associations": {
-		"*.c": "c",
-		"minishell.h": "c",
-		"readline.h": "c",
-		"ut_validator.C": "cpp"
+		"minishell.h": "c"
 	}
 }

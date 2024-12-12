@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 11:46:29 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/11 15:51:18 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/12 10:06:12 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,26 +111,3 @@ bool	parse_redout(char **user_input)
 	}
 	return (true);
 }
-
-// * Parse heredoc implementado no redin. Função apenas comentada pois não sei
-// * se <sera necessária no futuro.>
-
-/*bool	parse_heredoc(char **user_input)
-{
-	int	i;
-
-	i = 0;
-	while (user_input[i])
-	{
-		if (ft_strcmp(user_input[i], "<<") == 0)
-		{
-			if (!user_input[i + 1] || !user_input[i - 1])
-			{
-				ps_error("Invalid syntax: << ", NULL);
-				return (false);
-			}
-		}
-		i++;
-	}
-	return (true);
-}*/
