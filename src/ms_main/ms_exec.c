@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 14:36:03 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/10 15:22:46 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/12 14:59:18 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ms_exec(t_env *env, char *input)
 	if (input[0] == '\0')
 		return ;
 	user_input = ft_split(input, ' ');
-	if (!parsing(input))
+	if (!parsing(input, user_input))
 	{
 		free_splits(user_input);
 		return ;

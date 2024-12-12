@@ -6,29 +6,33 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 18:52:03 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/12 10:06:00 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/12 15:00:25 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-bool	parsing(char *input)
+bool	parsing(char *input, char **input_splited)
 {
-	char	**user_input;
-
-	if (!parse_quotes(input, -1, 0, 0))
+if (ft_strchr(input, '\"') != 0 || ft_strchr(input, '\'') != 0)
 	{
-		ps_error("Invalid syntax: \" \' ", NULL);
-		return (false);
+		if (!parse_quotes(input, -1, 0, 0))
+			return (false);
 	}
-	user_input = ft_split(input, ' ');
-	if (!parse_pipes(user_input))
-		return (false);
-	if (!parse_redin(user_input))
-		return (false);
-	if (!parse_redout(user_input))
-		return (false);
-	else
-		free_splits(user_input);
+	if (ft_strchr(input, '|'))
+	{
+		if (!parse_pipes(input_splited))
+			return (false);
+	}
+	if (ft_strchr(input, '<'))
+	{
+		if (!parse_redin(input_splited))
+			return (false);
+	}
+	if (ft_strchr(input, '>'))
+	{
+		if (!parse_redout(input_splited))
+			return (false);
+	}
 	return (true);
 }

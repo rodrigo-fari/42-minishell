@@ -27,7 +27,6 @@ RESET = "\033[0m"
 #===================================================================================| Commands |
 
 all: 				$(NAME)
-					./$(NAME)
 
 $(NAME): 			$(OBJS) $(LIBFT)
 					@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -lreadline -o $(NAME)
@@ -75,7 +74,7 @@ re: 				fclean all
 n:
 					norminette -R CheckForbiddenSourceHeader
 
-leak:				re
+l:					all
 					valgrind --leak-check=full --show-leak-kinds=all \
 						--suppressions=readline_leaks ./$(NAME)
 
@@ -89,10 +88,12 @@ lmac:
 # Any aditional note must be here !
 #
 #
-#
-#
-#
-#
+# env_to_array
+# handle dos sinais
+# tratar $
+# tratar do exit
+# tratar $?
+# 
 #
 #
 #

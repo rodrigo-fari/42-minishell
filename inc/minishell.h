@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/12 11:32:49 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/12 15:30:09 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # include <signal.h>
 # include <fcntl.h>
 # include <sys/types.h>
+# include <sys/wait.h>
 # include <sys/stat.h>
 # include <sys/ioctl.h>
 # include <dirent.h>
@@ -87,7 +88,10 @@ void	bi_echo(char **args);
 void	print_args(char *str);
 bool	flag_verify(char *str);
 //[bi_cd.c]
+char	*find_oldpwd_in_env(t_env *env);
+char	*find_path_home_in_env(t_env *env);
 void	bi_cd(char **user_input, t_env *env);
+bool	check_too_many_arguments(char **user_input);
 //[bi_exit.c]
 void	bi_exit(void);
 //[bi_export.c]
@@ -129,7 +133,8 @@ bool	string_search(const char *s, int c);
 //[ps_error.c]
 void	ps_error(char *str, char **user_input);
 //[ps_parsing.c]
-bool	parsing(char *input);
+bool	parsing(char *input, char **input_splited);
+
 //[ps_syntax.c]
 bool	parse_pipes(char **user_input);
 bool	parse_redin(char **user_input);

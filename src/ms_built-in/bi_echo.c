@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 11:18:50 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/11 22:51:09 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/12 15:25:10 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,13 @@ void	print_args(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] && str[i] == '\"')
+		if (str[i] == '\"')
 			i++;
-		printf("%c", str[i]);
-		i++;
+		if (str[i])
+		{
+			printf("%c", str[i]);
+			i++;
+		}
 	}
 }
 bool	flag_verify(char *str)
