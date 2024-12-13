@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bi_commands.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 16:18:50 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/12 11:32:11 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/13 15:57:41 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	exec_builtins(char **user_input, t_env *env)
 		print_env(env);
 	else if (ft_strcmp(user_input[0], "cd") == 0)
 		bi_cd(user_input, env);
+	else if (ft_strcmp(user_input[0], "unset") == 0)
+		bi_unset(user_input, env);
 	else
 		exec_exe(user_input[0], user_input, env);
 }
@@ -63,6 +65,6 @@ void	exec_exe(char *command, char **user_input, t_env *env)
 // de ambiente. Se nao da erro.
 
 /*
-!Verificar execução do /bin/echo. Quando executado, comando esta printando as 
+!Verificar execução do /bin/echo. Quando executado, comando esta printando as
 !aspas!, na execução do comando no bash isso nao acontece.
 */
