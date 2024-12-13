@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 13:54:38 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/13 09:53:42 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/13 21:21:50 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,32 @@ char	**list_to_array(t_env *env)
 	return (arr_env);
 }
 
-//aloca memoria pro arr** do damanho da lista + 1 (NULL)
-//poe a key na string
-//poe o "="
-//poe o value na string
-//poe o nulo n string
-//aloca memoria do tamanho da string no array
-//poe a string dentro do array[i]
-//free da string
-//env = env->next
+char	*charjoin(char *str, int c)
+{
+	char	*ret;
+	int		i;
+
+	i = ft_strlen(str);
+	ret = malloc(sizeof(char) * (i + 2));
+	if (!ret)
+		return (NULL);
+	i = 0;
+	while (str[i])
+	{
+		ret[i] = str[i];
+		i++;
+	}
+	ret[i++] = (char)c;
+	ret[i] = '\0';
+	return (ret);
+}
+
+int	last_ocurrence(char *str, int c)
+{
+	int	i;
+
+	i = ft_strlen(str);
+	while (str[i] != (char)c)
+		i--;
+	return (i);
+}

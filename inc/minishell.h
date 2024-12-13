@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/13 17:35:19 by aeberius         ###   ########.fr       */
+/*   Updated: 2024/12/13 21:22:28 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,9 +131,12 @@ void	ex_clear(void);
 
 //=====================================| ms_main |
 //[ms_exec.c]
+char	*remove_quotes(char *input);
 void	ms_exec(t_env *env, char *input);
 //[ms_utils.c]
 char	**list_to_array(t_env *env);
+char	*charjoin(char *str, int c);
+int		last_ocurrence(char *str, int c);
 bool	string_search(const char *s, int c);
 
 //=====================================| ms_parsing |
