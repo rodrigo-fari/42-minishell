@@ -1,10 +1,8 @@
 # 42 Minishell
 
----
 
 ## The project is still a work in progress and has not yet been finalized.
 
----
 
 ## Table of Contents
 1. [Project Overview](#project-overview)
