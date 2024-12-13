@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/12 15:30:09 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/13 12:39:44 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ void	bi_echo(char **args);
 void	print_args(char *str);
 bool	flag_verify(char *str);
 //[bi_cd.c]
+void	update_pwd(t_env *env, char *old_pwd);
 char	*find_oldpwd_in_env(t_env *env);
 char	*find_path_home_in_env(t_env *env);
 void	bi_cd(char **user_input, t_env *env);

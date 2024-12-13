@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bi_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 15:38:24 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/13 09:57:52 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/13 12:48:40 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,30 @@
 
 void	bi_cd(char **user_input, t_env *env)
 {
+	char	*old_pwd;
+
+	old_pwd = NULL;
 	if (check_too_many_arguments(user_input) == true)
 		return ;
+	old_pwd = getcwd(NULL, 0);
 	if (!user_input[1] || ft_strcmp(user_input[1], "~") == 0)
-		chdir(find_path_home_in_env(env));
+	{
+		if (chdir(find_path_home_in_env(env)) == 0)
+			update_pwd(env, old_pwd);
+	}
 	else if (ft_strcmp(user_input[1], "-") == 0)
-		chdir(find_oldpwd_in_env(env));
+	{
+		if (chdir(find_oldpwd_in_env(env)) == 0)
+			update_pwd(env, old_pwd);
+	}
 	else
 	{
-		chdir(user_input[1]);
-		// guardar o diretorio atual para atualizar no oldpwd apos execucao
-		// efetuar a alteracao pro direto caso exista
-		// atualizar o pwd para o atual caso necessario
+		if (chdir(user_input[1]) == 0)
+			update_pwd(env, old_pwd);
+		else
+			bi_error("bash: cd: No such file or directory");
 	}
+	return ;
 }
 
 bool	check_too_many_arguments(char **user_input)
@@ -78,4 +89,19 @@ char	*find_oldpwd_in_env(t_env *env)
 	}
 	bi_error("bash: cd: OLDPWD not set");
 	return (NULL);
+}
+
+void	update_pwd(t_env *env, char *old_pwd)
+{
+	char	*pwd;
+
+	pwd = getcwd(NULL, 0);
+	while (env != NULL)
+	{
+		if (ft_strcmp(env->key, "PWD") == 0)
+			env->value = pwd;
+		if (ft_strcmp(env->key, "OLDPWD") == 0)
+			env->value = old_pwd;
+		env = env->next;
+	}
 }
