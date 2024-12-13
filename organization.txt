@@ -26,6 +26,16 @@
 │         └────────📄file2.c
 └──Makefile
 
+=======================================| to do |
+
+Verificar memory leak nas funoes. Programa quando acaba nao esta limpando a memoria corretamente
+Verificar funcao env_to_struct. Funcao esta com memory leak possivelmente na inicializacao.
+Segmentation fault parou de acontecer no linux por motivo desconhecido.
+Necessaria implementacao de ultilidade (aspas duplas).
+Necessaria implementacao de expansao de variaveis de ambiente.
+Necessario estudo sobre comando export.(funcionalidades e implementacao).
+Necessario estudo sobre comando exit. (Calculo para codigo de saida).
+
 =======================================| Git commands |
 
 git pull : atualiza o ropositorio no seu computador

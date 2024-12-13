@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/13 21:39:25 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/13 23:43:01 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ char	*find_path_home_in_env(t_env *env);
 void	bi_cd(char **user_input, t_env *env);
 bool	check_too_many_arguments(char **user_input);
 //[bi_exit.c]
-void	bi_exit(void);
+void	bi_exit(char **user_input, t_env *env, char *input);
 //[bi_export.c]
 void	bi_export(t_env *env, char **user_input);
 bool	env_add (t_env *env, char *key, char *value);
@@ -106,7 +106,7 @@ void	env_remove(t_env *env, char *key);
 //[bi_error.c]
 void	bi_error(char *str);
 //[bi_commands.c]
-void	exec_builtins(char **user_input, t_env *env);
+void	exec_builtins(char **user_input, t_env *env, char *input);
 void	exec_exe(char *command, char **user_input, t_env *env);
 
 //=====================================| ms_signals |

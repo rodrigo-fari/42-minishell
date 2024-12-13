@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   bi_commands.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 16:18:50 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/13 16:36:58 by aeberius         ###   ########.fr       */
+/*   Updated: 2024/12/13 23:42:27 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-void	exec_builtins(char **user_input, t_env *env)
+void	exec_builtins(char **user_input, t_env *env, char *input)
 {
 	if (ft_strcmp(user_input[0], "echo") == 0)
 		bi_echo(user_input);
@@ -23,7 +23,7 @@ void	exec_builtins(char **user_input, t_env *env)
 	else if (ft_strcmp(user_input[0], "celar") == 0)
 		ex_clear();
 	else if (ft_strcmp(user_input[0], "exit") == 0)
-		bi_exit();
+		bi_exit(user_input, env, input);
 	else if (ft_strcmp(user_input[0], "env") == 0)
 		print_env(env);
 	else if (ft_strcmp(user_input[0], "cd") == 0)

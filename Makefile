@@ -69,7 +69,7 @@ re: 				fclean all
 norm:
 					norminette -R CheckForbiddenSourceHeader
 
-valgrind:			all
+val:			all
 					valgrind --leak-check=full --show-leak-kinds=all \
 						--suppressions=readline_leaks ./$(NAME)
 
