@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 11:18:50 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/12 15:25:10 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/13 09:57:10 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	bi_echo(char **args)
 	bool	flag;
 
 	flag = true;
-	i = 1;	
+	i = 1;
 	while (args[i])
 	{
 		while (args[i] && flag_verify(args[i]))
@@ -57,6 +57,7 @@ void	print_args(char *str)
 		}
 	}
 }
+
 bool	flag_verify(char *str)
 {
 	int	i;

@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 18:52:03 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/12 15:00:25 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/13 10:01:15 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 bool	parsing(char *input, char **input_splited)
 {
-if (ft_strchr(input, '\"') != 0 || ft_strchr(input, '\'') != 0)
+	if (ft_strchr(input, '\"') != 0 || ft_strchr(input, '\'') != 0)
 	{
 		if (!parse_quotes(input, -1, 0, 0))
 			return (false);

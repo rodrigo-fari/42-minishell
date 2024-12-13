@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 15:38:24 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/12 15:36:39 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/13 09:57:52 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 void	bi_cd(char **user_input, t_env *env)
 {
-
 	if (check_too_many_arguments(user_input) == true)
 		return ;
-	if(!user_input[1] || ft_strcmp(user_input[1], "~") == 0)
+	if (!user_input[1] || ft_strcmp(user_input[1], "~") == 0)
 		chdir(find_path_home_in_env(env));
 	else if (ft_strcmp(user_input[1], "-") == 0)
 		chdir(find_oldpwd_in_env(env));
@@ -32,7 +31,7 @@ void	bi_cd(char **user_input, t_env *env)
 
 bool	check_too_many_arguments(char **user_input)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (user_input[i] != NULL)
@@ -80,4 +79,3 @@ char	*find_oldpwd_in_env(t_env *env)
 	bi_error("bash: cd: OLDPWD not set");
 	return (NULL);
 }
-

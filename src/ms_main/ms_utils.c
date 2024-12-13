@@ -6,13 +6,13 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 13:54:38 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/12 10:33:49 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/13 09:53:42 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-bool	string_search	(const char *s, int c)
+bool	string_search(const char *s, int c)
 {
 	int	i;
 
