@@ -6,7 +6,7 @@
 /*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/13 15:54:00 by aeberius         ###   ########.fr       */
+/*   Updated: 2024/12/13 17:35:19 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,8 @@ bool	check_too_many_arguments(char **user_input);
 //[bi_exit.c]
 void	bi_exit(void);
 //[bi_export.c]
-void	bi_export(void);
+void	bi_export(t_env *env, char **user_input);
+bool	env_add (t_env *env, char *key, char *value);
 //[bi_pwd.c]
 void	bi_pwd(void);
 //[bi_unset.c]
@@ -107,6 +108,10 @@ void	bi_error(char *str);
 //[bi_commands.c]
 void	exec_builtins(char **user_input, t_env *env);
 void	exec_exe(char *command, char **user_input, t_env *env);
+
+//=====================================| ms_signals |
+//[sig_tratment.c]
+void	sig_ctrl_c(int sig);
 
 //=====================================| ms_env |
 //[ev_env_to_struct.c]
