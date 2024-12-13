@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/13 21:22:28 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/13 21:39:25 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,7 @@ bool	string_search(const char *s, int c);
 //[ps_error.c]
 void	ps_error(char *str, char **user_input);
 //[ps_parsing.c]
-bool	parsing(char *input, char **input_splited);
+bool	parsing(char *input);
 
 //[ps_syntax.c]
 bool	parse_pipes(char **user_input);
