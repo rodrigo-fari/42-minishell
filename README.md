@@ -1,154 +1,199 @@
-# Minishell - Project Summary and Organization
+# 42 Minishell (The project is still a work in progress and has not yet been finalized.)
 
-## Key parts of the project (*Mandatory*)
-1. **Interactive prompt**:
-   - Must display a prompt while waiting for a command.
-
-2. **Command execution**:
-   - Must find and execute the correct command using the `PATH` or an absolute/relative path.
-
-3. **Signal handling**:
-   - `Ctrl+C`: Displays a new prompt.
-   - `Ctrl+D`: Exits the shell.
-   - `Ctrl+\`: Does nothing.
-
-4. **Quotes and special characters**:
-   - `'` (single quotes): Ignore special characters within the quotes.
-   - `"` (double quotes): Interpret `$` for variables but ignore other special characters.
-
-5. **Redirections and pipes**:
-   - `<`: Redirect input.
-   - `>`: Redirect output.
-   - `>>`: Redirect output in append mode.
-   - `<<`: Read until a delimiter is reached.
-   - `|`: Connect commands through a pipe.
-
-6. **Environment variables**:
-   - Support variables using `$`.
-   - `?`: Expands to the exit status of the last command.
-
-7. **Built-in commands**:
-   - `echo` (with `-n`).
-   - `cd` (with relative or absolute paths).
-   - `pwd` (no options).
-   - `export` (no options).
-   - `unset` (no options).
-   - `env` (no arguments).
-   - `exit` (no options).
+```
+   ▄▄▄▄███▄▄▄▄    ▄█  ███▄▄▄▄    ▄█     ▄████████    ▄█    █▄       ▄████████  ▄█        ▄█       
+ ▄██▀▀▀███▀▀▀██▄ ███  ███▀▀▀██▄ ███    ███    ███   ███    ███     ███    ███ ███       ███       
+ ███   ███   ███ ███▌ ███   ███ ███▌   ███    █▀    ███    ███     ███    █▀  ███       ███       
+ ███   ███   ███ ███▌ ███   ███ ███▌   ███         ▄███▄▄▄▄███▄▄  ▄███▄▄▄     ███       ███       
+ ███   ███   ███ ███▌ ███   ███ ███▌ ▀███████████ ▀▀███▀▀▀▀███▀  ▀▀███▀▀▀     ███       ███       
+ ███   ███   ███ ███  ███   ███ ███           ███   ███    ███     ███    █▄  ███       ███       
+ ███   ███   ███ ███  ███   ███ ███     ▄█    ███   ███    ███     ███    ███ ███▌    ▄ ███▌    ▄ 
+  ▀█   ███   █▀  █▀    ▀█   █▀  █▀    ▄████████▀    ███    █▀      ██████████ █████▄▄██ █████▄▄██
+```
 
 ---
 
-## Important rules
-1. **42 Norm**:
-   - Follow the *Norminette* rules.
-
-2. **No memory leaks**:
-   - All dynamically allocated memory must be properly freed.
-
-3. **Allowed external functions**:
-   - *Readline library*: `readline`, `add_history`, etc.
-   - System calls such as: `fork`, `execve`, `pipe`, `dup2`, etc.
-   - File manipulation: `open`, `close`, `read`, `write`.
-
-4. **Limited use of global variables**:
-   - Only one global variable is allowed for signal handling.
-
-5. **Readline can leak memory**:
-   - You are not required to fix leaks in `readline`, but your code must not have leaks.
-
-6. **No undefined behavior**:
-   - Avoid issues such as segmentation faults or double frees.
+## Table of Contents
+1. [Project Overview](#project-overview)
+2. [Folder Organization](#folder-organization)
+3. [Features](#features)
+   - [Interactive Prompt](#interactive-prompt)
+   - [Command Execution](#command-execution)
+   - [Signal Handling](#signal-handling)
+   - [Quotes and Special Characters](#quotes-and-special-characters)
+   - [Redirections and Pipes](#redirections-and-pipes)
+   - [Environment Variables](#environment-variables)
+   - [Built-in Commands](#built-in-commands)
+4. [Authorized Functions](#authorized-functions)
+5. [Bash Reference](#bash-reference)
 
 ---
 
-## Core libraries and associated functions
-### Libraries
-1. **<stdio.h>**
-   - Functions: `printf`, `perror`.
+## Project Overview
 
-2. **<stdlib.h>**
-   - Functions: `malloc`, `free`, `exit`, `getenv`.
-
-3. **<unistd.h>**
-   - Functions: `write`, `access`, `read`, `close`, `fork`, `chdir`, `dup`, `dup2`, `isatty`, `ttyname`, `ttyslot`.
-
-4. **<signal.h>**
-   - Functions: `signal`, `sigaction`, `sigemptyset`, `sigaddset`, `kill`.
-
-5. **<fcntl.h>**
-   - Functions: `open`, `fcntl`.
-
-6. **<sys/types.h>**, **<sys/stat.h>**
-   - Functions: `stat`, `lstat`, `fstat`.
-
-7. **<dirent.h>**
-   - Functions: `opendir`, `readdir`, `closedir`.
-
-8. **<string.h>**
-   - Functions: `strerror`.
-
-9. **<sys/ioctl.h>**
-   - Functions: `ioctl`.
-
-10. **<termios.h>**
-    - Functions: `tcsetattr`, `tcgetattr`.
-
-11. **<readline/readline.h>**
-    - Functions: `readline`, `add_history`, `rl_clear_history`, `rl_on_new_line`, `rl_replace_line`, `rl_redisplay`.
-
-12. **<curses.h>** or **<term.h>**
-    - Functions: `tgetent`, `tgetflag`, `tgetnum`, `tgetstr`, `tgoto`, `tputs`.
+Minishell is a simplified shell implementation developed as part of the 42 curriculum. Its purpose is to provide hands-on experience in working with system-level programming, process management, and implementing core shell functionalities.
 
 ---
 
-## Notes on libraries
-1. **External libraries**:
-   - The `readline` library must be installed on the system. Ensure it is correctly linked in the *Makefile* with appropriate flags (e.g., `-lreadline`).
+## Folder Organization
 
-2. **Libft**:
-   - You can use your own `libft` for utility functions such as string manipulation (`ft_split`, `ft_strjoin`, etc.).
-
-3. **Forbidden functions**:
-   - Any function not explicitly listed (e.g., `system`, `strtok`) is not allowed.
-
----
-
-## How to divide the project as a team
-1. **Parsing and command interpretation**:
-   - One teammate can focus on parsing user input (string handling, environment variables, quotes, etc.).
-
-2. **Command execution and redirections**:
-   - The other can handle command execution, including redirections and pipes.
-
-3. **Process and signal management**:
-   - Implement process control (`fork`, `execve`, etc.) and signal handling.
-
-4. **Built-in commands**:
-   - Split the implementation of built-ins (e.g., `cd`, `echo`) between teammates.
-
-5. **Integration and testing**:
-   - Both teammates should participate in integrating components and testing.
-
----
-
-## What to study
-- **Processes and syscalls**:
-  - `fork()`, `execve()`, `waitpid()`, `pipe()`, `dup2()`.
-
-- **Input/output redirection**:
-  - File descriptor manipulation (`open`, `close`, `dup2`).
-
-- **Signals**:
-  - Usage of `signal` and `sigaction`.
-
-- **Environment variables**:
-  - `getenv`, `setenv`.
+```
+📁42_MINISHELL/
+│
+├──📁inc/
+│   └──minishell.h
+├──📁obj/(*.o)
+│
+├──📁src/(*.c)
+│   ├────📁ms_built-in/ (built-in related) (bi prefix stands for built-in)
+│   │     ├────────📄bi_cd.c (cd command)
+│   │     ├────────📄bi_commands.c (commands execution)
+│   │     ├────────📄bi_echo.c (echo command)
+│   │     ├────────📄bi_error.c (error handler for built-in commands)
+│   │     ├────────📄bi_exit.c (exit command)
+│   │     ├────────📄bi_export.c (export command)
+│   │     ├────────📄bi_pwd.c (pwd command)
+│   │     └────────📄bi_unset.c (unset command)
+│   │
+│   ├────📁ms_env/ (environment variables related) (ev prefix stands for environment)
+│   │     ├────────📄ev_env_to_struct.c (puts all environment variables in a linked list)
+│   │     └────────📄ev_utils.c (support functions)
+│   │
+│   ├────📁ms_libft/ (own library of functions)
+│   │     └────────📄*libft files.c*
+│   │
+│   ├────📁ms_main/ (main function and related) (ms prefix stands for minishell)
+│   │     ├────────📄main.c (main function)
+│   │     ├────────📄ms_exec.c (execution of the code)
+│   │     └────────📄ms_utils.c (support functions)
+│   │
+│   └────📁ms_parsing/ (user input parsing) (ps prefix stands for parsing)
+│         ├────────📄ps_error.c (error handler for the parsing)
+│         ├────────📄ps_parsing.c (functions to parse the input)
+│         └────────📄ps_syntax.c (functions that check if the input is valid or not)
+└──Makefile
+```
 
 ---
 
-## Initial plan
-1. Set up the **Makefile** with basic rules (`NAME`, `all`, `clean`, etc.).
-2. Divide work into main functionalities.
-3. Start with a basic interactive prompt that displays user input.
-4. Expand to include parsing, command execution, and other required features.
+## Features
 
+### Interactive Prompt
+- Displays the prompt while waiting for a command.
+
+### Command Execution
+- Finds and executes the correct command using the PATH or an absolute/relative path.
+
+### Signal Handling
+- `ctrl+c`: Displays a new prompt.
+- `ctrl+d`: Exits the shell.
+- `ctrl+\`: Does nothing.
+
+### Quotes and Special Characters
+- `'`: Ignores special characters inside single quotes.
+- `"`: Interprets `$` for variables but ignores other special characters.
+
+### Redirections and Pipes
+- `<`: Input redirection.
+- `>`: Output redirection.
+- `>>`: Output redirection in append mode.
+- `<<`: Reads until reaching a delimiter.
+- `|`: Connects commands with a pipe.
+
+### Environment Variables
+- `$`: Supports variables using `$`.
+- `?`: Expands to the exit status of the last command.
+
+### Built-in Commands
+- `echo`: Supports the `-n` option.
+- `cd`: Handles both relative and absolute paths.
+- `pwd`: (No options).
+- `export`: (No options).
+- `unset`: (No options).
+- `env`: (No arguments).
+- `exit`: (No options).
+
+---
+
+## Authorized Functions
+
+### Input/Output and Memory Functions
+- `readline`: Reads a line of input from the user, allowing interactive editing.
+- `rl_clear_history`: Clears the command history stored by readline.
+- `rl_on_new_line`: Informs readline that a new line is being processed.
+- `rl_replace_line`: Replaces the current line in the readline buffer.
+- `rl_redisplay`: Refreshes the current line on the terminal.
+- `add_history`: Adds a line to the readline command history.
+- `printf`: Prints formatted text to standard output.
+- `write`: Writes data to a file or output, such as stdout.
+- `malloc`: Allocates dynamic memory.
+- `free`: Frees memory previously allocated with malloc.
+
+### File and Directory Functions
+- `access`: Checks file access permissions.
+- `open`: Opens a file and returns a file descriptor.
+- `read`: Reads data from a file or input.
+- `close`: Closes a file descriptor.
+- `unlink`: Removes a file from the filesystem.
+- `stat`: Retrieves information about a file (by path).
+- `lstat`: Similar to `stat`, but handles symbolic links.
+- `fstat`: Retrieves information about a file using a file descriptor.
+- `opendir`: Opens a directory for reading its entries.
+- `readdir`: Reads the next entry in an open directory.
+- `closedir`: Closes a directory previously opened with `opendir`.
+
+### Process and Signal Functions
+- `fork`: Creates a new process by duplicating the current one.
+- `wait`: Waits for a child process to terminate.
+- `waitpid`: Waits for a specific child process to terminate.
+- `wait3` and `wait4`: Similar to `wait`, but provide additional child process information.
+- `signal`: Sets a handler for a specific signal.
+- `sigaction`: Configures signal handling with more control than `signal`.
+- `sigemptyset`: Initializes an empty signal set.
+- `sigaddset`: Adds a signal to a signal set.
+- `kill`: Sends a signal to a process or group of processes.
+- `exit`: Terminates a process.
+
+### Terminal Manipulation Functions
+- `isatty`: Checks if a file descriptor refers to a terminal.
+- `ttyname`: Returns the name of the terminal associated with a file descriptor.
+- `ttyslot`: Returns the terminal session number.
+- `ioctl`: Controls I/O devices, including terminals.
+- `tcsetattr`: Configures terminal attributes.
+- `tcgetattr`: Retrieves terminal attributes.
+
+### Environment Variable Functions
+- `getenv`: Retrieves the value of an environment variable.
+
+### Path and Directory Manipulation Functions
+- `getcwd`: Retrieves the current working directory.
+- `chdir`: Changes the current working directory.
+
+### Program Execution Functions
+- `execve`: Replaces the current process with a new program.
+
+### Pipe and File Descriptor Functions
+- `dup`: Duplicates a file descriptor.
+- `dup2`: Duplicates a file descriptor to a specific target descriptor.
+- `pipe`: Creates a unidirectional communication channel between processes.
+
+### Error Handling Functions
+- `strerror`: Returns a descriptive error message for a given error number.
+- `perror`: Prints an error message based on the global `errno` variable.
+
+### Termcap (Advanced Terminal Handling) Functions
+- `tgetent`: Initializes the terminal capabilities database.
+- `tgetflag`: Returns the value of a terminal capability flag.
+- `tgetnum`: Returns the numeric value of a terminal capability.
+- `tgetstr`: Returns the string value of a terminal capability.
+- `tgoto`: Calculates a cursor position string for the terminal.
+- `tputs`: Sends a formatted string to the terminal.
+
+---
+
+## Bash Reference
+For detailed Bash specifications, refer to the [GNU Bash Manual](https://www.gnu.org/software/bash/manual/bash.html).
+
+---
+
+Feel free to contribute or suggest changes to improve the Minishell project! This README is open to further enhancements to provide clarity and better user experience.
