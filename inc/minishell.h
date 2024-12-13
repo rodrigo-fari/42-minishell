@@ -6,7 +6,7 @@
 /*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/13 12:39:44 by aeberius         ###   ########.fr       */
+/*   Updated: 2024/12/13 15:54:00 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,8 @@ void	bi_export(void);
 //[bi_pwd.c]
 void	bi_pwd(void);
 //[bi_unset.c]
-void	bi_unset(void);
+void	bi_unset(char **user_input, t_env *env);
+void	env_remove(t_env *env, char *key);
 //[bi_error.c]
 void	bi_error(char *str);
 //[bi_commands.c]
