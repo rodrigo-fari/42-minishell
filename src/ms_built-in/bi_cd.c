@@ -6,7 +6,7 @@
 /*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 15:38:24 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/13 12:48:40 by aeberius         ###   ########.fr       */
+/*   Updated: 2024/12/14 17:17:32 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	bi_cd(char **user_input, t_env *env)
 		if (chdir(user_input[1]) == 0)
 			update_pwd(env, old_pwd);
 		else
-			bi_error("bash: cd: No such file or directory");
+			perror("bash: cd");
 	}
 	return ;
 }
