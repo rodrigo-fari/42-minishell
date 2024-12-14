@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 16:01:47 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/14 16:37:05 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/14 16:45:03 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	main(void)
 	while (true)
 	{
 		input = readline("🤏🐚⮕ ");
-		remove_quotes(input);
 		if (input)
 		{
 			add_history(input);
