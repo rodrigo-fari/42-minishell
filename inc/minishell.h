@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/13 23:43:01 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/14 14:50:55 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ bool	check_too_many_arguments(char **user_input);
 void	bi_exit(char **user_input, t_env *env, char *input);
 //[bi_export.c]
 void	bi_export(t_env *env, char **user_input);
-bool	env_add (t_env *env, char *key, char *value);
+bool	env_add(t_env *env, char *key, char *value);
 //[bi_pwd.c]
 void	bi_pwd(void);
 //[bi_unset.c]

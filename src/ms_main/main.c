@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 16:01:47 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/13 21:35:53 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/14 14:50:28 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	main(void)
 	env = env_to_struct(environ);
 	while (true)
 	{
-		//signal(SIGINT, sig_ctrl_c);
 		input = readline("🤏🐚⮕ ");
 		if (input)
 		{
@@ -31,3 +30,5 @@ int	main(void)
 		}
 	}
 }
+
+//* place above "input = readline" -> signal(SIGINT, sig_ctrl_c);

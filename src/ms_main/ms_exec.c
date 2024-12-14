@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 14:36:03 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/13 23:41:58 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/14 14:49:23 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ char	*remove_quotes(char *input)
 
 	n_input = ft_strdup("");
 	i = 0;
-	while(input[i])
+	while (input[i])
 	{
 		n_input = charjoin(n_input, input[i++]);
 		if (input[i] && (input[i] == '\'' || input[i] == '\"'))
 		{
 			last_quote = last_ocurrence(input, input[i++]);
 			while (i <= (last_quote - 1))
-				n_input = charjoin(n_input, input[i++]); 
+				n_input = charjoin(n_input, input[i++]);
 			return (n_input);
 		}
 	}

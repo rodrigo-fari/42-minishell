@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bi_export.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 15:39:10 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/13 17:25:28 by aeberius         ###   ########.fr       */
+/*   Updated: 2024/12/14 14:53:56 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	bi_export(t_env *env, char **user_input)
 	{
 		if (ft_strchr(user_input[i], '='))
 		{
-			key = ft_substr(user_input[i], 0, ft_strchr(user_input[i], '=') - user_input[i]);
+			key = ft_substr(user_input[i], 0,
+					ft_strchr(user_input[i], '=') - user_input[i]);
 			value = ft_strdup(ft_strchr(user_input[i], '=') + 1);
 			if (env_add(env, key, value) == false)
 			{
@@ -36,7 +37,8 @@ void	bi_export(t_env *env, char **user_input)
 		i++;
 	}
 }
-bool	env_add (t_env *env, char *key, char *value)
+
+bool	env_add(t_env *env, char *key, char *value)
 {
 	t_env	*tmp;
 	t_env	*new;
