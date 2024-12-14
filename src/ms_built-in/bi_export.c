@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 15:39:10 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/14 14:53:56 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/14 15:16:11 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	bi_export(t_env *env, char **user_input)
 			value = ft_strdup(ft_strchr(user_input[i], '=') + 1);
 			if (env_add(env, key, value) == false)
 			{
-				free(key);
+				free(key);	
 				free(value);
 			}
 		}

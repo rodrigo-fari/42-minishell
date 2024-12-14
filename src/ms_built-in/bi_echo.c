@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 11:18:50 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/13 09:57:10 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/14 16:42:36 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,30 +31,13 @@ void	bi_echo(char **args)
 		}
 		while (args[i])
 		{
-			print_args(args[i]);
+			printf("%s", args[i]);
 			if (args[i + 1])
 				printf(" ");
 			i++;
 		}
 		if (flag)
 			printf("\n");
-	}
-}
-
-void	print_args(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == '\"')
-			i++;
-		if (str[i])
-		{
-			printf("%c", str[i]);
-			i++;
-		}
 	}
 }
 
