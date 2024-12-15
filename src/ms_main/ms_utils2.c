@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 18:33:24 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/15 13:25:19 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/15 14:13:30 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*get_env_value(char *str, t_env *env)
 			return (ft_strdup(env->value));
 		env = env->next;
 	}
-	return (NULL);
+	return (ft_strdup(""));
 }
 
 void	var_expand(char **user_input, t_env *env)

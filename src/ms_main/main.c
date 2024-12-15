@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 16:01:47 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/14 19:02:54 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/15 14:58:52 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@ int	main(void)
 	extern char	**environ;
 
 	env = env_to_struct(environ);
+	
 	while (true)
 	{
-		input = readline("🤏🐚⮕ ");
+		input = readline("│🥹├─Sofridoshell: ");
 		if (input)
 		{
 			add_history(input);
