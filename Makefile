@@ -33,6 +33,8 @@ all: 				$(NAME)
 					@echo " ✅ Minishell has compiled successfully!"
 					@echo " "
 					@echo " "
+					sleep 1
+					@clear
 					./$(NAME)
 
 $(NAME): 			$(OBJS) $(LIBFT)

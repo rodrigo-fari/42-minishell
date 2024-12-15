@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 16:01:47 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/15 14:58:52 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/15 15:37:08 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,13 @@ int	main(void)
 	char		*input;
 	t_env		*env;
 	extern char	**environ;
+	char		*prompt;
 
 	env = env_to_struct(environ);
-	
+	prompt = "\001\033[1;32m\002│42├Minishell\001\033[0m\002: \001\033[1;35m\002";
 	while (true)
 	{
-		input = readline("│🥹├─Sofridoshell: ");
+		input = readline(prompt);
 		if (input)
 		{
 			add_history(input);

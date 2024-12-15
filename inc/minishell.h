@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/15 14:59:35 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/15 15:02:19 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,9 @@
 
 //=====================================| Support Defines |
 //[clear.c]
-# define CLEAR_CODE "\033[2J\033[H"
+# define CLEAR_CODE	"\033[2J\033[H"
+# define BOLD		"\001\033[1m\002"
+# define RESET		"\001\033[0m\002"
 
 //=====================================| Structs |
 typedef enum e_token_type
