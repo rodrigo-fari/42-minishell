@@ -1,40 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ev_env_to_struct.c                                 :+:      :+:    :+:   */
+/*   ms_utils2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/04 11:08:32 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/14 22:48:41 by rde-fari         ###   ########.fr       */
+/*   Created: 2024/12/14 18:33:24 by rde-fari          #+#    #+#             */
+/*   Updated: 2024/12/15 13:25:19 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-t_env	*env_to_struct(char **environ)
+char	*get_env_value(char *str, t_env *env)
 {
-	t_env	*head;
-	t_env	*current;
-	char	**key_value;
-	int		i;
-
-	head = NULL;
-	i = 0;
-	while (environ[i])
+	if (!env || !str)
+		return (NULL);
+	while (env)
 	{
-		key_value = ft_split(environ[i], '=');
-		if (!key_value)
-			return (NULL);
-		current = malloc(sizeof(t_env));
-		if (!current)
-			return (NULL);
-		current->key = ft_strdup(key_value[0]);
-		current->value = ft_strdup(key_value[1]);
-		current->next = NULL;
-		free_splits(key_value);
-		listadd_back(&head, current);
+		if (ft_strcmp(str, env->key) == 0)
+			return (ft_strdup(env->value));
+		env = env->next;
+	}
+	return (NULL);
+}
+
+void	var_expand(char **user_input, t_env *env)
+{
+	int		i;
+	char	*expanded;
+
+	i = 0;
+	while (user_input[i])
+	{
+		if (user_input[i][0] == '$' && user_input[i][1] != '\0')
+		{
+			expanded = get_env_value(user_input[i] + 1, env);
+			free(user_input[i]);
+			user_input[i] = expanded;
+		}
 		i++;
 	}
-	return (head);
 }

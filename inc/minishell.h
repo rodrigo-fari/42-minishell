@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/14 14:50:55 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/15 13:21:10 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,9 @@ void	env_remove(t_env *env, char *key);
 //[bi_error.c]
 void	bi_error(char *str);
 //[bi_commands.c]
-void	exec_builtins(char **user_input, t_env *env, char *input);
 void	exec_exe(char *command, char **user_input, t_env *env);
+void	exec_builtins(char **user_input, t_env *env, char *input);
+void	exec_builtins2(char **user_input, t_env *env, char *input);
 
 //=====================================| ms_signals |
 //[sig_tratment.c]
@@ -134,10 +135,13 @@ void	ex_clear(void);
 char	*remove_quotes(char *input);
 void	ms_exec(t_env *env, char *input);
 //[ms_utils.c]
+bool	exec_finder(char *input);
 char	**list_to_array(t_env *env);
 char	*charjoin(char *str, int c);
 int		last_ocurrence(char *str, int c);
 bool	string_search(const char *s, int c);
+//[ms_utils2.c]
+void	var_expand(char **user_input, t_env *env);
 
 //=====================================| ms_parsing |
 //[ps_error.c]

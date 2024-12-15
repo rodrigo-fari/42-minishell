@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 14:36:03 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/14 16:40:34 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/15 13:22:41 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void	ms_exec(t_env *env, char *input)
 		return ;
 	input = remove_quotes(input);
 	user_input = ft_split(input, ' ');
+	if (ft_strchr(input, '$'))
+		var_expand(user_input, env);
 	exec_builtins(user_input, env, input);
 	free(input);
 	free_splits(user_input);
