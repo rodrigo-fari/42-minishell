@@ -6,7 +6,7 @@
 /*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 15:38:24 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/14 17:17:32 by aeberius         ###   ########.fr       */
+/*   Updated: 2024/12/16 12:37:24 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	bi_cd(char **user_input, t_env *env)
 		else
 			perror("bash: cd");
 	}
+	free(old_pwd);
 	return ;
 }
 
@@ -104,4 +105,5 @@ void	update_pwd(t_env *env, char *old_pwd)
 			env->value = old_pwd;
 		env = env->next;
 	}
+	free(pwd);
 }
