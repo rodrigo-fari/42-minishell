@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 16:01:47 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/15 16:20:57 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/16 16:40:27 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(void)
 	char		*prompt;
 
 	env = env_to_struct(environ);
-	prompt = "\001\033[1;32m\002│42├Msh\001\033[0m\002: \001\033[1;35m\002";
+	prompt = "\001\033[1;32m\002│42├Msh\001\033[0m\002: \001\033[1;0m\002";
 	while (true)
 	{
 		input = readline(prompt);

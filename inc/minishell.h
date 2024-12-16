@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/15 16:17:07 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/16 16:23:28 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,12 +144,18 @@ int		last_ocurrence(char *str, int c);
 bool	string_search(const char *s, int c);
 //[ms_utils2.c]
 void	var_expand(char **user_input, t_env *env);
+//[ms_frees.c]
+t_env	*ft_free_envs(t_env *env);
 
 //=====================================| ms_parsing |
 //[ps_error.c]
 void	ps_error(char *str, char **user_input);
 //[ps_parsing.c]
 bool	parsing(char *input);
+bool	parse_verify_quotes(char **input_splited, char *input);
+bool	parse_verify_pipes(char **input_splited, char *input);
+bool	parse_verify_redin(char **input_splited, char *input);
+bool	parse_verify_redout(char **input_splited, char *input);
 
 //[ps_syntax.c]
 bool	parse_pipes(char **user_input);

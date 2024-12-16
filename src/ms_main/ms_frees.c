@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bi_exit.c                                          :+:      :+:    :+:   */
+/*   ms_frees.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/09 15:38:58 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/16 16:41:20 by rde-fari         ###   ########.fr       */
+/*   Created: 2024/12/16 16:04:09 by rde-fari          #+#    #+#             */
+/*   Updated: 2024/12/16 16:04:54 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/minishell.h"
 
-void	bi_exit(char **user_input, t_env *env, char *input)
+t_env	*ft_free_envs(t_env *env)
 {
-	if (input)
-		free(input);
-	if (user_input)
-		free_splits(user_input);
-	if (env)
-		ft_free_envs(env);
-	exit (0);
-}
+	t_env	*temp;
 
-//Apenas para testes, exit necessita mais informação e parametros!
+	while (env)
+	{
+		if (env->key)
+			free(env->key);
+		if (env->value)
+			free(env->value);
+		temp = env;
+		env = env->next;
+		free(temp);
+	}
+	return (0);
+}

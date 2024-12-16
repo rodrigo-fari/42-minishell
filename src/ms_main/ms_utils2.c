@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 18:33:24 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/15 14:13:30 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/16 16:49:15 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	var_expand(char **user_input, t_env *env)
 			expanded = get_env_value(user_input[i] + 1, env);
 			free(user_input[i]);
 			user_input[i] = expanded;
+			free(expanded);
 		}
 		i++;
 	}

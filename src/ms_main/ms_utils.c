@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 13:54:38 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/14 18:36:18 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/16 16:08:08 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,17 +79,4 @@ int	last_ocurrence(char *str, int c)
 	while (str[i] != (char)c)
 		i--;
 	return (i);
-}
-
-bool	exec_finder(char *input)
-{
-	int	i;
-
-	i = 0;
-	while (input[i++])
-	{
-		if (ft_strcmp(input, "./") == 0)
-			return (true);
-	}
-	return (false);
 }

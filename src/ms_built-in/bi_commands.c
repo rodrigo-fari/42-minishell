@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 16:18:50 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/14 19:06:01 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/16 16:31:12 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,15 @@ void	exec_exe(char *command, char **user_input, t_env *env)
 	if (execve_new_process == 0)
 	{
 		if (ft_strchr(command, '/'))
+		{
+			printf("execve \n");
 			execve(command, user_input, NULL);
+		}
 		else
 		{
 			full_command = ft_strjoin("/bin/", command);
 			execve(full_command, user_input, NULL);
+			printf("execve /bin/\n");
 			free(full_command);
 		}
 		perror("execve");
