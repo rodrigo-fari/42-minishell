@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 16:18:50 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/14 14:52:18 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/14 19:06:01 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,13 @@ void	exec_builtins(char **user_input, t_env *env, char *input)
 	else if (ft_strcmp(user_input[0], "export") == 0)
 		bi_export(env, user_input);
 	else
-		exec_exe(user_input[0], user_input, env);
+		exec_builtins2(user_input, env, input);
+}
+
+void	exec_builtins2(char **user_input, t_env *env, char *input)
+{
+	(void)input;
+	exec_exe(user_input[0], user_input, env);
 }
 
 void	exec_exe(char *command, char **user_input, t_env *env)
@@ -53,7 +59,7 @@ void	exec_exe(char *command, char **user_input, t_env *env)
 			execve(full_command, user_input, NULL);
 			free(full_command);
 		}
-		bi_error("Command not found!");
+		perror("execve");
 		exit(EXIT_FAILURE);
 	}
 	else if (execve_new_process > 0)
@@ -62,11 +68,3 @@ void	exec_exe(char *command, char **user_input, t_env *env)
 		perror("fork");
 	(void)env;
 }
-
-// lembrar de tirar o null do execve para executavies que ultilizam variaveis
-// de ambiente. Se nao da erro.
-
-/*
-!Verificar execução do /bin/echo. Quando executado, comando esta printando as
-!aspas!, na execução do comando no bash isso nao acontece.
-*/
