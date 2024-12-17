@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 11:39:28 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/16 16:52:18 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/17 11:38:02 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,10 @@ void	print_env(t_env *head)
 {
 	t_env	*temp;
 
-	temp = head;
+	temp = env_manager(head);
 	while (temp->next)
 	{
-		printf("%s", temp->key);
-		printf("=");
-		printf("%s\n", temp->value);
+		printf("%s=%s\n", temp->key, temp->value);
 		temp = temp->next;
 	}
 }

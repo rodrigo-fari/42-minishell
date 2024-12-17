@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 15:39:38 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/16 16:39:39 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/17 11:37:27 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,5 @@ void	env_remove(t_env *env, char *key)
 		prev = tmp;
 		tmp = tmp->next;
 	}
+	env_manager(NULL);
 }
