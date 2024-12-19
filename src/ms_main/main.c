@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 16:01:47 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/17 11:36:41 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/19 12:13:28 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ int	main(void)
 	prompt = "\001\033[1;32m\002│42├Msh\001\033[0m\002: \001\033[1;0m\002";
 	while (true)
 	{
+		signal(SIGINT, sig_ctrl_c);
 		input = readline(prompt);
 		if (input)
 		{
 			add_history(input);
 			ms_exec(env, input);
-			free(input);
 		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 13:54:38 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/16 16:08:08 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/19 13:15:45 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char	*charjoin(char *str, int c)
 	int		i;
 
 	i = ft_strlen(str);
-	ret = malloc(sizeof(char) * (i + 2));
+	ret = ft_calloc(sizeof(char), (i + 2));
 	if (!ret)
 		return (NULL);
 	i = 0;
@@ -66,8 +66,10 @@ char	*charjoin(char *str, int c)
 		ret[i] = str[i];
 		i++;
 	}
-	ret[i++] = (char)c;
+	ret[i] = (char)c;
+	i++;
 	ret[i] = '\0';
+	free(str);
 	return (ret);
 }
 

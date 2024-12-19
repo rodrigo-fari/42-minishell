@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/17 11:31:47 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/19 12:49:37 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,6 @@ void	bi_error(char *str);
 //[bi_commands.c]
 void	exec_exe(char *command, char **user_input, t_env *env);
 void	exec_builtins(char **user_input, t_env *env, char *input);
-void	exec_builtins2(char **user_input, t_env *env, char *input);
 
 //=====================================| ms_signals |
 //[sig_tratment.c]

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bi_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 15:38:24 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/16 12:37:24 by aeberius         ###   ########.fr       */
+/*   Updated: 2024/12/19 11:26:42 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,9 +100,15 @@ void	update_pwd(t_env *env, char *old_pwd)
 	while (env != NULL)
 	{
 		if (ft_strcmp(env->key, "PWD") == 0)
-			env->value = pwd;
+		{
+			free(env->value);
+			env->value = ft_strdup(pwd);
+		}
 		if (ft_strcmp(env->key, "OLDPWD") == 0)
-			env->value = old_pwd;
+		{
+			free(env->value);
+			env->value = ft_strdup(old_pwd);
+		}
 		env = env->next;
 	}
 	free(pwd);

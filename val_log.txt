@@ -1,0 +1,100 @@
+==2422== Memcheck, a memory error detector
+==2422== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==2422== Using Valgrind-3.19.0 and LibVEX; rerun with -h for copyright info
+==2422== Command: ./minishell
+==2422== Parent PID: 2400
+==2422== 
+==2423== 
+==2423== HEAP SUMMARY:
+==2423==     in use at exit: 234,166 bytes in 351 blocks
+==2423==   total heap usage: 881 allocs, 530 frees, 263,293 bytes allocated
+==2423== 
+==2423== 6 bytes in 1 blocks are still reachable in loss record 1 of 83
+==2423==    at 0x48850C8: malloc (vg_replace_malloc.c:381)
+==2423==    by 0x10A397: ft_calloc (in /home/spooky/debian_shared/42_minishell/minishell)
+==2423==    by 0x109C1F: charjoin (in /home/spooky/debian_shared/42_minishell/minishell)
+==2423==    by 0x109E6B: remove_quotes (in /home/spooky/debian_shared/42_minishell/minishell)
+==2423==    by 0x109F83: ms_exec (in /home/spooky/debian_shared/42_minishell/minishell)
+==2423==    by 0x109D8F: main (in /home/spooky/debian_shared/42_minishell/minishell)
+==2423== 
+==2423== 6 bytes in 1 blocks are still reachable in loss record 2 of 83
+==2423==    at 0x48850C8: malloc (vg_replace_malloc.c:381)
+==2423==    by 0x10A397: ft_calloc (in /home/spooky/debian_shared/42_minishell/minishell)
+==2423==    by 0x10A8AF: ft_substr (in /home/spooky/debian_shared/42_minishell/minishell)
+==2423==    by 0x10AD2F: ft_splitting (in /home/spooky/debian_shared/42_minishell/minishell)
+==2423==    by 0x10AE27: ft_split (in /home/spooky/debian_shared/42_minishell/minishell)
+==2423==    by 0x109F93: ms_exec (in /home/spooky/debian_shared/42_minishell/minishell)
+==2423==    by 0x109D8F: main (in /home/spooky/debian_shared/42_minishell/minishell)
+==2423== 
+==2423== 16 bytes in 1 blocks are still reachable in loss record 15 of 83
+==2423==    at 0x48850C8: malloc (vg_replace_malloc.c:381)
+==2423==    by 0x10A397: ft_calloc (in /home/spooky/debian_shared/42_minishell/minishell)
+==2423==    by 0x10ADFF: ft_split (in /home/spooky/debian_shared/42_minishell/minishell)
+==2423==    by 0x109F93: ms_exec (in /home/spooky/debian_shared/42_minishell/minishell)
+==2423==    by 0x109D8F: main (in /home/spooky/debian_shared/42_minishell/minishell)
+==2423== 
+==2423== 385 bytes in 37 blocks are still reachable in loss record 32 of 83
+==2423==    at 0x48850C8: malloc (vg_replace_malloc.c:381)
+==2423==    by 0x10C813: ft_strdup (in /home/spooky/debian_shared/42_minishell/minishell)
+==2423==    by 0x1095CB: env_to_struct (in /home/spooky/debian_shared/42_minishell/minishell)
+==2423==    by 0x109D3B: main (in /home/spooky/debian_shared/42_minishell/minishell)
+==2423== 
+==2423== 569 bytes in 37 blocks are still reachable in loss record 33 of 83
+==2423==    at 0x48850C8: malloc (vg_replace_malloc.c:381)
+==2423==    by 0x10C813: ft_strdup (in /home/spooky/debian_shared/42_minishell/minishell)
+==2423==    by 0x1095E7: env_to_struct (in /home/spooky/debian_shared/42_minishell/minishell)
+==2423==    by 0x109D3B: main (in /home/spooky/debian_shared/42_minishell/minishell)
+==2423== 
+==2423== 888 bytes in 37 blocks are still reachable in loss record 37 of 83
+==2423==    at 0x48850C8: malloc (vg_replace_malloc.c:381)
+==2423==    by 0x10A397: ft_calloc (in /home/spooky/debian_shared/42_minishell/minishell)
+==2423==    by 0x1095A7: env_to_struct (in /home/spooky/debian_shared/42_minishell/minishell)
+==2423==    by 0x109D3B: main (in /home/spooky/debian_shared/42_minishell/minishell)
+==2423== 
+==2423== LEAK SUMMARY:
+==2423==    definitely lost: 0 bytes in 0 blocks
+==2423==    indirectly lost: 0 bytes in 0 blocks
+==2423==      possibly lost: 0 bytes in 0 blocks
+==2423==    still reachable: 1,870 bytes in 114 blocks
+==2423==         suppressed: 232,296 bytes in 237 blocks
+==2423== 
+==2423== For lists of detected and suppressed errors, rerun with: -s
+==2423== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==2422== 
+==2422== HEAP SUMMARY:
+==2422==     in use at exit: 232,365 bytes in 243 blocks
+==2422==   total heap usage: 898 allocs, 655 frees, 262,023 bytes allocated
+==2422== 
+==2422== 6 bytes in 1 blocks are indirectly lost in loss record 1 of 80
+==2422==    at 0x48850C8: malloc (vg_replace_malloc.c:381)
+==2422==    by 0x10A397: ft_calloc (in /home/spooky/debian_shared/42_minishell/minishell)
+==2422==    by 0x10A8AF: ft_substr (in /home/spooky/debian_shared/42_minishell/minishell)
+==2422==    by 0x10AD2F: ft_splitting (in /home/spooky/debian_shared/42_minishell/minishell)
+==2422==    by 0x10AE27: ft_split (in /home/spooky/debian_shared/42_minishell/minishell)
+==2422==    by 0x109F93: ms_exec (in /home/spooky/debian_shared/42_minishell/minishell)
+==2422==    by 0x109D8F: main (in /home/spooky/debian_shared/42_minishell/minishell)
+==2422== 
+==2422== 6 bytes in 1 blocks are definitely lost in loss record 2 of 80
+==2422==    at 0x48850C8: malloc (vg_replace_malloc.c:381)
+==2422==    by 0x10A397: ft_calloc (in /home/spooky/debian_shared/42_minishell/minishell)
+==2422==    by 0x109C1F: charjoin (in /home/spooky/debian_shared/42_minishell/minishell)
+==2422==    by 0x109E6B: remove_quotes (in /home/spooky/debian_shared/42_minishell/minishell)
+==2422==    by 0x109F83: ms_exec (in /home/spooky/debian_shared/42_minishell/minishell)
+==2422==    by 0x109D8F: main (in /home/spooky/debian_shared/42_minishell/minishell)
+==2422== 
+==2422== 22 (16 direct, 6 indirect) bytes in 1 blocks are definitely lost in loss record 15 of 80
+==2422==    at 0x48850C8: malloc (vg_replace_malloc.c:381)
+==2422==    by 0x10A397: ft_calloc (in /home/spooky/debian_shared/42_minishell/minishell)
+==2422==    by 0x10ADFF: ft_split (in /home/spooky/debian_shared/42_minishell/minishell)
+==2422==    by 0x109F93: ms_exec (in /home/spooky/debian_shared/42_minishell/minishell)
+==2422==    by 0x109D8F: main (in /home/spooky/debian_shared/42_minishell/minishell)
+==2422== 
+==2422== LEAK SUMMARY:
+==2422==    definitely lost: 22 bytes in 2 blocks
+==2422==    indirectly lost: 6 bytes in 1 blocks
+==2422==      possibly lost: 0 bytes in 0 blocks
+==2422==    still reachable: 0 bytes in 0 blocks
+==2422==         suppressed: 232,337 bytes in 240 blocks
+==2422== 
+==2422== For lists of detected and suppressed errors, rerun with: -s
+==2422== ERROR SUMMARY: 2 errors from 2 contexts (suppressed: 0 from 0)
