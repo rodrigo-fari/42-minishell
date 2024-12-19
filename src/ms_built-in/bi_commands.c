@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 16:18:50 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/16 16:31:12 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/18 23:03:22 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	exec_builtins(char **user_input, t_env *env, char *input)
 {
+	env = env_manager(0);
 	if (ft_strcmp(user_input[0], "echo") == 0)
 		bi_echo(user_input);
 	else if (ft_strcmp(user_input[0], "pwd") == 0)
