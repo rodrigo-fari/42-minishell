@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 14:36:03 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/19 13:23:07 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/19 14:48:31 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,45 +14,20 @@
 
 char	*remove_quotes(char *input)
 {
-    char	*n_input;
-    int		last_quote;
-    int		i;
+	char	*n_input;
+	int		last_quote;
+	int		i;
 
-    n_input = ft_strdup("");
-    if (!n_input)
-        return (NULL);
-    i = 0;
-    while (input[i])
-    {
-        if (input[i] && (input[i] == '\'' || input[i] == '\"'))
-        {
-            last_quote = last_ocurrence(input, input[i++]);
-            while (i < (last_quote))
-            {
-                char *temp = charjoin(n_input, input[i++]);
-                if (!temp)
-                {
-                    free(n_input);
-                    free(input);
-                    return (NULL);
-                }
-                n_input = temp;
-            }
-            free(input);
-            return (n_input);
-        }
-        char *temp = charjoin(n_input, input[i]);
-        if (!temp)
-        {
-            free(n_input);
-            free(input);
-            return (NULL);
-        }
-        n_input = temp;
-        i++;
-    }
-    free(input);
-    return (n_input);
+	i = 0;
+		if (input[i] && (input[i] == '\'' || input[i] == '\"'))
+		{
+			last_quote = last_ocurrence(input, input[i++]);
+			n_input = ft_calloc(sizeof(char), last_quote + 1);
+			ft_strlcpy(n_input, input, last_quote);
+			free(input);
+			return (n_input);
+		}
+	return (input);
 }
 
 void	ms_exec(t_env *env, char *input)

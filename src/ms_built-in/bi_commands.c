@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 16:18:50 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/19 11:55:01 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/19 14:41:40 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ void	exec_builtins(char **user_input, t_env *env, char *input)
 	else if (ft_strcmp(user_input[0], "export") == 0)
 		bi_export(env, user_input);
 	else
+	{
+		free(input);
 		exec_exe(user_input[0], user_input, env);
+	}
 }
 
 void	exec_exe(char *command, char **user_input, t_env *env)
@@ -59,7 +62,7 @@ void	exec_exe(char *command, char **user_input, t_env *env)
 			free(full_command);
 		}
 		perror("execve");
-		exit(EXIT_FAILURE);
+		bi_exit(user_input, env, NULL);
 	}
 	else if (execve_new_process > 0)
 		waitpid(execve_new_process, &status, 0);
