@@ -1,0 +1,33 @@
+Formatação do log de trabalho:
+
+Pessoa 00/00/0000 - Dia da semana
+✅ - Feito
+❌ - Ficou por fazer
+
+________________________________________________________________________________
+R 02/01/2025 - Quinta-feira
+
+･Colocar print_tokens para funcionar✅
+･Consertar norminette✅
+･Adicionar o token_type no tokenizer✅
+･Relizar frees necessarios para execução do programa (caderno)❌
+･Passar tokens para bulit-ins inves de um array de comandos❌
+･Criação de função que limpa todo o codigo❌
+･Verificação de leaks no codigo❌
+
+Foi alterado a forma que os built-ins recebem os argumentos, envez de receberem um char **commands, agora recebem a lista de tokens. Todos os built-ins foram construidos para funcionar com array, nao com lista. Necessario realizar a alteração de funcionamento dos built-ins!
+
+Talvez seja necessario refazer todos os builtins para nova adaptação!
+
+________________________________________________________________________________
+
+________________________________________________________________________________
+R 03/01/2025 - Sexta-feira
+
+･
+･
+･
+･
+･
+･
+________________________________________________________________________________

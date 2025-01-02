@@ -6,35 +6,33 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 11:18:50 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/20 12:36:37 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/01/02 14:33:38 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	bi_echo(char **args)
+void	bi_echo(t_token *tmp)
 {
-	int		i;
 	bool	flag;
 
 	flag = true;
-	i = 1;
-	while (args[i])
+	while (tmp)
 	{
-		while (args[i] && flag_verify(args[i]))
+		while (tmp && flag_verify(tmp->value))
 		{
 			flag = false;
-			if (!args[i + 1])
+			if (!tmp->next)
 				return ;
 			else
-				i++;
+				tmp = tmp->next;
 		}
-		while (args[i])
+		while (tmp->value)
 		{
-			printf("%s", args[i]);
-			if (args[i + 1])
+			printf("%s", tmp->value);
+			if (tmp->next)
 				printf(" ");
-			i++;
+			tmp = tmp->next;
 		}
 		if (flag)
 			printf("\n");

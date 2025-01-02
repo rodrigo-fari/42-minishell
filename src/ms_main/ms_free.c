@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:24:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/01/02 12:41:15 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/01/02 14:18:20 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,5 @@ void	ms_free(t_env *env, char *input, char **commands, t_token *tokens)
 		free(input);
 	if (commands)
 		free_splits(commands);
+	return ;
 }

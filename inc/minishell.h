@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/01/02 12:48:47 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/01/02 14:33:28 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,6 @@
 # include <curses.h>
 # include <term.h>
 # include "../src/ms_libft/libft/libft.h"
-
-//#include "../../inc/minishell.h"
-//Para a criacao dos arquivos
 
 //=====================================| Support Defines |
 # define CLEAR_CODE	"\033[2J\033[H"
@@ -91,15 +88,15 @@ void	update_pwd(t_env *env, char *old_pwd);
 bool	check_too_many_arguments(char **user_input);
 
 //[bi_echo.c]
-void	bi_echo(char **args);
+void	bi_echo(t_token *tmp);
 bool	flag_verify(char *str);
 
 //[bi_error.c]
 void	bi_error(char *str);
 
 //[bi_exec.c]
-void	bi_exec(char **commands, t_env *env, t_token *tokens);
-void	exec_exe(char *command, char **user_input, t_env *env);
+void	bi_exec(t_env *env, t_token *tokens);
+void	exec_exe(char **user_input, t_env *env);
 
 //[bi_exit.c]
 void	bi_exit(char **commands, t_env *env, t_token *tokens);
