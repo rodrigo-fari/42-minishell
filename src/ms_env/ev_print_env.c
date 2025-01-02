@@ -6,13 +6,13 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:18:36 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/26 15:29:18 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/01/02 12:45:19 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	print_env()
+void	print_env(void)
 {
 	t_env	*temp;
 

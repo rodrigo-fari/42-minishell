@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/01/02 12:41:38 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/01/02 12:48:47 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ typedef enum e_type
 
 typedef struct s_token
 {
-	t_type			type;
+	t_type				type;
 	char				*value;
 	struct s_token		*next;
 }	t_token;
@@ -98,7 +98,7 @@ bool	flag_verify(char *str);
 void	bi_error(char *str);
 
 //[bi_exec.c]
-void	bi_exec(char **commands, t_env *env);
+void	bi_exec(char **commands, t_env *env, t_token *tokens);
 void	exec_exe(char *command, char **user_input, t_env *env);
 
 //[bi_exit.c]
@@ -123,7 +123,7 @@ t_env	*env_manager(t_env *env);
 t_env	*env_to_struct(char **environ);
 
 //[ev_print_env.c]
-void	print_env();
+void	print_env(void);
 
 //[ev_utils.c]
 t_env	*list_last(t_env *lst);

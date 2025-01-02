@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 14:51:45 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/01/02 12:40:08 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/01/02 12:43:33 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	print_tokens(t_token *token)
 {
 	t_token	*token_tmp;
-	
+
 	token_tmp = token;
 	printf("------------------------------\n");
 	while (token_tmp)

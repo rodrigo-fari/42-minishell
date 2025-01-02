@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 16:46:14 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/26 22:25:18 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/01/02 12:44:54 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 bool	parse_redout(char **commands)
 {
 	int	i;
+
 	i = 0;
 	while (commands[i])
 	{

@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 09:47:50 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/28 17:02:43 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/01/02 12:48:07 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	main(void)
 {
-	t_env	*env;
-	char	*input;
+	t_env		*env;
+	char		*input;
 	extern char	**environ;
 
 	env = env_to_struct(environ);

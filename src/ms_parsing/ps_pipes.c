@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 16:45:28 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/26 17:19:32 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/01/02 12:44:09 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 bool	parse_pipes(char **commands)
 {
 	int	i;
+
 	i = 0;
 	while (commands[i])
 	{
