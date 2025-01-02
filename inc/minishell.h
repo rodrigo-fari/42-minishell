@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/01/02 11:52:05 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/01/02 12:41:38 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@
 # define RESET		"\001\033[0m\002"
 
 //=====================================| Structs |
-typedef enum e_tk_type
+typedef enum e_type
 {
 	TOKEN_WORD,// For commands and arguments
 	TOKEN_PIPE,// For '|'
@@ -58,18 +58,18 @@ typedef enum e_tk_type
 	TOKEN_REDIR_APPEND,// For '>>'
 	TOKEN_REDIR_HEREDOC,// For '<<'
 	TOKEN_ENV_VAR,// For environment variables
-}	t_tk_type;
+}	t_type;
 
 typedef struct s_token
 {
-	t_tk_type			type;
+	t_type			type;
 	char				*value;
 	struct s_token		*next;
 }	t_token;
 
 typedef struct s_ast_node
 {
-	t_tk_type			*type;
+	t_type				*type;
 	char				args;
 	struct s_ast_node	*left;
 	struct s_ast_node	*right;
@@ -102,7 +102,7 @@ void	bi_exec(char **commands, t_env *env);
 void	exec_exe(char *command, char **user_input, t_env *env);
 
 //[bi_exit.c]
-void	bi_exit(char **commands, t_env *env);
+void	bi_exit(char **commands, t_env *env, t_token *tokens);
 
 //[bi_export.c]
 void	bi_export(t_env *env, char **user_input);
@@ -135,7 +135,7 @@ void	listadd_back(t_env **lst, t_env *new);
 void	ms_exec(char *input, t_env *env);
 
 //[ms_free.c]
-void	ms_free(t_env *env, char *input, char **commands);
+void	ms_free(t_env *env, char *input, char **commands, t_token *tokens);
 
 //=====================================| ms_parsing |
 //[ps_error.c]
@@ -178,10 +178,9 @@ int		skip_whitespace(char *input, int i);
 char	**tk_splitter(char *input, int i, int j);
 int		tk_count_words(char *input, int i, int count);
 
-//[tk_token_to_struct.c]
-t_token	*token_to_struct(char **commands);
-
 //[tk_tokenizer.c]
+int		token_type(char *token);
+t_token	*token_to_struct(char **commands);
 
 //[tk_utils.c]
 int		tk_listsize(t_token *token);

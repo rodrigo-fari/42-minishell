@@ -6,23 +6,22 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 14:51:45 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/01/02 12:05:28 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/01/02 12:40:08 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	print_tokens(t_token *token_tmp)
+void	print_tokens(t_token *token)
 {
-	int	i;
-
-	i = 0;
+	t_token	*token_tmp;
+	
+	token_tmp = token;
 	printf("------------------------------\n");
 	while (token_tmp)
 	{
-		printf("[%d]Token = %s\n", i, token_tmp->value);
+		printf("Token[%d] = %s\n", token_tmp->type, token_tmp->value);
 		token_tmp = token_tmp->next;
-		i++;
 	}
 	printf("------------------------------\n");
 }

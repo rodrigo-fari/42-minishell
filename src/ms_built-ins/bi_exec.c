@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 12:18:54 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/26 17:49:23 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/01/02 12:39:08 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	bi_exec(char **commands, t_env *env)
 		bi_cd(commands, env);
 	else if (ft_strcmp(commands[0], "unset") == 0)
 		bi_unset(commands, env);
-	// else if (ft_strcmp(commands[0], "export") == 0)
-	// 	bi_export(env, commands);
+	else if (ft_strcmp(commands[0], "export") == 0)
+		bi_export(env, commands);
 	else
 		exec_exe(commands[0], commands, env);
 }
@@ -51,7 +51,7 @@ void	exec_exe(char *command, char **user_input, t_env *env)
 			free(full_command);
 		}
 		perror("execve");
-		bi_exit(user_input, env);
+		bi_exit(user_input, env, NULL); // Adicionar tokens futuramente
 	}
 	else if (execve_new_process > 0)
 		waitpid(execve_new_process, &status, 0);

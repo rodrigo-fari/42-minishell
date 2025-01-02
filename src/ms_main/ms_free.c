@@ -6,14 +6,16 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:24:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/28 17:01:23 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/01/02 12:41:15 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ms_free(t_env *env, char *input, char **commands)
+void	ms_free(t_env *env, char *input, char **commands, t_token *tokens)
 {
+	if (tokens)
+		free_token_struct(tokens);
 	if (env)
 		free_env_struct(env);
 	if (input)
