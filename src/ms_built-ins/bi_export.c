@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/09 15:39:10 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/15 11:55:50 by rde-fari         ###   ########.fr       */
+/*   Created: 2025/01/02 11:38:29 by rde-fari          #+#    #+#             */
+/*   Updated: 2025/01/02 11:38:39 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "minishell.h"
 
 void	bi_export(t_env *env, char **user_input)
 {

@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bi_exit.c                                          :+:      :+:    :+:   */
+/*   ev_print_env.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/09 15:38:58 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/16 16:41:20 by rde-fari         ###   ########.fr       */
+/*   Created: 2024/12/20 10:18:36 by rde-fari          #+#    #+#             */
+/*   Updated: 2024/12/26 15:29:18 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "minishell.h"
 
-void	bi_exit(char **user_input, t_env *env, char *input)
+void	print_env()
 {
-	if (input)
-		free(input);
-	if (user_input)
-		free_splits(user_input);
-	if (env)
-		ft_free_envs(env);
-	exit (0);
-}
+	t_env	*temp;
 
-//Apenas para testes, exit necessita mais informação e parametros!
+	temp = env_manager(NULL);
+	while (temp->next)
+	{
+		printf("%s=%s\n", temp->key, temp->value);
+		temp = temp->next;
+	}
+}

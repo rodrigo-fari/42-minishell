@@ -1,38 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_parsing.c                                       :+:      :+:    :+:   */
+/*   ps_redout.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/26 15:43:40 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/26 17:22:33 by rde-fari         ###   ########.fr       */
+/*   Created: 2024/12/26 16:46:14 by rde-fari          #+#    #+#             */
+/*   Updated: 2024/12/26 22:25:18 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-bool	ps_parsing(char **commands, int i)
+bool	parse_redout(char **commands)
 {
+	int	i;
+	i = 0;
 	while (commands[i])
 	{
-		if (!parse_quotes(commands[i]))
+		if (quote_verifier(commands[i]) && commands[i + 1])
+			i++;
+		if (commands[i][0] == '>' && ft_strlen(commands[i]) > 2)
+		{
+			ps_error("bash: syntax error near unexpected token: > || >>");
 			return (false);
+		}
+		if (ft_strcmp(commands[i], ">") == 0
+			|| ft_strcmp(commands[i], ">>") == 0)
+		{
+			if (!commands[i + 1] || !commands[i - 1])
+			{
+				ps_error("bash: syntax error near unexpected token: > || >>");
+				return (false);
+			}
+		}
 		i++;
 	}
-	if (!parse_redin(commands))
-		return (false);
-	if (!parse_redout(commands))
-		return (false);
-	if (!parse_pipes(commands))
-		return (false);
 	return (true);
-}
-
-bool	quote_verifier(char *input)
-{
-	if (input[0] && (input[0] == '\"' || input[0] == '\"'))
-		return (true);
-	else
-		return (false);
 }

@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/19 12:49:37 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/28 17:01:38 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,11 @@
 //Para a criacao dos arquivos
 
 //=====================================| Support Defines |
-//[clear.c]
 # define CLEAR_CODE	"\033[2J\033[H"
-# define BOLD		"\001\033[1m\002"
 # define RESET		"\001\033[0m\002"
 
 //=====================================| Structs |
-typedef enum e_token_type
+typedef enum e_tk_type
 {
 	TOKEN_WORD,// For commands and arguments
 	TOKEN_PIPE,// For '|'
@@ -60,18 +58,18 @@ typedef enum e_token_type
 	TOKEN_REDIR_APPEND,// For '>>'
 	TOKEN_REDIR_HEREDOC,// For '<<'
 	TOKEN_ENV_VAR,// For environment variables
-}	t_token_type;
+}	t_tk_type;
 
 typedef struct s_token
 {
-	t_token_type		type;
-	char				value;
+	t_tk_type			type;
+	char				*value;
 	struct s_token		*next;
 }	t_token;
 
 typedef struct s_ast_node
 {
-	t_token_type		*type;
+	t_tk_type			*type;
 	char				args;
 	struct s_ast_node	*left;
 	struct s_ast_node	*right;
@@ -85,84 +83,107 @@ typedef struct s_env
 }	t_env;
 
 //=====================================| ms_built-in |
-//[bi_echo.c] - 100% Ready
-void	bi_echo(char **args);
-void	print_args(char *str);
-bool	flag_verify(char *str);
 //[bi_cd.c]
-void	update_pwd(t_env *env, char *old_pwd);
+void	bi_cd(char **args, t_env *env);
 char	*find_oldpwd_in_env(t_env *env);
 char	*find_path_home_in_env(t_env *env);
-void	bi_cd(char **user_input, t_env *env);
+void	update_pwd(t_env *env, char *old_pwd);
 bool	check_too_many_arguments(char **user_input);
-//[bi_exit.c]
-void	bi_exit(char **user_input, t_env *env, char *input);
-//[bi_export.c]
-void	bi_export(t_env *env, char **user_input);
-bool	env_add(t_env *env, char *key, char *value);
-//[bi_pwd.c]
-void	bi_pwd(void);
-//[bi_unset.c]
-void	bi_unset(char **user_input, t_env *env);
-void	env_remove(t_env *env, char *key);
+
+//[bi_echo.c]
+void	bi_echo(char **args);
+bool	flag_verify(char *str);
+
 //[bi_error.c]
 void	bi_error(char *str);
-//[bi_commands.c]
-void	exec_exe(char *command, char **user_input, t_env *env);
-void	exec_builtins(char **user_input, t_env *env, char *input);
 
-//=====================================| ms_signals |
-//[sig_tratment.c]
-void	sig_ctrl_c(int sig);
+//[bi_exec.c]
+void	bi_exec(char **commands, t_env *env);
+void	exec_exe(char *command, char **user_input, t_env *env);
+
+//[bi_exit.c]
+void	bi_exit(char **commands, t_env *env);
+
+//[bi_pwd.c]
+void	bi_pwd(void);
+
+//[bi_unset.c]
+void	env_remove(t_env *env, char *key);
+void	bi_unset(char **user_input, t_env *env);
 
 //=====================================| ms_env |
+//[ev_env_manager.c]
+t_env	*env_manager(t_env *env);
+
 //[ev_env_to_struct.c]
 t_env	*env_to_struct(char **environ);
-//[ev_state_manager.c] ("API")
-t_env	*env_manager(t_env *env);
+
+//[ev_print_env.c]
+void	print_env();
+
 //[ev_utils.c]
-int		listsize(t_env *env);
-void	print_env(t_env *head);
 t_env	*list_last(t_env *lst);
 void	free_env_struct(t_env *env);
 void	listadd_back(t_env **lst, t_env *new);
 
-//=====================================| ms_extra |
-//!LEMBRAR DE REMOVER ESTA FUNÇÃO! CLEAR TEM QUE BUSCAR O COMANDO NO
-//!ABSOLUTE E RELATIVE PATH! (NAO EXISTE NO MAC).
-//[ex_clear.c]
-void	ex_clear(void);
-
 //=====================================| ms_main |
 //[ms_exec.c]
-char	*remove_quotes(char *input);
-void	ms_exec(t_env *env, char *input);
-//[ms_utils.c]
-bool	exec_finder(char *input);
-char	**list_to_array(t_env *env);
-char	*charjoin(char *str, int c);
-int		last_ocurrence(char *str, int c);
-bool	string_search(const char *s, int c);
-//[ms_utils2.c]
-void	var_expand(char **user_input, t_env *env);
-//[ms_frees.c]
-t_env	*ft_free_envs(t_env *env);
+void	ms_exec(char *input, t_env *env);
+
+//[ms_free.c]
+void	ms_free(t_env *env, char *input, char **commands);
 
 //=====================================| ms_parsing |
 //[ps_error.c]
-void	ps_error(char *str, char **user_input);
-//[ps_parsing.c]
-bool	parsing(char *input);
-bool	parse_verify_quotes(char **input_splited, char *input);
-bool	parse_verify_pipes(char **input_splited, char *input);
-bool	parse_verify_redin(char **input_splited, char *input);
-bool	parse_verify_redout(char **input_splited, char *input);
+void	ps_error(char *str);
 
-//[ps_syntax.c]
-bool	parse_pipes(char **user_input);
-bool	parse_redin(char **user_input);
-bool	parse_redout(char **user_input);
-bool	parse_quotes(char *input, int i, int s_quote, int d_quote);
+//[ps_parsing.c]
+bool	quote_verifier(char *input);
+bool	ps_parsing(char **commands, int i);
+
+//[ps_quotes.c]
+bool	parse_quotes(char *input);
+
+//[ps_pipes.c]
+bool	parse_pipes(char **commands);
+
+//[ps_redins.c]
+bool	parse_redin(char **commands);
+
+//[ps_redout.c]
+bool	parse_redout(char **commands);
+
+//[ps_remove_quotes.c]
+int		total_quotes(char *input);
+void	remove_quotes(char **commands);
+int		first_quote_number(char *input);
+char	*remove_quote_even(char *input);
+char	*remove_quote_odd(char *input, char first_quote);
+
+//=====================================| ms_sighand |
+//[sh_sig_treatment.c]
+void	sig_ctrl_c(int sig);
+
+//=====================================| ms_tokenizer |
+//[tk_print_tokens.c]
+void	print_tokens(t_token *token);
+
+//[tk_split.c]
+char	*extract_word(char *input, int *i);
+int		skip_whitespace(char *input, int i);
+char	**tk_splitter(char *input, int i, int j);
+int		tk_count_words(char *input, int i, int count);
+
+//[tk_token_to_struct.c]
+t_token	*token_to_struct(char **commands);
+
+//[tk_tokenizer.c]
+
+//[tk_utils.c]
+int		tk_listsize(t_token *token);
+t_token	*tk_list_last(t_token *lst);
+void	free_token_struct(t_token *token);
+void	tk_listadd_back(t_token **lst, t_token *new);
 
 //=====================================| Endif |
 #endif

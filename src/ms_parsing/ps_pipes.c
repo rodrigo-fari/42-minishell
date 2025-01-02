@@ -1,19 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_error.c                                         :+:      :+:    :+:   */
+/*   ps_pipes.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/04 14:22:33 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/20 11:59:05 by rde-fari         ###   ########.fr       */
+/*   Created: 2024/12/26 16:45:28 by rde-fari          #+#    #+#             */
+/*   Updated: 2024/12/26 17:19:32 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "minishell.h"
 
-void	ps_error(char *str)
+bool	parse_pipes(char **commands)
 {
-	printf(RED"[Error]"RESET);
-	printf("%s\n", str);
+	int	i;
+	i = 0;
+	while (commands[i])
+	{
+		if (quote_verifier(commands[i]) && commands[i + 1])
+			i++;
+		if (commands[i][0] == '|')
+		{
+			if (!commands[i + 1] || !commands[i - 1])
+			{
+				ps_error("bash: syntax error near unexpected token: |");
+				return (false);
+			}
+		}
+		i++;
+	}
+	return (true);
 }

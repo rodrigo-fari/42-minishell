@@ -1,19 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_error.c                                         :+:      :+:    :+:   */
+/*   ps_expand_var.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/04 14:22:33 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/20 11:59:05 by rde-fari         ###   ########.fr       */
+/*   Created: 2024/12/27 17:47:45 by rde-fari          #+#    #+#             */
+/*   Updated: 2024/12/27 17:48:39 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
-
-void	ps_error(char *str)
-{
-	printf(RED"[Error]"RESET);
-	printf("%s\n", str);
-}
+#include "minishell.h"

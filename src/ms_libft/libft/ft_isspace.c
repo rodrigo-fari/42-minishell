@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_error.c                                         :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/04 14:22:33 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/20 11:59:05 by rde-fari         ###   ########.fr       */
+/*   Created: 2024/12/26 12:37:53 by rde-fari          #+#    #+#             */
+/*   Updated: 2024/12/26 12:57:25 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "libft.h"
 
-void	ps_error(char *str)
+int	ft_isspace(int c)
 {
-	printf(RED"[Error]"RESET);
-	printf("%s\n", str);
+	if (c == ' ' || c == '\t' || c == '\n' || c == '\v' || c == '\f'
+	|| c == '\r')
+		return (1);
+	else
+		return (0);
 }

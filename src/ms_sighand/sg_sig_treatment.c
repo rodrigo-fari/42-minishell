@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_frees.c                                         :+:      :+:    :+:   */
+/*   sg_sig_treatment.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/16 16:04:09 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/16 16:04:54 by rde-fari         ###   ########.fr       */
+/*   Created: 2024/12/20 12:12:38 by rde-fari          #+#    #+#             */
+/*   Updated: 2024/12/28 17:02:56 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "minishell.h"
 
-t_env	*ft_free_envs(t_env *env)
+void	sig_ctrl_c(int sig)
 {
-	t_env	*temp;
-
-	while (env)
-	{
-		if (env->key)
-			free(env->key);
-		if (env->value)
-			free(env->value);
-		temp = env;
-		env = env->next;
-		free(temp);
-	}
-	return (0);
+	(void)sig;
+	write(1, "\n", 1);
+	rl_on_new_line();
+	rl_replace_line("", 0);
+	rl_redisplay();
 }

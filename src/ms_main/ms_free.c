@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_error.c                                         :+:      :+:    :+:   */
+/*   ms_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/04 14:22:33 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/20 11:59:05 by rde-fari         ###   ########.fr       */
+/*   Created: 2024/12/20 10:24:21 by rde-fari          #+#    #+#             */
+/*   Updated: 2024/12/28 17:01:23 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "minishell.h"
 
-void	ps_error(char *str)
+void	ms_free(t_env *env, char *input, char **commands)
 {
-	printf(RED"[Error]"RESET);
-	printf("%s\n", str);
+	if (env)
+		free_env_struct(env);
+	if (input)
+		free(input);
+	if (commands)
+		free_splits(commands);
 }

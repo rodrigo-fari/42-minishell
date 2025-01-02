@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bi_error.c                                         :+:      :+:    :+:   */
+/*   tk_tokenizer.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/09 15:51:50 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/09 17:45:56 by rde-fari         ###   ########.fr       */
+/*   Created: 2024/12/26 12:29:56 by rde-fari          #+#    #+#             */
+/*   Updated: 2024/12/26 16:29:13 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "minishell.h"
 
-void	bi_error(char *str)
-{
-	printf(RED"[Error]"RESET);
-	printf("%s\n", str);
-}
+//t_token	*tk_tokenizer(char *str)
+//{
+	
+//}

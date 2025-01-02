@@ -6,11 +6,11 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 15:38:24 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/19 11:26:42 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/20 12:45:42 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "minishell.h"
 
 void	bi_cd(char **user_input, t_env *env)
 {
@@ -61,15 +61,17 @@ bool	check_too_many_arguments(char **user_input)
 char	*find_path_home_in_env(t_env *env)
 {
 	char	*home_path;
+	t_env	*tmp;
 
-	while (env != NULL)
+	tmp = env;
+	while (tmp != NULL)
 	{
-		if (ft_strcmp(env->key, "HOME") == 0)
+		if (ft_strcmp(tmp->key, "HOME") == 0)
 		{
-			home_path = env->value;
+			home_path = tmp->value;
 			return (home_path);
 		}
-		env = env->next;
+		tmp = tmp->next;
 	}
 	bi_error("bash: cd: HOME not set");
 	return (NULL);
@@ -78,15 +80,17 @@ char	*find_path_home_in_env(t_env *env)
 char	*find_oldpwd_in_env(t_env *env)
 {
 	char	*old_pwd_path;
+	t_env	*tmp;
 
-	while (env != NULL)
+	tmp = env;
+	while (tmp != NULL)
 	{
-		if (ft_strcmp(env->key, "OLDPWD") == 0)
+		if (ft_strcmp(tmp->key, "OLDPWD") == 0)
 		{
-			old_pwd_path = env->value;
+			old_pwd_path = tmp->value;
 			return (old_pwd_path);
 		}
-		env = env->next;
+		tmp = tmp->next;
 	}
 	bi_error("bash: cd: OLDPWD not set");
 	return (NULL);
@@ -95,21 +99,23 @@ char	*find_oldpwd_in_env(t_env *env)
 void	update_pwd(t_env *env, char *old_pwd)
 {
 	char	*pwd;
+	t_env	*tmp;
 
 	pwd = getcwd(NULL, 0);
-	while (env != NULL)
+	tmp = env;
+	while (tmp != NULL)
 	{
-		if (ft_strcmp(env->key, "PWD") == 0)
+		if (ft_strcmp(tmp->key, "PWD") == 0)
 		{
-			free(env->value);
-			env->value = ft_strdup(pwd);
+			free(tmp->value);
+			tmp->value = ft_strdup(pwd);
 		}
-		if (ft_strcmp(env->key, "OLDPWD") == 0)
+		if (ft_strcmp(tmp->key, "OLDPWD") == 0)
 		{
-			free(env->value);
-			env->value = ft_strdup(old_pwd);
+			free(tmp->value);
+			tmp->value = ft_strdup(old_pwd);
 		}
-		env = env->next;
+		tmp = tmp->next;
 	}
 	free(pwd);
 }

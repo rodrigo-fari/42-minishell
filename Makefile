@@ -35,6 +35,7 @@ all: 				$(NAME)
 					@echo " "
 					sleep 1
 					@clear
+					./$(NAME)
 
 $(NAME): 			$(OBJS) $(LIBFT)
 					@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -lreadline -o $(NAME)
@@ -70,18 +71,14 @@ re: 				fclean all
 norm:
 					norminette -R CheckForbiddenSourceHeader
 
-val:			all
+val:			
 					valgrind --leak-check=full \
 						--show-leak-kinds=all \
-						--track-origins=yes \
-						--log-file=val_log.txt \
+						--log-file=valgrind_out.txt \
 						--suppressions=readline_leaks ./$(NAME)
 
-leaks:
-					leaks --atExit --list -- ./$(NAME)
-
-#===================================================================================| Notes |
+#==============================================================================|
 #
 # Any additional notes or tasks can be added here.
 #
-#===================================================================================| End |
+#==============================================================================|

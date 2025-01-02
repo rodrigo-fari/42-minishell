@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_error.c                                         :+:      :+:    :+:   */
+/*   bi_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/04 14:22:33 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/20 11:59:05 by rde-fari         ###   ########.fr       */
+/*   Created: 2024/12/20 12:22:57 by rde-fari          #+#    #+#             */
+/*   Updated: 2024/12/20 12:25:17 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "minishell.h"
 
-void	ps_error(char *str)
+void	bi_exit(char **commands, t_env *env)
 {
-	printf(RED"[Error]"RESET);
-	printf("%s\n", str);
+	if (commands)
+		free_splits(commands);
+	if (env)
+		free_env_struct(env);
+	printf("exit\n");
+	exit(0);
 }

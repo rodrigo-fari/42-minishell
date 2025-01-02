@@ -1,37 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ms_main.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/30 16:01:47 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/19 14:21:37 by rde-fari         ###   ########.fr       */
+/*   Created: 2024/12/20 09:47:50 by rde-fari          #+#    #+#             */
+/*   Updated: 2024/12/28 17:02:43 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "minishell.h"
 
 int	main(void)
 {
-	char		*input;
-	t_env		*env;
+	t_env	*env;
+	char	*input;
 	extern char	**environ;
-	char		*prompt;
 
 	env = env_to_struct(environ);
-	env_manager(env);
-	prompt = "\001\033[1;32m\002│42├Msh\001\033[0m\002: \001\033[1;0m\002";
+	env = env_manager(env);
 	while (true)
 	{
+		env = env_manager(NULL);
+		input = readline("minishell$ ");
 		signal(SIGINT, sig_ctrl_c);
-		input = readline(prompt);
-		if (input)
+		if (input[0] != '\0')
 		{
 			add_history(input);
-			ms_exec(env, input);
+			env = env_manager(NULL);
+			ms_exec(input, env);
 		}
 	}
+	return (0);
 }
-
-//* place above "input = readline" -> signal(SIGINT, sig_ctrl_c);

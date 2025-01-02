@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ev_state_manager.c                                 :+:      :+:    :+:   */
+/*   tk_print_tokens.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/17 10:54:57 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/17 11:31:34 by rde-fari         ###   ########.fr       */
+/*   Created: 2024/12/26 14:51:45 by rde-fari          #+#    #+#             */
+/*   Updated: 2024/12/28 17:20:17 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "minishell.h"
 
-t_env	*env_manager(t_env *env)
+void	print_tokens(t_token *token_tmp)
 {
-	static t_env	*static_env;
-
-	if (env)
-		static_env = env;
-	return (static_env);
+	printf("\n\nFUNCAO PRINT TOKENS:\n\n");
+	printf("------------------------------");
+	printf(" \n");
+	while (token_tmp->next)
+	{
+		printf("token = %s\n", token_tmp->value);
+		token_tmp = token_tmp->next;
+	}
+	printf("------------------------------\n");
 }
-
-// Parametro = 0 -> Devolve o valor armazenado. (return_envs(NULL))
-// Parametro = env -> Atualiza o valor armazenado. (return_envs(env))

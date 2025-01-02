@@ -1,38 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_parsing.c                                       :+:      :+:    :+:   */
+/*   ps_quotes.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/26 15:43:40 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/26 17:22:33 by rde-fari         ###   ########.fr       */
+/*   Created: 2024/12/26 16:18:19 by rde-fari          #+#    #+#             */
+/*   Updated: 2024/12/26 22:28:46 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-bool	ps_parsing(char **commands, int i)
+bool	parse_quotes(char *input)
 {
-	while (commands[i])
-	{
-		if (!parse_quotes(commands[i]))
-			return (false);
-		i++;
-	}
-	if (!parse_redin(commands))
-		return (false);
-	if (!parse_redout(commands))
-		return (false);
-	if (!parse_pipes(commands))
-		return (false);
-	return (true);
-}
+	char	quote;
+	int		validation;
+	int		i;
 
-bool	quote_verifier(char *input)
-{
-	if (input[0] && (input[0] == '\"' || input[0] == '\"'))
-		return (true);
-	else
+	i = -1;
+	validation = 0;
+	while (input[++i])
+	{
+		while (input[i] && (input[i] != '\'' && input[i] != '\"'))
+			i++;
+		quote = input[i++];
+		validation++;
+		while (input[i] && input[i] != quote)
+			i++;
+		if (input[i] == quote)
+			validation++;
+		if (!input[i])
+			break ;
+	}
+	if (validation % 2 != 0)
+	{
+		ps_error("bash: syntax error near unexpected token: \" || \' ");
 		return (false);
+	}
+	return (true);
 }

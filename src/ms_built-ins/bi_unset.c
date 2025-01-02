@@ -6,11 +6,11 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 15:39:38 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/17 11:37:27 by rde-fari         ###   ########.fr       */
+/*   Updated: 2024/12/20 12:39:41 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "minishell.h"
 
 void	bi_unset(char **user_input, t_env *env)
 {
@@ -47,5 +47,5 @@ void	env_remove(t_env *env, char *key)
 		prev = tmp;
 		tmp = tmp->next;
 	}
-	env_manager(NULL);
+	env_manager(tmp);
 }

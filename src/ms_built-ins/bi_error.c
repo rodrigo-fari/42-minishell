@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sig_tratment.c                                     :+:      :+:    :+:   */
+/*   bi_error.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/13 17:24:44 by aeberius          #+#    #+#             */
-/*   Updated: 2024/12/19 10:25:10 by rde-fari         ###   ########.fr       */
+/*   Created: 2024/12/09 15:51:50 by rde-fari          #+#    #+#             */
+/*   Updated: 2024/12/20 12:36:31 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/minishell.h"
+#include "minishell.h"
 
-void	sig_ctrl_c(int sig)
+void	bi_error(char *str)
 {
-	(void)sig;
-	write(1, "\n", 1);
-	rl_on_new_line();
-	rl_replace_line("", 0);
-	rl_redisplay();
+	printf(RED"[Error]"RESET);
+	printf("%s\n", str);
 }

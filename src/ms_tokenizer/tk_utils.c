@@ -1,70 +1,63 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ev_utils.c                                         :+:      :+:    :+:   */
+/*   tk_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 10:16:33 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/20 10:46:22 by rde-fari         ###   ########.fr       */
+/*   Created: 2024/12/26 14:47:09 by rde-fari          #+#    #+#             */
+/*   Updated: 2024/12/28 17:12:07 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	listadd_back(t_env **lst, t_env *new)
+void	tk_listadd_back(t_token **lst, t_token *new)
 {
+	t_token	*last;
+
 	if (*lst == NULL)
 		*lst = new;
 	else
-		list_last(*lst)->next = new;
-}
-
-t_env	*list_last(t_env *lst)
-{
-	if (lst == NULL)
-		return (NULL);
-	while (lst->next)
 	{
-		lst = lst->next;
+		last = *lst;
+		while (last->next)
+			last = last->next;
+		last->next = new;
 	}
-	return (lst);
 }
 
-void	free_env_struct(t_env *env)
+void	free_token_struct(t_token *token)
 {
-	t_env	*tmp;
+	t_token	*tmp;
 
-	while (env->next)
+	while (token->next)
 	{
-		if (env->key)
-			free(env->key);
-		if (env->value)
-			free(env->value);
-		tmp = env->next;
-		free(env);
-		env = tmp;
+		if (token->value)
+			free(token->value);
+		tmp = token->next;
+		free(token);
+		token = tmp;
 	}
 	if (tmp)
 	{
-		free(tmp->key);
 		free(tmp->value);
 		free(tmp);
 		tmp = NULL;
 	}
 }
 
-int	listsize(t_env *env)
+int	tk_listsize(t_token *token)
 {
 	size_t	size;
 
-	if (env == NULL)
+	if (token == NULL)
 		return (0);
 	size = 1;
-	while (env->next != NULL)
+	while (token->next != NULL)
 	{
 		size++;
-		env = env->next;
+		token = token->next;
 	}
 	return (size);
 }
