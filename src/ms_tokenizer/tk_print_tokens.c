@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 14:51:45 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/28 17:20:17 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/01/02 12:05:28 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 
 void	print_tokens(t_token *token_tmp)
 {
-	printf("\n\nFUNCAO PRINT TOKENS:\n\n");
-	printf("------------------------------");
-	printf(" \n");
-	while (token_tmp->next)
+	int	i;
+
+	i = 0;
+	printf("------------------------------\n");
+	while (token_tmp)
 	{
-		printf("token = %s\n", token_tmp->value);
+		printf("[%d]Token = %s\n", i, token_tmp->value);
 		token_tmp = token_tmp->next;
+		i++;
 	}
 	printf("------------------------------\n");
 }

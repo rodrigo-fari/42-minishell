@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/28 17:01:38 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/01/02 11:52:05 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,10 @@ void	exec_exe(char *command, char **user_input, t_env *env);
 
 //[bi_exit.c]
 void	bi_exit(char **commands, t_env *env);
+
+//[bi_export.c]
+void	bi_export(t_env *env, char **user_input);
+bool	env_add(t_env *env, char *key, char *value);
 
 //[bi_pwd.c]
 void	bi_pwd(void);
