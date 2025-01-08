@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 11:18:50 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/01/02 14:33:38 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/01/08 14:41:42 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	bi_echo(t_token *tmp)
 	flag = true;
 	while (tmp)
 	{
+		tmp = tmp->next;
 		while (tmp && flag_verify(tmp->value))
 		{
 			flag = false;
@@ -27,7 +28,7 @@ void	bi_echo(t_token *tmp)
 			else
 				tmp = tmp->next;
 		}
-		while (tmp->value)
+		while (tmp)
 		{
 			printf("%s", tmp->value);
 			if (tmp->next)
