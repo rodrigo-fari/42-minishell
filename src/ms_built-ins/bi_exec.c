@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 12:18:54 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/01/08 15:20:46 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/01/08 17:04:37 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	exec_exe(t_token *tmp, t_env *env, char **commands)
 		{
 			full_command = ft_strjoin("/bin/", tmp->value);
 			printf("full_command= %s\n", full_command);
-			execve(tmp->value, commands	, NULL);
+			execve(full_command, commands, NULL);
 			free(full_command);
 		}
 		bi_error("bash: command not found");
