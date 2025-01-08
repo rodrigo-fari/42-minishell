@@ -22,12 +22,13 @@ Talvez seja necessario refazer todos os builtins para nova adaptação!
 ________________________________________________________________________________
 
 ________________________________________________________________________________
-R 03/01/2025 - Sexta-feira
+R 08/01/2025 - Quarta-feira
 
-･
-･
-･
-･
-･
-･
+･Verificação de tokenizer no linux/MacOS.✅
+OBS: Parece que no linux o O processo de separaçãop de tokens está funcionando perfeitamente, porém na platforma MacOS não esta dividindo da mneira correta. O código é o mesmo porém o output está sendo diferente. Verificar no computador da escola.
+･Resolver parâmetros dos Built-ins.❌
+･Verificação de limpeza de memória no fim da execução do programa.❌
+･Resolver situação do comando "echo":❌
+INPUT :ec"ho" ola%
+OUTPUT:ola%
 ________________________________________________________________________________
