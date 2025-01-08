@@ -27,8 +27,10 @@ R 08/01/2025 - Quarta-feira
 ･Verificação de tokenizer no linux/MacOS.✅
 OBS: Parece que no linux o O processo de separaçãop de tokens está funcionando perfeitamente, porém na platforma MacOS não esta dividindo da mneira correta. O código é o mesmo porém o output está sendo diferente. Verificar no computador da escola.
 ･Resolver parâmetros dos Built-ins.❌
-･Verificação de limpeza de memória no fim da execução do programa.❌
-･Resolver situação do comando "echo":❌
+･Verificação de limpeza de memória no fim da execução do programa.✅
+OBS: Programa está limpando maior parte da memória alocad, porém, é necessario finalizar os built-ins para verificar se a memoria está sendo limpa por completo
+･Resolver situação do comando "ec"ho:❌
 INPUT :ec"ho" ola%
 OUTPUT:ola%
+･Resolver input do execve. Comando não está reconhecendo o absolute path. Após execução, programa devolve "[ERRO]Bash: Commands not found."
 ________________________________________________________________________________
