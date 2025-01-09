@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/01/08 15:06:50 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/01/09 15:11:45 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,11 +155,12 @@ bool	parse_redin(char **commands);
 bool	parse_redout(char **commands);
 
 //[ps_remove_quotes.c]
-int		total_quotes(char *input);
+int		quote_nbr(char *input);
+int		quote_type(char *input);
 void	remove_quotes(char **commands);
-int		first_quote_number(char *input);
-char	*remove_quote_even(char *input);
-char	*remove_quote_odd(char *input, char first_quote);
+char	*remove_all_quotes(char *input);
+char	*remove_first_quote(char *input);
+
 
 //=====================================| ms_sighand |
 //[sh_sig_treatment.c]

@@ -1,8 +1,9 @@
 Formatação do log de trabalho:
 
 Pessoa 00/00/0000 - Dia da semana
-✅ - Feito
-❌ - Ficou por fazer
+✅ - Feito.
+❌ - Ficou por fazer.
+🟨 - Atenção.
 
 ________________________________________________________________________________
 R 02/01/2025 - Quinta-feira
@@ -33,4 +34,15 @@ OBS: Programa está limpando maior parte da memória alocad, porém, é necessar
 INPUT :ec"ho" ola%
 OUTPUT:ola%
 ･Resolver input do execve. Comando não está reconhecendo o absolute path. Após execução, programa devolve "[ERRO]Bash: Commands not found."
+________________________________________________________________________________
+
+________________________________________________________________________________
+R 09/01/2025 - Quinta-feira
+
+･Resolver parâmetros dos Built-ins.❌
+･Resolver situação do echo.❌
+Obs: Se as aspas tiverem no inicio do comando o programa funcionará devidamente removendo as aspas do argumento e executando o comando normalmente. Porém se as aspas estiverem no meio do argumento o programa reconhece o argumento com as aspas e devolve "command not found".
+･Resolver situação do comando exit (double free() SIGSEGV).❌
+･Atualizar parceira do ponto de situação do projeto.✅
+･Arquivo ps_expand_var.c está vazio!🟨
 ________________________________________________________________________________

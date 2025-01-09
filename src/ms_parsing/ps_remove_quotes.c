@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 17:57:40 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/28 16:57:01 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/01/09 15:14:13 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,103 +14,124 @@
 
 void	remove_quotes(char **commands)
 {
-	char	quote;
-	int		i;
+	int	i;
+	int	j;
+	int	quote_nbr;
 
+quote_nbr = 0;
 	i = 0;
 	while (commands[i])
 	{
-		if (commands[i][0] == '\'' || commands[i][0] == '\"')
-			quote = commands[i][0];
-		if (first_quote_number(commands[i]) % 2 == 0)
-			commands[i] = remove_quote_even(commands[i]);
-		else
-			commands[i] = remove_quote_odd(commands[i], quote);
-		i++;
-	}
-}
-
-char	*remove_quote_odd(char *input, char first_quote)
-{
-	char	*n_input;
-	int		size;
-	int		i;
-	int		j;
-
-	size = (ft_strlen(input)) - (first_quote_number(input) * 2);
-	n_input = ft_calloc(sizeof(char), (size + 1));
-	i = 0;
-	j = 0;
-	while (input[i])
-	{
-		if (input[i] && input[i] == first_quote)
-			i++;
-		else
-			n_input[j++] = input[i++];
-	}
-	n_input[j] = '\0';
-	free(input);
-	return (n_input);
-}
-
-char	*remove_quote_even(char *input)
-{
-	char	*n_input;
-	int		size;
-	int		i;
-	int		j;
-
-	size = ft_strlen(input) - total_quotes(input);
-	n_input = ft_calloc(sizeof(char), (size + 1));
-	i = 0;
-	j = 0;
-	while (input[i])
-	{
-		if (input[i] && (input[i] == '\"' || input[i] == '\''))
-			i++;
-		else
-			n_input[j++] = input[i++];
-	}
-	free(input);
-	return (n_input);
-}
-
-int	total_quotes(char *input)
-{
-	int	total_quotes;
-	int	i;
-
-	i = 0;
-	total_quotes = 0;
-	while (input [i])
-	{
-		if (input[i] && (input[i] == '\"' || input[i] == '\''))
+		j = 0;
+		while (commands[i][j])
 		{
-			total_quotes++;
-			i++;
+			if (commands[i][j] == '\"' || commands[i][j] == '\'')
+				quote_nbr++;
+			j++;
 		}
+		if (quote_nbr % 2 == 0)
+			commands[i] = remove_all_quotes(commands[i]);
 		else
-			i++;
+			if (quote_type(commands[i]) == 2)
+				remove_all_quotes(commands[i]);
+			else
+				remove_first_quote(commands[i]);
+		i++;
 	}
-	return (total_quotes);
 }
 
-int	first_quote_number(char *input)
+int	quote_nbr(char *input)
 {
-	int		quote_count;
-	char	first_quote;
 	int		i;
+	int		quotes;
 
-	quote_count = 0;
-	first_quote = 0;
+	quotes = 0;
+	i = 0;
+
+	while (input[i])
+	{
+		if (input [i] == '\'' || input[i] == '\"')
+			quotes++;
+		i++;
+	}
+	return (quotes);
+}
+
+int	quote_type(char *input)
+{
+	int		i;
+	char	quote;
+	int		quote_nbr;
+
+	quote_nbr = 0;
 	i = 0;
 	while (input[i])
 	{
-		if (!first_quote && (input[i] == '\'' || input[i] == '\"'))
-			first_quote = input[i];
-		if (input[i] == first_quote)
-			quote_count++;
+		if (input[i] == '\"' || input[i] == '\'')
+		{
+			quote = input[i++];
+			quote_nbr++;
+		}
+		if (input[i] == quote)
+			quote_nbr++;
 		i++;
 	}
-	return (quote_count / 2);
+	return (quote_nbr);
+}
+
+char	*remove_all_quotes(char *input)
+{
+	int		i;
+	int		j;
+	int		size;
+	char	*output;
+
+	size = ft_strlen(input) - quote_nbr(input);
+	output = ft_calloc(sizeof(char), (size + 1));
+	j = 0;
+	i = 0;
+	while (input[i])
+	{
+		if (input[i] == '\"' || input [i] == '\'')
+			i++;
+		else
+			output[j++] = input[i++];
+	}
+	output[j] = '\0';
+	return (output);
+}
+
+
+char	*remove_first_quote(char *input)
+{
+	int		i;
+	int		j;
+	int		size;
+	char	quote;
+	char	*output;
+
+	i = 0;
+	while (input[i] && (input[i] != '\'' || input [i] != '\"'))
+		i++;
+	if (input[i] && (input[i] != '\'' || input [i] != '\"'))
+		quote = input[i];
+	i = 0;
+	while (input[i])
+	{
+		while (input[i] == quote)
+			i++;
+		size++;
+		i++;
+	}
+	output = ft_calloc(sizeof(char), (size + 1));
+	i = 0;
+	j = 0;
+	while (input[i])
+	{
+		if (input[i] && input[i] == quote)
+			i++;
+		else
+			output[j] = input[i];
+	}
+	return (output);
 }
