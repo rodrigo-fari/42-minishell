@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/01/09 15:11:45 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/01/20 12:04:53 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ t_env	*env_manager(t_env *env);
 t_env	*env_to_struct(char **environ);
 
 //[ev_print_env.c]
-void	print_env(void);
+void	print_env(t_env *env);
 
 //[ev_utils.c]
 t_env	*list_last(t_env *lst);

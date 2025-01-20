@@ -6,18 +6,17 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:18:36 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/01/02 12:45:19 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/01/20 12:04:36 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-void	print_env(void)
+void	print_env(t_env *env)
 {
 	t_env	*temp;
-
-	temp = env_manager(NULL);
-	while (temp->next)
+	env = env_manager(NULL);
+	temp = env;
+	while (temp)
 	{
 		printf("%s=%s\n", temp->key, temp->value);
 		temp = temp->next;

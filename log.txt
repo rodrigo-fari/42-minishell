@@ -41,8 +41,18 @@ R 09/01/2025 - Quinta-feira
 
 ･Resolver parâmetros dos Built-ins.❌
 ･Resolver situação do echo.❌
-Obs: Se as aspas tiverem no inicio do comando o programa funcionará devidamente removendo as aspas do argumento e executando o comando normalmente. Porém se as aspas estiverem no meio do argumento o programa reconhece o argumento com as aspas e devolve "command not found".
+Obs: Se as aspas tiverem no inicio do comando o programa funcionará devidamente removendo as aspas do argumento e executando o comando normalmente. Porém se as aspas estiverem no meio do argumento o programa reconhece o argumento com as aspas e devolve "command not found".✅
 ･Resolver situação do comando exit (double free() SIGSEGV).❌
 ･Atualizar parceira do ponto de situação do projeto.✅
 ･Arquivo ps_expand_var.c está vazio!🟨
+________________________________________________________________________________
+
+________________________________________________________________________________
+R 20/01/2025 - Segunda-feira
+
+･Resolver parâmetros dos Built-ins.❌
+･Resolver situação do comando exit (invalid free() SIGSEGV).❌
+･Atualizar parceira do ponto de situação do projeto.✅
+･Arquivo ps_expand_var.c está vazio!🟨
+･Correção do comando "env". Comando não está printando as envs devidamente, apresenta um delay no input e devolve o terminal.✅
 ________________________________________________________________________________

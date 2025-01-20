@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 12:18:54 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/01/09 10:37:36 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/01/20 12:05:07 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	bi_exec(t_env *env, t_token *tokens, char **commands)
 	if (ft_strcmp(tmp->value, "exit") == 0)
 		bi_exit(tmp, env, commands);
 	else if (ft_strcmp(tmp->value, "env") == 0)
-	print_env();
+	print_env(env);
 	// else if (ft_strcmp(tmp->value, "cd") == 0)
 	// 	bi_cd(tmp, env);
 	// else if (ft_strcmp(tmp->value, "unset") == 0)

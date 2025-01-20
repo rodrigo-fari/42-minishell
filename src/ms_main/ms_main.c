@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 09:47:50 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/01/02 12:48:07 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/01/20 12:00:03 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(void)
 		env = env_manager(NULL);
 		input = readline("minishell$ ");
 		signal(SIGINT, sig_ctrl_c);
-		if (input[0] != '\0')
+		if (input[0])
 		{
 			add_history(input);
 			env = env_manager(NULL);
