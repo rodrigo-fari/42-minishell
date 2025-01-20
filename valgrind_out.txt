@@ -1,0 +1,65 @@
+==18710== Memcheck, a memory error detector
+==18710== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==18710== Using Valgrind-3.23.0 and LibVEX; rerun with -h for copyright info
+==18710== Command: ./minishell
+==18710== Parent PID: 18707
+==18710== 
+==18710== 
+==18710== HEAP SUMMARY:
+==18710==     in use at exit: 233,123 bytes in 258 blocks
+==18710==   total heap usage: 1,141 allocs, 883 frees, 268,645 bytes allocated
+==18710== 
+==18710== 19 bytes in 3 blocks are indirectly lost in loss record 13 of 83
+==18710==    at 0x488547C: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
+==18710==    by 0x1245BF: ft_calloc (in /home/spooky/projects/42_minishell/minishell)
+==18710==    by 0x122147: remove_all_quotes (in /home/spooky/projects/42_minishell/minishell)
+==18710==    by 0x121F23: remove_quotes (in /home/spooky/projects/42_minishell/minishell)
+==18710==    by 0x1260BF: ms_exec (in /home/spooky/projects/42_minishell/minishell)
+==18710==    by 0x1261EB: main (in /home/spooky/projects/42_minishell/minishell)
+==18710== 
+==18710== 19 bytes in 3 blocks are indirectly lost in loss record 14 of 83
+==18710==    at 0x488547C: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
+==18710==    by 0x125927: ft_strdup (in /home/spooky/projects/42_minishell/minishell)
+==18710==    by 0x12154B: token_to_struct (in /home/spooky/projects/42_minishell/minishell)
+==18710==    by 0x1260C7: ms_exec (in /home/spooky/projects/42_minishell/minishell)
+==18710==    by 0x1261EB: main (in /home/spooky/projects/42_minishell/minishell)
+==18710== 
+==18710== 24 bytes in 1 blocks are indirectly lost in loss record 17 of 83
+==18710==    at 0x488547C: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
+==18710==    by 0x1245BF: ft_calloc (in /home/spooky/projects/42_minishell/minishell)
+==18710==    by 0x12152F: token_to_struct (in /home/spooky/projects/42_minishell/minishell)
+==18710==    by 0x1260C7: ms_exec (in /home/spooky/projects/42_minishell/minishell)
+==18710==    by 0x1261EB: main (in /home/spooky/projects/42_minishell/minishell)
+==18710== 
+==18710== 26 bytes in 4 blocks are definitely lost in loss record 20 of 83
+==18710==    at 0x488547C: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
+==18710==    by 0x1245BF: ft_calloc (in /home/spooky/projects/42_minishell/minishell)
+==18710==    by 0x125A53: ft_substr (in /home/spooky/projects/42_minishell/minishell)
+==18710==    by 0x121327: extract_word (in /home/spooky/projects/42_minishell/minishell)
+==18710==    by 0x12115B: tk_splitter (in /home/spooky/projects/42_minishell/minishell)
+==18710==    by 0x126077: ms_exec (in /home/spooky/projects/42_minishell/minishell)
+==18710==    by 0x1261EB: main (in /home/spooky/projects/42_minishell/minishell)
+==18710== 
+==18710== 59 (40 direct, 19 indirect) bytes in 2 blocks are definitely lost in loss record 25 of 83
+==18710==    at 0x488547C: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
+==18710==    by 0x1245BF: ft_calloc (in /home/spooky/projects/42_minishell/minishell)
+==18710==    by 0x1210E7: tk_splitter (in /home/spooky/projects/42_minishell/minishell)
+==18710==    by 0x126077: ms_exec (in /home/spooky/projects/42_minishell/minishell)
+==18710==    by 0x1261EB: main (in /home/spooky/projects/42_minishell/minishell)
+==18710== 
+==18710== 91 (48 direct, 43 indirect) bytes in 2 blocks are definitely lost in loss record 28 of 83
+==18710==    at 0x488547C: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-arm64-linux.so)
+==18710==    by 0x1245BF: ft_calloc (in /home/spooky/projects/42_minishell/minishell)
+==18710==    by 0x12152F: token_to_struct (in /home/spooky/projects/42_minishell/minishell)
+==18710==    by 0x1260C7: ms_exec (in /home/spooky/projects/42_minishell/minishell)
+==18710==    by 0x1261EB: main (in /home/spooky/projects/42_minishell/minishell)
+==18710== 
+==18710== LEAK SUMMARY:
+==18710==    definitely lost: 114 bytes in 8 blocks
+==18710==    indirectly lost: 62 bytes in 7 blocks
+==18710==      possibly lost: 0 bytes in 0 blocks
+==18710==    still reachable: 0 bytes in 0 blocks
+==18710==         suppressed: 232,947 bytes in 243 blocks
+==18710== 
+==18710== For lists of detected and suppressed errors, rerun with: -s
+==18710== ERROR SUMMARY: 3 errors from 3 contexts (suppressed: 0 from 0)

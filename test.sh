@@ -62,7 +62,6 @@ for test in "${tests[@]}"; do
 done
 
 # Adicionar comando de saída ao final do arquivo
-echo "exit" >> "$tmpfile"
 
 # Executar o minishell com os comandos do arquivo temporário
 ./minishell < "$tmpfile"
