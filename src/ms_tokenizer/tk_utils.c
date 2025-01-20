@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 14:47:09 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/28 17:12:07 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/01/20 14:58:00 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	free_token_struct(t_token *token)
 {
 	t_token	*tmp;
 
-	while (token->next)
+	while (token)
 	{
 		if (token->value)
 			free(token->value);
