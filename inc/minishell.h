@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/01/22 14:38:21 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/01/22 14:50:51 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	bi_error(char *str);
 
 //[bi_exec.c]
 void	bi_exec(t_env *env, t_token *tokens, char **commands);
-void	exec_exe(t_token *tmp,t_env *env, char **commands);
+void	exec_exe(t_token *tmp, t_env *env, char **commands);
 
 //[bi_exit.c]
 void	bi_exit(t_token *tokens, t_env *env, char **commands);
@@ -126,7 +126,7 @@ void	print_env(t_env *env);
 int		listsize(t_env *env);
 t_env	*list_last(t_env *lst);
 void	free_env_struct(t_env *env);
-char	**ft_array_envs(t_env *envs);
+char	**array_envs(t_env *envs);
 void	listadd_back(t_env **lst, t_env *new);
 
 //=====================================| ms_main |
@@ -162,7 +162,6 @@ int		quote_type(char *input);
 void	remove_quotes(char **commands);
 char	*remove_all_quotes(char *input);
 char	*remove_first_quote(char *input);
-
 
 //=====================================| ms_sighand |
 //[sh_sig_treatment.c]

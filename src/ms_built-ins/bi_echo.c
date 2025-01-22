@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 11:18:50 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/01/08 14:41:42 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/01/22 13:57:18 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	bi_echo(t_token *tmp)
 		}
 		while (tmp)
 		{
-			printf("%s", tmp->value);
 			if (tmp->next)
 				printf(" ");
 			tmp = tmp->next;

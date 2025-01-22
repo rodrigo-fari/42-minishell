@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 17:57:40 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/01/22 14:22:12 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/01/22 14:49:52 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ void	remove_quotes(char **commands)
 		else
 			if (quote_type(commands[i]) == 2)
 				remove_all_quotes(commands[i]);
-			else
-				remove_first_quote(commands[i]);
+		else
+			remove_first_quote(commands[i]);
 		i++;
 	}
 }
@@ -47,7 +47,6 @@ int	quote_nbr(char *input)
 
 	quotes = 0;
 	i = 0;
-
 	while (input[i])
 	{
 		if (input [i] == '\'' || input[i] == '\"')
@@ -101,7 +100,6 @@ char	*remove_all_quotes(char *input)
 	free (input);
 	return (output);
 }
-
 
 char	*remove_first_quote(char *input)
 {

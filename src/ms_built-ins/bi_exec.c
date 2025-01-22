@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 12:18:54 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/01/22 11:37:04 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/01/22 14:48:15 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	bi_exec(t_env *env, t_token *tokens, char **commands)
 	(void)env;
 	tmp = tokens;
 	env = env_manager(NULL);
-	// if (ft_strcmp(tmp->value, "echo") == 0)
-	// 	bi_echo(tmp);
+	if (ft_strcmp(tmp->value, "echo") == 0)
+	bi_echo(tmp);
 	// else if (ft_strcmp(tmp->value, "pwd") == 0)
 	// 	bi_pwd();
 	if (ft_strcmp(tmp->value, "exit") == 0)
@@ -42,16 +42,18 @@ void	exec_exe(t_token *tmp, t_env *env, char **commands)
 	char	*full_command;
 	pid_t	execve_new_process;
 	int		status;
+	char	**envs_array;
 
+	envs_array = array_envs(env);
 	execve_new_process = fork();
 	if (execve_new_process == 0)
 	{
 		if (ft_strchr(tmp->value, '/'))
-			execve(tmp->value, commands, NULL);
+			execve(tmp->value, commands, envs_array);
 		else
 		{
 			full_command = ft_strjoin("/bin/", tmp->value);
-			execve(full_command, commands, NULL);
+			execve(full_command, commands, envs_array);
 			free(full_command);
 		}
 		bi_error("bash: command not found");
@@ -61,5 +63,5 @@ void	exec_exe(t_token *tmp, t_env *env, char **commands)
 		waitpid(execve_new_process, &status, 0);
 	else
 		perror("fork");
-	(void)env;
+	free_splits(envs_array);
 }

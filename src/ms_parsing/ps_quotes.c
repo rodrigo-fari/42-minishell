@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 16:18:19 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/01/20 15:25:25 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/01/22 14:49:15 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ bool	parse_quotes(char *input)
 		while (input[i] && (input[i] != '\'' && input[i] != '\"'))
 			i++;
 		if (input[i] == '\0')
-			break;
+			break ;
 		quote = input[i];
 		i++;
 		validation++;
@@ -34,7 +34,7 @@ bool	parse_quotes(char *input)
 		if (input[i] == quote)
 			validation++;
 		if (input[i] == '\0')
-			break;
+			break ;
 		i++;
 	}
 	if (validation % 2 != 0)
