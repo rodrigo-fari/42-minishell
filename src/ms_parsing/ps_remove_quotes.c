@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 17:57:40 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/01/22 12:24:46 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/01/22 14:22:12 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ char	*remove_first_quote(char *input)
 	char	*output;
 
 	i = 0;
+	size = 0;
 	while (input[i] && (input[i] != '\'' || input [i] != '\"'))
 		i++;
 	if (input[i] && (input[i] != '\'' || input [i] != '\"'))

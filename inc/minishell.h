@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/01/22 12:20:43 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/01/22 14:38:21 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,9 +122,11 @@ t_env	*env_to_struct(char **environ);
 //[ev_print_env.c]
 void	print_env(t_env *env);
 
-//[ev_utils.c]
+//![ev_utils.c] - 5 functions limit achived.
+int		listsize(t_env *env);
 t_env	*list_last(t_env *lst);
 void	free_env_struct(t_env *env);
+char	**ft_array_envs(t_env *envs);
 void	listadd_back(t_env **lst, t_env *new);
 
 //=====================================| ms_main |

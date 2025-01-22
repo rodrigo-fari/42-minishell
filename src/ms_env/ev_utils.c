@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:16:33 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/20 10:46:22 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/01/22 14:36:54 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,32 @@ int	listsize(t_env *env)
 		env = env->next;
 	}
 	return (size);
+}
+
+char	**ft_array_envs(t_env *envs)
+{
+	t_env	*start;
+	int		len;
+	char	*temp;
+	char	**arr;
+
+	len = 1;
+	start = envs;
+	while (envs && len++)
+		envs = envs->next;
+	arr = malloc(sizeof(char *) * len);
+	len = 0;
+	while (start)
+	{
+		temp = ft_strjoin(start->key, "=");
+		if (start->value)
+			arr[len] = ft_strjoin(temp, start->value);
+		else
+			arr[len] = ft_strdup((start->key));
+		free(temp);
+		len++;
+		start = start->next;
+	}
+	arr[len] = 0;
+	return (arr);
 }
