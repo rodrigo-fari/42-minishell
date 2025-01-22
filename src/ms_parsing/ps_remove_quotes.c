@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 17:57:40 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/01/09 15:14:13 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/01/22 12:24:46 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	remove_quotes(char **commands)
 	int	j;
 	int	quote_nbr;
 
-quote_nbr = 0;
+	quote_nbr = 0;
 	i = 0;
 	while (commands[i])
 	{
@@ -98,6 +98,7 @@ char	*remove_all_quotes(char *input)
 			output[j++] = input[i++];
 	}
 	output[j] = '\0';
+	free (input);
 	return (output);
 }
 
@@ -133,5 +134,6 @@ char	*remove_first_quote(char *input)
 		else
 			output[j] = input[i];
 	}
+	free (input);
 	return (output);
 }

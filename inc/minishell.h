@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/01/20 12:04:53 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/01/22 12:20:43 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ typedef struct s_env
 }	t_env;
 
 //=====================================| ms_built-in |
-//[bi_cd.c]
+//![bi_cd.c] - 5 functions limit achived.
 void	bi_cd(char **args, t_env *env);
 char	*find_oldpwd_in_env(t_env *env);
 char	*find_path_home_in_env(t_env *env);
@@ -154,7 +154,7 @@ bool	parse_redin(char **commands);
 //[ps_redout.c]
 bool	parse_redout(char **commands);
 
-//[ps_remove_quotes.c]
+//![ps_remove_quotes.c] - 5 functions limit achived.
 int		quote_nbr(char *input);
 int		quote_type(char *input);
 void	remove_quotes(char **commands);
@@ -172,7 +172,6 @@ void	print_tokens(t_token *token);
 
 //[tk_split.c]
 char	*extract_word(char *input, int *i);
-int		skip_whitespace(char *input, int i);
 char	**tk_splitter(char *input, int i, int j);
 int		tk_count_words(char *input, int i, int count);
 
@@ -180,10 +179,11 @@ int		tk_count_words(char *input, int i, int count);
 int		token_type(char *token);
 t_token	*token_to_struct(char **commands);
 
-//[tk_utils.c]
+//![tk_utils.c] - 5 functions limit achived.
 int		tk_listsize(t_token *token);
 t_token	*tk_list_last(t_token *lst);
 void	free_token_struct(t_token *token);
+int		skip_whitespace(char *input, int i);
 void	tk_listadd_back(t_token **lst, t_token *new);
 
 //=====================================| Endif |

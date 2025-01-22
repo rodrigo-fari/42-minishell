@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 12:34:20 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/26 14:46:13 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/01/22 12:26:45 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,9 +87,3 @@ char	*extract_word(char *input, int *i)
 	return (word);
 }
 
-int	skip_whitespace(char *input, int i)
-{
-	while (input[i] && ft_isspace(input[i]))
-		i++;
-	return (i);
-}

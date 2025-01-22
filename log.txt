@@ -6,6 +6,10 @@ Pessoa 00/00/0000 - Dia da semana
 🟨 - Atenção.
 
 ________________________________________________________________________________
+VALGRIND + READLINE LEAKS:
+
+･Para saber se os leaks existentes no valgrind são do programa ou do readline, soma quantidade de blocos suprimidos, mais a quantidade de blocos que foram liberados. A resposta a essa soma é a quantidade de allocs que o programa realizou.
+________________________________________________________________________________________________________________________________________________________________
 R 02/01/2025 - Quinta-feira
 
 ･Colocar print_tokens para funcionar✅
@@ -21,7 +25,6 @@ Foi alterado a forma que os built-ins recebem os argumentos, envez de receberem 
 Talvez seja necessario refazer todos os builtins para nova adaptação!
 
 ________________________________________________________________________________
-
 ________________________________________________________________________________
 R 08/01/2025 - Quarta-feira
 
@@ -35,7 +38,6 @@ INPUT :ec"ho" ola%
 OUTPUT:ola%
 ･Resolver input do execve. Comando não está reconhecendo o absolute path. Após execução, programa devolve "[ERRO]Bash: Commands not found."
 ________________________________________________________________________________
-
 ________________________________________________________________________________
 R 09/01/2025 - Quinta-feira
 
@@ -46,7 +48,6 @@ Obs: Se as aspas tiverem no inicio do comando o programa funcionará devidamente
 ･Atualizar parceira do ponto de situação do projeto.✅
 ･Arquivo ps_expand_var.c está vazio!🟨
 ________________________________________________________________________________
-
 ________________________________________________________________________________
 R 20/01/2025 - Segunda-feira
 
@@ -55,4 +56,24 @@ R 20/01/2025 - Segunda-feira
 ･Atualizar parceira do ponto de situação do projeto.✅
 ･Arquivo ps_expand_var.c está vazio!🟨
 ･Correção do comando "env". Comando não está printando as envs devidamente, apresenta um delay no input e devolve o terminal.✅
+________________________________________________________________________________________________________________________________________________________________
+R 20/01/2025 - Segunda-feira
+
+･Resolver parâmetros dos Built-ins.❌
+･Resolver situação do comando exit (invalid free() SIGSEGV).❌
+･Atualizar parceira do ponto de situação do projeto.✅
+･Arquivo ps_expand_var.c está vazio!🟨
+･Correção do comando "env". Comando não está printando as envs devidamente, apresenta um delay no input e devolve o terminal.✅
 ________________________________________________________________________________
+________________________________________________________________________________
+R 20/01/2025 - Quinta-feira
+
+･Leaks do programa removidos.✅
+________________________________________________________________________________
+________________________________________________________________________________
+R 20/01/2025 - Sexta-feira
+
+･Teste para verificar se ainda existe leaks de memória.
+･Resolução do comando "CLEAR" está sento executado no processo filho. (TERM environments variable not set).
+________________________________________________________________________________
+

@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 14:47:09 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/01/20 14:58:00 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/01/22 12:19:21 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,11 @@ int	tk_listsize(t_token *token)
 		token = token->next;
 	}
 	return (size);
+}
+
+int	skip_whitespace(char *input, int i)
+{
+	while (input[i] && ft_isspace(input[i]))
+		i++;
+	return (i);
 }
