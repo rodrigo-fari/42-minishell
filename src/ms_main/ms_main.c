@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 09:47:50 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/01/22 14:38:45 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/01/23 12:02:12 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(void)
 	while (true)
 	{
 		env = env_manager(NULL);
-		input = readline("minishell$ ");
+		input = readline("👹$ ");
 		signal(SIGINT, sig_ctrl_c);
 		if (input[0])
 		{

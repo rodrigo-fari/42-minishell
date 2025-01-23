@@ -41,8 +41,8 @@ $(NAME): 			$(OBJS) $(LIBFT)
 					@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -lreadline -o $(NAME)
 
 $(OBJ_DIR)%.o:		$(SRC_DIR)%.c
-					@clear
-					@echo "🔧 Compiling..."
+					@echo -n "🔧 Compiling $<"
+					@echo $(GREEN)" [OK]"$(RESET)
 					@mkdir -p $(@D)
 					@$(CC) $(CFLAGS) -c $< -o $@
 
@@ -77,8 +77,8 @@ val:
 						--log-file=valgrind_out.txt \
 						--suppressions=readline_leaks ./$(NAME)
 
-#==============================================================================|
-#
-# Any additional notes or tasks can be added here.
-#
-#==============================================================================|
+#|=============================================================================|
+#|
+#|Any additional notes or tasks can be added here.
+#|
+#|=============================================================================|
