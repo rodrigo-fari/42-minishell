@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 11:18:50 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/01/22 15:06:39 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/01/23 13:42:56 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,14 @@ void	bi_echo(t_token *tmp)
 		}
 		while (tmp)
 		{
+			printf("%s", tmp->value);
 			if (tmp->next)
 				printf(" ");
 			tmp = tmp->next;
 		}
-		if (flag)
-			printf("\n");
 	}
+	if (tmp == NULL && flag)
+		printf("\n");
 }
 
 bool	flag_verify(char *str)

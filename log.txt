@@ -66,14 +66,19 @@ R 20/01/2025 - Segunda-feira
 ･Correção do comando "env". Comando não está printando as envs devidamente, apresenta um delay no input e devolve o terminal.✅
 ________________________________________________________________________________
 ________________________________________________________________________________
-R 20/01/2025 - Quinta-feira
+R 21/01/2025 - Terça-feira
 
 ･Leaks do programa removidos.✅
 ________________________________________________________________________________
 ________________________________________________________________________________
-R 20/01/2025 - Sexta-feira
+R 22/01/2025 - Quarta-feira
 
-･Teste para verificar se ainda existe leaks de memória.
-･Resolução do comando "CLEAR" está sento executado no processo filho. (TERM environments variable not set).
+･Teste para verificar se ainda existe leaks de memória.✅
+･Resolução do comando "CLEAR" está sento executado no processo filho. (TERM environments variable not set).✅
+________________________________________________________________________________________________________________________________________________________________
+R 23/01/2025 - Quinta-feira
+
+･Consertar comando echo printando o "\n" qundo não deve.✅
+･Atualização de GITHUB projects.✅
+･Criaçãoganização de funções com mais de 25 linhas.🟨
 ________________________________________________________________________________
-

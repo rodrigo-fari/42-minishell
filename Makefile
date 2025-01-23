@@ -8,7 +8,7 @@ SRC_DIR				= src/
 OBJ_DIR				= obj/
 CC					= cc
 #------------|Lembrar de remover "-g" antes de submeter ("-g" gdb)|
-CFLAGS				= -Wall -Werror -Wextra -I$(INC)
+CFLAGS				= -Wall -Werror -Wextra -g3 -I$(INC)
 #---------------------------------------------------------------------|
 RM					= rm -rf
 SRCS				= $(shell find $(SRC_DIR) -type f -name "*.c")
@@ -35,7 +35,6 @@ all: 				$(NAME)
 					@echo " "
 					sleep 1
 					@clear
-					./$(NAME)
 
 $(NAME): 			$(OBJS) $(LIBFT)
 					@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -lreadline -o $(NAME)

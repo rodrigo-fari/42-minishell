@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 18:41:11 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/04 13:05:20 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/01/23 13:59:39 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ size_t	ft_strlen(const char *str)
 {
 	size_t		i;
 
+	if (!str)
+		return (0);
 	i = 0;
 	while (str[i])
 		i++;
