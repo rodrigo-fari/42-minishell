@@ -6,20 +6,16 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 16:18:19 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/01/22 14:49:15 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/01/22 14:54:27 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-bool	parse_quotes(char *input)
+bool	parse_quotes(char *input, int i, int validation)
 {
 	char	quote;
-	int		validation;
-	int		i;
 
-	i = 0;
-	validation = 0;
 	while (input[i])
 	{
 		while (input[i] && (input[i] != '\'' && input[i] != '\"'))

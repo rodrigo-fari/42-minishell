@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 15:43:40 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/01/02 12:44:28 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/01/22 14:54:51 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ bool	ps_parsing(char **commands, int i)
 {
 	while (commands[i])
 	{
-		if (!parse_quotes(commands[i]))
+		if (!parse_quotes(commands[i], 0, 0))
 			return (false);
 		i++;
 	}
