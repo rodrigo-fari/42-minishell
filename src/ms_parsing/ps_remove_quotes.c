@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 17:57:40 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/01/22 14:49:52 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/01/24 14:14:10 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	remove_quotes(char **commands)
 			if (quote_type(commands[i]) == 2)
 				remove_all_quotes(commands[i]);
 		else
-			remove_first_quote(commands[i]);
+			remove_first_quote(commands[i], 0);
 		i++;
 	}
 }
@@ -101,38 +101,30 @@ char	*remove_all_quotes(char *input)
 	return (output);
 }
 
-char	*remove_first_quote(char *input)
+char	*remove_first_quote(char *input, int i)
 {
-	int		i;
 	int		j;
 	int		size;
 	char	quote;
 	char	*output;
 
-	i = 0;
+	while (input[i] && input[i] != '\'' && input[i] != '\"')
+		i++;
+	quote = input[i];
 	size = 0;
-	while (input[i] && (input[i] != '\'' || input [i] != '\"'))
-		i++;
-	if (input[i] && (input[i] != '\'' || input [i] != '\"'))
-		quote = input[i];
-	i = 0;
 	while (input[i])
-	{
-		while (input[i] == quote)
-			i++;
-		size++;
-		i++;
-	}
+		size += (input[i++] != quote);
 	output = ft_calloc(sizeof(char), (size + 1));
+	if (!output)
+		return (NULL);
 	i = 0;
 	j = 0;
 	while (input[i])
 	{
-		if (input[i] && input[i] == quote)
-			i++;
-		else
-			output[j] = input[i];
+		if (input[i] != quote)
+			output[j++] = input[i];
+		i++;
 	}
-	free (input);
+	free(input);
 	return (output);
 }

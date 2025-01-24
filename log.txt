@@ -81,4 +81,8 @@ R 23/01/2025 - Quinta-feira
 ･Consertar comando echo printando o "\n" qundo não deve.✅
 ･Atualização de GITHUB projects.✅
 ･Criaçãoganização de funções com mais de 25 linhas.🟨
+________________________________________________________________________________________________________________________________________________________________
+R 24/01/2025 - Sexta-feira
+
+･Comando echo com aspas simples não está funcionando corretamente com as aspas simples.
 ________________________________________________________________________________
