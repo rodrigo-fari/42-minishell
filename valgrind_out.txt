@@ -1,24 +1,24 @@
-==16161== Memcheck, a memory error detector
-==16161== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
-==16161== Using Valgrind-3.23.0 and LibVEX; rerun with -h for copyright info
-==16161== Command: ./minishell
-==16161== Parent PID: 16158
-==16161== 
-==16161== 
-==16161== HEAP SUMMARY:
-==16161==     in use at exit: 232,910 bytes in 241 blocks
-==16161==   total heap usage: 1,114 allocs, 873 frees, 268,165 bytes allocated
-==16161== 
-==16161== LEAK SUMMARY:
-==16161==    definitely lost: 0 bytes in 0 blocks
-==16161==    indirectly lost: 0 bytes in 0 blocks
-==16161==      possibly lost: 0 bytes in 0 blocks
-==16161==    still reachable: 0 bytes in 0 blocks
-==16161==         suppressed: 232,910 bytes in 241 blocks
-==16161== 
-==16161== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---16161-- 
---16161-- used_suppression:     74 leak readline readline_leaks:2 suppressed: 228,802 bytes in 234 blocks
---16161-- used_suppression:      4 readline_leaks readline_leaks:8 suppressed: 4,108 bytes in 7 blocks
-==16161== 
-==16161== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==23998== Memcheck, a memory error detector
+==23998== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==23998== Using Valgrind-3.23.0 and LibVEX; rerun with -h for copyright info
+==23998== Command: ./minishell
+==23998== Parent PID: 23995
+==23998== 
+==23998== 
+==23998== HEAP SUMMARY:
+==23998==     in use at exit: 232,908 bytes in 241 blocks
+==23998==   total heap usage: 1,109 allocs, 868 frees, 268,177 bytes allocated
+==23998== 
+==23998== LEAK SUMMARY:
+==23998==    definitely lost: 0 bytes in 0 blocks
+==23998==    indirectly lost: 0 bytes in 0 blocks
+==23998==      possibly lost: 0 bytes in 0 blocks
+==23998==    still reachable: 0 bytes in 0 blocks
+==23998==         suppressed: 232,908 bytes in 241 blocks
+==23998== 
+==23998== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+--23998-- 
+--23998-- used_suppression:     74 leak readline readline_leaks:2 suppressed: 228,792 bytes in 234 blocks
+--23998-- used_suppression:      4 readline_leaks readline_leaks:8 suppressed: 4,116 bytes in 7 blocks
+==23998== 
+==23998== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

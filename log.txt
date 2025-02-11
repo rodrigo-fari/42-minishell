@@ -93,3 +93,13 @@ R 10/02/2025 - Segunda-feira
 ･Inicialização de prioridade de execução do projeto.
 
 ________________________________________________________________________________
+
+RETORNO DO 🐸
+
+________________________________________________________________________________
+RA 11/02/2025 - Terça-feira
+
+･Finalizar os built-ins que faltam
+･Criar a expansão de variavel no parcing
+･Resolver a norminette e a função de 40 linhas
+________________________________________________________________________________
