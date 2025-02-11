@@ -84,5 +84,12 @@ R 23/01/2025 - Quinta-feira
 ________________________________________________________________________________________________________________________________________________________________
 R 24/01/2025 - Sexta-feira
 
-･Comando echo com aspas simples não está funcionando corretamente com as aspas simples.
+･Comando echo com aspas simples não está funcionando corretamente.
+________________________________________________________________________________________________________________________________________________________________
+R 10/02/2025 - Segunda-feira
+
+･Criação da documentação do projeto para passagem de informação para parceira
+･Finalização do comando echo
+･Inicialização de prioridade de execução do projeto.
+
 ________________________________________________________________________________

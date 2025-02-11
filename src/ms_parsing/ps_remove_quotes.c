@@ -5,126 +5,129 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/26 17:57:40 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/01/24 14:14:10 by rde-fari         ###   ########.fr       */
+/*   Created: 2025/02/11 17:13:33 by rde-fari          #+#    #+#             */
+/*   Updated: 2025/02/11 17:14:09 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	remove_quotes(char **commands)
+int	count_quotes(char *input, char quote)
 {
+	int	count;
 	int	i;
-	int	j;
-	int	quote_nbr;
 
-	quote_nbr = 0;
-	i = 0;
-	while (commands[i])
-	{
-		j = 0;
-		while (commands[i][j])
-		{
-			if (commands[i][j] == '\"' || commands[i][j] == '\'')
-				quote_nbr++;
-			j++;
-		}
-		if (quote_nbr % 2 == 0)
-			commands[i] = remove_all_quotes(commands[i]);
-		else
-			if (quote_type(commands[i]) == 2)
-				remove_all_quotes(commands[i]);
-		else
-			remove_first_quote(commands[i], 0);
-		i++;
-	}
-}
-
-int	quote_nbr(char *input)
-{
-	int		i;
-	int		quotes;
-
-	quotes = 0;
+	count = 0;
 	i = 0;
 	while (input[i])
 	{
-		if (input [i] == '\'' || input[i] == '\"')
-			quotes++;
-		i++;
-	}
-	return (quotes);
-}
-
-int	quote_type(char *input)
-{
-	int		i;
-	char	quote;
-	int		quote_nbr;
-
-	quote_nbr = 0;
-	i = 0;
-	while (input[i])
-	{
-		if (input[i] == '\"' || input[i] == '\'')
-		{
-			quote = input[i++];
-			quote_nbr++;
-		}
 		if (input[i] == quote)
-			quote_nbr++;
+			count++;
 		i++;
 	}
-	return (quote_nbr);
+	return (count);
 }
 
-char	*remove_all_quotes(char *input)
+int	has_only_one_kind_of_quote(char *input)
+{
+	int	has_single_quote;
+	int	has_double_quote;
+
+	has_single_quote = count_quotes(input, '\'') > 0;
+	has_double_quote = count_quotes(input, '\"') > 0;
+	return (has_single_quote != has_double_quote);
+}
+
+char	*extract_argument(char *input)
 {
 	int		i;
 	int		j;
-	int		size;
 	char	*output;
 
-	size = ft_strlen(input) - quote_nbr(input);
-	output = ft_calloc(sizeof(char), (size + 1));
-	j = 0;
-	i = 0;
-	while (input[i])
-	{
-		if (input[i] == '\"' || input [i] == '\'')
-			i++;
-		else
-			output[j++] = input[i++];
-	}
-	output[j] = '\0';
-	free (input);
-	return (output);
-}
-
-char	*remove_first_quote(char *input, int i)
-{
-	int		j;
-	int		size;
-	char	quote;
-	char	*output;
-
-	while (input[i] && input[i] != '\'' && input[i] != '\"')
-		i++;
-	quote = input[i];
-	size = 0;
-	while (input[i])
-		size += (input[i++] != quote);
-	output = ft_calloc(sizeof(char), (size + 1));
+	output = malloc(ft_strlen(input) + 1);
 	if (!output)
 		return (NULL);
 	i = 0;
 	j = 0;
 	while (input[i])
 	{
-		if (input[i] != quote)
+		if (input[i] != '\'' && input[i] != '\"')
 			output[j++] = input[i];
 		i++;
 	}
+	output[j] = '\0';
 	free(input);
 	return (output);
+}
+
+char	*extract_second_quote_and_argument(char *input, char first_quote)
+{
+	int		i;
+	int		j;
+	char	*output;
+	char	second_quote;
+
+	second_quote = (first_quote == '\'') ? '\"' : '\'';
+	output = malloc(ft_strlen(input) + 1);
+	if (!output)
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (input[i])
+	{
+		if (input[i] == second_quote || (input[i] != '\'' && input[i] != '\"'))
+			output[j++] = input[i];
+		i++;
+	}
+	output[j] = '\0';
+	free(input);
+	return (output);
+}
+
+void	remove_quotes(char **commands)
+{
+	int		i;
+	int		single_quotes;
+	int		double_quotes;
+	char	first_quote;
+
+	i = 0;
+	while (commands[i])
+	{
+		single_quotes = count_quotes(commands[i], '\'');
+		double_quotes = count_quotes(commands[i], '\"');
+		if (has_only_one_kind_of_quote(commands[i]))
+			commands[i] = extract_argument(commands[i]);
+		else if (single_quotes > 0 && double_quotes > 0)
+		{
+			first_quote = '\0';
+			//!REMOVER FOR (POSSIVELMENTE CRIAR FUNÇÃO AUXILIAR)================
+			for (int k = 0; commands[i][k]; k++)
+			{
+				if (commands[i][k] == '\'' || commands[i][k] == '\"')
+				{
+					first_quote = commands[i][k];
+					break;
+				}
+			}
+			//!FOR END =========================================================
+			int first_quote_count = 0;
+			//!REMOVER FOR (POSSIVELMENTE CRIAR FUNÇÃO AUXILIAR)================
+			for (int k = 0; commands[i][k]; k++)
+			{
+				if (commands[i][k] == first_quote)
+					first_quote_count++;
+				else if (commands[i][k] != '\'' && commands[i][k] != '\"')
+					break;
+			}
+			//!FOR END =========================================================
+			if (first_quote_count % 2 == 0)
+				commands[i] = extract_argument(commands[i]);
+			else
+			{
+				commands[i] = extract_second_quote_and_argument(commands[i], first_quote);
+			}
+		}
+		i++;
+	}
 }
