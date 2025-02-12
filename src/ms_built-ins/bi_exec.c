@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 12:18:54 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/02/11 19:30:16 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/02/12 17:54:06 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	bi_exec(t_env *env, t_token *tokens, char **commands)
 	else if (ft_strcmp(tmp->value, "unset") == 0)
 		bi_unset(commands, env);
 	else if (ft_strcmp(tmp->value, "export") == 0)
-		bi_export(commands, tmp);
+		bi_export(env, commands);
 	else
 		exec_exe(tmp, env, commands);
 }

@@ -99,7 +99,15 @@ RETORNO DO 🐸
 ________________________________________________________________________________
 RA 11/02/2025 - Terça-feira
 
-･Finalizar os built-ins que faltam
-･Criar a expansão de variavel no parcing
-･Resolver a norminette e a função de 40 linhas
+･Finalizar os built-ins que faltam🟨
+･Criar a expansão de variavel no parcing🟨
+･Resolver a norminette e a função de 40 linhas🟨
+
+________________________________________________________________________________
+________________________________________________________________________________
+R 12/02/2025 - Quarta-feira
+
+･Resolução da função com mais de 40 linhas + norminette do programa
+･
+･
 ________________________________________________________________________________
