@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 17:47:45 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/02/13 17:48:06 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/02/13 17:50:36 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ char *env_compare(char *input)
 	return NULL;
 }
 
-void	replace_env_variables(char **commands) {
+void	replace_env_variables(char **commands)
+{
 	for (int i = 0; commands[i] != NULL; i++) {
 		char *str = commands[i];
 		char *result = malloc(1);
