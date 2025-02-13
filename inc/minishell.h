@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/02/12 18:13:46 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/02/13 17:23:32 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,6 +166,14 @@ char	*extract_second_quote_and_argument(char *input, char first_quote);
 char	find_first_quote(char *str);
 void	remove_quotes(char **commands);
 int		count_first_quote(char *str, char quote);
+
+//[ps_var_expand.c]
+void	replace_env_variables(char **commands);
+char	*env_compare(char *input);
+
+//[ps_var_expand_utils.c]
+char	*ft_charjoin(char *str, char c);
+char	*ft_strjoin_free(char *s1, char *s2);
 
 //=====================================| ms_sighand |
 //[sh_sig_treatment.c]
