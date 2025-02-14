@@ -100,21 +100,18 @@ ________________________________________________________________________________
 RA 11/02/2025 - Terça-feira
 
 ･Finalizar os built-ins que faltam🟨
-･Criar a expansão de variavel no parcing🟨
-･Resolver a norminette e a função de 40 linhas🟨
+･Criar a expansão de variavel no parcing✅
+･Resolver a norminette e a função de 40 linhas✅
 
 ________________________________________________________________________________
 ________________________________________________________________________________
 R 12/02/2025 - Quarta-feira
 
-･Resolução da função com mais de 40 linhas + norminette do programa
-･
-･
+･Resolução da função com mais de 40 linhas + norminette do programa✅
 ________________________________________________________________________________
 ________________________________________________________________________________
-R 13/02/2025 - Quinta-feira
+R 14/02/2025 - Quinta-feira
 
-･Criação de uma função "split" para expansão de variavel para que varia variaveis se expandam em uma so linha 
-･
-･
+･Correção da função proibida na parte de expansão de variaveis
+･exit built-in
 ________________________________________________________________________________
