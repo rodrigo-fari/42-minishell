@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 12:22:57 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/02/15 18:32:10 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/02/15 21:05:42 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	is_numeric(const char *str)
 	return (1);
 }
 
-void	handle_exit(t_token *tokens, t_env *env)
+void	handle_exit(t_token *tokens, t_env *env, char **commands)
 {
 	int		exit_code;
 	t_token	*arg;
@@ -51,12 +51,11 @@ void	handle_exit(t_token *tokens, t_env *env)
 		else
 			exit_code = ft_atoi(arg->value) % 256;
 	}
-	ms_free(env, NULL, NULL, tokens);
+	ms_free(env, NULL, commands, tokens);
 	exit(exit_code);
 }
 
 void	bi_exit(t_token *tokens, t_env *env, char **commands)
 {
-	(void)commands;
-	handle_exit(tokens, env);
+	handle_exit(tokens, env, commands);
 }

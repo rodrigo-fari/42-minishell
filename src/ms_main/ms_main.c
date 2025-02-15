@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 09:47:50 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/02/14 18:06:06 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/02/15 20:42:21 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int	main(void)
 	while (true)
 	{
 		env = env_manager(NULL);
-		input = readline("👹$ ");
+		// input = readline("👹$ ");
+		input = readline("ConchaPequena$ ");
 		//signal(SIGINT, sig_ctrl_c);
 		if (input[0])
 		{
