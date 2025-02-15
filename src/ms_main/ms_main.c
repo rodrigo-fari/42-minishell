@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 09:47:50 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/01/23 12:02:12 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/02/14 18:06:06 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(void)
 	{
 		env = env_manager(NULL);
 		input = readline("👹$ ");
-		signal(SIGINT, sig_ctrl_c);
+		//signal(SIGINT, sig_ctrl_c);
 		if (input[0])
 		{
 			add_history(input);
