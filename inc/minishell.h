@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/02/14 15:29:42 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/02/15 18:31:49 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,8 @@ void	bi_exec(t_env *env, t_token *tokens, char **commands);
 void	exec_exe(t_token *tmp, t_env *env, char **commands);
 
 //[bi_exit.c]
+int		is_numeric(const char *str);
+void	handle_exit(t_token *tokens, t_env *env);
 void	bi_exit(t_token *tokens, t_env *env, char **commands);
 
 //[bi_export.c]
