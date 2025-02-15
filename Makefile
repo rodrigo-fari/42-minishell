@@ -40,7 +40,7 @@ $(NAME): 			$(OBJS) $(LIBFT)
 					@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -lreadline -o $(NAME)
 
 $(OBJ_DIR)%.o:		$(SRC_DIR)%.c
-					@echo -n "🔧 Compiling $<"
+					@echo "🔧 Compiling $<"
 					@echo $(GREEN)" [OK]"$(RESET)
 					@mkdir -p $(@D)
 					@$(CC) $(CFLAGS) -c $< -o $@
