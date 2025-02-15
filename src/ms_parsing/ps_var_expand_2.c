@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 15:27:20 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/02/14 15:30:52 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/02/15 18:16:12 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*expand_variables(char *str)
 	char	*start;
 	char	*end;
 	char	*var_value;
-		
+
 	result = malloc(1);
 	if (!result)
 		return (NULL);
@@ -39,7 +39,7 @@ char	*expand_variables(char *str)
 
 void	replace_env_variables(char **commands)
 {
-	int	 i;
+	int		i;
 	char	*result;
 
 	i = 0;

@@ -38,6 +38,7 @@ tests = [
 	("echo \"\"\"'''ola mundo'''\"\"\"","'''ola mundo'''\n"),
 ]
 
+
 def run_test(test_id, command, expected_output):
 	minishell = pexpect.spawn("./minishell", encoding="utf-8", timeout=2)
 	minishell.expect(r"👹\$ ")

@@ -70,7 +70,7 @@ re: 				fclean all
 norm:
 					norminette -R CheckForbiddenSourceHeader
 
-val:				re
+val:
 					valgrind --leak-check=full \
 						--show-leak-kinds=all -s \
 						--log-file=valgrind_out.txt \

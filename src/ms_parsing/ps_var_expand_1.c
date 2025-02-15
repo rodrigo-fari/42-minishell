@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_var_expand1.c                                   :+:      :+:    :+:   */
+/*   ps_var_expand_1.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 17:47:45 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/02/14 15:31:44 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/02/15 18:18:36 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char *env_compare(char *input)
+char	*env_compare(char *input)
 {
-	t_env *temp = env_manager(NULL);
+	t_env	*temp;
+
+	temp = env_manager(NULL);
 	while (temp)
 	{
 		if (ft_strcmp(temp->key, input) == 0)
 			return (ft_strdup(temp->value));
 		temp = temp->next;
 	}
-	return NULL;
+	return (NULL);
 }
+
 char	*append_str(char *result, char *str)
 {
 	char	*new_result;
+
 	new_result = ft_realloc(result, ft_strlen(result) + ft_strlen(str) + 1);
 	if (!new_result)
 		return (NULL);
@@ -37,7 +41,7 @@ char	*extract_variable(char *start, char **new_start)
 {
 	char	*var_end;
 	char	*var_name;
-		
+
 	var_end = start;
 	while (*var_end && (ft_isalnum(*var_end) || *var_end == '_'))
 		var_end++;
@@ -50,7 +54,7 @@ char	*replace_variable(char *start, char **new_start)
 {
 	char	*var_name;
 	char	*var_value;
-		
+
 	var_name = extract_variable(start, new_start);
 	var_value = env_compare(var_name);
 	free(var_name);
@@ -60,6 +64,7 @@ char	*replace_variable(char *start, char **new_start)
 char	*process_segment(char *result, char **start, char *end)
 {
 	char	*temp;
+
 	temp = ft_strndup(*start, end - *start);
 	result = append_str(result, temp);
 	free(temp);
