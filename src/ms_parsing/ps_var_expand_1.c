@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 17:47:45 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/02/20 16:18:39 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/02/20 16:34:09 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,15 @@ char	*env_compare(char *input)
 
 char	*append_str(char *result, char *str)
 {
-    char	*new_result;
-    size_t	old_size;
+	char	*new_result;
+	size_t	old_size;
 
-    old_size = ft_strlen(result);
-    new_result = ft_realloc(result, old_size + ft_strlen(str) + 1);
-    if (!new_result)
-        return (NULL);
-    ft_strcat(new_result, str);
-    return (new_result);
+	old_size = ft_strlen(result);
+	new_result = ft_realloc(result, old_size + ft_strlen(str) + 1);
+	if (!new_result)
+		return (NULL);
+	ft_strcat(new_result, str);
+	return (new_result);
 }
 
 char	*extract_variable(char *start, char **new_start)
