@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_main.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 09:47:50 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/02/18 11:30:39 by aeberius         ###   ########.fr       */
+/*   Updated: 2025/02/20 14:06:38 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,8 @@ int	main(void)
 	while (true)
 	{
 		env = env_manager(NULL);
-		// input = readline("👹$ ");
-		input = readline("miniconcha$ ");
-		//signal(SIGINT, sig_ctrl_c);
+		input = readline("👹$ ");
+		// signal(SIGINT, sig_ctrl_c);
 		if (input[0])
 		{
 			add_history(input);

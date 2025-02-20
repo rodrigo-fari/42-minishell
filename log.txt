@@ -115,3 +115,11 @@ R 14/02/2025 - Quinta-feira
 ･Correção da função proibida na parte de expansão de variaveis
 ･exit built-in
 ________________________________________________________________________________
+________________________________________________________________________________
+R 20/02/2025 - Quinta-feira
+
+･Correção de modo de ultilização do makefile (alterações visuis)(correção de bug)✅
+･Correção de memory leak
+･Criação do ultimo built-in (exit)
+･
+________________________________________________________________________________
