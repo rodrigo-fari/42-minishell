@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 11:38:29 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/02/20 17:01:24 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/02/20 17:18:36 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,17 @@ void	add_key_value(t_env *env, char *user_input)
 
 	key = ft_substr(user_input, 0, ft_strchr(user_input, '=') - user_input);
 	value = ft_strdup(ft_strchr(user_input, '=') + 1);
-	if (env_add(env, key, value) == false)
+	if (!key || !value)
 	{
 		free(key);
 		free(value);
+		return ;
 	}
+	env_add(env, key, value);
+	free(key);
+	free(value);
 }
+
 
 void	process_user_input(t_env *env, char **user_input)
 {
