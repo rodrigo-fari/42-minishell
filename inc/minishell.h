@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/02/18 11:20:38 by aeberius         ###   ########.fr       */
+/*   Updated: 2025/02/20 16:14:05 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@
 # include <readline/history.h>
 # include <curses.h>
 # include <term.h>
+# include <stddef.h>
 # include "../src/ms_libft/libft/libft.h"
 
 //=====================================| Support Defines |

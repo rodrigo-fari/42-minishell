@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 16:36:35 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/04/18 17:02:08 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/02/20 14:27:25 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,19 @@
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	size_t			i;
-	unsigned char	*source;
-	unsigned char	*destiny;
+	size_t	i;
+	char	*char_src;
+	char	*char_dest;
 
-	source = (unsigned char *)src;
-	destiny = dest;
+	char_src = (char *)src;
+	char_dest = (char *)dest;
 	i = 0;
-	while ((source || destiny) && (i < n))
+	if (dest == NULL && src == NULL)
+		return (NULL);
+	while (i < n)
 	{
-		destiny[i] = source[i];
+		char_dest[i] = char_src[i];
 		i++;
 	}
-	return (destiny);
+	return (char_dest);
 }
