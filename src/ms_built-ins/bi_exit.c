@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bi_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 12:22:57 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/02/15 21:05:42 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/02/21 22:28:33 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ void	handle_exit(t_token *tokens, t_env *env, char **commands)
 		if (!is_numeric(arg->value))
 		{
 			perror("minishell: exit: %s: numeric argument required\n");
-			exit_code = 2;
+			exit_code = 255;
 		}
 		else if (arg->next)
 		{
 			perror("exit: too many arguments\n");
-			return ;
+			exit_code = 1;
 		}
 		else
 			exit_code = ft_atoi(arg->value) % 256;
