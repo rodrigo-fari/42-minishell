@@ -6,7 +6,7 @@
 /*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 09:47:50 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/02/21 22:24:34 by aeberius         ###   ########.fr       */
+/*   Updated: 2025/02/21 23:54:21 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(void)
 	while (true)
 	{
 		env = env_manager(NULL);
-		input = readline("minishell: ");
+		input = readline("👹$ ");
 		// signal(SIGINT, sig_ctrl_c);
 		if (input[0])
 		{

@@ -3,101 +3,76 @@
 /*                                                        :::      ::::::::   */
 /*   bi_export_1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 11:38:29 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/02/20 17:18:36 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/02/22 00:30:17 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	add_key_value(t_env *env, char *user_input)
+void	bi_export(t_env *env, char **user_input)
 {
-	char	*key;
-	char	*value;
-
-	key = ft_substr(user_input, 0, ft_strchr(user_input, '=') - user_input);
-	value = ft_strdup(ft_strchr(user_input, '=') + 1);
-	if (!key || !value)
-	{
-		free(key);
-		free(value);
-		return ;
-	}
-	env_add(env, key, value);
-	free(key);
-	free(value);
-}
-
-
-void	process_user_input(t_env *env, char **user_input)
-{
-	int	i;
+	int i;
+	char **split;
 
 	i = 1;
-	while (user_input[i])
+	if (user_input[1] == NULL)
 	{
-		if (ft_strchr(user_input[i], '='))
-			add_key_value(env, user_input[i]);
-		else
-			env_add(env, user_input[i], "");
+		print_org_env(env);
+		return ;
+	}
+	while (user_input[i] != NULL)
+	{
+		split = ft_split(user_input[i], '='); // split[0] = key, split[1] = value
+		if (!is_valid_key(split[0]))
+			break;
+		if (ft_strchr(user_input[i], '=') != NULL)
+			env_add(env, split[0], split[1]);
+
+		free_splits(split);
 		i++;
 	}
 }
-
-void	bi_export(t_env *env, char **user_input)
+bool	is_valid_key(char *key)
 {
-	if (!user_input[1])
+	if (key[0] == '=')
 	{
-		org_env(env);
-		return ;
-	}
-	process_user_input(env, user_input);
-}
-
-bool	env_add(t_env *env, char *key, char *value)
-{
-	t_env	*tmp;
-	t_env	*new;
-
-	tmp = env;
-	while (tmp)
-	{
-		if (ft_strcmp(tmp->key, key) == 0)
-		{
-			free(tmp->value);
-			tmp->value = ft_strdup(value);
-			return (true);
-		}
-		tmp = tmp->next;
-	}
-	new = malloc(sizeof(t_env));
-	if (!new)
+		bi_error("export: not a valid identifier\n");
 		return (false);
+	}
+	if (!ft_isalpha(key[0]) || ft_strchr(key, '-') != NULL)
+	{
+		bi_error("export: not a valid identifier\n");
+		return (false);
+	}
+	else
+		return (true);
+}
+void	env_add(t_env *env, char *key, char *value)
+{
+	t_env *new;
+
+	new = ft_calloc(sizeof(t_env), 1);
+	if (new == NULL)
+		return;
 	new->key = ft_strdup(key);
 	new->value = ft_strdup(value);
 	new->next = NULL;
 	listadd_back(&env, new);
-	return (true);
 }
-
-void	add_sorted(t_env **sorted, t_env *new_node)
+void	print_org_env(t_env *env)
 {
-	t_env *current;
+	t_env *temp;
 
-	if (*sorted == NULL || strcmp((*sorted)->key, new_node->key) > 0)
+	temp = env;
+	while (temp != NULL)
 	{
-		new_node->next = *sorted;
-		*sorted = new_node;
-	}
-	else
-	{
-		current = *sorted;
-		while (current->next != NULL && strcmp(current->next->key, new_node->key) < 0) {
-			current = current->next;
-		}
-		new_node->next = current->next;
-		current->next = new_node;
+		if (temp->value)
+			printf("declare -x %s=\"%s\"\n", temp->key, temp->value);
+		else
+			printf("declare -x %s\n", temp->key);
+		temp = temp->next;
 	}
 }
