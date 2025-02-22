@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/02/20 17:01:08 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/02/22 00:18:17 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,16 +105,10 @@ void	bi_exit(t_token *tokens, t_env *env, char **commands);
 void	handle_exit(t_token *tokens, t_env *env, char **commands);
 
 //[bi_export_1.c]
+void	env_add(t_env *env, char *key, char *value);
 void	bi_export(t_env *env, char **user_input);
-void	add_key_value(t_env *env, char *user_input);
-bool	env_add(t_env *env, char *key, char *value);
-void	add_sorted(t_env **sorted, t_env *new_node);
-void	process_user_input(t_env *env, char **user_input);
-
-//[bi_export_2.c]
-void	org_env(t_env *env);
 void	print_org_env(t_env *env);
-
+bool	is_valid_key(char *str);
 
 //[bi_pwd.c]
 void	bi_pwd(void);
