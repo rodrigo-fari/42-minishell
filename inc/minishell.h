@@ -6,7 +6,7 @@
 /*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/02/22 00:18:17 by aeberius         ###   ########.fr       */
+/*   Updated: 2025/02/22 18:47:56 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ typedef struct s_env
 {
 	char				*key;
 	char				*value;
+	bool				has_value;
 	struct s_env		*next;
 }	t_env;
 
