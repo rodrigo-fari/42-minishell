@@ -6,7 +6,7 @@
 /*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/02/22 18:47:56 by aeberius         ###   ########.fr       */
+/*   Updated: 2025/02/22 19:28:47 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ typedef struct s_env
 {
 	char				*key;
 	char				*value;
-	bool				has_value;
+	bool				has_equal;
 	struct s_env		*next;
 }	t_env;
 
@@ -106,7 +106,8 @@ void	bi_exit(t_token *tokens, t_env *env, char **commands);
 void	handle_exit(t_token *tokens, t_env *env, char **commands);
 
 //[bi_export_1.c]
-void	env_add(t_env *env, char *key, char *value);
+void	env_add(t_env *env, char *key, char *value, bool has_equal);
+void	env_update(t_env *env, char *key, char *value, bool has_equal);
 void	bi_export(t_env *env, char **user_input);
 void	print_org_env(t_env *env);
 bool	is_valid_key(char *str);
