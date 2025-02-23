@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bi_echo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 11:18:50 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/01/23 13:42:56 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/02/23 21:14:14 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@ void	bi_echo(t_token *tmp)
 		}
 		while (tmp)
 		{
-			printf("%s", tmp->value);
+			ms_print_fd(tmp->value, 1);
 			if (tmp->next)
-				printf(" ");
+				ms_print_fd(" ", 1);
 			tmp = tmp->next;
 		}
 	}
 	if (tmp == NULL && flag)
-		printf("\n");
+		ms_print_fd("\n", 1);
 }
 
 bool	flag_verify(char *str)

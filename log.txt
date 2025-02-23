@@ -123,3 +123,29 @@ R 20/02/2025 - Quinta-feira
 ･Criação do ultimo built-in (exit)
 ･
 ________________________________________________________________________________
+____________________________________________________________________________
+A 21/02/2025 - Sexta
+
+･Export 70%
+____________________________________________________________________________
+A 22/02/2025 - Sábado
+
+･Export 100%
+__________________________________________________________________________
+__________________________________________________________________________
+A 22/02/2025 - Domingo
+
+･Mais testes no export
+
+･Correção norminette
+
+･Criação do redirect
+
+･Criação de arquivo ms_utils com a função ms_print_fd que escreve uma string
+em um descritor de arquivo (fd).
+
+･Função handle_redirects(tokens) 60%? funciona mas o código fica travado.
+
+･Criação da variável global para código de saída, falta implementar para
+as funções e criar o $?.
+__________________________________________________________________________

@@ -1,38 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_main.c                                          :+:      :+:    :+:   */
+/*   ms_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 09:47:50 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/02/23 14:54:06 by aeberius         ###   ########.fr       */
+/*   Created: 2025/02/23 21:11:14 by aeberius          #+#    #+#             */
+/*   Updated: 2025/02/23 21:12:06 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	gv_exit_status = 0;
-
-int	main(void)
+void	ms_print_fd(char *str, int fd)
 {
-	t_env		*env;
-	char		*input;
-	extern char	**environ;
-
-	env = env_to_struct(environ);
-	env = env_manager(env);
-	while (true)
-	{
-		env = env_manager(NULL);
-		input = readline("👹$ ");
-		// signal(SIGINT, sig_ctrl_c);
-		if (input[0])
-		{
-			add_history(input);
-			env = env_manager(NULL);
-			ms_exec(input, env);
-		}
-	}
-	return (0);
+	write(fd, str, ft_strlen(str));
 }

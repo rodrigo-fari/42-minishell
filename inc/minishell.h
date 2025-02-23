@@ -6,7 +6,7 @@
 /*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/02/22 19:28:47 by aeberius         ###   ########.fr       */
+/*   Updated: 2025/02/23 21:12:58 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,20 +42,26 @@
 # include <stddef.h>
 # include "../src/ms_libft/libft/libft.h"
 
+//=====================================| Global Variable |
+extern int	gv_exit_status; // Declaração da variável global
+
 //=====================================| Support Defines |
 # define CLEAR_CODE	"\033[2J\033[H"
 # define RESET		"\001\033[0m\002"
 
+void		ms_exit_status(void);
+
 //=====================================| Structs |
 typedef enum e_type
 {
-	TOKEN_WORD,// For commands and arguments
-	TOKEN_PIPE,// For '|'
-	TOKEN_REDIR_IN,// For '<'
-	TOKEN_REDIR_OUT,// For '>'
-	TOKEN_REDIR_APPEND,// For '>>'
-	TOKEN_REDIR_HEREDOC,// For '<<'
-	TOKEN_ENV_VAR,// For environment variables
+	TOKEN_WORD,				// For commands and arguments
+	TOKEN_PIPE,				// For '|'
+	TOKEN_REDIR_IN,			// For '<'
+	TOKEN_REDIR_OUT,		// For '>'
+	TOKEN_REDIR_OUT_APPEND,// For '>>'
+	TOKEN_REDIR_ERR,		// For '2>'
+	TOKEN_REDIR_ERR_APPEND,// For '2>>'
+	TOKEN_ENV_VAR,			// For environment variables
 }	t_type;
 
 typedef struct s_token
@@ -105,7 +111,7 @@ int		is_numeric(const char *str);
 void	bi_exit(t_token *tokens, t_env *env, char **commands);
 void	handle_exit(t_token *tokens, t_env *env, char **commands);
 
-//[bi_export_1.c]
+//[bi_export.c]
 void	env_add(t_env *env, char *key, char *value, bool has_equal);
 void	env_update(t_env *env, char *key, char *value, bool has_equal);
 void	bi_export(t_env *env, char **user_input);
@@ -137,6 +143,9 @@ char	**array_envs(t_env *envs);
 void	listadd_back(t_env **lst, t_env *new);
 
 //=====================================| ms_main |
+//[ms_utils.c]
+void	ms_print_fd(char *str, int fd);
+
 //[ms_exec.c]
 void	ms_exec(char *input, t_env *env);
 
@@ -181,13 +190,21 @@ char	*extract_variable(char *start, char **new_start);
 char	*replace_variable(char *start, char **new_start);
 char	*process_segment(char *result, char **start, char *end);
 
-//[ps_var_expand_1.c]
+//[ps_var_expand_2.c]
 char	*expand_variables(char *str);
 void	replace_env_variables(char **commands);
 
 //[ps_var_expand_utils.c]
 char	*ft_charjoin(char *str, char c);
 char	*ft_strjoin_free(char *s1, char *s2);
+
+//=====================================| ms_redirects |
+//[re_exec.c]_
+void	handle_redirects(t_token *tokens);
+//[re_redirect.c]
+void	redirect_output(const char *file, int append);
+void	redirect_error(const char *file, int append);
+void	redirect_input(const char *file);
 
 //=====================================| ms_sighand |
 //[sh_sig_treatment.c]

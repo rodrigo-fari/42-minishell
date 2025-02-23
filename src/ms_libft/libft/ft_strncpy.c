@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_main.c                                          :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 09:47:50 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/02/23 14:54:06 by aeberius         ###   ########.fr       */
+/*   Created: 2025/02/23 14:45:50 by aeberius          #+#    #+#             */
+/*   Updated: 2025/02/23 14:48:44 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-int	gv_exit_status = 0;
-
-int	main(void)
+char	*ft_strncpy(char *dst, const char *src, int n)
 {
-	t_env		*env;
-	char		*input;
-	extern char	**environ;
+	int	i;
 
-	env = env_to_struct(environ);
-	env = env_manager(env);
-	while (true)
+	i = 0;
+	while (src[i] && i < n)
 	{
-		env = env_manager(NULL);
-		input = readline("👹$ ");
-		// signal(SIGINT, sig_ctrl_c);
-		if (input[0])
-		{
-			add_history(input);
-			env = env_manager(NULL);
-			ms_exec(input, env);
-		}
+		dst[i] = src[i];
+		i++;
 	}
-	return (0);
+	dst[i] = '\0';
+	return (dst);
 }
