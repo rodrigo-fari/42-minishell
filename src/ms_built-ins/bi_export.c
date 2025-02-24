@@ -32,7 +32,6 @@ void	bi_export(t_env *env, char **user_input)
 		if (!is_valid_key(split[0]))
 		{
 			gv_exit_status = 1;
-			ms_exit_status();
 			break ;
 		}
 		if (has_equal)

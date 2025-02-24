@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/02/23 21:12:58 by aeberius         ###   ########.fr       */
+/*   Updated: 2025/02/24 11:56:37 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ extern int	gv_exit_status; // Declaração da variável global
 //=====================================| Support Defines |
 # define CLEAR_CODE	"\033[2J\033[H"
 # define RESET		"\001\033[0m\002"
-
-void		ms_exit_status(void);
 
 //=====================================| Structs |
 typedef enum e_type
