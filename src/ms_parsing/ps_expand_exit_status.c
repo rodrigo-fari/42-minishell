@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 13:48:52 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/02/24 15:17:16 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/02/24 15:41:42 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,45 +14,64 @@
 
 #include "minishell.h"
 
+void	replace_exit_status_in_command(char **command)
+{
+    char	*pos;
+
+    pos = ft_strnstr(*command, "$?", ft_strlen(*command));
+    while (pos)
+    {
+        replace_exit_status_at_pos(command, pos);
+        pos = ft_strnstr(*command, "$?", ft_strlen(*command));
+    }
+}
+
+void	replace_exit_status_at_pos(char **command, char *pos)
+{
+    char	*expanded_str;
+    char	*remaining_str;
+    char	*itoa_str;
+    char	*temp;
+    char	*substr;
+
+    itoa_str = ft_itoa(g_exit_status);
+    substr = ft_substr(*command, 0, pos - *command);
+    expanded_str = ft_strjoin(substr, itoa_str);
+    remaining_str = ft_strdup(pos + 2);
+    temp = *command;
+    *command = ft_strjoin(expanded_str, remaining_str);
+    free(temp);
+    free(expanded_str);
+    free(remaining_str);
+    free(itoa_str);
+    free(substr);
+}
+
 void	replace_exit_status(char **commands, int i)
 {
-	char	*expanded_str;
-	char	*remaining_str;
-	char	*pos;
-
-	pos = ft_strnstr(commands[i], "$?", ft_strlen(commands[i]));
-	while (pos)
-	{
-		expanded_str = ft_strjoin(ft_substr(commands[i], 0, pos - commands[i]), ft_itoa(g_exit_status));
-		remaining_str = ft_strdup(pos + 2);
-		free(commands[i]);
-		commands[i] = ft_strjoin(expanded_str, remaining_str);
-		free(expanded_str);
-		free(remaining_str);
-		pos = ft_strnstr(commands[i], "$?", ft_strlen(commands[i]));
-	}
+    replace_exit_status_in_command(&commands[i]);
 }
 
 void	expand_exit(char **commands)
 {
-	int		i;
-	int		j;
-	int		quotes;
+    int		i;
+    int		j;
+    int		quotes;
 
-	i = 0;
-	while (commands[i])
-	{
-		quotes = 0;
-		j = 0;
-		while (commands[i][j])
-		{
-			if (commands[i][j] == '"')
-				quotes = !quotes;
-			if (!quotes)
-				replace_exit_status(commands, i);  // Substitui "$?" fora das aspas
-			j++;
-		}
-		i++;
-	}
+    i = 0;
+    while (commands[i])
+    {
+        quotes = 0;
+        j = 0;
+        while (commands[i][j])
+        {
+            if (commands[i][j] == '"')
+                quotes = !quotes;
+            if (!quotes)
+                replace_exit_status(commands, i);  // Substitui "$?" fora das aspas
+            j++;
+        }
+        i++;
+    }
 }
 

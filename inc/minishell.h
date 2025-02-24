@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/02/24 15:21:50 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/02/24 15:43:01 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,6 +157,9 @@ void	ps_error(char *str);
 //[ps_expand_exit_status.c]
 void	expand_exit(char **commands);
 void	replace_exit_status(char **commands, int i);
+void	replace_exit_status_in_command(char **command);
+void	replace_exit_status_at_pos(char **command, char *pos);
+
 
 //[ps_parsing.c]
 bool	quote_verifier(char *input);
