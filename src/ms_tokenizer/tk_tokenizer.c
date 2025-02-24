@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tk_tokenizer.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 17:49:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/01/02 12:43:52 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/02/23 15:28:52 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,13 @@ int	token_type(char *token)
 	else if (ft_strlen(token) == 2)
 	{
 		if (token[0] == '>' && token[1] == '>')
-			return (TOKEN_REDIR_APPEND);
+			return (TOKEN_REDIR_OUT_APPEND);
 		else if (token[0] == '<' && token[1] == '<')
-			return (TOKEN_REDIR_HEREDOC);
+			return (TOKEN_REDIR_IN);
+		else if (token[0] == '2' && token[1] == '>')
+			return (TOKEN_REDIR_ERR);
+		else if (token[0] == '2' && token[1] == '>')
+			return (TOKEN_REDIR_ERR_APPEND);
 	}
 	if (ft_strchr(token, '$'))
 		return (TOKEN_ENV_VAR);

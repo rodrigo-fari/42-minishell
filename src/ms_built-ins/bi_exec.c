@@ -6,7 +6,7 @@
 /*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 12:18:54 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/02/21 23:34:03 by aeberius         ###   ########.fr       */
+/*   Updated: 2025/02/23 21:26:38 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	bi_exec(t_env *env, t_token *tokens, char **commands)
 
 	tmp = tokens;
 	env = env_manager(NULL);
+	handle_redirects(tokens);
 	if (ft_strcmp(tmp->value, "echo") == 0)
 		bi_echo(tmp);
 	else if (ft_strcmp(tmp->value, "pwd") == 0)
@@ -57,6 +58,7 @@ void	exec_exe(t_token *tmp, t_env *env, char **commands)
 		}
 		bi_error("bash: command not found");
 		ms_free(env, NULL, commands, tmp);
+		exit(EXIT_FAILURE);
 	}
 	else if (execve_new_process > 0)
 		waitpid(execve_new_process, &status, 0);
