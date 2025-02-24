@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/02/24 14:10:02 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/02/24 15:19:27 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,6 +154,10 @@ void	ms_free(t_env *env, char *input, char **commands, t_token *tokens);
 //[ps_error.c]
 void	ps_error(char *str);
 
+//[ps_expand_exit_status.c]
+void	expand_exit(char **commands);
+void	replace_exit_status(char **commands, int i);
+
 //[ps_parsing.c]
 bool	quote_verifier(char *input);
 bool	ps_parsing(char **commands, int i);
@@ -227,8 +231,6 @@ t_token	*tk_list_last(t_token *lst);
 void	free_token_struct(t_token *token);
 int		skip_whitespace(char *input, int i);
 void	tk_listadd_back(t_token **lst, t_token *new);
-
-void	expand_exit(char **commands);
 
 //=====================================| Endif |
 #endif
