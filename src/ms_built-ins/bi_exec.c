@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bi_exec.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 12:18:54 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/02/23 21:26:38 by aeberius         ###   ########.fr       */
+/*   Updated: 2025/02/24 13:46:17 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,32 +37,45 @@ void	bi_exec(t_env *env, t_token *tokens, char **commands)
 		exec_exe(tmp, env, commands);
 }
 
-void	exec_exe(t_token *tmp, t_env *env, char **commands)
+void	exec_child_process(t_token *tmp, char **commands, t_env *env)
 {
 	char	*full_command;
-	pid_t	execve_new_process;
-	int		status;
 	char	**envs_array;
 
 	envs_array = array_envs(env);
+	if (ft_strchr(tmp->value, '/'))
+		execve(tmp->value, commands, envs_array);
+	else
+	{
+		full_command = ft_strjoin("/bin/", tmp->value);
+		execve(full_command, commands, envs_array);
+		free(full_command);
+	}
+	bi_error("bash: command not found");
+	ms_free(env, NULL, commands, tmp);
+	exit(127);
+}
+
+void	exec_parent_process(pid_t pid)
+{
+	int	status;
+
+	waitpid(pid, &status, 0);
+	if (WIFEXITED(status))
+ 			g_exit_status = WEXITSTATUS(status);
+	else if (WIFSIGNALED(status))
+		g_exit_status = 128 + WTERMSIG(status);
+}
+
+void	exec_exe(t_token *tmp, t_env *env, char **commands)
+{
+	pid_t	execve_new_process;
+
 	execve_new_process = fork();
 	if (execve_new_process == 0)
-	{
-		if (ft_strchr(tmp->value, '/'))
-			execve(tmp->value, commands, envs_array);
-		else
-		{
-			full_command = ft_strjoin("/bin/", tmp->value);
-			execve(full_command, commands, envs_array);
-			free(full_command);
-		}
-		bi_error("bash: command not found");
-		ms_free(env, NULL, commands, tmp);
-		exit(EXIT_FAILURE);
-	}
+		exec_child_process(tmp, commands, env);
 	else if (execve_new_process > 0)
-		waitpid(execve_new_process, &status, 0);
+		exec_parent_process(execve_new_process);
 	else
 		perror("fork");
-	free_splits(envs_array);
 }

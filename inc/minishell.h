@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/02/24 11:56:37 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/02/24 14:10:02 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@
 # include "../src/ms_libft/libft/libft.h"
 
 //=====================================| Global Variable |
-extern int	gv_exit_status; // Declaração da variável global
+extern int	g_exit_status;
 
 //=====================================| Support Defines |
 # define CLEAR_CODE	"\033[2J\033[H"
@@ -227,6 +227,8 @@ t_token	*tk_list_last(t_token *lst);
 void	free_token_struct(t_token *token);
 int		skip_whitespace(char *input, int i);
 void	tk_listadd_back(t_token **lst, t_token *new);
+
+void	expand_exit(char **commands);
 
 //=====================================| Endif |
 #endif

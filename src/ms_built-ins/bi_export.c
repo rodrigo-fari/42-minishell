@@ -31,7 +31,7 @@ void	bi_export(t_env *env, char **user_input)
 		has_equal = (ft_strchr(user_input[i], '=') != NULL);
 		if (!is_valid_key(split[0]))
 		{
-			gv_exit_status = 1;
+			g_exit_status = 1;
 			break ;
 		}
 		if (has_equal)
@@ -46,13 +46,13 @@ bool	is_valid_key(char *key)
 	if (key[0] == '=')
 	{
 		bi_error("export: not a valid identifier\n");
-		gv_exit_status = 1;
+		g_exit_status = 1;
 		return (false);
 	}
 	if (!ft_isalpha(key[0]) || ft_strchr(key, '-') != NULL)
 	{
 		bi_error("export: not a valid identifier\n");
-		gv_exit_status = 1;
+		g_exit_status = 1;
 		return (false);
 	}
 	else
