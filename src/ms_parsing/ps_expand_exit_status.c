@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 13:48:52 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/02/24 16:59:42 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/02/24 17:07:05 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,9 @@ void	expand_exit(char **commands)
 			if (commands[i][j] == '"')
 				quotes = !quotes;
 			if (!quotes)
-				replace_exit_status(commands, i);  // Substitui "$?" fora das aspas
+				replace_exit_status(commands, i);
 			j++;
 		}
 		i++;
 	}
 }
-

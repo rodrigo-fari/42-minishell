@@ -6,29 +6,17 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 12:31:47 by aeberius          #+#    #+#             */
-/*   Updated: 2025/02/24 11:49:08 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/02/24 17:02:34 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-/* Redicionamento de Saída (> e >>): */
-/* >: Redireciona a saída padrão (stdout) de um comando para um arquivo,
-sobrescrevendo o conteúdo do arquivo. */
-/* >>: Redireciona a saída padrão (stdout) de um comando para um arquivo,
-anexando ao conteúdo existente do arquivo. */
-/* Redirecionamento de Entrada (<):
-<: Redireciona a entrada padrão (stdin) de um comando
-a partir de um arquivo. */
-/* Redirecionamento de Erro (2> e 2>>):
-2>: Redireciona a saída de erro padrão (stderr) de um comando para um arquivo,
-sobrescrevendo o conteúdo do arquivo.
-2>>: Redireciona a saída de erro padrão (stderr) de um comando para um arquivo,
-anexando ao conteúdo existente do arquivo. */
-
-void redirect_input(const char *file)
+void	redirect_input(const char *file)
 {
-	int fd = open(file, O_RDONLY);
+	int	fd;
+
+	fd = open(file, O_RDONLY);
 	if (fd < 0)
 	{
 		perror("open");
@@ -42,9 +30,10 @@ void redirect_input(const char *file)
 	close(fd);
 }
 
-void redirect_output(const char *file, int append)
+void	redirect_output(const char *file, int append)
 {
-	int fd;
+	int	fd;
+
 	printf("file: %s\n", file);
 	if (append)
 		fd = open(file, O_WRONLY | O_CREAT | O_APPEND, 0644);
@@ -63,9 +52,10 @@ void redirect_output(const char *file, int append)
 	close(fd);
 }
 
-void redirect_error(const char *file, int append)
+void	redirect_error(const char *file, int append)
 {
-	int fd;
+	int	fd;
+
 	if (append)
 		fd = open(file, O_WRONLY | O_CREAT | O_APPEND, 0644);
 	else
