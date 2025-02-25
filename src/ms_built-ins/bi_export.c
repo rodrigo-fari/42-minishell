@@ -45,13 +45,13 @@ bool	is_valid_key(char *key)
 {
 	if (key[0] == '=')
 	{
-		bi_error("export: not a valid identifier\n");
+		ms_print_fd("export: not a valid identifier\n", 2);
 		g_exit_status = 1;
 		return (false);
 	}
 	if (!ft_isalpha(key[0]) || ft_strchr(key, '-') != NULL)
 	{
-		bi_error("export: not a valid identifier\n");
+		ms_print_fd("export: not a valid identifier\n", 2);
 		g_exit_status = 1;
 		return (false);
 	}
@@ -96,7 +96,7 @@ void	print_org_env(t_env *env)
 void	env_update(t_env *env, char *key, char *value, bool has_equal)
 {
 	t_env	*temp;
-
+	
 	temp = env;
 	while (temp != NULL)
 	{

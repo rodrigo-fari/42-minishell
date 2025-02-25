@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 14:22:33 by rde-fari          #+#    #+#             */
-/*   Updated: 2024/12/20 11:59:05 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/02/25 14:41:00 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,5 @@
 
 void	ps_error(char *str)
 {
-	printf(RED"[Error]"RESET);
-	printf("%s\n", str);
+	ms_print_fd(str, 2);
 }

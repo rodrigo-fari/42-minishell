@@ -149,3 +149,11 @@ em um descritor de arquivo (fd).
 ･Criação da variável global para código de saída, falta implementar para
 as funções e criar o $?.
 __________________________________________________________________________
+__________________________________________________________________________
+R 25/02/2025 - Terça-feira
+
+･Verificar expansão de variaveis com aspas.
+･Verificação de códigos de saida do Bash
+･Adição de testes no google sheets + verificação de output do minishell (fica pra sexta)
+･Adicionar quebra de linha quando erros de sintaxe sao encontrados na execução dos comandos
+__________________________________________________________________________
