@@ -30,12 +30,11 @@ void	bi_export(t_env *env, char **user_input)
 		split = ft_split(user_input[i], '=');
 		has_equal = (ft_strchr(user_input[i], '=') != NULL);
 		if (!is_valid_key(split[0]))
-		{
-			g_exit_status = 1;
 			break ;
-		}
 		if (has_equal)
-			env_update(env, split[0], split[1], has_equal);
+			env_update(env, split[0], split[1], true);
+		else
+			env_update(env, split[0], "", false);
 		free_splits(split);
 		i++;
 	}
@@ -43,20 +42,29 @@ void	bi_export(t_env *env, char **user_input)
 
 bool	is_valid_key(char *key)
 {
+	int	i;
+
+	i = 1;
 	if (key[0] == '=')
 	{
 		ms_print_fd("export: not a valid identifier\n", 2);
-		g_exit_status = 1;
 		return (false);
 	}
 	if (!ft_isalpha(key[0]) || ft_strchr(key, '-') != NULL)
 	{
 		ms_print_fd("export: not a valid identifier\n", 2);
-		g_exit_status = 1;
 		return (false);
 	}
-	else
-		return (true);
+	while (key[i] != '\0' && key[i] != '=')
+	{
+		if (!ft_isalnum(key[i]) && key[i] != '_')
+		{
+			ms_print_fd("export: not a valid identifier\n", 2);
+			return (false);
+		}
+		i++;
+	}
+	return (true);
 }
 
 void	env_add(t_env *env, char *key, char *value, bool has_equal)
@@ -75,9 +83,9 @@ void	env_add(t_env *env, char *key, char *value, bool has_equal)
 
 void	print_org_env(t_env *env)
 {
-	t_env	*temp;
+	org_env_alpha(env);
 
-	temp = env;
+	t_env *temp = env;
 	while (temp != NULL)
 	{
 		if (temp->has_equal)
@@ -96,7 +104,7 @@ void	print_org_env(t_env *env)
 void	env_update(t_env *env, char *key, char *value, bool has_equal)
 {
 	t_env	*temp;
-	
+
 	temp = env;
 	while (temp != NULL)
 	{

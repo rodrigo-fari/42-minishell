@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ev_env_to_struct.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:13:25 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/02/10 17:44:30 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/03/04 15:38:28 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ t_env	*env_to_struct(char **environ)
 			return (NULL);
 		current->key = ft_strdup(key_value[0]);
 		current->value = ft_strdup(key_value[1]);
+		current->has_equal = true;
 		current->next = NULL;
 		free_splits(key_value);
 		listadd_back(&head, current);
