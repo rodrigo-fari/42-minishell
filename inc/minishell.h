@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/02/24 17:15:05 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/03/04 15:34:09 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,9 @@ void	env_update(t_env *env, char *key, char *value, bool has_equal);
 void	bi_export(t_env *env, char **user_input);
 void	print_org_env(t_env *env);
 bool	is_valid_key(char *str);
+
+//[bi_export_2.c]
+void	org_env_alpha(t_env *env);
 
 //[bi_pwd.c]
 void	bi_pwd(void);

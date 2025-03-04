@@ -121,7 +121,6 @@ R 20/02/2025 - Quinta-feira
 ･Correção de modo de ultilização do makefile (alterações visuis)(correção de bug)✅
 ･Correção de memory leak
 ･Criação do ultimo built-in (exit)
-･
 ________________________________________________________________________________
 ____________________________________________________________________________
 A 21/02/2025 - Sexta
@@ -136,16 +135,11 @@ __________________________________________________________________________
 A 22/02/2025 - Domingo
 
 ･Mais testes no export
-
 ･Correção norminette
-
 ･Criação do redirect
-
 ･Criação de arquivo ms_utils com a função ms_print_fd que escreve uma string
 em um descritor de arquivo (fd).
-
 ･Função handle_redirects(tokens) 60%? funciona mas o código fica travado.
-
 ･Criação da variável global para código de saída, falta implementar para
 as funções e criar o $?.
 __________________________________________________________________________
@@ -157,3 +151,16 @@ R 25/02/2025 - Terça-feira
 ･Adição de testes no google sheets + verificação de output do minishell (fica pra sexta)
 ･Adicionar quebra de linha quando erros de sintaxe sao encontrados na execução dos comandos
 __________________________________________________________________________
+_____________________________________________________________________
+A 04/03/2025 (16:03) - Terça de Carnaval SOLTA A CARTA CRL TIGRINHO FDP
+
+Todo Regresso ao Export, o qual, agora, esta a 70%, novamente XD
+
+･Teste do Export e correçoes:
+･Printar em ordem alpha ✅
+･Printar os values ✅
+･Não aceitar qlqr outro parametro que nao seja letra e numero ✅
+･Se nao tem value ou nao tem igual printar no export ✅
+･Corrigir funcao 26 linhas ✅
+
+Pronto, Export 100% dnv, ate encontrar mais erros xd (PUSH)
