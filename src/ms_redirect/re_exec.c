@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   re_exec.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 15:22:54 by aeberius          #+#    #+#             */
-/*   Updated: 2025/02/24 17:01:15 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/03/12 12:27:19 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	handle_redirects(t_token *tokens)
+void handle_redirects(t_token *tokens)
 {
-	t_token	*tmp;
+	t_token *tmp;
 
 	tmp = tokens;
 	while (tmp)

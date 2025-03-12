@@ -164,3 +164,10 @@ Todo Regresso ao Export, o qual, agora, esta a 70%, novamente XD
 ･Corrigir funcao 26 linhas ✅
 
 Pronto, Export 100% dnv, ate encontrar mais erros xd (PUSH)
+
+__________________________________________________________________________
+A 12/03/2025 (12:50) - Quarta-feira
+
+･Pipe funcionando 60%, não funciona com o ECHO
+･Append e redirect in/out funcionando 99%, executa perfeitamente mas aparece um error no terminal.
+･Falta criar a variavel globas p os erros, tlvz corrija.

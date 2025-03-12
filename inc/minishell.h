@@ -6,7 +6,7 @@
 /*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/03/04 15:34:09 by aeberius         ###   ########.fr       */
+/*   Updated: 2025/03/12 12:48:34 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,20 +101,22 @@ bool	flag_verify(char *str);
 void	bi_error(char *str);
 
 //[bi_exec.c]
-void	bi_exec(t_env *env, t_token *tokens, char **commands);
+void	exec_parent_process(pid_t pid);
 void	exec_exe(t_token *tmp, t_env *env, char **commands);
+void	bi_exec(t_env *env, t_token *tokens, char **commands);
+void	exec_child_process(t_token *tmp, char **commands, t_env *env);
 
 //[bi_exit.c]
 int		is_numeric(const char *str);
 void	bi_exit(t_token *tokens, t_env *env, char **commands);
 void	handle_exit(t_token *tokens, t_env *env, char **commands);
 
-//[bi_export.c]
+//[!bi_export.c] 5 functions limit achived.
+bool	is_valid_key(char *str);
+void	print_org_env(t_env *env);
+void	bi_export(t_env *env, char **user_input);
 void	env_add(t_env *env, char *key, char *value, bool has_equal);
 void	env_update(t_env *env, char *key, char *value, bool has_equal);
-void	bi_export(t_env *env, char **user_input);
-void	print_org_env(t_env *env);
-bool	is_valid_key(char *str);
 
 //[bi_export_2.c]
 void	org_env_alpha(t_env *env);
@@ -139,16 +141,22 @@ void	print_env(t_env *env);
 //![ev_utils.c] - 5 functions limit achived.
 int		listsize(t_env *env);
 t_env	*list_last(t_env *lst);
-void	free_env_struct(t_env *env);
 char	**array_envs(t_env *envs);
+void	free_env_struct(t_env *env);
 void	listadd_back(t_env **lst, t_env *new);
 
 //=====================================| ms_main |
 //[ms_utils.c]
+int		count_args(char **commands);
 void	ms_print_fd(char *str, int fd);
 
 //[ms_exec.c]
 void	ms_exec(char *input, t_env *env);
+
+//[ms_process.c]
+void	exec_parent_process(pid_t pid);
+void	exec_exe(t_token *tmp, t_env *env, char **commands);
+void	exec_child_process(t_token *tmp, char **commands, t_env *env);
 
 //[ms_free.c]
 void	ms_free(t_env *env, char *input, char **commands, t_token *tokens);
@@ -208,13 +216,25 @@ char	*handle_variable_expansion(char *result, char **start, char *end);
 char	*ft_charjoin(char *str, char c);
 char	*ft_strjoin_free(char *s1, char *s2);
 
+//=====================================| ms_pipeline |
+//[pp_exec.c]
+void	execute_pipeline(char ***commands, t_env *env);
+void	execute_pipe_command(char **command, t_env *env, int fd_in, int fd_out);
+
+//[pp_pipeline.c]
+int		count_pipes(char **commands);
+int		contains_pipe(char **commands);
+void	free_pipeline(char ***pipeline);
+char	***split_by_pipe(char **commands);
+
 //=====================================| ms_redirects |
 //[re_exec.c]_
 void	handle_redirects(t_token *tokens);
+
 //[re_redirect.c]
-void	redirect_output(const char *file, int append);
-void	redirect_error(const char *file, int append);
 void	redirect_input(const char *file);
+void	redirect_error(const char *file, int append);
+void	redirect_output(const char *file, int append);
 
 //=====================================| ms_sighand |
 //[sh_sig_treatment.c]
