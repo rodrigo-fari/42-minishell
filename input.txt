@@ -1,0 +1,173 @@
+Formatação do log de trabalho:
+
+Pessoa 00/00/0000 - Dia da semana
+✅ - Feito.
+❌ - Ficou por fazer.
+🟨 - Atenção.
+
+________________________________________________________________________________
+VALGRIND + READLINE LEAKS:
+
+･Para saber se os leaks existentes no valgrind são do programa ou do readline, soma quantidade de blocos suprimidos, mais a quantidade de blocos que foram liberados. A resposta a essa soma é a quantidade de allocs que o programa realizou.
+________________________________________________________________________________________________________________________________________________________________
+R 02/01/2025 - Quinta-feira
+
+･Colocar print_tokens para funcionar✅
+･Consertar norminette✅
+･Adicionar o token_type no tokenizer✅
+･Relizar frees necessarios para execução do programa (caderno)❌
+･Passar tokens para bulit-ins inves de um array de comandos❌
+･Criação de função que limpa todo o codigo❌
+･Verificação de leaks no codigo❌
+
+Foi alterado a forma que os built-ins recebem os argumentos, envez de receberem um char **commands, agora recebem a lista de tokens. Todos os built-ins foram construidos para funcionar com array, nao com lista. Necessario realizar a alteração de funcionamento dos built-ins!
+
+Talvez seja necessario refazer todos os builtins para nova adaptação!
+
+________________________________________________________________________________
+________________________________________________________________________________
+R 08/01/2025 - Quarta-feira
+
+･Verificação de tokenizer no linux/MacOS.✅
+OBS: Parece que no linux o O processo de separaçãop de tokens está funcionando perfeitamente, porém na platforma MacOS não esta dividindo da mneira correta. O código é o mesmo porém o output está sendo diferente. Verificar no computador da escola.
+･Resolver parâmetros dos Built-ins.❌
+･Verificação de limpeza de memória no fim da execução do programa.✅
+OBS: Programa está limpando maior parte da memória alocad, porém, é necessario finalizar os built-ins para verificar se a memoria está sendo limpa por completo
+･Resolver situação do comando "ec"ho:❌
+INPUT :ec"ho" ola%
+OUTPUT:ola%
+･Resolver input do execve. Comando não está reconhecendo o absolute path. Após execução, programa devolve "[ERRO]Bash: Commands not found."
+________________________________________________________________________________
+________________________________________________________________________________
+R 09/01/2025 - Quinta-feira
+
+･Resolver parâmetros dos Built-ins.❌
+･Resolver situação do echo.❌
+Obs: Se as aspas tiverem no inicio do comando o programa funcionará devidamente removendo as aspas do argumento e executando o comando normalmente. Porém se as aspas estiverem no meio do argumento o programa reconhece o argumento com as aspas e devolve "command not found".✅
+･Resolver situação do comando exit (double free() SIGSEGV).❌
+･Atualizar parceira do ponto de situação do projeto.✅
+･Arquivo ps_expand_var.c está vazio!🟨
+________________________________________________________________________________
+________________________________________________________________________________
+R 20/01/2025 - Segunda-feira
+
+･Resolver parâmetros dos Built-ins.❌
+･Resolver situação do comando exit (invalid free() SIGSEGV).❌
+･Atualizar parceira do ponto de situação do projeto.✅
+･Arquivo ps_expand_var.c está vazio!🟨
+･Correção do comando "env". Comando não está printando as envs devidamente, apresenta um delay no input e devolve o terminal.✅
+________________________________________________________________________________________________________________________________________________________________
+R 20/01/2025 - Segunda-feira
+
+･Resolver parâmetros dos Built-ins.❌
+･Resolver situação do comando exit (invalid free() SIGSEGV).❌
+･Atualizar parceira do ponto de situação do projeto.✅
+･Arquivo ps_expand_var.c está vazio!🟨
+･Correção do comando "env". Comando não está printando as envs devidamente, apresenta um delay no input e devolve o terminal.✅
+________________________________________________________________________________
+________________________________________________________________________________
+R 21/01/2025 - Terça-feira
+
+･Leaks do programa removidos.✅
+________________________________________________________________________________
+________________________________________________________________________________
+R 22/01/2025 - Quarta-feira
+
+･Teste para verificar se ainda existe leaks de memória.✅
+･Resolução do comando "CLEAR" está sento executado no processo filho. (TERM environments variable not set).✅
+________________________________________________________________________________________________________________________________________________________________
+R 23/01/2025 - Quinta-feira
+
+･Consertar comando echo printando o "\n" qundo não deve.✅
+･Atualização de GITHUB projects.✅
+･Criaçãoganização de funções com mais de 25 linhas.🟨
+________________________________________________________________________________________________________________________________________________________________
+R 24/01/2025 - Sexta-feira
+
+･Comando echo com aspas simples não está funcionando corretamente.
+________________________________________________________________________________________________________________________________________________________________
+R 10/02/2025 - Segunda-feira
+
+･Criação da documentação do projeto para passagem de informação para parceira
+･Finalização do comando echo
+･Inicialização de prioridade de execução do projeto.
+
+________________________________________________________________________________
+
+RETORNO DO 🐸
+
+________________________________________________________________________________
+RA 11/02/2025 - Terça-feira
+
+･Finalizar os built-ins que faltam🟨
+･Criar a expansão de variavel no parcing✅
+･Resolver a norminette e a função de 40 linhas✅
+
+________________________________________________________________________________
+________________________________________________________________________________
+R 12/02/2025 - Quarta-feira
+
+･Resolução da função com mais de 40 linhas + norminette do programa✅
+________________________________________________________________________________
+________________________________________________________________________________
+R 14/02/2025 - Quinta-feira
+
+･Correção da função proibida na parte de expansão de variaveis
+･exit built-in
+________________________________________________________________________________
+________________________________________________________________________________
+R 20/02/2025 - Quinta-feira
+
+･Correção de modo de ultilização do makefile (alterações visuis)(correção de bug)✅
+･Correção de memory leak
+･Criação do ultimo built-in (exit)
+________________________________________________________________________________
+____________________________________________________________________________
+A 21/02/2025 - Sexta
+
+･Export 70%
+____________________________________________________________________________
+A 22/02/2025 - Sábado
+
+･Export 100%
+__________________________________________________________________________
+__________________________________________________________________________
+A 22/02/2025 - Domingo
+
+･Mais testes no export
+･Correção norminette
+･Criação do redirect
+･Criação de arquivo ms_utils com a função ms_print_fd que escreve uma string
+em um descritor de arquivo (fd).
+･Função handle_redirects(tokens) 60%? funciona mas o código fica travado.
+･Criação da variável global para código de saída, falta implementar para
+as funções e criar o $?.
+__________________________________________________________________________
+__________________________________________________________________________
+R 25/02/2025 - Terça-feira
+
+･Verificar expansão de variaveis com aspas.
+･Verificação de códigos de saida do Bash
+･Adição de testes no google sheets + verificação de output do minishell (fica pra sexta)
+･Adicionar quebra de linha quando erros de sintaxe sao encontrados na execução dos comandos
+__________________________________________________________________________
+_____________________________________________________________________
+A 04/03/2025 (16:03) - Terça de Carnaval SOLTA A CARTA CRL TIGRINHO FDP
+
+Todo Regresso ao Export, o qual, agora, esta a 70%, novamente XD
+
+･Teste do Export e correçoes:
+･Printar em ordem alpha ✅
+･Printar os values ✅
+･Não aceitar qlqr outro parametro que nao seja letra e numero ✅
+･Se nao tem value ou nao tem igual printar no export ✅
+･Corrigir funcao 26 linhas ✅
+
+Pronto, Export 100% dnv, ate encontrar mais erros xd (PUSH)
+
+__________________________________________________________________________
+A 12/03/2025 (12:50) - Quarta-feira
+
+･Pipe funcionando 60%, não funciona com o ECHO
+･Append e redirect in/out funcionando 99%, executa perfeitamente mas aparece um error no terminal.
+･Falta criar a variavel globas p os erros, tlvz corrija.

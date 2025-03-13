@@ -1,24 +1,25 @@
-==33090== Memcheck, a memory error detector
-==33090== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
-==33090== Using Valgrind-3.23.0 and LibVEX; rerun with -h for copyright info
-==33090== Command: ./minishell
-==33090== Parent PID: 33087
-==33090== 
-==33090== 
-==33090== HEAP SUMMARY:
-==33090==     in use at exit: 232,898 bytes in 241 blocks
-==33090==   total heap usage: 1,126 allocs, 885 frees, 268,701 bytes allocated
-==33090== 
-==33090== LEAK SUMMARY:
-==33090==    definitely lost: 0 bytes in 0 blocks
-==33090==    indirectly lost: 0 bytes in 0 blocks
-==33090==      possibly lost: 0 bytes in 0 blocks
-==33090==    still reachable: 0 bytes in 0 blocks
-==33090==         suppressed: 232,898 bytes in 241 blocks
-==33090== 
-==33090== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---33090-- 
---33090-- used_suppression:     74 leak readline readline_leaks:2 suppressed: 228,792 bytes in 234 blocks
---33090-- used_suppression:      4 readline_leaks readline_leaks:8 suppressed: 4,106 bytes in 7 blocks
-==33090== 
-==33090== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==187997== Memcheck, a memory error detector
+==187997== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==187997== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==187997== Command: ./minishell
+==187997== Parent PID: 187994
+==187997== 
+==187968== 
+==187968== HEAP SUMMARY:
+==187968==     in use at exit: 208,262 bytes in 229 blocks
+==187968==   total heap usage: 1,039 allocs, 810 frees, 242,853 bytes allocated
+==187968== 
+==187968== LEAK SUMMARY:
+==187968==    definitely lost: 0 bytes in 0 blocks
+==187968==    indirectly lost: 0 bytes in 0 blocks
+==187968==      possibly lost: 0 bytes in 0 blocks
+==187968==    still reachable: 0 bytes in 0 blocks
+==187968==         suppressed: 208,262 bytes in 229 blocks
+==187968== 
+==187968== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+--187968-- 
+--187968-- used_suppression:     63 leak readline readline_leaks:2 suppressed: 204,160 bytes in 222 blocks
+--187968-- used_suppression:      4 readline_leaks readline_leaks:8 suppressed: 4,102 bytes in 7 blocks
+==187968== 
+==187968== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+
