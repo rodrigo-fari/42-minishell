@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/03/12 12:48:34 by aeberius         ###   ########.fr       */
+/*   Updated: 2025/03/13 16:23:50 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,34 +187,13 @@ bool	parse_redin(char **commands);
 //[ps_redout.c]
 bool	parse_redout(char **commands);
 
-//[ps_remove_quotes_1.c]
-char	*extract_argument(char *input);
-int		count_quotes(char *input, char quote);
-int		has_only_one_kind_of_quote(char *input);
-char	*extract_second_quote_and_argument(char *input, char first_quote);
-
-//[ps_remove_quotes_2.c]
-char	find_first_quote(char *str);
+//![ps_remove_quotes.c] - 5 functions limit achived.
+bool	bool_changer(bool key);
+char	*var_expand(char *input);
+char 	*verify_quotes(char *input);
 void	remove_quotes(char **commands);
-int		count_first_quote(char *str, char quote);
+char	*get_quote_content(char *input, char current_quote, int i, int j);
 
-//![ps_var_expand_1.c] - 5 functions limit achived.
-char	*env_compare(char *input);
-char	*append_str(char *result, char *str);
-char	*extract_variable(char *start, char **new_start);
-char	*replace_variable(char *start, char **new_start);
-char	*process_segment(char *result, char **start, char *end);
-
-//![ps_var_expand_2.c] - 5 functions limit achived.
-char	*expand_variables(char *str);
-char	*append_char_to_str(char *str, char c);
-void	replace_env_variables(char **commands);
-char	*expand_variables_loop(char *result, char *start);
-char	*handle_variable_expansion(char *result, char **start, char *end);
-
-//[ps_var_expand_utils.c]
-char	*ft_charjoin(char *str, char c);
-char	*ft_strjoin_free(char *s1, char *s2);
 
 //=====================================| ms_pipeline |
 //[pp_exec.c]
