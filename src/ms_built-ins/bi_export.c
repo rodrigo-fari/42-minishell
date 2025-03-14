@@ -83,9 +83,10 @@ void	env_add(t_env *env, char *key, char *value, bool has_equal)
 
 void	print_org_env(t_env *env)
 {
-	org_env_alpha(env);
+	t_env	*temp;
 
-	t_env *temp = env;
+	temp = env;
+	org_env_alpha(env);
 	while (temp != NULL)
 	{
 		if (temp->has_equal)
