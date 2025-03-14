@@ -171,3 +171,13 @@ A 12/03/2025 (12:50) - Quarta-feira
 ･Pipe funcionando 60%, não funciona com o ECHO
 ･Append e redirect in/out funcionando 99%, executa perfeitamente mas aparece um error no terminal.
 ･Falta criar a variavel globas p os erros, tlvz corrija.
+__________________________________________________________________________
+R 14/03/2025 (19:27) - Sexta-feira
+
+･ERRO 1: Invlaid read of size 1: Provavlmente e ocorre por casa da nva interacao da logica das quotes. O mesmo motivo pelo qual o "ERRO 3".
+･ERRO 2: "open ." : Erro do "=" das envs.
+･ERRO 3: malloc chunk smt : O mesmo motivo do "ERRO 1".
+･ERRO 4: Mensagem de erro mesmo com o sucesso da execucao do comando ">>".
+
+_________________________________________________________________________
+
