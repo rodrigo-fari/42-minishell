@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 14:29:07 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/03/14 18:19:10 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/03/14 18:24:27 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*var_expand(char *input)
 	return (ft_strdup(""));
 }
 
-char 	*verify_quotes(char *input)
+char	*verify_quotes(char *input)
 {
 	int		i;
 	int		len;
