@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 14:29:07 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/03/13 17:35:10 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/03/14 18:19:10 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ char	*var_expand(char *input)
 	t_env	*tmp;
 
 	tmp = env_manager(NULL);
-	printf("INPUT = %s\n", input);
 	while (tmp)
 	{
 		if (ft_strcmp(input, tmp->key) == 0)
@@ -79,9 +78,7 @@ char	*get_quote_content(char *input, char current_quote, int i, int j)
 				input_array[j] = var_expand(tmp_str + 1);
 				free (tmp_str);
 			}
-			printf("input_array = %s\n", input_array[j]); 
 			ft_strjoin(ret_str, input_array[j]);
-			printf("ret_str = %s\n", ret_str);
 			j++;
 		}
 	}
@@ -99,11 +96,4 @@ void	remove_quotes(char **commands)
 		commands[i] = verify_quotes(commands[i]);
 		i++;
 	}
-}
-
-bool	bool_changer(bool key)
-{
-	if (key == true)
-		return (false);
-	return (true);
 }

@@ -1,25 +1,1514 @@
-==187997== Memcheck, a memory error detector
-==187997== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==187997== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
-==187997== Command: ./minishell
-==187997== Parent PID: 187994
-==187997== 
-==187968== 
-==187968== HEAP SUMMARY:
-==187968==     in use at exit: 208,262 bytes in 229 blocks
-==187968==   total heap usage: 1,039 allocs, 810 frees, 242,853 bytes allocated
-==187968== 
-==187968== LEAK SUMMARY:
-==187968==    definitely lost: 0 bytes in 0 blocks
-==187968==    indirectly lost: 0 bytes in 0 blocks
-==187968==      possibly lost: 0 bytes in 0 blocks
-==187968==    still reachable: 0 bytes in 0 blocks
-==187968==         suppressed: 208,262 bytes in 229 blocks
-==187968== 
-==187968== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---187968-- 
---187968-- used_suppression:     63 leak readline readline_leaks:2 suppressed: 204,160 bytes in 222 blocks
---187968-- used_suppression:      4 readline_leaks readline_leaks:8 suppressed: 4,102 bytes in 7 blocks
-==187968== 
-==187968== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-
+==8786== Memcheck, a memory error detector
+==8786== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==8786== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==8786== Command: ./minishell
+==8786== Parent PID: 8783
+==8786== 
+==8786== Invalid read of size 1
+==8786==    at 0x4049C0: ft_strlen (ft_strlen.c:22)
+==8786==    by 0x404668: ft_strjoin (ft_strjoin.c:22)
+==8786==    by 0x406AE6: get_quote_content (ps_remove_quotes.c:83)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== Invalid read of size 1
+==8786==    at 0x4049C0: ft_strlen (ft_strlen.c:22)
+==8786==    by 0x4046CA: ft_strjoin (ft_strjoin.c:27)
+==8786==    by 0x406AE6: get_quote_content (ps_remove_quotes.c:83)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== Invalid read of size 1
+==8786==    at 0x4046E3: ft_strjoin (ft_strjoin.c:29)
+==8786==    by 0x406AE6: get_quote_content (ps_remove_quotes.c:83)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== Invalid read of size 1
+==8786==    at 0x484ED16: strlen (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x493BD30: __vfprintf_internal (vfprintf-internal.c:1517)
+==8786==    by 0x492579E: printf (printf.c:33)
+==8786==    by 0x406AFB: get_quote_content (ps_remove_quotes.c:84)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== Invalid read of size 1
+==8786==    at 0x484ED24: strlen (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x493BD30: __vfprintf_internal (vfprintf-internal.c:1517)
+==8786==    by 0x492579E: printf (printf.c:33)
+==8786==    by 0x406AFB: get_quote_content (ps_remove_quotes.c:84)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e731 is 1 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== Invalid read of size 1
+==8786==    at 0x4950734: _IO_new_file_xsputn (fileops.c:1218)
+==8786==    by 0x4950734: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1196)
+==8786==    by 0x493C00B: outstring_func (vfprintf-internal.c:239)
+==8786==    by 0x493C00B: __vfprintf_internal (vfprintf-internal.c:1517)
+==8786==    by 0x492579E: printf (printf.c:33)
+==8786==    by 0x406AFB: get_quote_content (ps_remove_quotes.c:84)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e733 is 3 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== Invalid read of size 1
+==8786==    at 0x48534F0: mempcpy (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x4950664: _IO_new_file_xsputn (fileops.c:1235)
+==8786==    by 0x4950664: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1196)
+==8786==    by 0x493C00B: outstring_func (vfprintf-internal.c:239)
+==8786==    by 0x493C00B: __vfprintf_internal (vfprintf-internal.c:1517)
+==8786==    by 0x492579E: printf (printf.c:33)
+==8786==    by 0x406AFB: get_quote_content (ps_remove_quotes.c:84)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== Invalid read of size 1
+==8786==    at 0x48534FE: mempcpy (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x4950664: _IO_new_file_xsputn (fileops.c:1235)
+==8786==    by 0x4950664: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1196)
+==8786==    by 0x493C00B: outstring_func (vfprintf-internal.c:239)
+==8786==    by 0x493C00B: __vfprintf_internal (vfprintf-internal.c:1517)
+==8786==    by 0x492579E: printf (printf.c:33)
+==8786==    by 0x406AFB: get_quote_content (ps_remove_quotes.c:84)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e732 is 2 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== Invalid read of size 1
+==8786==    at 0x406034: expand_exit (ps_expand_exit_status.c:64)
+==8786==    by 0x405A7E: ms_exec (ms_exec.c:26)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== Invalid read of size 1
+==8786==    at 0x40604E: expand_exit (ps_expand_exit_status.c:66)
+==8786==    by 0x405A7E: ms_exec (ms_exec.c:26)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== Invalid read of size 1
+==8786==    at 0x4049C0: ft_strlen (ft_strlen.c:22)
+==8786==    by 0x405E82: replace_exit_status_in_command (ps_expand_exit_status.c:19)
+==8786==    by 0x405FE2: replace_exit_status (ps_expand_exit_status.c:50)
+==8786==    by 0x406081: expand_exit (ps_expand_exit_status.c:69)
+==8786==    by 0x405A7E: ms_exec (ms_exec.c:26)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== Invalid read of size 1
+==8786==    at 0x404E8E: ft_strnstr (ft_strnstr.c:24)
+==8786==    by 0x405E98: replace_exit_status_in_command (ps_expand_exit_status.c:19)
+==8786==    by 0x405FE2: replace_exit_status (ps_expand_exit_status.c:50)
+==8786==    by 0x406081: expand_exit (ps_expand_exit_status.c:69)
+==8786==    by 0x405A7E: ms_exec (ms_exec.c:26)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== Invalid read of size 1
+==8786==    at 0x404AD0: ft_strncmp (ft_strncmp.c:20)
+==8786==    by 0x404EE9: ft_strnstr (ft_strnstr.c:26)
+==8786==    by 0x405E98: replace_exit_status_in_command (ps_expand_exit_status.c:19)
+==8786==    by 0x405FE2: replace_exit_status (ps_expand_exit_status.c:50)
+==8786==    by 0x406081: expand_exit (ps_expand_exit_status.c:69)
+==8786==    by 0x405A7E: ms_exec (ms_exec.c:26)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== Invalid read of size 1
+==8786==    at 0x404B1D: ft_strncmp (ft_strncmp.c:22)
+==8786==    by 0x404EE9: ft_strnstr (ft_strnstr.c:26)
+==8786==    by 0x405E98: replace_exit_status_in_command (ps_expand_exit_status.c:19)
+==8786==    by 0x405FE2: replace_exit_status (ps_expand_exit_status.c:50)
+==8786==    by 0x406081: expand_exit (ps_expand_exit_status.c:69)
+==8786==    by 0x405A7E: ms_exec (ms_exec.c:26)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== Invalid read of size 1
+==8786==    at 0x404B4E: ft_strncmp (ft_strncmp.c:25)
+==8786==    by 0x404EE9: ft_strnstr (ft_strnstr.c:26)
+==8786==    by 0x405E98: replace_exit_status_in_command (ps_expand_exit_status.c:19)
+==8786==    by 0x405FE2: replace_exit_status (ps_expand_exit_status.c:50)
+==8786==    by 0x406081: expand_exit (ps_expand_exit_status.c:69)
+==8786==    by 0x405A7E: ms_exec (ms_exec.c:26)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== Invalid read of size 1
+==8786==    at 0x4049C0: ft_strlen (ft_strlen.c:22)
+==8786==    by 0x40454C: ft_strdup (ft_strdup.c:23)
+==8786==    by 0x4077D1: token_to_struct (tk_tokenizer.c:26)
+==8786==    by 0x405A87: ms_exec (ms_exec.c:27)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== Invalid read of size 1
+==8786==    at 0x40458C: ft_strdup (ft_strdup.c:28)
+==8786==    by 0x4077D1: token_to_struct (tk_tokenizer.c:26)
+==8786==    by 0x405A87: ms_exec (ms_exec.c:27)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== Invalid read of size 1
+==8786==    at 0x40459E: ft_strdup (ft_strdup.c:30)
+==8786==    by 0x4077D1: token_to_struct (tk_tokenizer.c:26)
+==8786==    by 0x405A87: ms_exec (ms_exec.c:27)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== Invalid read of size 1
+==8786==    at 0x4049C0: ft_strlen (ft_strlen.c:22)
+==8786==    by 0x407844: token_type (tk_tokenizer.c:37)
+==8786==    by 0x4077ED: token_to_struct (tk_tokenizer.c:27)
+==8786==    by 0x405A87: ms_exec (ms_exec.c:27)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== Invalid read of size 1
+==8786==    at 0x4049C0: ft_strlen (ft_strlen.c:22)
+==8786==    by 0x4078BA: token_type (tk_tokenizer.c:46)
+==8786==    by 0x4077ED: token_to_struct (tk_tokenizer.c:27)
+==8786==    by 0x405A87: ms_exec (ms_exec.c:27)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== Invalid read of size 1
+==8786==    at 0x4042DA: ft_strchr (ft_strchr.c:20)
+==8786==    by 0x40799F: token_type (tk_tokenizer.c:57)
+==8786==    by 0x4077ED: token_to_struct (tk_tokenizer.c:27)
+==8786==    by 0x405A87: ms_exec (ms_exec.c:27)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== Invalid read of size 1
+==8786==    at 0x4042EC: ft_strchr (ft_strchr.c:22)
+==8786==    by 0x40799F: token_type (tk_tokenizer.c:57)
+==8786==    by 0x4077ED: token_to_struct (tk_tokenizer.c:27)
+==8786==    by 0x405A87: ms_exec (ms_exec.c:27)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== Invalid read of size 1
+==8786==    at 0x4043B9: ft_strcmp (ft_strcmp.c:21)
+==8786==    by 0x406F50: contains_pipe (pp_pipeline.c:56)
+==8786==    by 0x405A9D: ms_exec (ms_exec.c:29)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== Invalid read of size 1
+==8786==    at 0x404426: ft_strcmp (ft_strcmp.c:26)
+==8786==    by 0x406F50: contains_pipe (pp_pipeline.c:56)
+==8786==    by 0x405A9D: ms_exec (ms_exec.c:29)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== Invalid read of size 1
+==8786==    at 0x40444C: ft_strcmp (ft_strcmp.c:28)
+==8786==    by 0x406F50: contains_pipe (pp_pipeline.c:56)
+==8786==    by 0x405A9D: ms_exec (ms_exec.c:29)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== Invalid read of size 1
+==8786==    at 0x40447A: ft_strcmp (ft_strcmp.c:30)
+==8786==    by 0x406F50: contains_pipe (pp_pipeline.c:56)
+==8786==    by 0x405A9D: ms_exec (ms_exec.c:29)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== Invalid read of size 1
+==8786==    at 0x404490: ft_strcmp (ft_strcmp.c:31)
+==8786==    by 0x406F50: contains_pipe (pp_pipeline.c:56)
+==8786==    by 0x405A9D: ms_exec (ms_exec.c:29)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== Invalid free() / delete / delete[] / realloc()
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40277C: free_splits (free_splits.c:23)
+==8786==    by 0x405B67: ms_free (ms_free.c:24)
+==8786==    by 0x405AF4: ms_exec (ms_exec.c:37)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== Invalid free() / delete / delete[] / realloc()
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40277C: free_splits (free_splits.c:23)
+==8786==    by 0x405B67: ms_free (ms_free.c:24)
+==8786==    by 0x401B44: handle_exit (bi_exit.c:54)
+==8786==    by 0x401B74: bi_exit (bi_exit.c:60)
+==8786==    by 0x4018C1: bi_exec (bi_exec.c:27)
+==8786==    by 0x405ADF: ms_exec (ms_exec.c:36)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6ef90 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== 
+==8786== HEAP SUMMARY:
+==8786==     in use at exit: 208,620 bytes in 241 blocks
+==8786==   total heap usage: 1,049 allocs, 811 frees, 243,277 bytes allocated
+==8786== 
+==8786== 9 bytes in 1 blocks are indirectly lost in loss record 7 of 74
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x404560: ft_strdup (ft_strdup.c:24)
+==8786==    by 0x40679E: var_expand (ps_remove_quotes.c:24)
+==8786==    by 0x406A9C: get_quote_content (ps_remove_quotes.c:79)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== 10 bytes in 2 blocks are indirectly lost in loss record 8 of 74
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x40404A: ft_splitting (ft_split.c:70)
+==8786==    by 0x403E5C: ft_split (ft_split.c:97)
+==8786==    by 0x406A29: get_quote_content (ps_remove_quotes.c:71)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== 32 bytes in 3 blocks are definitely lost in loss record 19 of 74
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x404695: ft_strjoin (ft_strjoin.c:23)
+==8786==    by 0x406AE6: get_quote_content (ps_remove_quotes.c:83)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== 67 (48 direct, 19 indirect) bytes in 3 blocks are definitely lost in loss record 24 of 74
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x403E2F: ft_split (ft_split.c:94)
+==8786==    by 0x406A29: get_quote_content (ps_remove_quotes.c:71)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== LEAK SUMMARY:
+==8786==    definitely lost: 80 bytes in 6 blocks
+==8786==    indirectly lost: 19 bytes in 3 blocks
+==8786==      possibly lost: 0 bytes in 0 blocks
+==8786==    still reachable: 0 bytes in 0 blocks
+==8786==         suppressed: 208,521 bytes in 232 blocks
+==8786== 
+==8786== ERROR SUMMARY: 572 errors from 31 contexts (suppressed: 0 from 0)
+==8786== 
+==8786== 1 errors in context 1 of 31:
+==8786== Invalid free() / delete / delete[] / realloc()
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40277C: free_splits (free_splits.c:23)
+==8786==    by 0x405B67: ms_free (ms_free.c:24)
+==8786==    by 0x401B44: handle_exit (bi_exit.c:54)
+==8786==    by 0x401B74: bi_exit (bi_exit.c:60)
+==8786==    by 0x4018C1: bi_exec (bi_exec.c:27)
+==8786==    by 0x405ADF: ms_exec (ms_exec.c:36)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6ef90 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== 
+==8786== 2 errors in context 2 of 31:
+==8786== Invalid free() / delete / delete[] / realloc()
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40277C: free_splits (free_splits.c:23)
+==8786==    by 0x405B67: ms_free (ms_free.c:24)
+==8786==    by 0x405AF4: ms_exec (ms_exec.c:37)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== 
+==8786== 3 errors in context 3 of 31:
+==8786== Invalid read of size 1
+==8786==    at 0x404490: ft_strcmp (ft_strcmp.c:31)
+==8786==    by 0x406F50: contains_pipe (pp_pipeline.c:56)
+==8786==    by 0x405A9D: ms_exec (ms_exec.c:29)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== 
+==8786== 3 errors in context 4 of 31:
+==8786== Invalid read of size 1
+==8786==    at 0x40447A: ft_strcmp (ft_strcmp.c:30)
+==8786==    by 0x406F50: contains_pipe (pp_pipeline.c:56)
+==8786==    by 0x405A9D: ms_exec (ms_exec.c:29)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== 
+==8786== 3 errors in context 5 of 31:
+==8786== Invalid read of size 1
+==8786==    at 0x40444C: ft_strcmp (ft_strcmp.c:28)
+==8786==    by 0x406F50: contains_pipe (pp_pipeline.c:56)
+==8786==    by 0x405A9D: ms_exec (ms_exec.c:29)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== 
+==8786== 3 errors in context 6 of 31:
+==8786== Invalid read of size 1
+==8786==    at 0x404426: ft_strcmp (ft_strcmp.c:26)
+==8786==    by 0x406F50: contains_pipe (pp_pipeline.c:56)
+==8786==    by 0x405A9D: ms_exec (ms_exec.c:29)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== 
+==8786== 3 errors in context 7 of 31:
+==8786== Invalid read of size 1
+==8786==    at 0x4043B9: ft_strcmp (ft_strcmp.c:21)
+==8786==    by 0x406F50: contains_pipe (pp_pipeline.c:56)
+==8786==    by 0x405A9D: ms_exec (ms_exec.c:29)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== 
+==8786== 3 errors in context 8 of 31:
+==8786== Invalid read of size 1
+==8786==    at 0x484ED16: strlen (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x493BD30: __vfprintf_internal (vfprintf-internal.c:1517)
+==8786==    by 0x492579E: printf (printf.c:33)
+==8786==    by 0x406AFB: get_quote_content (ps_remove_quotes.c:84)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== 
+==8786== 4 errors in context 9 of 31:
+==8786== Invalid read of size 1
+==8786==    at 0x48534FE: mempcpy (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x4950664: _IO_new_file_xsputn (fileops.c:1235)
+==8786==    by 0x4950664: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1196)
+==8786==    by 0x493C00B: outstring_func (vfprintf-internal.c:239)
+==8786==    by 0x493C00B: __vfprintf_internal (vfprintf-internal.c:1517)
+==8786==    by 0x492579E: printf (printf.c:33)
+==8786==    by 0x406AFB: get_quote_content (ps_remove_quotes.c:84)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e732 is 2 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== 
+==8786== 9 errors in context 10 of 31:
+==8786== Invalid read of size 1
+==8786==    at 0x4042EC: ft_strchr (ft_strchr.c:22)
+==8786==    by 0x40799F: token_type (tk_tokenizer.c:57)
+==8786==    by 0x4077ED: token_to_struct (tk_tokenizer.c:27)
+==8786==    by 0x405A87: ms_exec (ms_exec.c:27)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== 
+==8786== 9 errors in context 11 of 31:
+==8786== Invalid read of size 1
+==8786==    at 0x48534F0: mempcpy (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x4950664: _IO_new_file_xsputn (fileops.c:1235)
+==8786==    by 0x4950664: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1196)
+==8786==    by 0x493C00B: outstring_func (vfprintf-internal.c:239)
+==8786==    by 0x493C00B: __vfprintf_internal (vfprintf-internal.c:1517)
+==8786==    by 0x492579E: printf (printf.c:33)
+==8786==    by 0x406AFB: get_quote_content (ps_remove_quotes.c:84)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== 
+==8786== 11 errors in context 12 of 31:
+==8786== Invalid read of size 1
+==8786==    at 0x4042DA: ft_strchr (ft_strchr.c:20)
+==8786==    by 0x40799F: token_type (tk_tokenizer.c:57)
+==8786==    by 0x4077ED: token_to_struct (tk_tokenizer.c:27)
+==8786==    by 0x405A87: ms_exec (ms_exec.c:27)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== 
+==8786== 13 errors in context 13 of 31:
+==8786== Invalid read of size 1
+==8786==    at 0x40459E: ft_strdup (ft_strdup.c:30)
+==8786==    by 0x4077D1: token_to_struct (tk_tokenizer.c:26)
+==8786==    by 0x405A87: ms_exec (ms_exec.c:27)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== 
+==8786== 13 errors in context 14 of 31:
+==8786== Invalid read of size 1
+==8786==    at 0x40604E: expand_exit (ps_expand_exit_status.c:66)
+==8786==    by 0x405A7E: ms_exec (ms_exec.c:26)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== 
+==8786== 13 errors in context 15 of 31:
+==8786== Invalid read of size 1
+==8786==    at 0x4950734: _IO_new_file_xsputn (fileops.c:1218)
+==8786==    by 0x4950734: _IO_file_xsputn@@GLIBC_2.2.5 (fileops.c:1196)
+==8786==    by 0x493C00B: outstring_func (vfprintf-internal.c:239)
+==8786==    by 0x493C00B: __vfprintf_internal (vfprintf-internal.c:1517)
+==8786==    by 0x492579E: printf (printf.c:33)
+==8786==    by 0x406AFB: get_quote_content (ps_remove_quotes.c:84)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e733 is 3 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== 
+==8786== 13 errors in context 16 of 31:
+==8786== Invalid read of size 1
+==8786==    at 0x484ED24: strlen (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x493BD30: __vfprintf_internal (vfprintf-internal.c:1517)
+==8786==    by 0x492579E: printf (printf.c:33)
+==8786==    by 0x406AFB: get_quote_content (ps_remove_quotes.c:84)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e731 is 1 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== 
+==8786== 13 errors in context 17 of 31:
+==8786== Invalid read of size 1
+==8786==    at 0x4046E3: ft_strjoin (ft_strjoin.c:29)
+==8786==    by 0x406AE6: get_quote_content (ps_remove_quotes.c:83)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== 
+==8786== 16 errors in context 18 of 31:
+==8786== Invalid read of size 1
+==8786==    at 0x4049C0: ft_strlen (ft_strlen.c:22)
+==8786==    by 0x4078BA: token_type (tk_tokenizer.c:46)
+==8786==    by 0x4077ED: token_to_struct (tk_tokenizer.c:27)
+==8786==    by 0x405A87: ms_exec (ms_exec.c:27)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== 
+==8786== 16 errors in context 19 of 31:
+==8786== Invalid read of size 1
+==8786==    at 0x4049C0: ft_strlen (ft_strlen.c:22)
+==8786==    by 0x407844: token_type (tk_tokenizer.c:37)
+==8786==    by 0x4077ED: token_to_struct (tk_tokenizer.c:27)
+==8786==    by 0x405A87: ms_exec (ms_exec.c:27)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== 
+==8786== 16 errors in context 20 of 31:
+==8786== Invalid read of size 1
+==8786==    at 0x40458C: ft_strdup (ft_strdup.c:28)
+==8786==    by 0x4077D1: token_to_struct (tk_tokenizer.c:26)
+==8786==    by 0x405A87: ms_exec (ms_exec.c:27)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== 
+==8786== 16 errors in context 21 of 31:
+==8786== Invalid read of size 1
+==8786==    at 0x4049C0: ft_strlen (ft_strlen.c:22)
+==8786==    by 0x40454C: ft_strdup (ft_strdup.c:23)
+==8786==    by 0x4077D1: token_to_struct (tk_tokenizer.c:26)
+==8786==    by 0x405A87: ms_exec (ms_exec.c:27)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== 
+==8786== 16 errors in context 22 of 31:
+==8786== Invalid read of size 1
+==8786==    at 0x406034: expand_exit (ps_expand_exit_status.c:64)
+==8786==    by 0x405A7E: ms_exec (ms_exec.c:26)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== 
+==8786== 16 errors in context 23 of 31:
+==8786== Invalid read of size 1
+==8786==    at 0x4049C0: ft_strlen (ft_strlen.c:22)
+==8786==    by 0x404668: ft_strjoin (ft_strjoin.c:22)
+==8786==    by 0x406AE6: get_quote_content (ps_remove_quotes.c:83)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== 
+==8786== 44 errors in context 24 of 31:
+==8786== Invalid read of size 1
+==8786==    at 0x404B4E: ft_strncmp (ft_strncmp.c:25)
+==8786==    by 0x404EE9: ft_strnstr (ft_strnstr.c:26)
+==8786==    by 0x405E98: replace_exit_status_in_command (ps_expand_exit_status.c:19)
+==8786==    by 0x405FE2: replace_exit_status (ps_expand_exit_status.c:50)
+==8786==    by 0x406081: expand_exit (ps_expand_exit_status.c:69)
+==8786==    by 0x405A7E: ms_exec (ms_exec.c:26)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== 
+==8786== 49 errors in context 25 of 31:
+==8786== Invalid read of size 1
+==8786==    at 0x404B1D: ft_strncmp (ft_strncmp.c:22)
+==8786==    by 0x404EE9: ft_strnstr (ft_strnstr.c:26)
+==8786==    by 0x405E98: replace_exit_status_in_command (ps_expand_exit_status.c:19)
+==8786==    by 0x405FE2: replace_exit_status (ps_expand_exit_status.c:50)
+==8786==    by 0x406081: expand_exit (ps_expand_exit_status.c:69)
+==8786==    by 0x405A7E: ms_exec (ms_exec.c:26)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== 
+==8786== 49 errors in context 26 of 31:
+==8786== Invalid read of size 1
+==8786==    at 0x404AD0: ft_strncmp (ft_strncmp.c:20)
+==8786==    by 0x404EE9: ft_strnstr (ft_strnstr.c:26)
+==8786==    by 0x405E98: replace_exit_status_in_command (ps_expand_exit_status.c:19)
+==8786==    by 0x405FE2: replace_exit_status (ps_expand_exit_status.c:50)
+==8786==    by 0x406081: expand_exit (ps_expand_exit_status.c:69)
+==8786==    by 0x405A7E: ms_exec (ms_exec.c:26)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== 
+==8786== 57 errors in context 27 of 31:
+==8786== Invalid read of size 1
+==8786==    at 0x404E8E: ft_strnstr (ft_strnstr.c:24)
+==8786==    by 0x405E98: replace_exit_status_in_command (ps_expand_exit_status.c:19)
+==8786==    by 0x405FE2: replace_exit_status (ps_expand_exit_status.c:50)
+==8786==    by 0x406081: expand_exit (ps_expand_exit_status.c:69)
+==8786==    by 0x405A7E: ms_exec (ms_exec.c:26)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== 
+==8786== 70 errors in context 28 of 31:
+==8786== Invalid read of size 1
+==8786==    at 0x4049C0: ft_strlen (ft_strlen.c:22)
+==8786==    by 0x405E82: replace_exit_status_in_command (ps_expand_exit_status.c:19)
+==8786==    by 0x405FE2: replace_exit_status (ps_expand_exit_status.c:50)
+==8786==    by 0x406081: expand_exit (ps_expand_exit_status.c:69)
+==8786==    by 0x405A7E: ms_exec (ms_exec.c:26)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+==8786== 
+==8786== 86 errors in context 29 of 31:
+==8786== Invalid read of size 1
+==8786==    at 0x4049C0: ft_strlen (ft_strlen.c:22)
+==8786==    by 0x4046CA: ft_strjoin (ft_strjoin.c:27)
+==8786==    by 0x406AE6: get_quote_content (ps_remove_quotes.c:83)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Address 0x4b6e730 is 0 bytes inside a block of size 5 free'd
+==8786==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x406A36: get_quote_content (ps_remove_quotes.c:72)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786==  Block was alloc'd at
+==8786==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8786==    by 0x40293D: ft_calloc (ft_calloc.c:20)
+==8786==    by 0x4051AE: ft_substr (ft_substr.c:24)
+==8786==    by 0x406A0A: get_quote_content (ps_remove_quotes.c:68)
+==8786==    by 0x406922: verify_quotes (ps_remove_quotes.c:52)
+==8786==    by 0x406B66: remove_quotes (ps_remove_quotes.c:99)
+==8786==    by 0x405A75: ms_exec (ms_exec.c:25)
+==8786==    by 0x405BEC: main (ms_main.c:34)
+==8786== 
+--8786-- 
+--8786-- used_suppression:     66 leak readline readline_leaks:2 suppressed: 204,417 bytes in 225 blocks
+--8786-- used_suppression:      4 readline_leaks readline_leaks:8 suppressed: 4,104 bytes in 7 blocks
+==8786== 
+==8786== ERROR SUMMARY: 572 errors from 31 contexts (suppressed: 0 from 0)

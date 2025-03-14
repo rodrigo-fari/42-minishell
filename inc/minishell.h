@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/03/13 16:23:50 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/03/14 18:15:54 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,13 +187,14 @@ bool	parse_redin(char **commands);
 //[ps_redout.c]
 bool	parse_redout(char **commands);
 
-//![ps_remove_quotes.c] - 5 functions limit achived.
-bool	bool_changer(bool key);
+//[ps_remove_quotes.c]
 char	*var_expand(char *input);
 char 	*verify_quotes(char *input);
 void	remove_quotes(char **commands);
 char	*get_quote_content(char *input, char current_quote, int i, int j);
 
+//[ps_remove_quotes_utils.c]
+bool	bool_changer(bool key);
 
 //=====================================| ms_pipeline |
 //[pp_exec.c]
