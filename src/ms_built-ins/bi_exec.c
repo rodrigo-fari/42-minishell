@@ -6,7 +6,7 @@
 /*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 12:18:54 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/03/12 12:35:45 by aeberius         ###   ########.fr       */
+/*   Updated: 2025/03/14 18:35:40 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	bi_exec(t_env *env, t_token *tokens, char **commands)
 
 	tmp = tokens;
 	env = env_manager(NULL);
-
 	if (ft_strcmp(tmp->value, "echo") == 0)
 		bi_echo(tmp);
 	else if (ft_strcmp(tmp->value, "pwd") == 0)

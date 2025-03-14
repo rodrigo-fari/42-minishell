@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/03/14 18:15:54 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/03/14 18:48:13 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,7 +199,8 @@ bool	bool_changer(bool key);
 //=====================================| ms_pipeline |
 //[pp_exec.c]
 void	execute_pipeline(char ***commands, t_env *env);
-void	execute_pipe_command(char **command, t_env *env, int fd_in, int fd_out);
+void	execute_pipeline(char ***commands, t_env *env);
+void	create_and_fork_process(char **command, t_env *env, int fd_in, int has_next);
 
 //[pp_pipeline.c]
 int		count_pipes(char **commands);

@@ -171,3 +171,13 @@ A 12/03/2025 (12:50) - Quarta-feira
 ･Pipe funcionando 60%, não funciona com o ECHO
 ･Append e redirect in/out funcionando 99%, executa perfeitamente mas aparece um error no terminal.
 ･Falta criar a variavel globas p os erros, tlvz corrija.
+
+__________________________________________________________________________
+A 14/03/2025 (18:45) - SExta-feira
+
+･ Variavel com mais de um = da um errinho 🟨
+ env | grep DBUS
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/102278/bus
+
+･Correção norminette ✅
+･Corrigir erro do open .
