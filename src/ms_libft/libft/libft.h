@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 20:41:20 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/02/23 14:47:43 by aeberius         ###   ########.fr       */
+/*   Updated: 2025/03/18 10:33:15 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len);
 
 void	ft_putnbr_fd(int n, int fd);
 void	ft_bzero(void *s, size_t n);
+void	ft_print_array(char **array);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);

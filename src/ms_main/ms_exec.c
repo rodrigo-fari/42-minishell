@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 11:19:43 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/03/13 15:55:29 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/03/18 10:28:51 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 void	ms_exec(char *input, t_env *env)
 {
-	char **commands;
-	t_token *tokens;
+	char	**commands;
+	t_token	*tokens;
+
 	commands = tk_splitter(input, 0, 0);
 	if (!ps_parsing(commands, 0))
 	{

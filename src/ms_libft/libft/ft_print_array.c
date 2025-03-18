@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_remove_quotes_utils.c                           :+:      :+:    :+:   */
+/*   ft_print_array.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/14 18:14:52 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/03/18 10:24:16 by rde-fari         ###   ########.fr       */
+/*   Created: 2025/03/18 10:29:21 by rde-fari          #+#    #+#             */
+/*   Updated: 2025/03/18 10:32:50 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-bool	bool_changer(bool key)
+void	ft_print_array(char **array)
 {
-	return (!key);
+	int	i;
+
+	i = 0;
+	while (array[i])
+	{
+		ft_printf("╠Array[%d]= %s\n", i, array[i]);
+		i++;
+	}
 }
