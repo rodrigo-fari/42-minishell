@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 20:41:20 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/03/18 10:33:15 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/03/18 13:35:03 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
 char	*ft_itoa(int n);
 char	*ft_strdup(const char *s);
+char	*ft_charjoin(char *str, char c);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
 char	**ft_split(char const *s, char c);
