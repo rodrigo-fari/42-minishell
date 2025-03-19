@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/23 21:11:14 by aeberius          #+#    #+#             */
-/*   Updated: 2025/03/18 13:54:21 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/03/19 15:10:34 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	ms_print_fd(char *str, int fd)
 {
 	write(fd, str, ft_strlen(str));
-	write(fd, "\n", 1);
 }
 
 int	count_args(char **commands)
