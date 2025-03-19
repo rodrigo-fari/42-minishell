@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 14:29:07 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/03/19 15:01:58 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/03/19 16:04:44 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	*verify_quotes(char *input)
 	return (replace_values(input, i, current_quote, key));
 }
 
-char	*replace_values(char *input, int i,char current_quote, bool key)
+char	*replace_values(char *input, int i, char current_quote, bool key)
 {
 	char	*ret_str;
 
@@ -59,11 +59,10 @@ char	*replace_values(char *input, int i,char current_quote, bool key)
 		free(input);
 		return (ret_str);
 	}
-	else
+	//else
 	ret_str = remove_quotes(input);
 	free(input);
 	return (ret_str);
-	
 }
 
 char	*remove_quotes_and_expand(char *input, int start, char current_quote)

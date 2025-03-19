@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_remove_quotes_utils.c                           :+:      :+:    :+:   */
+/*   ft_charjoin.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/14 18:14:52 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/03/19 16:03:36 by rde-fari         ###   ########.fr       */
+/*   Created: 2025/03/18 13:24:22 by rde-fari          #+#    #+#             */
+/*   Updated: 2025/03/18 13:34:57 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-bool	bool_changer(bool key)
+char	*ft_charjoin(char *str, char c)
 {
-	return (!key);
-}
+	char	*result;
+	int		len;
 
-char	*append_char_to_string(char *str, char c)
-{
-	char	*new_str;
-	size_t	len;
-
-	if (str == NULL)
-		len = 0;
-	else
-		len = ft_strlen(str);
-	new_str = (char *)malloc(len + 2);
-	if (str != NULL)
-		ft_strcpy(new_str, str);
-	new_str[len] = c;
-	new_str[len + 1] = '\0';
-	return (new_str);
+	len = 0;
+	if (str)
+		len = strlen(str);
+	result = (char *)malloc((len + 2) * sizeof(char));
+	if (!result)
+		return (NULL);
+	if (str)
+		ft_strcpy(result, str);
+	result[len] = c;
+	result[len + 1] = '\0';
+	return (result);
 }

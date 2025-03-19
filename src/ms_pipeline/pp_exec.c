@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pp_exec.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 10:13:46 by aeberius          #+#    #+#             */
-/*   Updated: 2025/03/14 19:15:09 by aeberius         ###   ########.fr       */
+/*   Updated: 2025/03/19 15:21:46 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,7 @@ void	execute_pipe_command(char **command, t_env *env, int fd_in, int fd_out)
 	exit(EXIT_FAILURE);
 }
 
-void	create_and_fork_process(
-	char **command, t_env *env, int fd_in, int has_next)
+void	nfork_process(char **command, t_env *env, int fd_in, int has_next)
 {
 	int		fd[2];
 	pid_t	pid;
@@ -72,8 +71,7 @@ void	execute_pipeline(char ***commands, t_env *env)
 	fd_in = 0;
 	while (commands[i] != NULL)
 	{
-		create_and_fork_process(
-			commands[i], env, fd_in, commands[i + 1] != NULL);
+		nfork_process(commands[i], env, fd_in, commands[i + 1] != NULL);
 		fd_in = fd_in ? fd_in : 0;
 		i++;
 	}

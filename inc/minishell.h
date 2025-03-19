@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/03/19 14:59:15 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/03/19 15:21:56 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,18 +194,18 @@ bool	parse_redout(char **commands);
 void	quote_fix(char **commands);
 char	*verify_quotes(char *input);
 char	*remove_quotes(char *input);
-char	*replace_values(char *input, int i,char current_quote, bool key);
+char	*replace_values(char *input, int i, char current_quote, bool key);
 char	*remove_quotes_and_expand(char *input, int start, char current_quote);
 
 //[ps_remove_quotes_utils.c]
 bool	bool_changer(bool key);
-char	*append_char_to_string(char* str, char c);
+char	*append_char_to_string(char	*str, char c);
 
 //=====================================| ms_pipeline |
 //[pp_exec.c]
 void	execute_pipeline(char ***commands, t_env *env);
 void	execute_pipeline(char ***commands, t_env *env);
-void	create_and_fork_process(char **command, t_env *env, int fd_in, int has_next);
+void	nfork_process(char **command, t_env *env, int fd_in, int has_next);
 
 //[pp_pipeline.c]
 int		count_pipes(char **commands);

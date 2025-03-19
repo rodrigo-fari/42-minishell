@@ -3,20 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   pp_pipeline.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 10:14:09 by aeberius          #+#    #+#             */
-/*   Updated: 2025/03/12 12:46:57 by aeberius         ###   ########.fr       */
+/*   Updated: 2025/03/19 16:12:32 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char ***split_by_pipe(char **commands)
+char	***split_by_pipe(char **commands)
 {
-	char ***result = malloc(sizeof(char **) * (count_pipes(commands) + 2));
-	int i = 0, j = 0, k = 0;
+	char	***result;
+	int		i;
+	int		j;
+	int		k;
 
+	i = 0;
+	j = 0;
+	k = 0;
+	result = malloc(sizeof(char **) * (count_pipes(commands) + 2));
 	result[i] = malloc(sizeof(char *) * (count_args(commands) + 1));
 	while (commands[j])
 	{
@@ -33,35 +39,48 @@ char ***split_by_pipe(char **commands)
 	}
 	result[i][k] = NULL;
 	result[i + 1] = NULL;
-	return result;
+	return (result);
 }
 
 int	count_pipes(char **commands)
 {
-	int count;
+	int	count;
+	int	i;
 
 	count = 0;
-	for (int i = 0; commands[i]; i++)
+	i = 0;
+	while (commands[i])
 	{
 		if (ft_strcmp(commands[i], "|") == 0)
 			count++;
+		i++;
 	}
 	return (count);
 }
 
 int	contains_pipe(char **commands)
 {
-	for (int i = 0; commands[i]; i++)
+	int	i;
+
+	i = 0;
+	while (commands[i])
 	{
 		if (ft_strcmp(commands[i], "|") == 0)
 			return (1);
+		i++;
 	}
 	return (0);
 }
 
 void	free_pipeline(char ***pipeline)
 {
-	for (int i = 0; pipeline[i]; i++)
+	int	i;
+
+	i = 0;
+	while (pipeline[i])
+	{
 		free(pipeline[i]);
+		i++;
+	}
 	free(pipeline);
 }
