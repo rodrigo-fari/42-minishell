@@ -18,7 +18,7 @@ SRC= ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c \
 	ft_hexapplier.c ft_strcmp.c get_next_line.c get_next_line_utils.c \
 	ft_str_chr_count.c ft_strnlen.c ft_matrix_finder.c free_splits.c \
 	ft_strncpy.c ft_isspace.c ft_strcpy.c ft_strcat.c ft_realloc.c \
-	ft_strndup.c ft_print_array.c \
+	ft_strndup.c ft_print_array.c ft_appen_char_to_string.c\
 
 all: $(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 20:41:20 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/03/19 14:08:23 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/03/25 11:23:13 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ char	**ft_split(char const *s, char c);
 char	*ft_strndup(const char *s, size_t n);
 char	*ft_strcpy(char *dest, const char *src);
 char	*ft_strcat(char *dest, const char *src);
+char	*append_char_to_string(char *str, char c);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_strncpy(char *dst, const char *src, int n);

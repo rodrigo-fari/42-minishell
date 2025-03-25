@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/03/19 15:21:56 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/03/25 11:24:18 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,7 +199,6 @@ char	*remove_quotes_and_expand(char *input, int start, char current_quote);
 
 //[ps_remove_quotes_utils.c]
 bool	bool_changer(bool key);
-char	*append_char_to_string(char	*str, char c);
 
 //=====================================| ms_pipeline |
 //[pp_exec.c]
