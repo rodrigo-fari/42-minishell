@@ -35,7 +35,7 @@ all: 				$(NAME)
 					@echo " "
 					sleep 1
 					@clear
-					./$(NAME)
+					./$(NAME)  
 
 $(NAME): 			$(OBJS) $(LIBFT)
 					@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -lreadline -o $(NAME)
