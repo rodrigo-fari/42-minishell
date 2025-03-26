@@ -26,7 +26,7 @@ RESET				= "\033[0m"
 
 #===================================================================================| Commands |
 
-all: 				$(NAME)
+all:				$(NAME)
 					@clear
 					@echo " "
 					@echo " "
@@ -35,7 +35,7 @@ all: 				$(NAME)
 					@echo " "
 					sleep 1
 					@clear
-					./$(NAME)  
+					@make val
 
 $(NAME): 			$(OBJS) $(LIBFT)
 					@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -lreadline -o $(NAME)

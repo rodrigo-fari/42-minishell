@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 14:29:07 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/03/19 16:04:44 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/03/26 23:08:15 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ char	*replace_values(char *input, int i, char current_quote, bool key)
 		free(input);
 		return (ret_str);
 	}
-	//else
 	ret_str = remove_quotes(input);
 	free(input);
 	return (ret_str);
