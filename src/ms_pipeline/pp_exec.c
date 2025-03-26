@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 10:13:46 by aeberius          #+#    #+#             */
-/*   Updated: 2025/03/19 15:21:46 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/03/25 20:15:34 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	execute_pipe_command(char **command, t_env *env, int fd_in, int fd_out)
 	if (fd_out != -1)
 		close(fd_out);
 	bi_exec(env, token_to_struct(command), command);
-	perror("execvp");
 	exit(EXIT_FAILURE);
 }
 

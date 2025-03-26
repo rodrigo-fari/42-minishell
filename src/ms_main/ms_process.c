@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:41 by aeberius          #+#    #+#             */
-/*   Updated: 2025/03/19 15:46:15 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/03/26 15:08:50 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	exec_child_process(t_token *tmp, char **commands, t_env *env)
 		execve(full_command, commands, envs_array);
 		free(full_command);
 	}
-	bi_error("bash: command not found");
+	bi_error("bash: command not found\n");
 	ms_free(env, NULL, commands, tmp);
 	exit(127);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bi_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 15:38:24 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/02/23 13:40:49 by aeberius         ###   ########.fr       */
+/*   Updated: 2025/03/26 15:09:25 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ bool	check_too_many_arguments(char **user_input)
 	{
 		if (i >= 2)
 		{
-			bi_error("bash: cd: too many arguments");
+			bi_error("bash: cd: too many arguments\n");
 			return (true);
 		}
 		i++;
@@ -73,7 +73,7 @@ char	*find_path_home_in_env(t_env *env)
 		}
 		tmp = tmp->next;
 	}
-	bi_error("bash: cd: HOME not set");
+	bi_error("bash: cd: HOME not set\n");
 	return (NULL);
 }
 
@@ -92,7 +92,7 @@ char	*find_oldpwd_in_env(t_env *env)
 		}
 		tmp = tmp->next;
 	}
-	bi_error("bash: cd: OLDPWD not set");
+	bi_error("bash: cd: OLDPWD not set\n");
 	return (NULL);
 }
 
