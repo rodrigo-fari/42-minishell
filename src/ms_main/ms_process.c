@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_process.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 12:34:41 by aeberius          #+#    #+#             */
-/*   Updated: 2025/03/14 19:07:03 by aeberius         ###   ########.fr       */
+/*   Updated: 2025/03/26 15:08:50 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	exec_parent_process(pid_t pid)
 
 void	exec_child_process(t_token *tmp, char **commands, t_env *env)
 {
-	char *full_command;
-	char **envs_array;
+	char	*full_command;
+	char	**envs_array;
 
 	handle_redirects(tmp);
 	envs_array = array_envs(env);
@@ -38,15 +38,14 @@ void	exec_child_process(t_token *tmp, char **commands, t_env *env)
 		execve(full_command, commands, envs_array);
 		free(full_command);
 	}
-	bi_error("bash: command not found");
+	bi_error("bash: command not found\n");
 	ms_free(env, NULL, commands, tmp);
 	exit(127);
 }
 
-
 void	exec_exe(t_token *tmp, t_env *env, char **commands)
 {
-	pid_t execve_new_process;
+	pid_t	execve_new_process;
 
 	execve_new_process = fork();
 	if (execve_new_process == 0)
@@ -56,4 +55,3 @@ void	exec_exe(t_token *tmp, t_env *env, char **commands)
 	else
 		perror("fork");
 }
-

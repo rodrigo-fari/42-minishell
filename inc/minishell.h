@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/03/14 18:48:13 by aeberius         ###   ########.fr       */
+/*   Updated: 2025/03/25 11:24:18 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,6 +171,9 @@ void	replace_exit_status(char **commands, int i);
 void	replace_exit_status_in_command(char **command);
 void	replace_exit_status_at_pos(char **command, char *pos);
 
+//[ps_expand_variable.c]
+char	*var_expand(char *input);
+
 //[ps_parsing.c]
 bool	quote_verifier(char *input);
 bool	ps_parsing(char **commands, int i);
@@ -188,10 +191,11 @@ bool	parse_redin(char **commands);
 bool	parse_redout(char **commands);
 
 //[ps_remove_quotes.c]
-char	*var_expand(char *input);
-char 	*verify_quotes(char *input);
-void	remove_quotes(char **commands);
-char	*get_quote_content(char *input, char current_quote, int i, int j);
+void	quote_fix(char **commands);
+char	*verify_quotes(char *input);
+char	*remove_quotes(char *input);
+char	*replace_values(char *input, int i, char current_quote, bool key);
+char	*remove_quotes_and_expand(char *input, int start, char current_quote);
 
 //[ps_remove_quotes_utils.c]
 bool	bool_changer(bool key);
@@ -200,7 +204,7 @@ bool	bool_changer(bool key);
 //[pp_exec.c]
 void	execute_pipeline(char ***commands, t_env *env);
 void	execute_pipeline(char ***commands, t_env *env);
-void	create_and_fork_process(char **command, t_env *env, int fd_in, int has_next);
+void	nfork_process(char **command, t_env *env, int fd_in, int has_next);
 
 //[pp_pipeline.c]
 int		count_pipes(char **commands);

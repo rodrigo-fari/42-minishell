@@ -6,87 +6,13 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 14:29:07 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/03/14 18:24:27 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/03/19 16:04:44 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*var_expand(char *input)
-{
-	t_env	*tmp;
-
-	tmp = env_manager(NULL);
-	while (tmp)
-	{
-		if (ft_strcmp(input, tmp->key) == 0)
-			return (ft_strdup(tmp->value));
-		tmp = tmp->next;
-	}
-	return (ft_strdup(""));
-}
-
-char	*verify_quotes(char *input)
-{
-	int		i;
-	int		len;
-	char	current_quote;
-	char	*ret_str;
-	bool	key;
-
-	key = false;
-	i = 0;
-	ret_str = NULL;
-	while (input[i] && (input[i] != '\'' && input[i] != '\"'))
-		i++;
-	current_quote = input[i];
-	while (input[i] && input[i] == current_quote)
-	{
-		key = bool_changer(key);
-		i++;
-	}
-	len = 0;
-	if (key == true)
-		return (get_quote_content(input, current_quote, i, 0));
-	return (get_quote_content(input, '\"', 0, 0));
-}
-
-char	*get_quote_content(char *input, char current_quote, int i, int j)
-{
-	int		len;
-	char	*ret_str;
-	char	*tmp_str;
-	char	**input_array;
-
-	len = 0;
-	while (input[i] && input[i] != current_quote)
-	{
-		i++;
-		len++;
-	}
-	ret_str = ft_substr(input, (i - len), len);
-	if (current_quote == '\"')
-	{
-		input_array = ft_split(ret_str, ' ');
-		free (ret_str);
-		while (input_array[j])
-		{
-			if (ft_strchr(input_array[j], '$'))
-			{
-				tmp_str = ft_strdup(input_array[j]);
-				free(input_array[j]);
-				input_array[j] = var_expand(tmp_str + 1);
-				free (tmp_str);
-			}
-			ft_strjoin(ret_str, input_array[j]);
-			j++;
-		}
-	}
-	free (input);
-	return (ret_str);
-}
-
-void	remove_quotes(char **commands)
+void	quote_fix(char **commands)
 {
 	int		i;
 
@@ -96,4 +22,81 @@ void	remove_quotes(char **commands)
 		commands[i] = verify_quotes(commands[i]);
 		i++;
 	}
+}
+
+char	*verify_quotes(char *input)
+{
+	int		i;
+	char	current_quote;
+	bool	key;
+
+	key = false;
+	i = 0;
+	current_quote = '\0';
+	if (input[i] && (input[i] == '\"' || input[i] == '\''))
+		current_quote = input[i];
+	while (input[i] == current_quote)
+	{
+		key = bool_changer(key);
+		i++;
+	}
+	return (replace_values(input, i, current_quote, key));
+}
+
+char	*replace_values(char *input, int i, char current_quote, bool key)
+{
+	char	*ret_str;
+
+	if (key == true && current_quote == '\"')
+	{
+		ret_str = remove_quotes_and_expand(input, i, current_quote);
+		free(input);
+		return (ret_str);
+	}
+	else if (key == true && current_quote == '\'')
+	{
+		ret_str = remove_quotes_and_expand(input, i, current_quote);
+		free(input);
+		return (ret_str);
+	}
+	//else
+	ret_str = remove_quotes(input);
+	free(input);
+	return (ret_str);
+}
+
+char	*remove_quotes_and_expand(char *input, int start, char current_quote)
+{
+	char	*ret_str;
+	char	*tmp;
+	int		i;
+
+	i = start;
+	ret_str = NULL;
+	while (input[i] && input[i] != current_quote)
+	{
+		tmp = append_char_to_string(ret_str, input[i]);
+		ret_str = tmp;
+		i++;
+	}
+	return (ret_str);
+}
+
+char	*remove_quotes(char *input)
+{
+	char	*ret_str;
+	char	*tmp;
+	int		i;
+
+	i = 0;
+	ret_str = NULL;
+	while (input[i] && (input[i] == '\"' || input[i] == '\''))
+		i++;
+	while (input[i] && input[i] != '\"' && input[i] != '\'')
+	{
+		tmp = append_char_to_string(ret_str, input[i]);
+		ret_str = tmp;
+		i++;
+	}
+	return (ret_str);
 }
