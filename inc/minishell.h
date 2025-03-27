@@ -195,7 +195,7 @@ void	quote_fix(char **commands);
 char	*verify_quotes(char *input);
 char	*remove_quotes(char *input);
 char	*replace_values(char *input, int i, char current_quote, bool key, t_env *env);
-char	*remove_quotes_and_expand(char *input, int start, char current_quote, t_env *env);
+char	*remove_quotes_and_expand(char *input, bool key, int start, char current_quote, t_env *env);
 
 //[ps_remove_quotes_utils.c]
 bool	bool_changer(bool key);

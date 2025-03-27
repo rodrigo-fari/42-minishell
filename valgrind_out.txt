@@ -1,24 +1,24 @@
-==17213== Memcheck, a memory error detector
-==17213== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
-==17213== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
-==17213== Command: ./minishell
-==17213== Parent PID: 17210
-==17213== 
-==17213== 
-==17213== HEAP SUMMARY:
-==17213==     in use at exit: 232,845 bytes in 238 blocks
-==17213==   total heap usage: 889 allocs, 651 frees, 271,907 bytes allocated
-==17213== 
-==17213== LEAK SUMMARY:
-==17213==    definitely lost: 0 bytes in 0 blocks
-==17213==    indirectly lost: 0 bytes in 0 blocks
-==17213==      possibly lost: 0 bytes in 0 blocks
-==17213==    still reachable: 0 bytes in 0 blocks
-==17213==         suppressed: 232,845 bytes in 238 blocks
-==17213== 
-==17213== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
---17213-- 
---17213-- used_suppression:     74 leak readline readline_leaks:2 suppressed: 228,788 bytes in 234 blocks
---17213-- used_suppression:      4 readline_leaks readline_leaks:8 suppressed: 4,057 bytes in 4 blocks
-==17213== 
-==17213== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==84137== Memcheck, a memory error detector
+==84137== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==84137== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==84137== Command: ./minishell
+==84137== Parent PID: 84134
+==84137== 
+==84137== 
+==84137== HEAP SUMMARY:
+==84137==     in use at exit: 208,355 bytes in 236 blocks
+==84137==   total heap usage: 1,094 allocs, 858 frees, 243,494 bytes allocated
+==84137== 
+==84137== LEAK SUMMARY:
+==84137==    definitely lost: 0 bytes in 0 blocks
+==84137==    indirectly lost: 0 bytes in 0 blocks
+==84137==      possibly lost: 0 bytes in 0 blocks
+==84137==    still reachable: 0 bytes in 0 blocks
+==84137==         suppressed: 208,355 bytes in 236 blocks
+==84137== 
+==84137== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 1 from 1)
+--84137-- 
+--84137-- used_suppression:     67 leak readline readline_leaks:2 suppressed: 204,243 bytes in 229 blocks
+--84137-- used_suppression:      4 readline_leaks readline_leaks:8 suppressed: 4,112 bytes in 7 blocks
+==84137== 
+==84137== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 1 from 1)

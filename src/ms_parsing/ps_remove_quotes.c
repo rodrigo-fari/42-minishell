@@ -40,6 +40,7 @@ char	*verify_quotes(char *input)
 		key = bool_changer(key);
 		i++;
 	}
+	printf("current_quote = %c\n", current_quote);
 	return (replace_values(input, i, current_quote, key, env_manager(NULL)));
 }
 
@@ -47,24 +48,25 @@ char	*replace_values(char *input, int i, char current_quote, bool key, t_env *en
 {
 	char	*ret_str;
 
+	// printf("Estou entrando aq\n");
 	if (key == true && current_quote == '\"')
 	{
-		ret_str = remove_quotes_and_expand(input, i, current_quote, env);
+		ret_str = remove_quotes_and_expand(input, key, i, current_quote, env);
 		free(input);
 		return (ret_str);
 	}
 	else if (key == true && current_quote == '\'')
 	{
-		ret_str = remove_quotes_and_expand(input, i, current_quote, env);
+		ret_str = remove_quotes_and_expand(input, key, i, current_quote, env);
 		free(input);
 		return (ret_str);
 	}
-	ret_str = remove_quotes(input);
+	ret_str = remove_quotes_and_expand(input, key, i, current_quote, env);
 	free(input);
 	return (ret_str);
 }
 
-char	*remove_quotes_and_expand(char *input, int start, char current_quote, t_env *env)
+char	*remove_quotes_and_expand(char *input, bool key, int start, char current_quote, t_env *env)
 {
 	char	*ret_str;
 	char	*tmp;
@@ -76,7 +78,19 @@ char	*remove_quotes_and_expand(char *input, int start, char current_quote, t_env
 	ret_str = NULL;
 	while (input[i] && input[i] != current_quote)
 	{
-		if (input[i] == '$' && current_quote == '\"')
+		if (input[i] == '$' && (current_quote == '\"' || !current_quote))
+		{
+			i++;
+			var_name = extract_var_name(input, &i);
+			var_value = get_env_value(env, var_name);
+			free(var_name);
+			if (var_value)
+			{
+				tmp = append_string_to_string(ret_str, var_value);
+				ret_str = tmp;
+			}
+		}
+		else if (input[i] == '$' && current_quote == '\'' && key == false)
 		{
 			i++;
 			var_name = extract_var_name(input, &i);
