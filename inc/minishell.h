@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/03/26 23:29:39 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/03/27 19:41:44 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,17 +191,21 @@ bool	parse_redin(char **commands);
 bool	parse_redout(char **commands);
 
 //[ps_remove_quotes.c]
-void	quote_fix(char **commands);
 char	*verify_quotes(char *input);
 char	*remove_quotes(char *input);
-char	*replace_values(char *input, int i, char current_quote, bool key, t_env *env);
-char	*remove_quotes_and_expand(char *input, bool key, int start, char current_quote, t_env *env);
+char	*replace_values(char *input, int i, char quote, bool key);
+char	*handle_variable_expansion(char *input, int *i, char *ret_str);
+char	*remove_and_expand(char *input, int start, char quote);
 
 //[ps_remove_quotes_utils.c]
 bool	bool_changer(bool key);
 char	*extract_var_name(char *input, int *i);
 char	*get_env_value(t_env *env, char *var_name);
 char	*append_string_to_string(char *str1, char *str2);
+char	*allocate_and_copy(char *str1, char *str2, size_t len1, size_t len2);
+
+//[ps_remove_quotes_utils_2.c]
+void	quote_fix(char **commands);
 
 //=====================================| ms_pipeline |
 //[pp_exec.c]
@@ -212,8 +216,11 @@ void	nfork_process(char **command, t_env *env, int fd_in, int has_next);
 //[pp_pipeline.c]
 int		count_pipes(char **commands);
 int		contains_pipe(char **commands);
-void	free_pipeline(char ***pipeline);
 char	***split_by_pipe(char **commands);
+void	add_command_part(char ***result, int *i, int *k);
+
+//[pp_pipeline_2.c]
+void	free_pipeline(char ***pipeline);
 
 //=====================================| ms_redirects |
 //[re_exec.c]_

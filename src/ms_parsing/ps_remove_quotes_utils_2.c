@@ -1,38 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_main.c                                          :+:      :+:    :+:   */
+/*   ps_remove_quotes_utils_2.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 09:47:50 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/03/27 19:44:35 by aeberius         ###   ########.fr       */
+/*   Created: 2025/03/27 19:33:24 by aeberius          #+#    #+#             */
+/*   Updated: 2025/03/27 19:34:07 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	g_exit_status = 0;
-
-int	main(void)
+void	quote_fix(char **commands)
 {
-	t_env		*env;
-	char		*input;
-	extern char	**environ;
+	int		i;
 
-	env = env_to_struct(environ);
-	env = env_manager(env);
-	while (true)
+	i = 0;
+	while (commands[i])
 	{
-		env = env_manager(NULL);
-		input = readline("👹$ ");
-		// signal(SIGINT, sig_ctrl_c);
-		if (input[0])
-		{
-			add_history(input);
-			env = env_manager(NULL);
-			ms_exec(input, env);
-		}
+		commands[i] = verify_quotes(commands[i]);
+		i++;
 	}
-	return (0);
 }
