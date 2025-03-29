@@ -62,13 +62,40 @@ char	**tk_splitter(char *input, int i, int j)
 	return (commands);
 }
 
+int	is_special_char(char c)
+{
+	return (c == '>' || c == '<' || c == '|' || c == '&' || c == ';');
+}
+
 char	*extract_word(char *input, int *i)
 {
 	char	quote;
 	int		cursor;
+	int		start;
 	char	*word;
 
 	cursor = *i;
+	start = *i
+		if (is_special_char(input[cursor]))
+	{
+		if (input[cursor] == '>' && input[cursor + 1] == '>')
+	{
+		word = ft_substr(input, cursor, 2);
+		cursor += 2;
+		}
+		else if (input[cursor] == '<' && input[cursor + 1] == '<')
+		{
+			word = ft_substr(input, cursor, 2);
+			cursor += 2;
+		}
+		else
+		{
+			word = ft_substr(input, cursor, 1);
+			cursor++;
+		}
+		*i = cursor;
+		return (word);
+	}
 	while (input[cursor] && !ft_isspace(input[cursor]))
 	{
 		if (input[cursor] == '\'' || input[cursor] == '\"')
@@ -79,10 +106,12 @@ char	*extract_word(char *input, int *i)
 			if (input[cursor] == quote)
 				cursor++;
 		}
+		else if (is_special_char(input[cursor]))
+			break;
 		else
 			cursor++;
 	}
-	word = ft_substr(input, *i, cursor - *i);
+	word = ft_substr(input, start, cursor - start);
 	*i = cursor;
 	return (word);
 }

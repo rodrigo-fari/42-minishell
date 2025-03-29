@@ -24,8 +24,8 @@ void	ms_exec(char *input, t_env *env)
 		ms_free(NULL, input, commands, NULL);
 		return ;
 	}
-	quote_fix(commands);
 	expand_exit(commands);
+	quote_fix(commands);
 	tokens = token_to_struct(commands);
 	print_tokens(tokens);
 	if (contains_pipe(commands))

@@ -25,8 +25,8 @@ int	main(void)
 	while (true)
 	{
 		env = env_manager(NULL);
-		input = readline("👹$ ");
-		// signal(SIGINT, sig_ctrl_c);
+		input = readline("minishell$ ");
+		signal(SIGINT, sig_ctrl_c);
 		if (input[0])
 		{
 			add_history(input);

@@ -173,7 +173,7 @@ A 12/03/2025 (12:50) - Quarta-feira
 ･Falta criar a variavel globas p os erros, tlvz corrija.
 
 __________________________________________________________________________
-A 14/03/2025 (18:45) - SExta-feira
+A 14/03/2025 (18:45) - Sexta-feira
 
 ･ Variavel com mais de um = da um errinho 🟨
  env | grep DBUS
@@ -181,3 +181,10 @@ DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/102278/bus
 
 ･Correção norminette ✅
 ･Corrigir erro do open .
+
+__________________________________________________________________________
+R 27/03/2025 (22:18) - Quinte-feira
+
+･ Verificar still reachable dentro do processo filho no execve.
+･ Echo quando "echo "aadd"d deveria printar aaddd e printa aadd.
+･ Verificar logica das aspas quando nao existe aspas no fim da string.

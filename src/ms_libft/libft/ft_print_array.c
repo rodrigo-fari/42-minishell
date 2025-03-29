@@ -17,9 +17,11 @@ void	ft_print_array(char **array)
 	int	i;
 
 	i = 0;
+	ft_printf("---------------------\n\n");
 	while (array[i])
 	{
 		ft_printf("╠Array[%d]= %s\n", i, array[i]);
 		i++;
 	}
+	ft_printf("\n---------------------\n\n");
 }
