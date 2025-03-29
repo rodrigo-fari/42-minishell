@@ -192,12 +192,11 @@ bool	parse_redout(char **commands);
 
 //[ps_remove_quotes.c]
 char	*verify_quotes(char *input);
-char	*remove_quotes(char *input);
+char	*remove_and_expand(char *input, int start, char quote);
 char	*replace_values(char *input, int i, char quote, bool key);
 char	*handle_variable_expansion(char *input, int *i, char *ret_str);
-char	*remove_and_expand(char *input, int start, char quote);
 
-//[ps_remove_quotes_utils.c]
+//![ps_remove_quotes_utils.c] - 5 functions limit achived.
 bool	bool_changer(bool key);
 char	*extract_var_name(char *input, int *i);
 char	*get_env_value(t_env *env, char *var_name);
@@ -240,6 +239,7 @@ void	sig_ctrl_c(int sig);
 void	print_tokens(t_token *token);
 
 //[tk_split.c]
+int		is_special_char(char c);
 char	*extract_word(char *input, int *i);
 char	**tk_splitter(char *input, int i, int j);
 int		tk_count_words(char *input, int i, int count);

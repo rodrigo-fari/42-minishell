@@ -33,10 +33,8 @@ char	*verify_quotes(char *input)
 
 char	*replace_values(char *input, int i, char quote, bool key)
 {
-	t_env	*env;
 	char	*ret_str;
 
-	env = env_manager(NULL);
 	if (key == true && (quote == '\"' || quote == '\''))
 	{
 		ret_str = remove_and_expand(input, i, quote);
@@ -86,25 +84,6 @@ char	*remove_and_expand(char *input, int start, char quote)
 			ret_str = tmp;
 			i++;
 		}
-	}
-	return (ret_str);
-}
-
-char	*remove_quotes(char *input)
-{
-	char	*ret_str;
-	char	*tmp;
-	int		i;
-
-	i = 0;
-	ret_str = NULL;
-	while (input[i] && (input[i] == '\"' || input[i] == '\''))
-		i++;
-	while (input[i] && input[i] != '\"' && input[i] != '\'')
-	{
-		tmp = append_char_to_string(ret_str, input[i]);
-		ret_str = tmp;
-		i++;
 	}
 	return (ret_str);
 }

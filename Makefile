@@ -35,7 +35,6 @@ all:				$(NAME)
 					@echo " "
 					sleep 1
 					@clear
-					@make val
 
 $(NAME): 			$(OBJS) $(LIBFT)
 					@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -lreadline -o $(NAME)
