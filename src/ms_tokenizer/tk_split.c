@@ -75,13 +75,13 @@ char	*extract_word(char *input, int *i)
 	char	*word;
 
 	cursor = *i;
-	start = *i
-		if (is_special_char(input[cursor]))
+	start = *i;
+	if (is_special_char(input[cursor]))
 	{
 		if (input[cursor] == '>' && input[cursor + 1] == '>')
-	{
-		word = ft_substr(input, cursor, 2);
-		cursor += 2;
+	    {
+		    word = ft_substr(input, cursor, 2);
+	    	cursor += 2;
 		}
 		else if (input[cursor] == '<' && input[cursor + 1] == '<')
 		{

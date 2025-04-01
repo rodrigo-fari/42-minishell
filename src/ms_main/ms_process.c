@@ -43,15 +43,93 @@ void	exec_child_process(t_token *tmp, char **commands, t_env *env)
 	exit(127);
 }
 
-void	exec_exe(t_token *tmp, t_env *env, char **commands)
+void exec_exe(t_token *token, t_env *env, char **args)
 {
-	pid_t	execve_new_process;
+    char *path = find_executable(token->value, env);
+    if (!path)
+    {
+        fprintf(stderr, "Command not found: %s\n", token->value);
+        return;
+    }
 
-	execve_new_process = fork();
-	if (execve_new_process == 0)
-		exec_child_process(tmp, commands, env);
-	else if (execve_new_process > 0)
-		exec_parent_process(execve_new_process);
-	else
-		perror("fork");
+    pid_t pid = fork();
+    if (pid == -1)
+    {
+        perror("fork");
+        return;
+    }
+
+    if (pid == 0)
+    {
+        // Child process
+        t_env *helper_env = env_manager(NULL);
+        char **env_crianca = array_envs(helper_env);
+        execve(path, args, env_crianca);
+        perror("execve");
+        exit(EXIT_FAILURE);
+    }
+    else
+    {
+        // Parent process
+        int status;
+        waitpid(pid, &status, 0);
+    }
+
+    free(path);
+}
+
+char *find_executable(const char *cmd, t_env *env)
+{
+    char *path_env = NULL;
+    char *path = NULL;
+    char *dir;
+    char *saveptr;
+    char full_path[1024];
+    struct stat st;
+
+    // First, check if the command contains a '/'
+    if (strchr(cmd, '/') != NULL)
+    {
+        // If it does, it's a direct path. Just check if it's executable.
+        if (access(cmd, X_OK) == 0)
+        {
+            return strdup(cmd);
+        }
+        return NULL;
+    }
+
+    // Get the PATH environment variable
+    while (env)
+    {
+        if (strcmp(env->key, "PATH") == 0)
+        {
+            path_env = strdup(env->value);
+            break;
+        }
+        env = env->next;
+    }
+
+    if (!path_env)
+    {
+        return NULL;  // PATH not found in environment
+    }
+
+    // Tokenize the PATH
+    dir = strtok_r(path_env, ":", &saveptr);
+    while (dir != NULL)
+    {
+        snprintf(full_path, sizeof(full_path), "%s/%s", dir, cmd);
+
+        // Check if the file exists and is executable
+        if (stat(full_path, &st) == 0 && (st.st_mode & S_IXUSR))
+        {
+            path = strdup(full_path);
+            break;
+        }
+
+        dir = strtok_r(NULL, ":", &saveptr);
+    }
+
+    free(path_env);
+    return path;
 }

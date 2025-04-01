@@ -29,6 +29,7 @@ t_token	*token_to_struct(char **commands)
 		tk_listadd_back(&head, current);
 		i++;
 	}
+
 	return (head);
 }
 

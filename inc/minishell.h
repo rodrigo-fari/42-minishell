@@ -71,8 +71,8 @@ typedef struct s_token
 
 typedef struct s_ast_node
 {
-	t_type				*type;
-	char				args;
+	t_type				type;
+	char				**args;
 	struct s_ast_node	*left;
 	struct s_ast_node	*right;
 }	t_ast_node;
@@ -209,7 +209,6 @@ void	quote_fix(char **commands);
 //=====================================| ms_pipeline |
 //[pp_exec.c]
 void	execute_pipeline(char ***commands, t_env *env);
-void	execute_pipeline(char ***commands, t_env *env);
 void	nfork_process(char **command, t_env *env, int fd_in, int has_next);
 
 //[pp_pipeline.c]
@@ -254,6 +253,19 @@ t_token	*tk_list_last(t_token *lst);
 void	free_token_struct(t_token *token);
 int		skip_whitespace(char *input, int i);
 void	tk_listadd_back(t_token **lst, t_token *new);
+
+
+t_ast_node *build_ast(t_token *tokens);
+void free_ast(t_ast_node *node);
+void execute_redirection(t_ast_node *node, t_env *env);
+void execute_ast(t_ast_node *node, t_env *env);
+char **collect_command_args(t_ast_node *node);
+int is_builtin(char *cmd);
+char *find_executable(const char *cmd, t_env *env);
+/* void execute_builtin(char **commands, t_env *env);
+ */void execute_pipe(t_ast_node *left, t_ast_node *right, t_env *env);
+
+
 
 //=====================================| Endif |
 #endif

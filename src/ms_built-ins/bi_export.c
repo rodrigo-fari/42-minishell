@@ -45,17 +45,17 @@ bool	is_valid_key(char *key)
 	int	i;
 
 	i = 1;
-	if (key[0] == '=')
-	{
-		ms_print_fd("export: not a valid identifier\n", 2);
-		return (false);
-	}
-	if (!ft_isalpha(key[0]) || ft_strchr(key, '-') != NULL)
-	{
-		ms_print_fd("export: not a valid identifier\n", 2);
-		return (false);
-	}
-	while (key[i] != '\0' && key[i] != '=')
+
+    if (key == NULL 
+        || key[0] == '=' 
+        || !ft_isalpha(key[0]) 
+        || ft_strchr(key, '-') != NULL)
+        {
+            ms_print_fd("export: not a valid identifier\n", 2);
+            return (false);
+        }
+
+        while (key[i] != '\0' && key[i] != '=')
 	{
 		if (!ft_isalnum(key[i]) && key[i] != '_')
 		{
