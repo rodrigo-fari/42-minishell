@@ -12,38 +12,34 @@
 
 #include "minishell.h"
 
-void bi_exec(t_env *env, t_token *tokens, char **commands)
+void bi_exec(char **commands, t_env *env)
 {
-    (void)tokens;
-    if (is_builtin(commands[0]))
-    {
-        // Handle built-in commands
-/*         execute_builtin(commands, env);
- */    }
-    else
-    {
-        // Handle external commands
-        char *executable = find_executable(commands[0], env);
-        if (!executable)
-        {
-            fprintf(stderr, "minishell: command not found: %s\n", commands[0]);
-            exit(127);
-        }
+    env = env_manager(NULL);
 
-        execve(executable, commands, array_envs(env));
-        perror("execve");
-        exit(EXIT_FAILURE);
+    char *executable = find_executable(commands[0], env);
+    if (!executable)
+    {
+        fprintf(stderr, "minishell: command not found: %s\n", commands[0]);
+        exit(127);
     }
+    execve(executable, commands, array_envs(env));
+    perror("execve");
+    exit(EXIT_FAILURE);
+
 }
 
-/* void execute_builtin(char **commands, t_env *env)
+void execute_builtin(char **commands, t_env *env)
 {
+    
+    t_token *helper = token_to_struct(commands);
+    env = env_manager(NULL);
+
     if (ft_strcmp(commands[0], "echo") == 0)
-        bi_echo(commands);
+        bi_echo(helper);
     else if (ft_strcmp(commands[0], "pwd") == 0)
         bi_pwd();
     else if (ft_strcmp(commands[0], "exit") == 0)
-        bi_exit(NULL, env, commands);
+        bi_exit(helper, env, commands);
     else if (ft_strcmp(commands[0], "env") == 0)
         print_env(env);
     else if (ft_strcmp(commands[0], "cd") == 0)
@@ -52,4 +48,4 @@ void bi_exec(t_env *env, t_token *tokens, char **commands)
         bi_unset(commands, env);
     else if (ft_strcmp(commands[0], "export") == 0)
         bi_export(env, commands);
-} */
+}
