@@ -27,7 +27,7 @@ void	ms_exec(char *input, t_env *env)
     expand_exit(commands);
     quote_fix(commands);
     tokens = token_to_struct(commands);
-    print_tokens(tokens);
+    /* print_tokens(tokens); */
 
     // Build the AST
     ast_root = build_ast(tokens);
