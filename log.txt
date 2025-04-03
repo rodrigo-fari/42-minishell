@@ -188,3 +188,33 @@ R 27/03/2025 (22:18) - Quinte-feira
 ･ Verificar still reachable dentro do processo filho no execve.
 ･ Echo quando "echo "aadd"d deveria printar aaddd e printa aadd.
 ･ Verificar logica das aspas quando nao existe aspas no fim da string.
+
+__________________________________________________________________________
+A 03/04/2025 (16:03) - Quinta-Feira
+
+･ echo errors para corrigir:
+    ･ echo hello'world' - (deveria remover as plicas e ficar apenas helloworld)
+    ･ echo hello""world - (deveria remover as aspas e ficar apenas helloworld)
+    ･ echo ""> >> < * ? [ ] | ; [ ] || && ( ) & # $  <<"   - (Não deveria expandir o $, como não há argumento depois deveria imprimir apenas o $)
+    ･ echo 'exit_code ->$? user ->$USER home -> $HOME' - (não deveria expandir o $? porque está entre plicas)
+    ･ echo "$" - (deveria apenas printar o $, não existindo um argumento após o $ ele deve ser apenas impresso)
+    ･ echo $ - (mesma situação do de cima)
+
+･ export erros:
+    ･ corrigir o sinal de saída
+
+･ cd erros:
+    ･ corrigir o sinal de saída
+
+･ exit erros:
+    ･ valor não esta sendo calculado corretamente (exemplo: exit -"100" deveria retornar 156 e retorna 255)
+
+･ pipe erros:
+    ･ corrigir sinal de saída
+
+･ redirects:
+    ･ corrigir tudo =D
+
+･ exec:
+    ･ validações de permissões e arquivos/diretorios
+

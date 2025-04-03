@@ -25,7 +25,7 @@ int	main(void)
 	while (true)
 	{
 		env = env_manager(NULL);
-		input = readline("minishell$ ");
+		input = readline("minishell: ");
 		signal(SIGINT, sig_ctrl_c);
 		if (input[0])
 		{
