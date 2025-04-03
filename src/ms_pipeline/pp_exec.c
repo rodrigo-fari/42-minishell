@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+/* #include "minishell.h"
 
 void	execute_pipe_command(char **command, t_env *env, int fd_in, int fd_out)
 {
@@ -70,3 +70,4 @@ void	execute_pipeline(char ***commands, t_env *env)
 			fd_in = 0;
 	}
 }
+ */

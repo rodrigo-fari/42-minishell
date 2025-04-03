@@ -134,26 +134,30 @@ void execute_ast(t_ast_node *node, t_env *env)
     }
     else
     {
-        pid_t pid = fork();
-        if (pid == -1)
-        {
-            perror("fork");
-            return;
-        }
-
-        if (pid == 0)
-        {
-            // Child process: execute the command
-            t_token tmp = {node->type, node->args[0], NULL};
-            bi_exec(env, &tmp, node->args);
-            exit(EXIT_SUCCESS);
-        }
+        if (is_builtin(node->args[0]))
+            execute_builtin(node->args, env);
         else
         {
-            // Parent process: wait for the child to finish
-            waitpid(pid, NULL, 0);
+            pid_t pid = fork();
+            if (pid == -1)
+            {
+                perror("fork");
+                return;
+            }
+
+            if (pid == 0)
+            {
+                // Child process: execute the command
+                bi_exec(node->args, env);
+                exit(EXIT_SUCCESS);
+            }
+            else
+            {
+                // Parent process: wait for the child to finish
+                waitpid(pid, NULL, 0);
+            }
         }
-    }
+   }
 }
 
 void execute_pipe(t_ast_node *left, t_ast_node *right, t_env *env)

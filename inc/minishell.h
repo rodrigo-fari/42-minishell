@@ -103,7 +103,8 @@ void	bi_error(char *str);
 //[bi_exec.c]
 void	exec_parent_process(pid_t pid);
 void	exec_exe(t_token *tmp, t_env *env, char **commands);
-void	bi_exec(t_env *env, t_token *tokens, char **commands);
+void    execute_builtin(char **commands, t_env *env);
+void    bi_exec(char **commands, t_env *env);
 void	exec_child_process(t_token *tmp, char **commands, t_env *env);
 
 //[bi_exit.c]
@@ -262,8 +263,7 @@ void execute_ast(t_ast_node *node, t_env *env);
 char **collect_command_args(t_ast_node *node);
 int is_builtin(char *cmd);
 char *find_executable(const char *cmd, t_env *env);
-/* void execute_builtin(char **commands, t_env *env);
- */void execute_pipe(t_ast_node *left, t_ast_node *right, t_env *env);
+void execute_pipe(t_ast_node *left, t_ast_node *right, t_env *env);
 
 
 
