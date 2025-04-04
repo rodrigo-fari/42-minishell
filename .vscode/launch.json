@@ -9,7 +9,7 @@
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "${workspaceFolder}/minishell",
-			"args": [],
+			"args": ["echo teste >> teste.txt"],
 			"stopAtEntry": false,
 			 "miDebuggerPath": "/usr/bin/gdb",
 			"cwd": "${workspaceFolder}",
