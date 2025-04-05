@@ -60,6 +60,8 @@ typedef enum e_type
 	TOKEN_REDIR_ERR,		// For '2>'
 	TOKEN_REDIR_ERR_APPEND,// For '2>>'
 	TOKEN_ENV_VAR,			// For environment variables
+    TOKEN_CMD,              // For command
+    TOKEN_FILENAME          // For filename
 }	t_type;
 
 typedef struct s_token

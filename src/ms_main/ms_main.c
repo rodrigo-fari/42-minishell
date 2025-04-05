@@ -25,8 +25,13 @@ int	main(void)
 	while (true)
 	{
 		env = env_manager(NULL);
-		input = readline("minishell: ");
 		signal(SIGINT, sig_ctrl_c);
+        signal(SIGPIPE, SIG_IGN);
+		input = readline("minishell: ");
+        if (!input)
+        {
+            break;
+        }
 		if (input[0])
 		{
 			add_history(input);

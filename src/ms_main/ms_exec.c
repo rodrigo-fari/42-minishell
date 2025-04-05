@@ -27,7 +27,6 @@ void	ms_exec(char *input, t_env *env)
     expand_exit(commands);
     quote_fix(commands);
     tokens = token_to_struct(commands);
-    /* print_tokens(tokens); */
 
     // Build the AST
     ast_root = build_ast(tokens);
@@ -50,7 +49,7 @@ t_ast_node *build_ast(t_token *tokens)
 
     while (token)
     {
-        t_ast_node *new_node = malloc(sizeof(t_ast_node));
+        t_ast_node *new_node = ft_calloc(1, sizeof(t_ast_node));
         if (!new_node)
             return NULL;
 
@@ -67,25 +66,55 @@ t_ast_node *build_ast(t_token *tokens)
             token = token->next;   // Move to the next token
             continue;              // Skip the rest of the loop for this pipe node
         }
+        else if (token->type == TOKEN_REDIR_IN || token->type == TOKEN_REDIR_OUT || token->type == TOKEN_REDIR_OUT_APPEND || token->type == TOKEN_REDIR_ERR || token->type == TOKEN_REDIR_ERR_APPEND)
+        {
+            t_ast_node *redir_node = ft_calloc(1, sizeof(t_ast_node));
+            if (!redir_node)
+                return (NULL);
+            redir_node->type = token->type;
+            redir_node->left = root;
+            token = token->next;
+            if (token)
+            {
+                t_ast_node *filename_node = ft_calloc(1, sizeof(t_ast_node));
+                if (!filename_node)
+                    return (NULL);
+                filename_node->type = TOKEN_FILENAME;
+                filename_node->args = ft_calloc(1, sizeof(char *));
+                if (!filename_node->args)
+                {
+                    free(filename_node);
+                    return (NULL);
+                }
+                filename_node->args[0] = ft_strdup(token->value);
+                filename_node->args[1] = NULL;
+                redir_node->right = filename_node;
+            }
+            root = redir_node;
+            token = token->next;
+            continue;
+        }
         else
         {
-            // Count the number of tokens for this command
             int token_count = 0;
             t_token *temp = token;
-            while (temp && temp->type != TOKEN_PIPE)
+
+            while (temp && temp->type != TOKEN_PIPE && temp->type != TOKEN_REDIR_IN &&
+                temp->type != TOKEN_REDIR_OUT && temp->type != TOKEN_REDIR_OUT_APPEND &&
+                temp->type != TOKEN_REDIR_ERR && temp->type != TOKEN_REDIR_ERR_APPEND)
             {
                 token_count++;
                 temp = temp->next;
             }
 
             // Allocate space for args
-            new_node->args = malloc(sizeof(char *) * (token_count + 1));
+            new_node->args = ft_calloc(token_count + 1, sizeof(char *));
             if (!new_node->args)
             {
                 free(new_node);
                 return NULL;
             }
-
+            
             // Copy all tokens for this command into args
             for (int i = 0; i < token_count; i++)
             {
@@ -127,8 +156,8 @@ void execute_ast(t_ast_node *node, t_env *env)
         execute_pipe(node->left, node->right, env);
     }
     else if (node->type == TOKEN_REDIR_IN || node->type == TOKEN_REDIR_OUT ||
-             node->type == TOKEN_REDIR_OUT_APPEND || node->type == TOKEN_REDIR_ERR ||
-             node->type == TOKEN_REDIR_ERR_APPEND)
+            node->type == TOKEN_REDIR_OUT_APPEND || node->type == TOKEN_REDIR_ERR ||
+            node->type == TOKEN_REDIR_ERR_APPEND)
     {
         execute_redirection(node, env);
     }
@@ -157,7 +186,7 @@ void execute_ast(t_ast_node *node, t_env *env)
                 waitpid(pid, NULL, 0);
             }
         }
-   }
+}
 }
 
 void execute_pipe(t_ast_node *left, t_ast_node *right, t_env *env)
@@ -223,17 +252,21 @@ void execute_pipe(t_ast_node *left, t_ast_node *right, t_env *env)
 void execute_redirection(t_ast_node *node, t_env *env)
 {
     int fd;
-
+    pid_t pid;
+    
     // Assume the filename is the first (and only) argument for redirection
+    if (!node->right || !node->right->args || !node->right->args[0])
+    return;
+    
     char *filename = node->right->args[0];
-
+    
     if (!filename)
     {
         // Handle error: no filename provided for redirection
         fprintf(stderr, "Error: No filename provided for redirection\n");
         return;
     }
-
+    
     if (node->type == TOKEN_REDIR_IN)
         fd = open(filename, O_RDONLY);
     else if (node->type == TOKEN_REDIR_OUT)
@@ -244,33 +277,82 @@ void execute_redirection(t_ast_node *node, t_env *env)
         fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, 0644);
     else if (node->type == TOKEN_REDIR_ERR_APPEND)
         fd = open(filename, O_WRONLY | O_CREAT | O_APPEND, 0644);
-
+        
     if (fd == -1)
     {
         perror("open");
         return;
     }
 
-    if (node->type == TOKEN_REDIR_IN)
-        dup2(fd, STDIN_FILENO);
-    else if (node->type == TOKEN_REDIR_OUT || node->type == TOKEN_REDIR_OUT_APPEND)
-        dup2(fd, STDOUT_FILENO);
-    else if (node->type == TOKEN_REDIR_ERR || node->type == TOKEN_REDIR_ERR_APPEND)
-        dup2(fd, STDERR_FILENO);
+    pid = fork();
+    if (pid == -1)
+    {
+        perror("fork");
+        close(fd);
+        return;
+    }
 
-    close(fd);
+    if (pid == 0)
+    {
+        // Child process: handle redirection and execute the command
+        if (node->type == TOKEN_REDIR_IN)
+        {
+            if (dup2(fd, STDIN_FILENO) == -1)
+            {
+                perror("dup2");
+                close(fd);
+                exit(EXIT_FAILURE);
+            }
+        }
+        else if (node->type == TOKEN_REDIR_OUT || node->type == TOKEN_REDIR_OUT_APPEND)
+        {
+            if (dup2(fd, STDOUT_FILENO) == -1)
+            {
+                perror("dup2");
+                close(fd);
+                exit(EXIT_FAILURE);
+            }
+        }
+        else if (node->type == TOKEN_REDIR_ERR || node->type == TOKEN_REDIR_ERR_APPEND)
+        {
+            if (dup2(fd, STDERR_FILENO) == -1)
+            {
+                perror("dup2");
+                close(fd);
+                exit(EXIT_FAILURE);
+            }
+        }
 
-    execute_ast(node->left, env);
+        close(fd);
+
+        // Execute the left subtree (the command)
+        if (node->left)
+            execute_ast(node->left, env);
+
+        exit(EXIT_SUCCESS);
+    }
+    else
+    {
+        // Parent process: wait for the child to finish
+        close(fd);
+        waitpid(pid, NULL, 0);
+    }
 }
 
 void free_ast(t_ast_node *node)
 {
-    if (!node)
+    if (node == NULL)
         return;
 
     free_ast(node->left);
     free_ast(node->right);
-    free(node->args);
+
+    if (node->args != NULL)
+    {
+        free_splits(node->args);
+        node->args = NULL;
+    }
+
     free(node);
 }
 
