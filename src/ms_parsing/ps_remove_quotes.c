@@ -3,14 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ps_remove_quotes.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 14:29:07 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/03/27 19:42:07 by aeberius         ###   ########.fr       */
+/*   Updated: 2025/04/07 18:15:53 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	quote_fix(char **commands)
+{
+	int		i;
+
+	i = 0;
+	while (commands[i])
+	{
+		commands[i] = verify_quotes(commands[i]);
+		i++;
+	}
+}
 
 char	*verify_quotes(char *input)
 {
@@ -28,62 +40,86 @@ char	*verify_quotes(char *input)
 		key = bool_changer(key);
 		i++;
 	}
-	return (replace_values(input, i, current_quote, key));
+	return (replace_values(input, current_quote, key, env_manager(NULL)));
 }
 
-char	*replace_values(char *input, int i, char quote, bool key)
+char	*replace_values(char *input, char current_quote, bool key, t_env *env)
 {
 	char	*ret_str;
-
-	if (key == true && (quote == '\"' || quote == '\''))
+	
+	if (key == true && current_quote == '\"')
 	{
-		ret_str = remove_and_expand(input, i, quote);
+		ret_str = remove_quotes_and_expand(input, env);
 		free(input);
 		return (ret_str);
 	}
-	ret_str = remove_and_expand(input, i, quote);
+	else if (key == true && current_quote == '\'')
+	{
+		ret_str = remove_quotes_and_expand(input, env);
+		free(input);
+		return (ret_str);
+	}
+	ret_str = remove_quotes_and_expand(input, env);
 	free(input);
 	return (ret_str);
 }
 
-char	*handle_variable_expansion(char *input, int *i, char *ret_str)
+char	*remove_quotes_and_expand(char *input, t_env *env)
 {
-	char	*var_name;
-	char	*var_value;
-	char	*tmp;
-	t_env	*env;
+	int		i = 0;
+	char	quote = '\0';
+	char	*ret_str = NULL;
+	char	*tmp, *var_name, *var_value;
 
-	env = env_manager(NULL);
-	(*i)++;
-	var_name = extract_var_name(input, i);
-	var_value = get_env_value(env, var_name);
-	free(var_name);
-	if (var_value)
+	while (input[i])
 	{
-		tmp = append_string_to_string(ret_str, var_value);
-		ret_str = tmp;
-	}
-	return (ret_str);
-}
-
-char	*remove_and_expand(char *input, int start, char quote)
-{
-	char	*ret_str;
-	char	*tmp;
-	int		i;
-
-	i = start;
-	ret_str = NULL;
-	while (input[i] && input[i] != quote)
-	{
-		if (input[i] == '$' && (quote == '\"' || !quote))
-			ret_str = handle_variable_expansion(input, &i, ret_str);
+		if ((input[i] == '\'' || input[i] == '\"') && quote == '\0')
+			quote = input[i++];
+		else if (input[i] == quote)
+			quote = '\0', i++;
+		else if (input[i] == '$' && (quote != '\'')) // Expande fora de aspas simples
+		{
+			i++;
+			var_name = extract_var_name(input, &i);
+			var_value = get_env_value(env, var_name);
+			free(var_name);
+			if (var_value)
+			{
+				tmp = append_string_to_string(ret_str, var_value);
+				free(ret_str);
+				ret_str = tmp;
+			}
+		}
 		else
 		{
 			tmp = append_char_to_string(ret_str, input[i]);
 			ret_str = tmp;
 			i++;
 		}
+	}
+	return (ret_str);
+}
+
+
+char	*remove_quotes(char *input)
+{
+	char	*ret_str;
+	char	*tmp;
+	int		i;
+
+	i = 0;
+	ret_str = NULL;
+	while (input[i])
+	{
+		while (input[i] && (input[i] == '\"' || input[i] == '\''))
+			i++;
+		while (input[i] && input[i] != '\"' && input[i] != '\'')
+		{
+			tmp = append_char_to_string(ret_str, input[i]);
+			ret_str = tmp;
+			i++;
+		}
+		i++;
 	}
 	return (ret_str);
 }

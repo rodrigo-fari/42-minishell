@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_main.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 09:47:50 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/03/27 19:44:35 by aeberius         ###   ########.fr       */
+/*   Updated: 2025/04/07 17:57:08 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,13 @@ int	main(void)
 	{
 		env = env_manager(NULL);
 		signal(SIGINT, sig_ctrl_c);
-        signal(SIGPIPE, SIG_IGN);
-		input = readline("minishell: ");
-        if (!input)
-        {
-            break;
-        }
-		if (input[0])
-		{
-			add_history(input);
-			env = env_manager(NULL);
-			ms_exec(input, env);
-		}
+		signal(SIGPIPE, SIG_IGN);
+		input = readline("doresofrimento$ ");
+		if (!input)
+			break ;
+		add_history(input);
+		env = env_manager(NULL);
+		ms_exec(input, env);
 	}
 	return (0);
 }

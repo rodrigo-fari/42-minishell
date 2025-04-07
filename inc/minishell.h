@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/03/27 19:41:44 by aeberius         ###   ########.fr       */
+/*   Updated: 2025/04/07 18:13:46 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,21 +193,18 @@ bool	parse_redin(char **commands);
 //[ps_redout.c]
 bool	parse_redout(char **commands);
 
-//[ps_remove_quotes.c]
+//![ps_remove_quotes.c]
+void	quote_fix(char **commands);
 char	*verify_quotes(char *input);
-char	*remove_and_expand(char *input, int start, char quote);
-char	*replace_values(char *input, int i, char quote, bool key);
-char	*handle_variable_expansion(char *input, int *i, char *ret_str);
+char	*replace_values(char *input, char current_quote, bool key, t_env *env);
+char	*remove_quotes_and_expand(char *input, t_env *env);
+char	*remove_quotes(char *input);
 
-//![ps_remove_quotes_utils.c] - 5 functions limit achived.
+//[ps_remove_quotes_utils.c]
 bool	bool_changer(bool key);
 char	*extract_var_name(char *input, int *i);
 char	*get_env_value(t_env *env, char *var_name);
 char	*append_string_to_string(char *str1, char *str2);
-char	*allocate_and_copy(char *str1, char *str2, size_t len1, size_t len2);
-
-//[ps_remove_quotes_utils_2.c]
-void	quote_fix(char **commands);
 
 //=====================================| ms_pipeline |
 //[pp_exec.c]
