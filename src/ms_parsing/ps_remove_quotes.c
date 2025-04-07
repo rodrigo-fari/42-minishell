@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 14:29:07 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/04/07 18:15:53 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/04/07 19:02:08 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,17 +77,27 @@ char	*remove_quotes_and_expand(char *input, t_env *env)
 			quote = input[i++];
 		else if (input[i] == quote)
 			quote = '\0', i++;
-		else if (input[i] == '$' && (quote != '\'')) // Expande fora de aspas simples
+		else if (input[i] == '$' && quote != '\'')
 		{
-			i++;
-			var_name = extract_var_name(input, &i);
-			var_value = get_env_value(env, var_name);
-			free(var_name);
-			if (var_value)
+			if (!input[i + 1] || (!ft_isalnum(input[i + 1]) && input[i + 1] != '_'))
 			{
-				tmp = append_string_to_string(ret_str, var_value);
-				free(ret_str);
+				// Adiciona o '$' literal
+				tmp = append_char_to_string(ret_str, '$');
 				ret_str = tmp;
+				i++;
+			}
+			else
+			{
+				i++;
+				var_name = extract_var_name(input, &i);
+				var_value = get_env_value(env, var_name);
+				free(var_name);
+				if (var_value)
+				{
+					tmp = append_string_to_string(ret_str, var_value);
+					free(ret_str);
+					ret_str = tmp;
+				}
 			}
 		}
 		else
@@ -99,7 +109,6 @@ char	*remove_quotes_and_expand(char *input, t_env *env)
 	}
 	return (ret_str);
 }
-
 
 char	*remove_quotes(char *input)
 {
