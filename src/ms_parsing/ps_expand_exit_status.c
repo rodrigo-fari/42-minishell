@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/24 13:48:52 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/03/18 10:38:46 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/04/07 20:45:49 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,17 +54,17 @@ void	expand_exit(char **commands)
 {
 	int		i;
 	int		j;
-	int		quotes;
+	bool	quotes;
 
 	i = 0;
 	while (commands[i])
 	{
-		quotes = 0;
+		quotes = false;
 		j = 0;
 		while (commands[i][j])
 		{
-			if (commands[i][j] == '"')
-				quotes = !quotes;
+			if (commands[i][j] == '\'')
+				quotes = true;
 			if (!quotes)
 				replace_exit_status(commands, i);
 			j++;

@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 09:47:50 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/04/07 17:57:08 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/04/07 20:15:13 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int	main(void)
 	env = env_manager(env);
 	while (true)
 	{
-		env = env_manager(NULL);
-		signal(SIGINT, sig_ctrl_c);
-		signal(SIGPIPE, SIG_IGN);
+		env = env_manager(NULL);	
+		//signal(SIGINT, sig_ctrl_c);
+		//signal(SIGPIPE, SIG_IGN);
 		input = readline("doresofrimento$ ");
 		if (!input)
 			break ;

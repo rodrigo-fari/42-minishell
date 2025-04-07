@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/04/07 18:13:46 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/04/07 20:19:48 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ typedef enum e_type
 	TOKEN_REDIR_ERR,		// For '2>'
 	TOKEN_REDIR_ERR_APPEND,// For '2>>'
 	TOKEN_ENV_VAR,			// For environment variables
-    TOKEN_CMD,              // For command
-    TOKEN_FILENAME          // For filename
+	TOKEN_CMD,				// For command
+	TOKEN_FILENAME			// For filename
 }	t_type;
 
 typedef struct s_token
@@ -193,7 +193,7 @@ bool	parse_redin(char **commands);
 //[ps_redout.c]
 bool	parse_redout(char **commands);
 
-//![ps_remove_quotes.c]
+//![ps_remove_quotes.c] - 5 functions limit achived.
 void	quote_fix(char **commands);
 char	*verify_quotes(char *input);
 char	*replace_values(char *input, char current_quote, bool key, t_env *env);
@@ -263,8 +263,6 @@ char **collect_command_args(t_ast_node *node);
 int is_builtin(char *cmd);
 char *find_executable(const char *cmd, t_env *env);
 void execute_pipe(t_ast_node *left, t_ast_node *right, t_env *env);
-
-
 
 //=====================================| Endif |
 #endif
