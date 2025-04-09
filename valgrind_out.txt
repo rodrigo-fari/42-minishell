@@ -1,6 +1,0 @@
-==324904== Memcheck, a memory error detector
-==324904== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==324904== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
-==324904== Command: ./minishell
-==324904== Parent PID: 324901
-==324904== 
