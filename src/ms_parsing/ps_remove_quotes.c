@@ -6,21 +6,21 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 14:29:07 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/04/07 19:02:08 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/04/17 19:19:24 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	quote_fix(char **commands)
+void	quote_fix(t_token *tokens)
 {
-	int		i;
+	t_token		*temp;
 
-	i = 0;
-	while (commands[i])
+	temp = tokens;
+	while (temp)
 	{
-		commands[i] = verify_quotes(commands[i]);
-		i++;
+		temp->value = verify_quotes(temp->value);
+		temp = temp->next;
 	}
 }
 

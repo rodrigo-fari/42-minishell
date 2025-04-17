@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/04/07 20:19:48 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/04/17 19:17:43 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,7 +194,7 @@ bool	parse_redin(char **commands);
 bool	parse_redout(char **commands);
 
 //![ps_remove_quotes.c] - 5 functions limit achived.
-void	quote_fix(char **commands);
+void	quote_fix(t_token *tokens);
 char	*verify_quotes(char *input);
 char	*replace_values(char *input, char current_quote, bool key, t_env *env);
 char	*remove_quotes_and_expand(char *input, t_env *env);
