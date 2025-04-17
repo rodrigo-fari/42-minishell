@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 12:34:20 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/04/07 17:56:10 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/04/17 18:56:48 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ char	**tk_splitter(char *input, int i, int j)
 
 int	is_special_char(char c)
 {
-	return (c == '>' || c == '<' || c == '|' || c == '&' || c == ';');
+	return (c == '>' || c == '<' || c == '&' || c == ';');
 }
 
 char	*extract_word(char *input, int *i)
@@ -79,9 +79,9 @@ char	*extract_word(char *input, int *i)
 	if (is_special_char(input[cursor]))
 	{
 		if (input[cursor] == '>' && input[cursor + 1] == '>')
-	    {
-		    word = ft_substr(input, cursor, 2);
-	    	cursor += 2;
+		{
+			word = ft_substr(input, cursor, 2);
+			cursor += 2;
 		}
 		else if (input[cursor] == '<' && input[cursor + 1] == '<')
 		{

@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 11:19:43 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/04/09 13:53:31 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/04/17 19:03:12 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ void	ms_exec(char *input, t_env *env)
 		ms_free(NULL, input, commands, NULL);
 		return;
 	}
+	tokens = token_to_struct(commands);
 	expand_exit(commands);
 	quote_fix(commands);
-	tokens = token_to_struct(commands);
 	ast_root = build_ast(tokens);
 	execute_ast(ast_root, env);
-	free_ast(ast_root);//Veridicar se esta liberando toda a memoria devidamente
+	free_ast(ast_root);
 	ms_free(NULL, input, commands, tokens);
 	return ;
 }
