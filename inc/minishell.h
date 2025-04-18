@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/04/18 20:11:02 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/04/18 20:49:42 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ typedef struct s_env
 
 //=====================================| ms_ast |
 //[at_build_ast.c]
+void	free_ast(t_ast_node *node);
 t_ast_node	*create_node(t_type type);
 t_ast_node	*build_ast(t_token *tokens);
 void	handle_redir(t_ast_node **root, t_token **token);
@@ -97,7 +98,7 @@ void	handle_pipe(t_ast_node **root, t_ast_node *new_node, t_token **token);
 //[at_execute_ast.c]
 void	execute_ast(t_ast_node *node, t_env *env);
 void	execute_forked_cmd(t_ast_node *node, t_env *env);
-
+void	handle_command(t_ast_node **root, t_ast_node **current, t_token **token);
 //[at_execute_pipe.c]
 void	pipe_child1(int *pipefd, t_ast_node *left, t_env *env);
 void	pipe_child2(int *pipefd, t_ast_node *right, t_env *env);
@@ -106,6 +107,9 @@ void	execute_pipe(t_ast_node *left, t_ast_node *right, t_env *env);
 //[at_execute_redirection.c]
 int		get_redir_fd(t_ast_node *node, char *filename);
 void	execute_redirection(t_ast_node *node, t_env *env);
+int		is_redir(t_type type);
+void	handle_redir_fd(t_ast_node *node, int fd);
+int		is_builtin(char *cmd);
 
 //=====================================| ms_built-in |
 //![bi_cd.c] - 5 functions limit achived.

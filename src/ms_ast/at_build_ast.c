@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 19:57:47 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/04/18 20:08:45 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/04/18 20:49:30 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,15 @@ t_ast_node	*build_ast(t_token *tokens)
 			handle_command(&root, &current, &token);
 	}
 	return (root);
+}
+
+void	free_ast(t_ast_node *node)
+{
+	if (!node)
+		return ;
+	free_ast(node->left);
+	free_ast(node->right);
+	if (node->args)
+		free_splits(node->args);
+	free(node);
 }
