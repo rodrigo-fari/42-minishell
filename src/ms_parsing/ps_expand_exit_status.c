@@ -5,70 +5,82 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/24 13:48:52 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/04/07 20:45:49 by rde-fari         ###   ########.fr       */
+/*   Created: 2025/04/18 15:13:03 by rde-fari          #+#    #+#             */
+/*   Updated: 2025/04/18 16:35:58 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	replace_exit_status_in_command(char **command)
+static bool	is_in_single_quotes(const char *str, int pos)
 {
-	char	*pos;
+	bool	in_quotes = false;
+	int		i = 0;
 
-	pos = ft_strnstr(*command, "$?", ft_strlen(*command));
-	while (pos)
+	while (i < pos)
 	{
-		replace_exit_status_at_pos(command, pos);
-		pos = ft_strnstr(*command, "$?", ft_strlen(*command));
+		if (str[i] == '\'')
+			in_quotes = !in_quotes;
+		i++;
 	}
+	return (in_quotes);
 }
 
-void	replace_exit_status_at_pos(char **command, char *pos)
+static char	*expand_exit_code(const char *value, int pos)
 {
-	char	*expanded_str;
-	char	*remaining_str;
 	char	*itoa_str;
-	char	*temp;
-	char	*substr;
+	char	*before;
+	char	*after;
+	char	*result;
 
 	itoa_str = ft_itoa(g_exit_status);
-	substr = ft_substr(*command, 0, pos - *command);
-	expanded_str = ft_strjoin(substr, itoa_str);
-	remaining_str = ft_strdup(pos + 2);
-	temp = *command;
-	*command = ft_strjoin(expanded_str, remaining_str);
-	free(temp);
-	free(expanded_str);
-	free(remaining_str);
+	before = ft_substr(value, 0, pos);
+	after = ft_strdup(value + pos + 2);
+	result = ft_strjoin(before, itoa_str);
+	free(before);
+	before = ft_strjoin(result, after);
+	free(result);
+	free(after);
 	free(itoa_str);
-	free(substr);
+	return (before);
 }
 
-void	replace_exit_status(char **commands, int i)
+static char	*process_token_value(const char *value)
 {
-	replace_exit_status_in_command(&commands[i]);
-}
-
-void	expand_exit(char **commands)
-{
+	char	*result;
 	int		i;
-	int		j;
-	bool	quotes;
 
+	result = ft_strdup(value);
 	i = 0;
-	while (commands[i])
+	while (result[i])
 	{
-		quotes = false;
-		j = 0;
-		while (commands[i][j])
+		if (result[i] == '$' && result[i + 1] == '?' && !is_in_single_quotes(result, i))
 		{
-			if (commands[i][j] == '\'')
-				quotes = true;
-			if (!quotes)
-				replace_exit_status(commands, i);
-			j++;
+			char *temp = result;
+			result = expand_exit_code(result, i);
+			free(temp);
+			i += ft_strlen(ft_itoa(g_exit_status)) - 1; // Skip expanded length
 		}
-		i++;
+		else
+			i++;
+	}
+	return (result);
+}
+
+void	expand_exit(t_token *tokens)
+{
+	t_token	*current;
+	char	*temp;
+
+	current = tokens;
+	while (current)
+	{
+		if (current->type == TOKEN_ENV_VAR) // Apenas processa tokens do tipo WORD
+		{
+			temp = current->value;
+			current->value = process_token_value(current->value);
+			free(temp);
+		}
+		current = current->next;
 	}
 }

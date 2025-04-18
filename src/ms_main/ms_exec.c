@@ -6,14 +6,14 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 11:19:43 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/04/17 19:18:05 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/04/18 15:11:11 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 void	ms_exec(char *input, t_env *env)
-{ 
+{
 	char		**commands;
 	t_token		*tokens;
 	t_ast_node	*ast_root;
@@ -22,10 +22,10 @@ void	ms_exec(char *input, t_env *env)
 	if (!ps_parsing(commands, 0))
 	{
 		ms_free(NULL, input, commands, NULL);
-		return;
+		return ;
 	}
 	tokens = token_to_struct(commands);
-	expand_exit(commands);
+	expand_exit(tokens);
 	quote_fix(tokens);
 	ast_root = build_ast(tokens);
 	execute_ast(ast_root, env);

@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/04/17 19:17:43 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/04/18 15:10:59 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,7 +169,7 @@ void	ms_free(t_env *env, char *input, char **commands, t_token *tokens);
 void	ps_error(char *str);
 
 //[ps_expand_exit_status.c]
-void	expand_exit(char **commands);
+void	expand_exit(t_token *tokens);
 void	replace_exit_status(char **commands, int i);
 void	replace_exit_status_in_command(char **command);
 void	replace_exit_status_at_pos(char **command, char *pos);
