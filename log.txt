@@ -217,4 +217,4 @@ A 03/04/2025 (16:03) - Quinta-Feira
 
 ･ exec:
     ･ validações de permissões e arquivos/diretorios
-
+teste
