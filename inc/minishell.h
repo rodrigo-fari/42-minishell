@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/04/18 20:49:42 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/04/19 22:09:03 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,9 +194,9 @@ void	ps_error(char *str);
 
 //[ps_expand_exit_status.c]
 void	expand_exit(t_token *tokens);
-void	replace_exit_status(char **commands, int i);
-void	replace_exit_status_in_command(char **command);
-void	replace_exit_status_at_pos(char **command, char *pos);
+char	*process_token_value(const char *value);
+char	*expand_exit_code(const char *value, int pos);
+bool	is_in_single_quotes(const char *str, int pos);
 
 //[ps_expand_variable.c]
 char	*var_expand(char *input);

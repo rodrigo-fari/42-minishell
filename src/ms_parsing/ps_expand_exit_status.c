@@ -6,13 +6,13 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 15:13:03 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/04/18 16:35:58 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/04/19 22:08:39 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static bool	is_in_single_quotes(const char *str, int pos)
+bool	is_in_single_quotes(const char *str, int pos)
 {
 	bool	in_quotes = false;
 	int		i = 0;
@@ -26,7 +26,7 @@ static bool	is_in_single_quotes(const char *str, int pos)
 	return (in_quotes);
 }
 
-static char	*expand_exit_code(const char *value, int pos)
+char	*expand_exit_code(const char *value, int pos)
 {
 	char	*itoa_str;
 	char	*before;
@@ -45,7 +45,7 @@ static char	*expand_exit_code(const char *value, int pos)
 	return (before);
 }
 
-static char	*process_token_value(const char *value)
+char	*process_token_value(const char *value)
 {
 	char	*result;
 	int		i;
