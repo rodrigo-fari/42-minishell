@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_main.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 09:47:50 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/04/21 16:29:32 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/04/21 17:49:28 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(void)
 		env = env_manager(NULL);	
 		signal(SIGINT, sig_ctrl_c);
 		signal(SIGPIPE, SIG_IGN);
-		input = readline("doresofrimento$ ");
+		input = readline("43$ ");
 		if (!input)
 			break ;
 		add_history(input);
