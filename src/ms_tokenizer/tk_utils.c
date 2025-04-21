@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tk_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 14:47:09 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/02/11 15:30:48 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/04/21 16:27:03 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	free_token_struct(t_token *token)
 		free(tmp);
 		tmp = NULL;
 	}
+	token = NULL;
 }
 
 int	tk_listsize(t_token *token)

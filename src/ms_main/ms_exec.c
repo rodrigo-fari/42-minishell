@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_exec.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 11:19:43 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/04/19 22:11:04 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/04/21 16:34:46 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	ms_exec(char *input, t_env *env)
 	t_ast_node	*ast_root;
 
 	commands = tk_splitter(input, 0, 0);
+	ft_print_array(commands);
 	if (!ps_parsing(commands, 0))
 	{
 		ms_free(NULL, input, commands, NULL);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ev_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:16:33 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/01/22 14:47:26 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/04/21 16:27:28 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	free_env_struct(t_env *env)
 		free(tmp);
 		tmp = NULL;
 	}
+	env = NULL;
 }
 
 int	listsize(t_env *env)
