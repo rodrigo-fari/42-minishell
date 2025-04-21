@@ -3,6 +3,8 @@
 		"minishell.h": "c",
 		"sstream": "c",
 		"stdlib.h": "c",
-		"string.h": "c"
+		"string.h": "c",
+		"stddef.h": "c",
+		"libft.h": "c"
 	}
 }

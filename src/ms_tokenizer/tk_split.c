@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tk_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 12:34:20 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/04/21 17:03:50 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/04/22 00:22:57 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ char	**tk_splitter(char *input, int i, int j)
 
 int	is_special_char(char c)
 {
-	return (c == '&' || c == ';');
+	return (c == '>' || c == '<' || c == '&'
+			|| c == ';');
 }
 
 char	*extract_word(char *input, int *i)

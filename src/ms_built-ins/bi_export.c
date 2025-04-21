@@ -12,7 +12,6 @@
 
 #include "minishell.h"
 
-// split[0] = key, split[1] = value
 void	bi_export(t_env *env, char **user_input)
 {
 	int		i;
@@ -46,20 +45,21 @@ bool	is_valid_key(char *key)
 
 	i = 1;
 
-    if (key == NULL 
-        || key[0] == '=' 
-        || !ft_isalpha(key[0]) 
-        || ft_strchr(key, '-') != NULL)
-        {
-            ms_print_fd("export: not a valid identifier\n", 2);
-            return (false);
-        }
-
-        while (key[i] != '\0' && key[i] != '=')
+	if (key == NULL 
+		|| key[0] == '=' 
+		|| !ft_isalpha(key[0]) 
+		|| ft_strchr(key, '-') != NULL)
+		{
+			bi_error("Minishell: export: not a valid identifier\n");
+			g_exit_status = 1;
+			return (false);
+		}
+	while (key[i] != '\0' && key[i] != '=')
 	{
 		if (!ft_isalnum(key[i]) && key[i] != '_')
 		{
-			ms_print_fd("export: not a valid identifier\n", 2);
+			bi_error("Minishell: export: not a valid identifier\n");
+			g_exit_status = 1;
 			return (false);
 		}
 		i++;

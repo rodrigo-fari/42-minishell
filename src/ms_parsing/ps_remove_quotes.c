@@ -4,9 +4,9 @@
 /*   ps_remove_quotes.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                +#+#+#+#+#+   */
 /*   Created: 2025/03/12 14:29:07 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/04/17 19:19:24 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/04/21 22:27:16 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,17 @@ char	*remove_quotes_and_expand(char *input, t_env *env)
 			quote = '\0', i++;
 		else if (input[i] == '$' && quote != '\'')
 		{
-			if (!input[i + 1] || (!ft_isalnum(input[i + 1]) && input[i + 1] != '_'))
+			if (input[i + 1] == '?') // Check for $?
 			{
-				// Adiciona o '$' literal
+				char *exit_status_str = ft_itoa(g_exit_status); // Convert exit status to string
+				tmp = append_string_to_string(ret_str, exit_status_str);
+				free(ret_str);
+				ret_str = tmp;
+				free(exit_status_str);
+				i += 2; // Skip the $? characters
+			}
+			else if (!input[i + 1] || (!ft_isalnum(input[i + 1]) && input[i + 1] != '_'))
+			{
 				tmp = append_char_to_string(ret_str, '$');
 				ret_str = tmp;
 				i++;
@@ -95,6 +103,13 @@ char	*remove_quotes_and_expand(char *input, t_env *env)
 				if (var_value)
 				{
 					tmp = append_string_to_string(ret_str, var_value);
+					free(ret_str);
+					ret_str = tmp;
+				}
+				else
+				{
+					// If var_value is NULL, append an empty string
+					tmp = append_string_to_string(ret_str, "");
 					free(ret_str);
 					ret_str = tmp;
 				}

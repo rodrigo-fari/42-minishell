@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 19:58:16 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/04/18 20:39:47 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/04/21 23:54:52 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,62 @@
 
 void	execute_forked_cmd(t_ast_node *node, t_env *env)
 {
-	pid_t	pid;
+	pid_t		pid;
+	int			status;
+	struct stat	file_stat;
 
+	// Check if the command is an absolute or relative path
+	if (ft_strchr(node->args[0], '/'))
+	{
+		// Check if the file exists
+		if (stat(node->args[0], &file_stat) == -1)
+		{
+			ft_putstr_fd("Minishell: ", STDERR_FILENO);
+			ft_putstr_fd(node->args[0], STDERR_FILENO);
+			ft_putstr_fd(": command not found\n", STDERR_FILENO);
+			g_exit_status = 127; // Command not found
+			return;
+		}
+
+		// Check if the file is a directory
+		if (S_ISDIR(file_stat.st_mode))
+		{
+			ft_putstr_fd("Minishell: ", STDERR_FILENO);
+			ft_putstr_fd(node->args[0], STDERR_FILENO);
+			ft_putstr_fd(": Is a directory\n", STDERR_FILENO);
+			g_exit_status = 126; // Is a directory
+			return;
+		}
+
+		// Check if the file is executable
+		if (access(node->args[0], X_OK) == -1)
+		{
+			perror("Minishell");
+			g_exit_status = 126; // Permission denied
+			return;
+		}
+	}
+
+	// Fork and execute the command
 	pid = fork();
 	if (pid == -1)
+	{
 		perror("fork");
+		g_exit_status = 1; // Fork failed
+	}
 	else if (pid == 0)
 	{
 		bi_exec(node->args, env);
 		exit(EXIT_SUCCESS);
 	}
 	else
-		waitpid(pid, NULL, 0);
+	{
+		waitpid(pid, &status, 0);
+		if (WIFEXITED(status))
+			g_exit_status = WEXITSTATUS(status); // Update g_exit_status based on child exit status
+		else
+			g_exit_status = 1; // Default to 1 if the process did not exit normally
+	}
 }
 
 void	execute_ast(t_ast_node *node, t_env *env)

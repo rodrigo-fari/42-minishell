@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 12:18:54 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/03/18 13:38:03 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/04/22 00:19:18 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,38 +14,97 @@
 
 void bi_exec(char **commands, t_env *env)
 {
-    env = env_manager(NULL);
+    struct stat file_stat;
 
-    char *executable = find_executable(commands[0], env);
-    if (!executable)
+    // Skip empty tokens (e.g., when $EMPTY is empty)
+    while (commands[0] && commands[0][0] == '\0')
+        commands++;
+
+    // Check if the command is empty after skipping
+    if (!commands[0] || commands[0][0] == '\0')
     {
-        fprintf(stderr, "minishell: command not found: %s\n", commands[0]);
-        exit(127);
+        // If the command is empty, do nothing and return
+        g_exit_status = 0; // No error for empty command
+        return;
     }
-    execve(executable, commands, array_envs(env));
-    perror("execve");
-    exit(EXIT_FAILURE);
 
+    // Check if the command is a built-in
+    if (is_builtin(commands[0]))
+    {
+        execute_builtin(commands, env);
+        return;
+    }
+
+    // Check if the file exists
+    if (stat(commands[0], &file_stat) == -1)
+    {
+        ft_putstr_fd("Minishell: ", STDERR_FILENO);
+        ft_putstr_fd(commands[0], STDERR_FILENO);
+        ft_putstr_fd(": command not found\n", STDERR_FILENO);
+        g_exit_status = 127; // Command not found
+        exit(g_exit_status);
+    }
+
+    // Check if the file is a directory
+    if (S_ISDIR(file_stat.st_mode))
+    {
+        // If explicitly executed (e.g., ./test_files), treat as "is a directory"
+        if (ft_strchr(commands[0], '/'))
+        {
+            ft_putstr_fd("Minishell: ", STDERR_FILENO);
+            ft_putstr_fd(commands[0], STDERR_FILENO);
+            ft_putstr_fd(": is a directory\n", STDERR_FILENO);
+            g_exit_status = 126; // Is a directory
+            exit(g_exit_status);
+        }
+        else
+        {
+            // Otherwise, treat as "command not found"
+            ft_putstr_fd("Minishell: ", STDERR_FILENO);
+            ft_putstr_fd(commands[0], STDERR_FILENO);
+            ft_putstr_fd(": command not found\n", STDERR_FILENO);
+            g_exit_status = 127; // Command not found
+            exit(g_exit_status);
+        }
+    }
+
+    // Check if the file is executable
+    if (access(commands[0], X_OK) == -1)
+    {
+        // If the file is not executable, treat as "command not found"
+        ft_putstr_fd("Minishell: ", STDERR_FILENO);
+        ft_putstr_fd(commands[0], STDERR_FILENO);
+        ft_putstr_fd(": command not found\n", STDERR_FILENO);
+        g_exit_status = 127; // Command not found
+        exit(g_exit_status);
+    }
+
+    // Execute the command
+    env = env_manager(NULL);
+    execve(commands[0], commands, array_envs(env));
+    perror("execve");
+    g_exit_status = 1; // Set g_exit_status to 1 if execve fails
+    exit(g_exit_status);
 }
 
 void execute_builtin(char **commands, t_env *env)
 {
-    
-    t_token *helper = token_to_struct(commands);
-    env = env_manager(NULL);
+	t_token *helper;
 
-    if (ft_strcmp(commands[0], "echo") == 0)
-        bi_echo(helper);
-    else if (ft_strcmp(commands[0], "pwd") == 0)
-        bi_pwd();
-    else if (ft_strcmp(commands[0], "exit") == 0)
-        bi_exit(helper, env, commands);
-    else if (ft_strcmp(commands[0], "env") == 0)
-        print_env(env);
-    else if (ft_strcmp(commands[0], "cd") == 0)
-        bi_cd(commands, env);
-    else if (ft_strcmp(commands[0], "unset") == 0)
-        bi_unset(commands, env);
-    else if (ft_strcmp(commands[0], "export") == 0)
-        bi_export(env, commands);
+	helper = token_to_struct(commands);
+	env = env_manager(NULL);
+	if (ft_strcmp(commands[0], "echo") == 0)
+		bi_echo(helper);
+	else if (ft_strcmp(commands[0], "pwd") == 0)
+		bi_pwd();
+	else if (ft_strcmp(commands[0], "exit") == 0)
+		bi_exit(helper);
+	else if (ft_strcmp(commands[0], "env") == 0)
+		print_env(env);
+	else if (ft_strcmp(commands[0], "cd") == 0)
+		bi_cd(commands, env);
+	else if (ft_strcmp(commands[0], "unset") == 0)
+		bi_unset(commands, env);
+	else if (ft_strcmp(commands[0], "export") == 0)
+		bi_export(env, commands);
 }

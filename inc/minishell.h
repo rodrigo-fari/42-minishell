@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/04/21 17:36:57 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/04/21 22:03:37 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@
 # include "../src/ms_libft/libft/libft.h"
 
 //=====================================| Support Defines |
-# define CLEAR_CODE	"\033[2J\033[H"
-# define RESET		"\001\033[0m\002"
+# define LONG_MAX 9223372036854775807
+# define LONG_MIN -9223372036854775808
 
 //=====================================| Global Variable |
 extern int	g_exit_status;
@@ -126,17 +126,19 @@ bool	flag_verify(char *str);
 //[bi_error.c]
 void	bi_error(char *str);
 
+//![bi_exit.c] - 5 functions limit achived.
+void	bi_exit(t_token *token);
+bool	check_signal_quantity(int qnt);
+bool	check_exit_signals(t_token *token);
+bool	check_exit_arguments(t_token *token);
+void	define_exit_status(char *exit_status);
+
 //[bi_exec.c]
 void	exec_parent_process(pid_t pid);
 void	exec_exe(t_token *tmp, t_env *env, char **commands);
 void    execute_builtin(char **commands, t_env *env);
 void    bi_exec(char **commands, t_env *env);
 void	exec_child_process(t_token *tmp, char **commands, t_env *env);
-
-//[bi_exit.c]
-int		is_numeric(const char *str);
-void	bi_exit(t_token *tokens, t_env *env, char **commands);
-void	handle_exit(t_token *tokens, t_env *env, char **commands);
 
 //[!bi_export.c] 5 functions limit achived.
 bool	is_valid_key(char *str);
@@ -191,12 +193,6 @@ void	ms_free(t_env *env, char *input, char **commands, t_token *tokens);
 //=====================================| ms_parsing |
 //[ps_error.c]
 void	ps_error(char *str);
-
-//[ps_expand_exit_status.c]
-void	expand_exit(t_token *tokens);
-char	*process_token_value(const char *value);
-char	*expand_exit_code(const char *value, int pos);
-bool	is_in_single_quotes(const char *str, int pos);
 
 //[ps_expand_variable.c]
 char	*var_expand(char *input);

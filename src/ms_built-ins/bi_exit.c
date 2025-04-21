@@ -3,59 +3,125 @@
 /*                                                        :::      ::::::::   */
 /*   bi_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 12:22:57 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/02/21 22:28:33 by aeberius         ###   ########.fr       */
+/*   Created: 2025/04/21 19:13:25 by rde-fari          #+#    #+#             */
+/*   Updated: 2025/04/22 00:27:57 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	is_numeric(const char *str)
+void	bi_exit(t_token *token)
 {
-	int	i;
+	ft_putendl_fd("exit", 1);
+	if (tk_listsize(token) == 1)
+		define_exit_status(NULL);
+	else if (!check_exit_arguments(token))
+		define_exit_status(NULL);
+	else if (!check_exit_signals(token))
+		define_exit_status(NULL);
+	else
+		define_exit_status(token->next->value);
+}
+
+
+void	define_exit_status(char *exit_status)
+{
+	long		exit_lnumber;
+
+	if (!exit_status)
+		exit(g_exit_status);
+	if (ft_atol(exit_status) != ft_atod(exit_status))
+	{
+		g_exit_status = 2;
+		exit (g_exit_status);
+	}
+	exit_lnumber = ft_atol(exit_status);
+	if (exit_lnumber > 255 || exit_lnumber < 0)
+		exit_lnumber %= 255;
+	g_exit_status = exit_lnumber;
+	exit (g_exit_status);
+}
+
+
+
+bool	check_exit_arguments(t_token *token)
+{
+	if (tk_listsize(token) > 2)
+	{
+		bi_error("Minishell: exit: too many arguments\n");
+		g_exit_status = 1;
+		return (false);
+	}
+	if (tk_listsize(token) == 2 && ft_strcmp(token->next->value, "--") == 0)
+	{
+		g_exit_status = 2;
+		return (false);
+	}
+	return (true);
+}
+
+bool	check_exit_signals(t_token *token)
+{
+	int		i;
+	int		qnt;
 
 	i = 0;
-	if (str[i] == '-' || str[i] == '+')
-		i++;
-	while (str[i])
+	qnt = 0;
+	while (token->next->value[i])
 	{
-		if (!ft_isdigit(str[i]))
-			return (0);
-		i++;
+		while (token->next->value[i] && (!ft_isdigit(token->next->value[i])))
+		{
+			qnt++;
+			i++;
+		}
+		if (!check_signal_quantity(qnt))
+			return (false);
+		while (token->next->value[i] && (ft_isdigit(token->next->value[i])))
+			i++;
+		if (token->next->value[i])
+		{
+			bi_error("Minishell: exit: numeric argument required\n");
+			g_exit_status = 2;
+			return (false);
+		}
 	}
-	return (1);
+	return (true);
 }
 
-void	handle_exit(t_token *tokens, t_env *env, char **commands)
+bool	check_signal_quantity(int qnt)
 {
-	int		exit_code;
-	t_token	*arg;
-
-	exit_code = 0;
-	arg = tokens->next;
-	printf("exit\n");
-	if (arg)
+	if (qnt > 1)
 	{
-		if (!is_numeric(arg->value))
-		{
-			perror("minishell: exit: %s: numeric argument required\n");
-			exit_code = 255;
-		}
-		else if (arg->next)
-		{
-			perror("exit: too many arguments\n");
-			exit_code = 1;
-		}
-		else
-			exit_code = ft_atoi(arg->value) % 256;
+		bi_error("Minishell: exit: too many arguments\n");
+		g_exit_status = 2;
+		return (false);
 	}
-	ms_free(env, NULL, commands, tokens);
-	exit(exit_code);
+	return (true);
 }
 
-void	bi_exit(t_token *tokens, t_env *env, char **commands)
-{
-	handle_exit(tokens, env, commands);
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

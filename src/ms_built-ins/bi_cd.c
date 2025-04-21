@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 15:38:24 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/03/26 15:09:25 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/04/21 22:36:41 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,10 @@ void	bi_cd(char **user_input, t_env *env)
 		if (chdir(user_input[1]) == 0)
 			update_pwd(env, old_pwd);
 		else
-			perror("bash: cd");
+		{
+			bi_error("Minishell: cd: No such file or directory\n");
+			g_exit_status = 1;
+		}
 	}
 	free(old_pwd);
 	return ;
@@ -51,6 +54,7 @@ bool	check_too_many_arguments(char **user_input)
 		if (i >= 2)
 		{
 			bi_error("bash: cd: too many arguments\n");
+			g_exit_status = 1;
 			return (true);
 		}
 		i++;
@@ -74,6 +78,7 @@ char	*find_path_home_in_env(t_env *env)
 		tmp = tmp->next;
 	}
 	bi_error("bash: cd: HOME not set\n");
+	g_exit_status = 1;
 	return (NULL);
 }
 
@@ -93,6 +98,7 @@ char	*find_oldpwd_in_env(t_env *env)
 		tmp = tmp->next;
 	}
 	bi_error("bash: cd: OLDPWD not set\n");
+	g_exit_status = 1;
 	return (NULL);
 }
 
