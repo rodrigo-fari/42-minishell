@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 12:18:54 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/04/24 00:03:28 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/04/24 01:08:35 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,44 +14,44 @@
 
 char *resolve_command_path(const char *cmd, t_env *env)
 {
-    char *path_env;
-    char **paths;
-    char *full_path;
-    char *temp;
-    int i;
+	char *path_env;
+	char **paths;
+	char *full_path;
+	char *temp;
+	int i;
 
-    // Se o comando contém '/', trate-o como um caminho
-    if (ft_strchr(cmd, '/'))
-        return (ft_strdup(cmd));
+	// Se o comando contém '/', trate-o como um caminho
+	if (ft_strchr(cmd, '/'))
+		return (ft_strdup(cmd));
 
-    // Obter a variável de ambiente PATH
-    path_env = get_env_value(env, "PATH");
-    if (!path_env)
-        return (NULL);
+	// Obter a variável de ambiente PATH
+	path_env = get_env_value(env, "PATH");
+	if (!path_env)
+		return (NULL);
 
-    // Dividir o PATH em diretórios
-    paths = ft_split(path_env, ':');
-    if (!paths)
-        return (NULL);
+	// Dividir o PATH em diretórios
+	paths = ft_split(path_env, ':');
+	if (!paths)
+		return (NULL);
 
-    // Procurar o comando em cada diretório
-    i = 0;
-    while (paths[i])
-    {
-        temp = ft_strjoin(paths[i], "/"); // Adicionar '/' ao diretório
-        full_path = ft_strjoin(temp, cmd); // Concatenar o comando
-        free(temp); // Liberar a string temporária
+	// Procurar o comando em cada diretório
+	i = 0;
+	while (paths[i])
+	{
+		temp = ft_strjoin(paths[i], "/"); // Adicionar '/' ao diretório
+		full_path = ft_strjoin(temp, cmd); // Concatenar o comando
+		free(temp); // Liberar a string temporária
 
-        if (access(full_path, X_OK) == 0) // Verificar se o comando é executável
-        {
-            free_splits(paths);
-            return (full_path);
-        }
-        free(full_path); // Liberar o caminho completo se não for válido
-        i++;
-    }
-    free_splits(paths);
-    return (NULL);
+		if (access(full_path, X_OK) == 0) // Verificar se o comando é executável
+		{
+			free_splits(paths);
+			return (full_path);
+		}
+		free(full_path); // Liberar o caminho completo se não for válido
+		i++;
+	}
+	free_splits(paths);
+	return (NULL);
 }
 
 void bi_exec(char **commands, t_env *env)

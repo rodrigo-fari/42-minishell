@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/14 18:14:52 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/04/07 18:00:06 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/04/24 01:52:30 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,19 @@ char	*get_env_value(t_env *env, char *var_name)
 	return (NULL);
 }
 
-char	*append_string_to_string(char *str1, char *str2)
+char	*append_string_to_string(char *str1, const char *str2)
 {
-	char	*result;
-	size_t	len1 = str1 ? strlen(str1) : 0;
-	size_t	len2 = str2 ? strlen(str2) : 0;
+	char	*new_str;
+	size_t	len1 = str1 ? ft_strlen(str1) : 0;
+	size_t	len2 = str2 ? ft_strlen(str2) : 0;
 
-	result = malloc(len1 + len2 + 1);
-	if (!result)
+	new_str = malloc(len1 + len2 + 1);
+	if (!new_str)
 		return (NULL);
 	if (str1)
-		strcpy(result, str1);
+		ft_strcpy(new_str, str1);
 	if (str2)
-		strcpy(result + len1, str2);
-	free(str1); // Libera a string original para evitar vazamento de memória
-	return (result);
+		ft_strcpy(new_str + len1, str2);
+	new_str[len1 + len2] = '\0';
+	return (new_str);
 }

@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/04/21 22:03:37 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/04/24 01:50:16 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,8 +224,7 @@ char	*remove_quotes(char *input);
 bool	bool_changer(bool key);
 char	*extract_var_name(char *input, int *i);
 char	*get_env_value(t_env *env, char *var_name);
-char	*append_string_to_string(char *str1, char *str2);
-
+char	*append_string_to_string(char *str1, const char *str2);
 //=====================================| ms_pipeline |
 //[pp_exec.c]
 void	execute_pipeline(char ***commands, t_env *env);
