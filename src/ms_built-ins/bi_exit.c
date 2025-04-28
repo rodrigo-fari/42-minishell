@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 19:13:25 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/04/22 00:27:57 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/04/28 09:28:02 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,16 @@ void	define_exit_status(char *exit_status)
 		exit (g_exit_status);
 	}
 	exit_lnumber = ft_atol(exit_status);
-	if (exit_lnumber > 255 || exit_lnumber < 0)
-		exit_lnumber %= 255;
+	//!if (exit_status == 298) Verificar se apenas ocorre com 298!
+	//!{
+	//!	g_exit_status = Numero que aparece no tester
+	//!	exit(g_exit_status);
+	//!}
+	if (exit_lnumber > 256 || exit_lnumber < 0)
+		exit_lnumber %= 256;
 	g_exit_status = exit_lnumber;
 	exit (g_exit_status);
 }
-
-
 
 bool	check_exit_arguments(t_token *token)
 {
@@ -100,28 +103,3 @@ bool	check_signal_quantity(int qnt)
 	}
 	return (true);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,3 +1,126 @@
+Failing teste
+===============================================================✅ 
+Test  15: ❌ echo "exit_code ->$? user ->$USER home -> $HOME"
+mini output = ()
+bash output = (exit_code ->0 user ->spooky home -> /Users/spooky)
+Parece que no minishell esta funcionando normal
+===============================================================✅ 
+
+===============================================================✅ 
+Test  16: ❌ echo 'exit_code ->$? user ->$USER home -> $HOME'
+mini output = ()
+bash output = (exit_code ->$? user ->$USER home -> $HOME)
+Parece que no minishell esta funcionando normal
+===============================================================✅ 
+
+===============================================================✅ 
+Test  22: ❌ pwd
+mini exit code = /Users/spooky/Projects/42/42-minishell/minishell_tester
+bash exit code = 0
+Parece que no minishell esta funcionando normal
+===============================================================✅ 
+
+===============================================================✅ 
+Test  23: ❌ pwd oi
+mini exit code = /Users/spooky/Projects/42/42-minishell/minishell_tester
+bash exit code = 0
+Parece que no minishell esta funcionando normal
+===============================================================✅ 
+
+===============================================================✅ 
+Test  40: ❌ cd $PWD hi
+mini exit code = 1
+bash exit code = 0                                                     CORRIGIDO
+mini error = ( too many arguments)
+bash error = ()
+CORRIGIDO
+===============================================================✅ 
+
+
+Test  43: ❌ exit 298
+mini exit code = 43                 ❌
+bash exit code = 42
+
+
+===============================================================✅ 
+Test  65: ❌ echo <"./test_files/infile" <missing <"./test_files/infile"
+mini exit code = 0
+bash exit code = 1
+Parece que no minishell esta funcionando normal
+===============================================================✅ 
+
+
+Test  68: ❌ echo <"./test_files/infile_big" | cat <"./test_files/infile"-------Tudo que envolve "<" ta dando erro, necessário corrigir logica
+mini output = ()                                                         ❌
+bash output = (hi hello world 42)
+FREED INVALID POINTER
+
+
+Test  71: ❌ echo hi | cat <"./test_files/infile"
+mini output = (hi)                                     ❌
+bash output = (hi hello world 42)
+FREED INVALID POINTER
+
+
+Test  79: ❌ cat <missing | cat <"./test_files/infile"
+mini output = ()                                            ❌
+bash output = (hi hello world 42)
+FREED INVALID POINTER
+
+
+===============================================================✅ 
+Test  83: ❌ echo hi >         ./outfiles/outfile01 bye
+Files ./mini_outfiles/outfile01 and ./bash_outfiles/outfile01 differ
+mini outfiles:
+hi
+bash outfiles:
+hi bye
+Parece que no minishell esta funcionando normal
+===============================================================✅ 
+
+
+===============================================================✅ 
+Test  50: ❌ exit hello
+mini exit code = 2
+bash exit code = 255                                RESOLVIDO
+mini error = ( too many arguments)
+bash error = ( numeric argument required)
+===============================================================✅ 
+
+===============================================================✅ 
+Test  43: ❌ exit 298
+mini exit code = 43                         RESOLVIDO
+bash exit code = 42
+===============================================================✅ 
+
+
+===============================================================✅ 
+Test  40: ❌ cd $PWD hi
+mini exit code = 1
+bash exit code = 0
+mini error = ( too many arguments)                  RESOLVIDO
+bash error = ()
+===============================================================✅ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Formatação do log de trabalho:
 
 Pessoa 00/00/0000 - Dia da semana

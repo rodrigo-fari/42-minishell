@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 15:38:24 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/04/21 22:36:41 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/04/28 07:37:33 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	bi_cd(char **user_input, t_env *env)
 	char	*old_pwd;
 
 	old_pwd = NULL;
-	if (check_too_many_arguments(user_input) == true)
-		return ;
+	//if (check_too_many_arguments(user_input) == true)
+	//	return ;
 	old_pwd = getcwd(NULL, 0);
 	if (!user_input[1] || ft_strcmp(user_input[1], "~") == 0)
 	{
