@@ -38,11 +38,6 @@ void	define_exit_status(char *exit_status)
 		exit (g_exit_status);
 	}
 	exit_lnumber = ft_atol(exit_status);
-	//!if (exit_status == 298) Verificar se apenas ocorre com 298!
-	//!{
-	//!	g_exit_status = Numero que aparece no tester
-	//!	exit(g_exit_status);
-	//!}
 	if (exit_lnumber > 256 || exit_lnumber < 0)
 		exit_lnumber %= 256;
 	g_exit_status = exit_lnumber;
@@ -97,7 +92,7 @@ bool	check_signal_quantity(int qnt)
 {
 	if (qnt > 1)
 	{
-		bi_error("Minishell: exit: too many arguments\n");
+		bi_error("Minishell: exit: Invalid argument\n");
 		g_exit_status = 2;
 		return (false);
 	}

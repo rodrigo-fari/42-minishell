@@ -17,8 +17,8 @@ void	bi_cd(char **user_input, t_env *env)
 	char	*old_pwd;
 
 	old_pwd = NULL;
-	//if (check_too_many_arguments(user_input) == true)
-	//	return ;
+	if (check_too_many_arguments(user_input) == true)
+		return ;
 	old_pwd = getcwd(NULL, 0);
 	if (!user_input[1] || ft_strcmp(user_input[1], "~") == 0)
 	{

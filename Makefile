@@ -51,7 +51,6 @@ $(LIBFT):
 clean:
 					@$(RM) $(OBJ_DIR)
 					@make clean -C ./src/ms_libft/libft/
-					@$(RM) $(NAME)
 					@clear
 					@echo " "
 					@echo " "

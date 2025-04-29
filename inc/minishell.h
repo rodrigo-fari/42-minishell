@@ -167,6 +167,7 @@ char	**split_once(char *input, char c);
 
 //[ev_print_env.c]
 void	print_env(t_env *env);
+void	update_shell_level(void);
 
 //![ev_utils.c] - 5 functions limit achived.
 int		listsize(t_env *env);

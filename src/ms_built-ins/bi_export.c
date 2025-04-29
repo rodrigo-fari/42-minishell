@@ -14,44 +14,44 @@
 
 void	bi_export(t_env *env, char **user_input)
 {
-    int		i;
-    char	*key;
-    char	*value;
-    char	*equal_sign;
-    bool	has_equal;
+	int		i;
+	char	*key;
+	char	*value;
+	char	*equal_sign;
+	bool	has_equal;
 
-    i = 1;
-    if (user_input[1] == NULL)
-    {
-        print_org_env(env);
-        return ;
-    }
-    while (user_input[i] != NULL)
-    {
-        equal_sign = ft_strchr(user_input[i], '=');
-        has_equal = (equal_sign != NULL);
-        if (has_equal)
-        {
-            // Split at the first '='
-            key = ft_substr(user_input[i], 0, equal_sign - user_input[i]);
-            value = ft_strdup(equal_sign + 1);
-        }
-        else
-        {
-            key = ft_strdup(user_input[i]);
-            value = NULL;
-        }
-        if (!is_valid_key(key))
-        {
-            free(key);
-            free(value);
-            break ;
-        }
-        env_update(env, key, value ? value : "", has_equal);
-        free(key);
-        free(value);
-        i++;
-    }
+	i = 1;
+	if (user_input[1] == NULL)
+	{
+		print_org_env(env);
+		return ;
+	}
+	while (user_input[i] != NULL)
+	{
+		equal_sign = ft_strchr(user_input[i], '=');
+		has_equal = (equal_sign != NULL);
+		if (has_equal)
+		{
+			// Split at the first '='
+			key = ft_substr(user_input[i], 0, equal_sign - user_input[i]);
+			value = ft_strdup(equal_sign + 1);
+		}
+		else
+		{
+			key = ft_strdup(user_input[i]);
+			value = NULL;
+		}
+		if (!is_valid_key(key))
+		{
+			free(key);
+			free(value);
+			break ;
+		}
+		env_update(env, key, value ? value : "", has_equal);
+		free(key);
+		free(value);
+		i++;
+	}
 }
 
 bool	is_valid_key(char *key)

@@ -104,6 +104,12 @@ bash error = ()
 
 
 
+Test  58: ❌ grep hi "<infile" <         ./test_files/infile 
+mini exit code = 0 (minishell quando testado retorn 1)
+bash exit code = 2 (bash quando testado retorna 1)
+
+
+
 
 
 
