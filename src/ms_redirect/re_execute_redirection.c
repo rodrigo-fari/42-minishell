@@ -39,7 +39,7 @@ void	execute_redirection(t_ast_node *node, t_env *env)
 
 	if (!node->right || !node->right->args || !node->right->args[0])
 	{
-		g_exit_status = 1; // Set to 1 if no filename is provided
+		g_exit_status = 1;
 		return ;
 	}
 	filename = node->right->args[0];
@@ -47,7 +47,7 @@ void	execute_redirection(t_ast_node *node, t_env *env)
 	if (fd == -1)
 	{
 		perror("open");
-		g_exit_status = 1; // Set to 1 if file opening fails
+		g_exit_status = 2;
 		return ;
 	}
 	pid = fork();
@@ -60,12 +60,10 @@ void	execute_redirection(t_ast_node *node, t_env *env)
 	}
 	close(fd);
 	waitpid(pid, &status, 0);
-
-	// Set g_exit_status based on the child process exit status
 	if (WIFEXITED(status))
 		g_exit_status = WEXITSTATUS(status);
 	else
-		g_exit_status = 1; // Default to 1 if the process did not exit normally
+		g_exit_status = 1;
 }
 
 void	handle_redir_fd(t_ast_node *node, int fd)

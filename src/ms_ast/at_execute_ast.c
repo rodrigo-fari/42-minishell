@@ -67,8 +67,6 @@ void	execute_forked_cmd(t_ast_node *node, t_env *env)
 		waitpid(pid, &status, 0);
 		if (WIFEXITED(status))
 			g_exit_status = WEXITSTATUS(status); // Update g_exit_status based on child exit status
-		else
-			g_exit_status = 1; // Default to 1 if the process did not exit normally
 	}
 }
 
