@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 20:41:20 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/04/21 22:15:15 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/04/29 20:27:20 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ long	ft_atol(const char *s);
 
 char	*ft_itoa(int n);
 char	*ft_strdup(const char *s);
+char	*ft_charjoin(char *str, char c);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
 char	**ft_split(char const *s, char c);
