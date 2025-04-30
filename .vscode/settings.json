@@ -6,5 +6,7 @@
 		"string.h": "c",
 		"stddef.h": "c",
 		"libft.h": "c"
-	}
+	},
+	"editor.cursorStyle": "block-outline",
+	"editor.cursorWidth": 4
 }

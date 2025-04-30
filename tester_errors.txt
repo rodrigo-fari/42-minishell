@@ -582,3 +582,12 @@ mini exit code = 134
 bash exit code = 0
 mini error = ( No such file or directory invalid pointer)
 bash error = ( No such file or directory)
+
+
+intput = echhhhh if (hello world == 123) && """""""""" olaaaaaaaaa && oi | echo deu certo
+
+deu certo
+Minishell: echhhhh: command not found
+free(): invalid pointer
+[1]    58935 IOT instruction (core dumped)  ./minishell
+c1r4s7 :: projects/42/42-minishell 134 » 

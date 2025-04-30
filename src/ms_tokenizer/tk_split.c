@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 12:34:20 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/04/22 00:22:57 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/04/30 22:03:42 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,24 @@ int	tk_count_words(char *input, int i, int count)
 	{
 		while (input[i] && ft_isspace(input[i]))
 			i++;
-		if (input[i])
+		if (!input[i])
+			break;
+		count++;
+		if (input[i] == '\'' || input[i] == '\"')
 		{
-			count++;
-			if (input[i] == '\'' || input[i] == '\"')
-			{
-				quote = input[i];
+			quote = input[i++];
+			while (input[i] && input[i] != quote)
 				i++;
-				while (input[i] && input[i] != quote)
-					i++;
-			}
+			if (input[i] == quote)
+				i++;
 		}
-		while (input[i] && !ft_isspace(input[i]))
+		else if (is_special_char(input[i]))
 			i++;
+		else
+		{
+			while (input[i] && !ft_isspace(input[i]) && !is_special_char(input[i]))
+				i++;
+		}                awdawd
 	}
 	return (count);
 }
@@ -40,7 +45,7 @@ int	tk_count_words(char *input, int i, int count)
 char	**tk_splitter(char *input, int i, int j)
 {
 	char	**commands;
-	int		word_count;
+	int	 word_count;
 
 	word_count = tk_count_words(input, 0, 0);
 	commands = ft_calloc(sizeof(char *), (word_count + 1));
@@ -62,7 +67,7 @@ char	**tk_splitter(char *input, int i, int j)
 	return (commands);
 }
 
-int	is_special_char(char c)
+int is_special_char(char c)
 {
 	return (c == '>' || c == '<' || c == '&'
 			|| c == ';');
@@ -71,8 +76,8 @@ int	is_special_char(char c)
 char	*extract_word(char *input, int *i)
 {
 	char	quote;
-	int		cursor;
-	int		start;
+	int	 cursor;
+	int	 start;
 	char	*word;
 
 	cursor = *i;

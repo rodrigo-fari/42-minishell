@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 12:18:54 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/04/24 01:08:35 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/04/30 21:45:40 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*resolve_command_path(const char *cmd, t_env *env)
 		free(full_path);
 		i++;
 	}
-	free_splits(paths);
+	free_splits(paths); 
 	return (NULL);
 }
 
