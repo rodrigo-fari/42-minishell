@@ -7,6 +7,7 @@ INC					= inc/
 SRC_DIR				= src/
 OBJ_DIR				= obj/
 CC					= cc
+SANITIZE_FALGS		= -fsanitize=address -fsanitize=leak -fsanitize=undefined -fno-omit-frame-pointer
 #------------|Lembrar de remover "-g" antes de submeter ("-g" gdb)|
 CFLAGS				= -Wall -Werror -Wextra -g3 -I$(INC)
 #---------------------------------------------------------------------|
