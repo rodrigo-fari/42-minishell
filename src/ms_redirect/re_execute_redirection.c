@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 20:04:14 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/04/21 22:50:45 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/05/01 00:06:37 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,33 +55,37 @@ void	execute_redirection(t_ast_node *node, t_env *env)
 	{
 		handle_redir_fd(node, fd);
 		if (node->left)
+		{
 			execute_ast(node->left, env);
-		exit(EXIT_SUCCESS);
+			exit(g_exit_status); // Use o código de saída configurado por execute_ast
+		}
+		exit(EXIT_SUCCESS); // Código de saída padrão
 	}
 	close(fd);
 	waitpid(pid, &status, 0);
 	if (WIFEXITED(status))
 		g_exit_status = WEXITSTATUS(status);
+	else if (WIFSIGNALED(status))
+		g_exit_status = 128 + WTERMSIG(status); // Código de saída para sinais
 	else
-		g_exit_status = 1;
+		g_exit_status = 1; // Código de saída padrão para outros casos
 }
-
 void	handle_redir_fd(t_ast_node *node, int fd)
 {
 	if (node->type == TOKEN_REDIR_IN)
 	{
 		if (dup2(fd, STDIN_FILENO) == -1)
-			perror("dup2");
+			bi_error("Invalid input.\n");
 	}
 	else if (node->type == TOKEN_REDIR_OUT || node->type == TOKEN_REDIR_OUT_APPEND)
 	{
 		if (dup2(fd, STDOUT_FILENO) == -1)
-			perror("dup2");
+			bi_error("Invalid input.\n");
 	}
 	else if (node->type == TOKEN_REDIR_ERR || node->type == TOKEN_REDIR_ERR_APPEND)
 	{
 		if (dup2(fd, STDERR_FILENO) == -1)
-			perror("dup2");
+			bi_error("Invalid input.\n");
 	}
 	close(fd);
 }

@@ -32,23 +32,9 @@ mini error = ( No such file or directory invalid next size (fast))
 bash error = ( No such file or directory)
 
 
-Test  67: ❌ cat <"./test_files/infile" 
-mini exit code = 134
-bash exit code = 0
-mini error = ( invalid pointer)
-bash error = ()
-
-
 Test  68: ❌ echo <"./test_files/infile_big" | cat <"./test_files/infile" 
 mini output = ()
 bash output = (hi hello world 42)
-mini exit code = 134
-bash exit code = 0
-mini error = ( invalid pointer)
-bash error = ()
-
-
-Test  70: ❌ echo <"./test_files/infile_big" | echo <"./test_files/infile" 
 mini exit code = 134
 bash exit code = 0
 mini error = ( invalid pointer)
@@ -70,18 +56,6 @@ mini output = ()
 bash output = (hi hello world 42)
 mini exit code = 134
 bash exit code = 0
-
-
-Test  81: ❌ ls >./outfiles/outfile01 
-mini exit code = 134
-bash exit code = 0
-
-
-Files ./mini_outfiles/outfile01 and ./bash_outfiles/outfile01 differ
-mini outfiles:
-hi
-bash outfiles:
-hi bye
 
 
 Test  84: ❌ ls >./outfiles/outfile01 >./outfiles/outfile02 
@@ -139,13 +113,6 @@ mini error = ( Permission denied invalid next size (fast))
 bash error = ( Permission denied)
 
 
-Test  87: ❌ ls >"./outfiles/outfile""1""2""3""4""5" 
-mini exit code = 134
-bash exit code = 0
-mini error = ( invalid pointer)
-bash error = ()
-
-
 Test  88: ❌ ls >"./outfiles/outfile01" >./test_files/invalid_permission >"./outfiles/outfile02" 
 Only in ./bash_outfiles: outfile01
 Only in ./mini_outfiles: outfile02
@@ -162,13 +129,6 @@ mini exit code = 134
 bash exit code = 1
 mini error = ( Permission denied invalid next size (fast))
 bash error = ( Permission denied)
-
-
-Test  91: ❌ echo hi >./outfiles/outfile01 | echo bye 
-mini exit code = 134
-bash exit code = 0
-mini error = ( invalid pointer)
-bash error = ()
 
 
 Test  92: ❌ echo hi >./outfiles/outfile01 >./outfiles/outfile02 | echo bye 
@@ -209,25 +169,11 @@ mini error = ( invalid pointer)
 bash error = ()
 
 
-Test  95: ❌ echo hi >./outfiles/outfile01 | echo bye >./outfiles/outfile02 
-mini exit code = 134
-bash exit code = 0
-mini error = ( invalid pointer)
-bash error = ()
-
-
 Test  96: ❌ echo hi >./outfiles/outfile01 >./test_files/invalid_permission | echo bye 
 Only in ./bash_outfiles: outfile01
 mini outfiles:
 cat: './mini_outfiles/*': No such file or directory
 bash outfiles:
-
-
-Test  97: ❌ echo hi >./test_files/invalid_permission | echo bye 
-mini exit code = 134
-bash exit code = 0
-mini error = ( Permission denied invalid pointer)
-bash error = ( Permission denied)
 
 
 Test  98: ❌ echo hi >./test_files/invalid_permission >./outfiles/outfile01 | echo bye 
@@ -321,13 +267,6 @@ mini exit code = 134
 bash exit code = 1
 mini error = ( Permission denied invalid next size (fast))
 bash error = ( No such file or directory)
-
-
-Test 109: ❌ ls >>./outfiles/outfile01 
-mini exit code = 134
-bash exit code = 0
-mini error = ( invalid pointer)
-bash error = ()
 
 
 Test 113: ❌ ls >./outfiles/outfile01 >>./outfiles/outfile01 >./outfiles/outfile02 
@@ -482,13 +421,6 @@ mini error = ( No such file or directory invalid next size (fast))
 bash error = ( Permission denied)
 
 
-Test 121: ❌ echo hi >>./outfiles/outfile01 | echo bye 
-mini exit code = 134
-bash exit code = 0
-mini error = ( invalid pointer)
-bash error = ()
-
-
 Test 122: ❌ echo hi >>./outfiles/outfile01 >>./outfiles/outfile02 | echo bye 
 Files ./mini_outfiles/outfile01 and ./bash_outfiles/outfile01 differ
 Files ./mini_outfiles/outfile02 and ./bash_outfiles/outfile02 differ
@@ -525,20 +457,6 @@ mini exit code = 134
 bash exit code = 0
 mini error = ( invalid pointer)
 bash error = ()
-
-
-Test 125: ❌ echo hi >>./outfiles/outfile01 | echo bye >>./outfiles/outfile02 
-mini exit code = 134
-bash exit code = 0
-mini error = ( invalid pointer)
-bash error = ()
-
-
-Test 126: ❌ echo hi >>./test_files/invalid_permission | echo bye 
-mini exit code = 134
-bash exit code = 0
-mini error = ( Permission denied invalid pointer)
-bash error = ( Permission denied)
 
 
 Test 127: ❌ echo hi >>./test_files/invalid_permission >./outfiles/outfile01 | echo bye 

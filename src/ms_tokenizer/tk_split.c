@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 12:34:20 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/04/30 22:03:42 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/04/30 22:20:15 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	tk_count_words(char *input, int i, int count)
 		{
 			while (input[i] && !ft_isspace(input[i]) && !is_special_char(input[i]))
 				i++;
-		}                awdawd
+		}
 	}
 	return (count);
 }
@@ -60,7 +60,10 @@ char	**tk_splitter(char *input, int i, int j)
 			break ;
 		commands[j] = extract_word(input, &i);
 		if (!commands[j])
+		{
+			free_splits(commands);
 			return (NULL);
+		}
 		j++;
 	}
 	commands[j] = NULL;
@@ -118,6 +121,8 @@ char	*extract_word(char *input, int *i)
 			cursor++;
 	}
 	word = ft_substr(input, start, cursor - start);
+		if (!word)
+			return (NULL);
 	*i = cursor;
 	return (word);
 }
