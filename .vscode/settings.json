@@ -7,6 +7,6 @@
 		"stddef.h": "c",
 		"libft.h": "c"
 	},
-	"editor.cursorStyle": "block-outline",
+	"editor.cursorStyle": "line-thin",
 	"editor.cursorWidth": 4
 }

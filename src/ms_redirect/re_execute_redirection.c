@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 20:04:14 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/05/01 00:06:37 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/05/03 15:59:21 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	execute_redirection(t_ast_node *node, t_env *env)
 	if (fd == -1)
 	{
 		perror("open");
-		g_exit_status = 2;
+		g_exit_status = 1;
 		return ;
 	}
 	pid = fork();
