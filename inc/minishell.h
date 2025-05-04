@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/04/28 07:03:28 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/05/04 22:48:54 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ typedef enum e_type
 	TOKEN_REDIR_ERR_APPEND,// For '2>>'
 	TOKEN_ENV_VAR,			// For environment variables
 	TOKEN_CMD,				// For command
-	TOKEN_FILENAME			// For filename
+	TOKEN_FILENAME,			// For filename
+	TOKEN_HEREDOC			// For heredoc
 }	t_type;
 
 typedef struct s_token
@@ -240,6 +241,7 @@ void	add_command_part(char ***result, int *i, int *k);
 
 //[pp_pipeline_2.c]
 void	free_pipeline(char ***pipeline);
+int		unused_funcion(void);
 
 //=====================================| ms_redirects |
 //[re_exec.c]_
