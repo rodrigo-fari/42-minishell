@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 09:47:50 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/04/23 23:41:02 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/05/05 20:13:59 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int	main(void)
 	while (true)
 	{
 		env = env_manager(NULL);	
-		//signal(SIGINT, sig_ctrl_c);
-		//signal(SIGPIPE, SIG_IGN);
+		signal(SIGINT, sig_ctrl_c);
+		signal(SIGPIPE, SIG_IGN);
 		input = readline("43$ ");
 		if (!input)
 			break ;

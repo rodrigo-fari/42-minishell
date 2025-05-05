@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 19:57:47 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/04/30 21:17:29 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/05/05 20:28:16 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,19 @@ void	handle_pipe(t_ast_node **root, t_ast_node *new_node, t_token **token)
 	new_node->left = *root;
 	*root = new_node;
 	*token = (*token)->next;
+}
+void	handle_heredoc(t_ast_node **root, t_token **token)
+{
+	t_ast_node	*heredoc_node;
+
+	heredoc_node = create_node(TOKEN_HEREDOC);
+	if (!heredoc_node)
+		return ;
+	heredoc_node->args = ft_calloc(2, sizeof(char *));
+	if (heredoc_node->args)
+		heredoc_node->args[0] = ft_strdup((*token)->next->value); // Delimiter
+	*root = heredoc_node;
+	*token = (*token)->next->next; // Skip the delimiter token
 }
 
 void	handle_redir(t_ast_node **root, t_token **token)
@@ -72,6 +85,8 @@ t_ast_node	*build_ast(t_token *tokens)
 			handle_pipe(&root, create_node(token->type), &token);
 		else if (is_redir(token->type))
 			handle_redir(&root, &token);
+		else if (token->type == TOKEN_HEREDOC)
+			handle_heredoc(&root, &token);
 		else
 			handle_command(&root, &current, &token);
 	}

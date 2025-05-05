@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 20:04:14 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/05/03 15:59:21 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/05/05 20:20:29 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,38 @@ void	execute_redirection(t_ast_node *node, t_env *env)
 		return ;
 	}
 	filename = node->right->args[0];
-	fd = get_redir_fd(node, filename);
-	if (fd == -1)
+
+	// Handle heredoc redirection
+	if (node->type == TOKEN_HEREDOC)
 	{
-		perror("open");
-		g_exit_status = 1;
-		return ;
+		fd = open(".heredoc_tmp", O_CREAT | O_WRONLY | O_TRUNC, 0644);
+		if (fd == -1)
+		{
+			perror("open");
+			g_exit_status = 1;
+			return ;
+		}
+		handle_heredoc_input(filename, fd); // Read heredoc input until delimiter
+		close(fd);
+		fd = open(".heredoc_tmp", O_RDONLY);
+		if (fd == -1)
+		{
+			perror("open");
+			g_exit_status = 1;
+			return ;
+		}
 	}
+	else
+	{
+		fd = get_redir_fd(node, filename);
+		if (fd == -1)
+		{
+			perror("open");
+			g_exit_status = 1;
+			return ;
+		}
+	}
+
 	pid = fork();
 	if (pid == 0)
 	{
@@ -57,19 +82,24 @@ void	execute_redirection(t_ast_node *node, t_env *env)
 		if (node->left)
 		{
 			execute_ast(node->left, env);
-			exit(g_exit_status); // Use o código de saída configurado por execute_ast
+			exit(g_exit_status); // Use the exit code set by execute_ast
 		}
-		exit(EXIT_SUCCESS); // Código de saída padrão
+		exit(EXIT_SUCCESS); // Default exit code
 	}
 	close(fd);
 	waitpid(pid, &status, 0);
 	if (WIFEXITED(status))
 		g_exit_status = WEXITSTATUS(status);
 	else if (WIFSIGNALED(status))
-		g_exit_status = 128 + WTERMSIG(status); // Código de saída para sinais
+		g_exit_status = 128 + WTERMSIG(status); // Exit code for signals
 	else
-		g_exit_status = 1; // Código de saída padrão para outros casos
+		g_exit_status = 1; // Default exit code for other cases
+
+	// Clean up temporary heredoc file
+	if (node->type == TOKEN_HEREDOC)
+		unlink(".heredoc_tmp");
 }
+
 void	handle_redir_fd(t_ast_node *node, int fd)
 {
 	if (node->type == TOKEN_REDIR_IN)
