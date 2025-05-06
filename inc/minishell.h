@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/05/05 20:21:51 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/05/06 20:26:13 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,34 +106,16 @@ void		execute_redirection(t_ast_node *node, t_env *env);
 int			is_redir(t_type type);
 void		handle_redir_fd(t_ast_node *node, int fd);
 int			is_builtin(char *cmd);
-void		bi_cd(char **args, t_env *env);
-char		*find_oldpwd_in_env(t_env *env);
-char		*find_path_home_in_env(t_env *env);
-void		update_pwd(t_env *env, char *old_pwd);
-bool		check_too_many_arguments(char **user_input);
-void		bi_echo(t_token *tmp);
-bool		flag_verify(char *str);
-void		bi_error(char *str);
-void		bi_exit(t_token *token);
-bool		check_signal_quantity(int qnt);
-bool		check_exit_signals(t_token *token);
-bool		check_exit_arguments(t_token *token);
-void		define_exit_status(char *exit_status);
-void		execute_builtin(char **commands, t_env *env);
-void		bi_exec(char **commands, t_env *env);
-bool		is_valid_key(char *str);
-void		print_org_env(t_env *env);
-void		bi_export(t_env *env, char **user_input);
-void		env_add(t_env *env, char *key, char *value, bool has_equal);
-void		env_update(t_env *env, char *key, char *value, bool has_equal);
-void		org_env_alpha(t_env *env);
+
+
+
+
+
 int			execute_heredoc(t_ast_node *node);
 void		handle_heredoc_input(const char *delimiter, int fd);
 int			execute_heredoc(t_ast_node *node);
 void		handle_heredoc(t_ast_node **root, t_token **token);
-void		bi_pwd(void);
 void		env_remove(t_env *env, char *key);
-void		bi_unset(char **user_input, t_env *env);
 t_env		*env_manager(t_env *env);
 t_env		*env_to_struct(char **environ);
 char		**split_once(char *input, char c);
@@ -181,6 +163,74 @@ t_ast_node	*build_ast(t_token *tokens);
 void		free_ast(t_ast_node *node);
 void		execute_redirection(t_ast_node *node, t_env *env);
 void		execute_ast(t_ast_node *node, t_env *env);
+
+
+//================================ |ms_built-ins| =====================================================//
+
+//bi_cd.c - 5 functions //
+char	*find_oldpwd_in_env(t_env *env);
+char	*find_path_home_in_env(t_env *env);
+void	bi_cd(char **user_input, t_env *env);
+void	update_pwd(t_env *env, char *old_pwd);
+bool	check_too_many_arguments(char **user_input);
+
+//bi_cd_2.c - 2 functions //
+void	handle_cd_error(void);
+void	change_directory(const char *path, t_env *env, char *old_pwd);
+
+//bi_echo.c - 2 functions //
+void	bi_echo(t_token *tmp);
+bool	flag_verify(char *str);
+
+//bi_error.c - 1 function //
+void	bi_error(char *str);
+
+//bi_exec.c - 5 functions //
+void	handle_builtin_or_empty(char **commands, t_env *env);
+char	*find_executable(char **paths, const char *cmd);
+char	*resolve_command_path(const char *cmd, t_env *env);
+char	*check_direct_path(const char *cmd);
+void	handle_command_not_found(char *command);
+
+//bi_exec_2.c - 4 functions //
+void	bi_exec(char **commands, t_env *env);
+void	handle_directory_error(char *command);
+void	execute_builtin(char **commands, t_env *env);
+void	check_command_path(char *command_path, char **commands);
+
+//bi_exit.c - 5 functions //
+void	bi_exit(t_token *token);
+bool	check_signal_quantity(int qnt);
+bool	check_exit_signals(t_token *token);
+bool	check_exit_arguments(t_token *token);
+void	define_exit_status(char *exit_status);
+
+//bi_export.c - 5 functions //
+bool	is_valid_key(char *key);
+void	bi_export(t_env *env, char **user_input);
+void	env_add(t_env *env, char *key, char *value, bool has_equal);
+void	process_key_value(t_env *env, char *key, char *value, bool has_equal);
+void	process_key_value(t_env *env, char *key, char *value, bool has_equal);
+
+//bi_export_2.c - 3 functions //
+void	org_env_alpha(t_env *env);
+void	print_org_env(t_env *env);
+void	handle_invalid_key(char *key, char *value);
+void	env_update(t_env *env, char *key, char *value, bool has_equal);
+
+//bi_export.c - 5 functions //
+bool	is_valid_key(char *key);
+void	bi_export(t_env *env, char **user_input);
+void	env_add(t_env *env, char *key, char *value, bool has_equal);
+void	process_key_value(t_env *env, char *key, char *value, bool has_equal);
+void	process_key_value(t_env *env, char *key, char *value, bool has_equal);
+
+//bi_pwd.c - 1 function //
+void	bi_pwd(void);
+
+//bi_unset.c - 2 functions //
+void	bi_unset(char **user_input, t_env *env);
+void	env_remove(t_env *env, char *key);
 
 //=========================================================================================
 

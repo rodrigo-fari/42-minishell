@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bi_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 19:13:25 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/04/28 09:28:02 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/05/06 18:53:32 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	bi_exit(t_token *token)
 	else
 		define_exit_status(token->next->value);
 }
-
 
 void	define_exit_status(char *exit_status)
 {

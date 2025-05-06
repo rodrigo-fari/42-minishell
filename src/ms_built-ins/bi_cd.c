@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bi_cd.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 15:38:24 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/04/28 07:37:33 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/05/06 18:50:07 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,32 +16,16 @@ void	bi_cd(char **user_input, t_env *env)
 {
 	char	*old_pwd;
 
-	old_pwd = NULL;
 	if (check_too_many_arguments(user_input) == true)
 		return ;
 	old_pwd = getcwd(NULL, 0);
 	if (!user_input[1] || ft_strcmp(user_input[1], "~") == 0)
-	{
-		if (chdir(find_path_home_in_env(env)) == 0)
-			update_pwd(env, old_pwd);
-	}
+		change_directory(find_path_home_in_env(env), env, old_pwd);
 	else if (ft_strcmp(user_input[1], "-") == 0)
-	{
-		if (chdir(find_oldpwd_in_env(env)) == 0)
-			update_pwd(env, old_pwd);
-	}
+		change_directory(find_oldpwd_in_env(env), env, old_pwd);
 	else
-	{
-		if (chdir(user_input[1]) == 0)
-			update_pwd(env, old_pwd);
-		else
-		{
-			bi_error("Minishell: cd: No such file or directory\n");
-			g_exit_status = 1;
-		}
-	}
+		change_directory(user_input[1], env, old_pwd);
 	free(old_pwd);
-	return ;
 }
 
 bool	check_too_many_arguments(char **user_input)
