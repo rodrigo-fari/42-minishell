@@ -6,7 +6,7 @@
 /*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/05/06 20:26:13 by aeberius         ###   ########.fr       */
+/*   Updated: 2025/05/06 20:51:11 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,20 +116,14 @@ void		handle_heredoc_input(const char *delimiter, int fd);
 int			execute_heredoc(t_ast_node *node);
 void		handle_heredoc(t_ast_node **root, t_token **token);
 void		env_remove(t_env *env, char *key);
-t_env		*env_manager(t_env *env);
-t_env		*env_to_struct(char **environ);
-char		**split_once(char *input, char c);
-void		print_env(t_env *env);
-void		update_shell_level(void);
-int			listsize(t_env *env);
-t_env		*list_last(t_env *lst);
+
+
+
+
+
 char		**array_envs(t_env *envs);
-void		free_env_struct(t_env *env);
-void		listadd_back(t_env **lst, t_env *new);
-int			count_args(char **commands);
-void		ms_print_fd(char *str, int fd);
-void		ms_exec(char *input, t_env *env);
-void		ms_free(t_env *env, char *input, char **commands, t_token *tokens);
+
+
 void		ps_error(char *str);
 char		*var_expand(char *input);
 bool		quote_verifier(char *input);
@@ -231,6 +225,40 @@ void	bi_pwd(void);
 //bi_unset.c - 2 functions //
 void	bi_unset(char **user_input, t_env *env);
 void	env_remove(t_env *env, char *key);
+
+//================================ |ms_env| =====================================================//
+
+//ev_env_manager.c - 1 function //
+t_env	*env_manager(t_env *env);
+
+//ev_print_env.c - 2 functions //
+void	print_env(t_env *env);
+void	update_shell_level(void);
+
+//ev_env_to_struct.c - 2 functions //
+t_env	*env_to_struct(char **environ);
+char	**split_once(char *input, char c);
+
+//ev_utils.c - 4 functions //
+int		listsize(t_env *env);
+t_env	*list_last(t_env *lst);
+void	free_env_struct(t_env *env);
+void	listadd_back(t_env **lst, t_env *new);
+
+//================================ |ms_main| =====================================================//
+
+//ms_main.c - 1 function //
+int		main(void);
+
+//ms_utils.c - 2 functions //
+int		count_args(char **commands);
+void	ms_print_fd(char *str, int fd);
+
+//ms_free.c - 1 functions //
+void	ms_free(t_env *env, char *input, char **commands, t_token *tokens);
+
+//ms_exec.c - 1 function //
+void	ms_exec(char *input, t_env *env);
 
 //=========================================================================================
 
