@@ -6,7 +6,7 @@
 /*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:18:36 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/02/22 00:31:10 by aeberius         ###   ########.fr       */
+/*   Updated: 2025/05/06 19:13:41 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,6 @@ void	update_shell_level(void)
 			value_to_int++;
 			value_to_char = ft_itoa(value_to_int);
 			env_update(env, "SHLVL", value_to_char, true);
-			// tmp = env->next->next;
-			// free (env->next->value);
-			// free (env->next->key);
-			// free (env->next);
-			// env->next = tmp;
-			// env_add(env, "SHLVL", value_to_char, true);
-			// free (value_to_char);
 		}
 		env = env->next;
 	}

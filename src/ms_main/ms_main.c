@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_main.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 09:47:50 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/05/05 20:13:59 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/05/06 20:49:07 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(void)
 	env = env_manager(env);
 	while (true)
 	{
-		env = env_manager(NULL);	
+		env = env_manager(NULL);
 		signal(SIGINT, sig_ctrl_c);
 		signal(SIGPIPE, SIG_IGN);
 		input = readline("43$ ");
