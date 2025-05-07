@@ -6,7 +6,7 @@
 /*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/05/06 20:51:11 by aeberius         ###   ########.fr       */
+/*   Updated: 2025/05/07 18:46:10 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,16 +143,9 @@ char		*get_env_value(t_env *env, char *var_name);
 char		*append_string_to_string(char *str1, const char *str2);
 void		sig_ctrl_c(int sig);
 void		print_tokens(t_token *token);
-int			is_special_char(char c);
-char		*extract_word(char *input, int *i);
-char		**tk_splitter(char *input, int i, int j);
-int			tk_count_words(char *input, int i, int count);
-int			token_type(char *token);
-t_token		*token_to_struct(char **commands);
-int			tk_listsize(t_token *token);
-void		free_token_struct(t_token *token);
-int			skip_whitespace(char *input, int i);
-void		tk_listadd_back(t_token **lst, t_token *new);
+
+
+
 t_ast_node	*build_ast(t_token *tokens);
 void		free_ast(t_ast_node *node);
 void		execute_redirection(t_ast_node *node, t_env *env);
@@ -259,6 +252,33 @@ void	ms_free(t_env *env, char *input, char **commands, t_token *tokens);
 
 //ms_exec.c - 1 function //
 void	ms_exec(char *input, t_env *env);
+
+//================================ |ms_tokenizer| =====================================================//
+
+//tk_print_tokens.c - 2 functions //
+void	print_tokens(t_token *token);
+char	*get_token_type_str(t_type type);
+
+//tk_split.c - 5 functions //
+int		is_special_char(char c);
+int		skip_quotes(char *input, int i);
+char	**tk_splitter(char *input, int i, int j);
+int		tk_count_words(char *input, int i, int count);
+char	*extract_special_token(char *input, int *i);
+
+//tk_split_2.c - 2 functions //
+char	*extract_word(char *input, int *i);
+int		skip_quoted_segment(char *input, int cursor);
+
+//tk_tokenizer.c - 2 functions //
+int		token_type(char *token);
+t_token	*token_to_struct(char **commands);
+
+//tk_utils.c - 4 functions //
+int		tk_listsize(t_token *token);
+int		skip_whitespace(char *input, int i);
+void	free_token_struct(t_token *token);
+void	tk_listadd_back(t_token **lst, t_token *new);
 
 //=========================================================================================
 

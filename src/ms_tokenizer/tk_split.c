@@ -3,39 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   tk_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 12:34:20 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/05/05 20:40:52 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/05/07 18:38:41 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	tk_count_words(char *input, int i, int count)
+int	skip_quotes(char *input, int i)
 {
 	char	quote;
 
+	quote = input[i];
+	i++;
+	while (input[i] && input[i] != quote)
+		i++;
+	if (input[i] == quote)
+		i++;
+	return (i);
+}
+
+int	tk_count_words(char *input, int i, int count)
+{
 	while (input[i])
 	{
 		while (input[i] && ft_isspace(input[i]))
 			i++;
 		if (!input[i])
-			break;
+			break ;
 		count++;
 		if (input[i] == '\'' || input[i] == '\"')
-		{
-			quote = input[i++];
-			while (input[i] && input[i] != quote)
-				i++;
-			if (input[i] == quote)
-				i++;
-		}
+			i = skip_quotes(input, i);
 		else if (is_special_char(input[i]))
 			i++;
 		else
 		{
-			while (input[i] && !ft_isspace(input[i]) && !is_special_char(input[i]))
+			while (input[i]
+				&& !ft_isspace(input[i])
+				&& !is_special_char(input[i]))
 				i++;
 		}
 	}
@@ -45,7 +52,7 @@ int	tk_count_words(char *input, int i, int count)
 char	**tk_splitter(char *input, int i, int j)
 {
 	char	**commands;
-	int	 word_count;
+	int		word_count;
 
 	word_count = tk_count_words(input, 0, 0);
 	commands = ft_calloc(sizeof(char *), (word_count + 1));
@@ -70,59 +77,30 @@ char	**tk_splitter(char *input, int i, int j)
 	return (commands);
 }
 
-int is_special_char(char c)
+int	is_special_char(char c)
 {
 	return (c == '>' || c == '<' || c == '&'
-			|| c == ';');
+		|| c == ';');
 }
 
-char	*extract_word(char *input, int *i)
+char	*extract_special_token(char *input, int *i)
 {
-	char	quote;
-	int	 cursor;
-	int	 start;
 	char	*word;
 
-	cursor = *i;
-	start = *i;
-	if (is_special_char(input[cursor]))
+	if (input[*i] == '>' && input[*i + 1] == '>')
 	{
-		if (input[cursor] == '>' && input[cursor + 1] == '>')
-		{
-			word = ft_substr(input, cursor, 2);
-			cursor += 2;
-		}
-		else if (input[cursor] == '<' && input[cursor + 1] == '<')
-		{
-			word = ft_substr(input, cursor, 2);
-			cursor += 2;
-		}
-		else
-		{
-			word = ft_substr(input, cursor, 1);
-			cursor++;
-		}
-		*i = cursor;
-		return (word);
+		word = ft_substr(input, *i, 2);
+		*i += 2;
 	}
-	while (input[cursor] && !ft_isspace(input[cursor]))
+	else if (input[*i] == '<' && input[*i + 1] == '<')
 	{
-		if (input[cursor] == '\'' || input[cursor] == '\"')
-		{
-			quote = input[cursor++];
-			while (input[cursor] && input[cursor] != quote)
-				cursor++;
-			if (input[cursor] == quote)
-				cursor++;
-		}
-		else if (is_special_char(input[cursor]))
-			break;
-		else
-			cursor++;
+		word = ft_substr(input, *i, 2);
+		*i += 2;
 	}
-	word = ft_substr(input, start, cursor - start);
-		if (!word)
-			return (NULL);
-	*i = cursor;
+	else
+	{
+		word = ft_substr(input, *i, 1);
+		*i += 1;
+	}
 	return (word);
 }
