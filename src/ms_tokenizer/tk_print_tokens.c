@@ -6,15 +6,15 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 14:51:45 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/05/05 20:56:23 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/05/07 18:57:43 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static const char	*get_token_type_str(t_type type)
+char	*get_token_type_str(t_type type)
 {
-	const char	*type_str[] = {
+	char	*type_str[] = {
 		"TOKEN_WORD",
 		"TOKEN_PIPE",
 		"TOKEN_REDIR_IN",
@@ -43,7 +43,7 @@ void	print_tokens(t_token *token)
 	while (token_tmp)
 	{
 		printf("TK_I[%d] = \"%s\"\n", i, token_tmp->value);
-		printf("TK_T[%d] = %s\n", i, get_token_type_str(token_tmp->type));
+		printf("TK_T[+]  = %s\n", get_token_type_str(token_tmp->type));
 		printf("============================\n");
 		token_tmp = token_tmp->next;
 		i++;

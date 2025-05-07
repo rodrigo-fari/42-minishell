@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_exec.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 11:19:43 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/05/06 20:30:36 by aeberius         ###   ########.fr       */
+/*   Updated: 2025/05/07 19:02:55 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,28 @@ void	ms_exec(char *input, t_env *env)
 		return ;
 	}
 	tokens = token_to_struct(commands);
-	//print_tokens(tokens);//
 	quote_fix(tokens);
 	ast_root = build_ast(tokens);
 	execute_ast(ast_root, env);
 	free_ast(ast_root);
 	ms_free(NULL, input, commands, tokens);
 	return ;
+}
+
+void	print_ast(t_ast_node *tmp)
+{
+	int i = 0;
+	printf("AST NODE + VALUES:\n");
+	while (tmp)
+	{
+		printf("TID[%d]\nTTYPE[%s]\n", i, get_token_type_str(tmp->type));
+		if (tmp->left)
+			printf("LEFT_TKN[%s]\n", get_token_type_str(tmp->left->type));
+		if (tmp->right)
+			printf("RIGHT_TKN[%s]\n", get_token_type_str(tmp->right->type));
+		if (tmp->args)
+			ft_print_array(tmp->args);
+		tmp = tmp->right;
+		i++;
+	}
 }

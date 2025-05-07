@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 19:57:47 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/05/05 20:28:16 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/05/07 17:46:07 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	handle_pipe(t_ast_node **root, t_ast_node *new_node, t_token **token)
 	*root = new_node;
 	*token = (*token)->next;
 }
+
 void	handle_heredoc(t_ast_node **root, t_token **token)
 {
 	t_ast_node	*heredoc_node;

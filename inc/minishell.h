@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/05/06 20:51:11 by aeberius         ###   ########.fr       */
+/*   Updated: 2025/05/07 19:07:38 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,12 @@ typedef struct s_env
 
 //=========================================================================================
 
+int apply_redirections(t_ast_node *node);
+t_ast_node *find_command_node(t_ast_node *node);
+
+
+void		print_ast(t_ast_node *tmp);
+char		*get_token_type_str(t_type type);
 void		free_ast(t_ast_node *node);
 t_ast_node	*create_node(t_type type);
 t_ast_node	*build_ast(t_token *tokens);
