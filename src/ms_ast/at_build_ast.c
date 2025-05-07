@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   at_build_ast.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 19:57:47 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/05/07 23:47:23 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/05/07 19:58:45 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ t_ast_node	*create_node(t_type type)
 	node->args = NULL;
 	node->left = NULL;
 	node->right = NULL;
-	node->in_pipe = false;
 	return (node);
 }
 

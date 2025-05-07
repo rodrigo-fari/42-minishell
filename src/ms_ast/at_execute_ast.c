@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   at_execute_ast.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 19:58:16 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/05/07 23:45:15 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/05/07 20:03:16 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,35 +41,31 @@ int	validate_cmd(char *cmd)
 	return (1);
 }
 
-void    execute_forked_cmd(t_ast_node *node, t_env *env)
+void	execute_forked_cmd(t_ast_node *node, t_env *env)
 {
-    pid_t   pid;
-    int     status;
+	pid_t	pid;
+	int		status;
 
-    // Skip forking if we're already in a child process (e.g., inside a pipe)
-    if (node->in_pipe) 
-    {
-        bi_exec(node->args, env); // Execute directly in the pipe child
-        return;
-    }
-
-    pid = fork();
-    if (pid == -1)
-    {
-        perror("fork");
-        g_exit_status = 1;
-    }
-    else if (pid == 0)
-    {
-        bi_exec(node->args, env); // Child executes command
-        exit(g_exit_status);
-    }
-    else
-    {
-        waitpid(pid, &status, 0); // Parent waits for child
-        if (WIFEXITED(status))
-            g_exit_status = WEXITSTATUS(status);
-    }
+	if (ft_strchr(node->args[0], '/'))
+		if (!validate_cmd(node->args[0]))
+			return ;
+	pid = fork();
+	if (pid == -1)
+	{
+		perror("fork");
+		g_exit_status = 1;
+	}
+	else if (pid == 0)
+	{
+		bi_exec(node->args, env);
+		exit(EXIT_SUCCESS);
+	}
+	else
+	{
+		waitpid(pid, &status, 0);
+		if (WIFEXITED(status))
+			g_exit_status = WEXITSTATUS(status);
+	}
 }
 
 void	execute_ast(t_ast_node *node, t_env *env)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_main.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 09:47:50 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/05/07 23:13:53 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/05/06 20:49:07 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,13 @@
 
 int	g_exit_status = 0;
 
-int	main(int ac, char **av, char **envp)
+int	main(void)
 {
 	t_env		*env;
 	char		*input;
+	extern char	**environ;
 
-	(void)av;
-	if (ac > 1)
-		return (1);
-	env = env_to_struct(envp);
+	env = env_to_struct(environ);
 	env = env_manager(env);
 	while (true)
 	{
