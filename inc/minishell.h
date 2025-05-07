@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/05/07 19:16:41 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/05/07 20:06:31 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -285,6 +285,49 @@ int		tk_listsize(t_token *token);
 int		skip_whitespace(char *input, int i);
 void	free_token_struct(t_token *token);
 void	tk_listadd_back(t_token **lst, t_token *new);
+
+//================================ |ms_redirect| =====================================================//
+//re_execute_redirection.c - 5 functions //
+t_ast_node	*find_command_node(t_ast_node *node);
+void	restore_std_fds(int in, int out, int err);
+void	child_process(t_ast_node *node, t_env *env);
+int		get_redir_fd(t_ast_node *node, char *filename);
+void	execute_redirection(t_ast_node *node, t_env *env);
+
+//re_redirect_utils.c - 5 functions //
+int		is_redir(t_type type);
+int		apply_redirections(t_ast_node *node);
+int		validate_redir_node(t_ast_node *node);
+void	handle_redir_fd(t_ast_node *node, int fd);
+int		process_redirection(t_ast_node *node, char *filename);
+
+//re_redirect_utils_2.c - 1 functions //
+int		is_builtin(char *cmd);
+
+//================================ |ms_heredoc| =====================================================//
+//hd_heredoc.c - 2 functions //
+void	handle_heredoc_input(const char *delimiter, int fd);
+int		execute_heredoc(t_ast_node *node);
+
+//================================ |ms_ast| =====================================================//
+//at_build_ast.c - 5 functions //
+t_ast_node	*create_node(t_type type);
+t_ast_node	*build_ast(t_token *tokens);
+void	handle_redir(t_ast_node **root, t_token **token);
+void	handle_heredoc(t_ast_node **root, t_token **token);
+void	handle_pipe(t_ast_node **root, t_ast_node *new_node, t_token **token);
+
+//at_execute_ast.c - 4 functions //
+int		validate_cmd(char *cmd);
+void	free_ast(t_ast_node *node);
+void	execute_ast(t_ast_node *node, t_env *env);
+void	execute_forked_cmd(t_ast_node *node, t_env *env);
+
+//at_utils_ast.c - 3 functions //
+int		count_tokens(t_token *token);
+void	fill_args(t_ast_node *node, t_token **token, int count);
+void	handle_command(t_ast_node **root, t_ast_node **current, t_token **token);
+
 
 //=========================================================================================
 

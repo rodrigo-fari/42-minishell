@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   hd_heredoc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/04 19:43:29 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/05/05 20:23:12 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/05/07 19:45:40 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <minishell.h>
 
-void handle_heredoc_input(const char *delimiter, int fd)
+void	handle_heredoc_input(const char *delimiter, int fd)
 {
-	char *line;
+	char	*line;
 
 	signal(SIGINT, sig_ctrl_c);
 	while (1)
@@ -23,7 +23,7 @@ void handle_heredoc_input(const char *delimiter, int fd)
 		if (!line || strcmp(line, delimiter) == 0)
 		{
 			free(line);
-			break;
+			break ;
 		}
 		write(fd, line, strlen(line));
 		write(fd, "\n", 1);
@@ -31,9 +31,9 @@ void handle_heredoc_input(const char *delimiter, int fd)
 	}
 }
 
-int execute_heredoc(t_ast_node *node)
+int	execute_heredoc(t_ast_node *node)
 {
-	int fd;
+	int	fd;
 
 	if (!node || node->type != TOKEN_HEREDOC)
 		return (-1);
