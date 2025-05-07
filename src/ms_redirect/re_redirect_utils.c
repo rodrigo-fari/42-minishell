@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   re_redirect_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 19:36:57 by aeberius          #+#    #+#             */
-/*   Updated: 2025/05/07 19:44:00 by aeberius         ###   ########.fr       */
+/*   Updated: 2025/05/07 23:55:33 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,19 +43,32 @@ int	process_redirection(t_ast_node *node, char *filename)
 	return (1);
 }
 
-int	apply_redirections(t_ast_node *node)
+int apply_redirections(t_ast_node *node)
 {
-	char	*filename;
+    if (!node || !is_redir(node->type))
+        return 1;
 
-	if (!node || !is_redir(node->type))
-		return (1);
-	if (node->left && is_redir(node->left->type))
-		if (!apply_redirections(node->left))
-			return (0);
-	if (!validate_redir_node(node))
-		return (0);
-	filename = node->right->args[0];
-	return (process_redirection(node, filename));
+    // Apply left-side redirections first
+    if (node->left && !apply_redirections(node->left))
+        return 0;
+
+    // Process current redirection
+    char *filename = node->right->args[0];
+    int fd = get_redir_fd(node, filename);
+    
+    if (fd == -1) {
+        perror("minishell");
+        return 0;
+    }
+
+    // Forcefully override stdin for input redirections
+    if (node->type == TOKEN_REDIR_IN) {
+        dup2(fd, STDIN_FILENO);
+        close(fd);
+    }
+    // ... handle other redirection types ...
+
+    return 1;
 }
 
 void	handle_redir_fd(t_ast_node *node, int fd)

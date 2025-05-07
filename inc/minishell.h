@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/05/07 20:06:31 by aeberius         ###   ########.fr       */
+/*   Updated: 2025/05/08 00:06:18 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ typedef struct s_ast_node
 	char				**args;
 	struct s_ast_node	*left;
 	struct s_ast_node	*right;
+	bool				in_pipe;
 }	t_ast_node;
 
 typedef struct s_env
@@ -90,8 +91,11 @@ typedef struct s_env
 
 //=========================================================================================
 
-int apply_redirections(t_ast_node *node);
-t_ast_node *find_command_node(t_ast_node *node);
+int			apply_redirections(t_ast_node *node);
+t_ast_node	*find_command_node(t_ast_node *node);
+bool		has_input_redirection(t_ast_node *node);
+bool		right_has_input_redirection(t_ast_node *node);
+
 
 
 void		print_ast(t_ast_node *tmp);
@@ -245,9 +249,6 @@ void	free_env_struct(t_env *env);
 void	listadd_back(t_env **lst, t_env *new);
 
 //================================ |ms_main| =====================================================//
-
-//ms_main.c - 1 function //
-int		main(void);
 
 //ms_utils.c - 2 functions //
 int		count_args(char **commands);

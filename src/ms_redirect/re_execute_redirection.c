@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   re_execute_redirection.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 20:04:14 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/05/07 19:43:11 by aeberius         ###   ########.fr       */
+/*   Updated: 2025/05/07 23:53:23 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,32 +57,22 @@ void	child_process(t_ast_node *node, t_env *env)
 	exit(g_exit_status);
 }
 
-void	execute_redirection(t_ast_node *node, t_env *env)
+void execute_redirection(t_ast_node *node, t_env *env)
 {
-	int		in;
-	int		out;
-	int		err;
-	pid_t	pid;
-	int		status;
-
-	in = dup(STDIN_FILENO);
-	out = dup(STDOUT_FILENO);
-	err = dup(STDERR_FILENO);
-	pid = fork();
-	if (pid == -1)
-	{
-		perror("fork");
-		g_exit_status = 1;
-		return ;
-	}
-	if (pid == 0)
-		child_process(node, env);
-	waitpid(pid, &status, 0);
-	restore_std_fds(in, out, err);
-	if (WIFEXITED(status))
-		g_exit_status = WEXITSTATUS(status);
-	else if (WIFSIGNALED(status))
-		g_exit_status = 128 + WTERMSIG(status);
+    int saved_stdin = dup(STDIN_FILENO);
+    int saved_stdout = dup(STDOUT_FILENO);
+    
+    if (!apply_redirections(node)) {
+        g_exit_status = 1;
+    } else {
+        t_ast_node *cmd = find_command_node(node);
+        if (cmd) execute_ast(cmd, env);
+    }
+    
+    dup2(saved_stdin, STDIN_FILENO);
+    dup2(saved_stdout, STDOUT_FILENO);
+    close(saved_stdin);
+    close(saved_stdout);
 }
 
 t_ast_node	*find_command_node(t_ast_node *node)
