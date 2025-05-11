@@ -5,12 +5,11 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/23 11:19:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/05/11 20:09:43 by rde-fari         ###   ########.fr       */
+/*   Created: 2025/05/11 21:08:08 by rde-fari          #+#    #+#             */
+/*   Updated: 2025/05/11 21:13:17 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫ MINISHELL HEADER ┃
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
@@ -24,11 +23,12 @@
 # define RESET "\001\033[0m\002"
 
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫ LIBRARIES ┃
+# include <stddef.h>
+# include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <signal.h>
-# include <stdbool.h>
 # include <fcntl.h>
 # include <sys/types.h>
 # include <sys/wait.h>
@@ -41,7 +41,6 @@
 # include <readline/history.h>
 # include <curses.h>
 # include <term.h>
-# include <stddef.h>
 # include "../src/ms_libft/libft/libft.h"
 
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫ SUPPORT DEFINITIONS ┃
@@ -282,11 +281,12 @@ void		print_tokens(t_token *token);
 int			skip_quoted_segment(char *input, int cursor);
 char		*extract_word(char *input, int *i);
 
-//【tk_split.c】
+//【tk_split.c】-【5 function limit achived on this file.】
 int			skip_quotes(char *input, int i);
 int			tk_count_words(char *input, int i, int count);
 char		**tk_splitter(char *input, int i, int j);
 int			is_special_char(char c);
+char		*extract_special_token(char *input, int *i);
 
 //【tk_tokenizer.c】
 int			token_type(char *token);
