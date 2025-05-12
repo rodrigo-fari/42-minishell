@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bi_exec_2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 18:41:39 by aeberius          #+#    #+#             */
-/*   Updated: 2025/05/10 19:23:21 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/05/12 21:53:42 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	handle_directory_error(char *command)
 {
 	ft_putstr_fd("Minishell: ", STDERR_FILENO);
 	ft_putstr_fd(command, STDERR_FILENO);
-	ft_putstr_fd(": is a directory\n", STDERR_FILENO);
+	ft_putstr_fd(": is a directaaaaaaaaaaaaaaaaaaory\n", STDERR_FILENO);
 	g_exit_status = 126;
 	exit(g_exit_status);
 }
@@ -28,8 +28,8 @@ void	check_command_path(char *command_path, char **commands)
 	if (stat(command_path, &file_stat) == -1
 		|| access(command_path, X_OK) == -1)
 		handle_command_not_found(commands[0]);
-	if (S_ISDIR(file_stat.st_mode))
-		handle_directory_error(commands[0]);
+	// if (S_ISDIR(file_stat.st_mode))
+	// 	handle_directory_error(commands[0]);
 }
 
 void	bi_exec(char **commands, t_env *env)
@@ -43,8 +43,11 @@ void	bi_exec(char **commands, t_env *env)
 	check_command_path(command_path, commands);
 	env = env_manager(NULL);
 	execve(command_path, commands, array_envs(env));
-	perror("execve");
-	g_exit_status = 1;
+	if (ft_strcmp(commands[0], "") != 0)
+	{
+		perror("execve");
+		g_exit_status = 1;
+	}
 	exit(g_exit_status);
 }
 
