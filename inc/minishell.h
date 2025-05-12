@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 21:08:08 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/05/11 21:13:17 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/05/12 22:22:26 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -260,12 +260,13 @@ t_ast_node	*find_command_node(t_ast_node *node);
 
 //【re_utils_2.c】
 int			is_builtin(char *cmd);
+int node_has_in_redir(t_ast_node *node);
 
 //【re_utils.c】-【5 function limit achived on this file.】
 int			validate_redir_node(t_ast_node *node);
-int			process_redirection(t_ast_node *node, char *filename);
-int			apply_redirections(t_ast_node *node);
-void		handle_redir_fd(t_ast_node *node, int fd);
+int			apply_redirections(t_ast_node *node, int is_pipe);
+int			process_redirection(t_ast_node *node, char *filename, int is_pipe);
+void		handle_redir_fd(t_ast_node *node, int fd, int is_pipe);
 int			is_redir(t_type type);
 
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫ SIGNAL HANDLING FUNCTIONS ┃

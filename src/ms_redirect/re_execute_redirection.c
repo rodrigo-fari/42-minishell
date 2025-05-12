@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   re_execute_redirection.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 20:04:14 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/05/07 19:43:11 by aeberius         ###   ########.fr       */
+/*   Updated: 2025/05/12 22:18:39 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	child_process(t_ast_node *node, t_env *env)
 {
 	t_ast_node	*cmd;
 
-	if (!apply_redirections(node))
+	if (!apply_redirections(node, 0))
 		exit(EXIT_FAILURE);
 	cmd = find_command_node(node);
 	if (cmd && cmd->args && cmd->args[0])

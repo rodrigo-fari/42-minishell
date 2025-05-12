@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   at_utils_ast.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 19:55:37 by aeberius          #+#    #+#             */
-/*   Updated: 2025/05/07 20:04:02 by aeberius         ###   ########.fr       */
+/*   Updated: 2025/05/12 22:40:00 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 int	count_tokens(t_token *token)
 {
-	int	count;
+	int	count = 0;
 
-	count = 0;
-	while (token && !is_redir(token->type) && token->type != TOKEN_PIPE)
+	while (token && token->type != TOKEN_PIPE)
 	{
-		count++;
+		if (!is_redir(token->type))
+			count++;
+		else
+			token = token->next;
 		token = token->next;
 	}
 	return (count);
@@ -27,14 +29,24 @@ int	count_tokens(t_token *token)
 
 void	fill_args(t_ast_node *node, t_token **token, int count)
 {
-	int	i;
+	int	i = 0;
+	t_token *curr = *token;
 
-	i = -1;
-	while (++i < count)
+	while (curr && curr->type != TOKEN_PIPE && i < count)
 	{
-		node->args[i] = ft_strdup((*token)->value);
-		*token = (*token)->next;
+		if (!is_redir(curr->type))
+		{
+			node->args[i++] = ft_strdup(curr->value);
+			curr = curr->next;
+		}
+		else
+		{
+			curr = curr->next; // pula o arquivo do redir
+			if (curr)
+				curr = curr->next;
+		}
 	}
+	*token = curr;
 }
 
 void	handle_command(t_ast_node **root, t_ast_node **current, t_token **token)
