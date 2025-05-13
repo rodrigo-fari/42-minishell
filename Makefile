@@ -31,11 +31,20 @@ all:				$(NAME)
 					@clear
 					@echo " "
 					@echo " "
-					@echo " ✅ Minishell has compiled successfully!"
+					@echo "     ███▄ ▄███▓    ██▓    ███▄    █     ██▓       ██░ ██    ▓█████     ██▓        ██▓           "
+					@echo "     ▓██▒▀█▀ ██▒   ▓██▒    ██ ▀█   █    ▓██▒      ▓██░ ██▒   ▓█   ▀    ▓██▒       ▓██▒          "
+					@echo "     ▓██    ▓██░   ▒██▒   ▓██  ▀█ ██▒   ▒██▒      ▒██▀▀██░   ▒███      ▒██░       ▒██░          "
+					@echo "     ▒██    ▒██    ░██░   ▓██▒  ▐▌██▒   ░██░      ░▓█ ░██    ▒▓█  ▄    ▒██░       ▒██░          "
+					@echo "     ▒██▒   ░██▒   ░██░   ▒██░   ▓██░   ░██░      ░▓█▒░██▓   ░▒████▒   ░██████▒   ░██████▒      "
+					@echo "     ░ ▒░   ░  ░   ░▓     ░ ▒░   ▒ ▒    ░▓         ▒ ░░▒░▒   ░░ ▒░ ░   ░ ▒░▓  ░   ░ ▒░▓  ░      "
+					@echo "     ░  ░      ░    ▒ ░   ░ ░░   ░ ▒░    ▒ ░       ▒ ░▒░ ░    ░ ░  ░   ░ ░ ▒  ░   ░ ░ ▒  ░      "
+					@echo "     ░      ░       ▒ ░      ░   ░ ░     ▒ ░       ░  ░░ ░      ░        ░ ░        ░ ░         "
+					@echo "            ░       ░              ░     ░         ░  ░  ░      ░  ░       ░  ░       ░  ░      "
+					@echo "                                                                                                "
 					@echo " "
 					@echo " "
 					sleep 1
-					@clear
+					./$(NAME)
 
 $(NAME): 			$(OBJS) $(LIBFT)
 					@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -lreadline -o $(NAME)
@@ -72,8 +81,7 @@ norm:
 val:
 					valgrind --leak-check=full \
 						--show-leak-kinds=all -s \
-						--log-file=valgrind_out.txt \
-						--suppressions=readline_leaks ./$(NAME)
+						--suppressions=readline_supressor ./$(NAME)
 
 #|=============================================================================|
 #|

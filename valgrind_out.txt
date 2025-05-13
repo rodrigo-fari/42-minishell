@@ -1,0 +1,50 @@
+==28172== Memcheck, a memory error detector
+==28172== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==28172== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==28172== Command: ./minishell
+==28172== Parent PID: 28169
+==28172== 
+==28172== 
+==28172== Process terminating with default action of signal 3 (SIGQUIT)
+==28172==    at 0x490175B: kill (syscall-template.S:120)
+==28172==    by 0x489EF39: _rl_signal_handler (in /usr/lib/x86_64-linux-gnu/libreadline.so.8.1)
+==28172==    by 0x489FBEC: rl_getc (in /usr/lib/x86_64-linux-gnu/libreadline.so.8.1)
+==28172==    by 0x489F460: rl_read_key (in /usr/lib/x86_64-linux-gnu/libreadline.so.8.1)
+==28172==    by 0x4883C86: readline_internal_char (in /usr/lib/x86_64-linux-gnu/libreadline.so.8.1)
+==28172==    by 0x488CD14: readline (in /usr/lib/x86_64-linux-gnu/libreadline.so.8.1)
+==28172==    by 0x10963B: main (ms_main.c:30)
+==28172== 
+==28172== HEAP SUMMARY:
+==28172==     in use at exit: 216,389 bytes in 453 blocks
+==28172==   total heap usage: 841 allocs, 388 frees, 236,215 bytes allocated
+==28172== 
+==28172== 972 bytes in 69 blocks are still reachable in loss record 39 of 79
+==28172==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==28172==    by 0x10B0B8: ft_strdup (ft_strdup.c:24)
+==28172==    by 0x10DA82: env_to_struct (ev_env_to_struct.c:32)
+==28172==    by 0x1095E7: main (ms_main.c:23)
+==28172== 
+==28172== 2,208 bytes in 69 blocks are still reachable in loss record 52 of 79
+==28172==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==28172==    by 0x10B4DA: ft_calloc (ft_calloc.c:20)
+==28172==    by 0x10DA5E: env_to_struct (ev_env_to_struct.c:29)
+==28172==    by 0x1095E7: main (ms_main.c:23)
+==28172== 
+==28172== 2,913 bytes in 69 blocks are still reachable in loss record 54 of 79
+==28172==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==28172==    by 0x10B0B8: ft_strdup (ft_strdup.c:24)
+==28172==    by 0x10DA9C: env_to_struct (ev_env_to_struct.c:33)
+==28172==    by 0x1095E7: main (ms_main.c:23)
+==28172== 
+==28172== LEAK SUMMARY:
+==28172==    definitely lost: 0 bytes in 0 blocks
+==28172==    indirectly lost: 0 bytes in 0 blocks
+==28172==      possibly lost: 0 bytes in 0 blocks
+==28172==    still reachable: 6,093 bytes in 207 blocks
+==28172==         suppressed: 210,296 bytes in 246 blocks
+==28172== 
+==28172== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+--28172-- 
+--28172-- used_suppression:     76 leak readline readline_leaks:2 suppressed: 210,296 bytes in 246 blocks
+==28172== 
+==28172== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
