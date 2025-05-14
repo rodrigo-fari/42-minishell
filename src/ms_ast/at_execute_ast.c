@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   at_execute_ast.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 19:58:16 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/05/07 20:03:16 by aeberius         ###   ########.fr       */
+/*   Updated: 2025/05/14 22:06:18 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,15 +80,4 @@ void	execute_ast(t_ast_node *node, t_env *env)
 		execute_builtin(node->args, env);
 	else
 		execute_forked_cmd(node, env);
-}
-
-void	free_ast(t_ast_node *node)
-{
-	if (!node)
-		return ;
-	free_ast(node->left);
-	free_ast(node->right);
-	if (node->args)
-		free_splits(node->args);
-	free(node);
 }

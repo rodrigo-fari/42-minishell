@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ms_exec.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 11:19:43 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/05/07 19:26:49 by aeberius         ###   ########.fr       */
+/*   Updated: 2025/05/14 22:16:40 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,12 @@ void	ms_exec(char *input, t_env *env)
 		return ;
 	}
 	tokens = token_to_struct(commands);
+	free_splits(commands);
 	quote_fix(tokens);
 	ast_root = build_ast(tokens);
 	execute_ast(ast_root, env);
 	free_ast(ast_root);
-	ms_free(NULL, input, commands, tokens);
+	ms_free(NULL, input, NULL, tokens);
 	return ;
 }
 

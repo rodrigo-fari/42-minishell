@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 19:13:25 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/05/14 21:42:52 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/05/14 22:23:29 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ void	define_exit_status(char *exit_status)
 	long		exit_lnumber;
 
 	if (!exit_status)
+	{
+		cleanup_shell(get_shell());
 		exit(g_exit_status);
+	}
 	if (ft_atol(exit_status) != ft_atod(exit_status))
 	{
 		g_exit_status = 2;

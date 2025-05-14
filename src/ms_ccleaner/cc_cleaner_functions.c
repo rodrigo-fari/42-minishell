@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 21:19:36 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/05/14 21:43:33 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/05/14 22:29:28 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,30 +21,31 @@ void	free_tokens(t_token *token)
 		tmp = token->next;
 		free(token->value);
 		free(token);
+		token = NULL;
 		token = tmp;
 	}
 }
 
-// void	free_ast(t_ast_node *node)
-// {
-// 	int	i;
+void	free_ast(t_ast_node *node)
+{
+	int	i;
 
-// 	if (!node)
-// 		return;
-// 	free_ast(node->left);
-// 	free_ast(node->right);
-// 	if (node->args)
-// 	{
-// 		i = 0;
-// 		while (node->args[i])
-// 		{
-// 			free(node->args[i]);
-// 			i++;
-// 		}
-// 		free(node->args);
-// 	}
-// 	free(node);
-// }
+	if (!node)
+		return;
+	free_ast(node->left);
+	free_ast(node->right);
+	if (node->args)
+	{
+		i = 0;
+		while (node->args[i])
+		{
+			free(node->args[i]);
+			i++;
+		}
+		free(node->args);
+	}
+	free(node);
+}
 
 void	free_env_list(t_env *env)
 {

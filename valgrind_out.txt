@@ -1,129 +1,113 @@
-==51347== Memcheck, a memory error detector
-==51347== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==51347== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
-==51347== Command: ./minishell
-==51347== Parent PID: 51344
-==51347== 
-==51347== 
-==51347== HEAP SUMMARY:
-==51347==     in use at exit: 214,081 bytes in 421 blocks
-==51347==   total heap usage: 812 allocs, 391 frees, 239,616 bytes allocated
-==51347== 
-==51347== 5 bytes in 1 blocks are still reachable in loss record 3 of 80
-==51347==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==51347==    by 0x40419D: ft_calloc (ft_calloc.c:20)
-==51347==    by 0x406B3E: ft_substr (ft_substr.c:24)
-==51347==    by 0x409989: extract_word (tk_split_2.c:47)
-==51347==    by 0x409653: tk_splitter (tk_split.c:68)
-==51347==    by 0x4073CC: ms_exec (ms_exec.c:21)
-==51347==    by 0x407602: main (ms_main.c:35)
-==51347== 
-==51347== 5 bytes in 1 blocks are still reachable in loss record 4 of 80
-==51347==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==51347==    by 0x403BD3: append_char_to_string (ft_append_char_to_string.c:24)
-==51347==    by 0x408351: remove_quotes_and_expand (ps_remove_quotes.c:120)
-==51347==    by 0x4080C8: replace_values (ps_remove_quotes.c:62)
-==51347==    by 0x407FFB: verify_quotes (ps_remove_quotes.c:43)
-==51347==    by 0x407EFB: quote_fix (ps_remove_quotes.c:22)
-==51347==    by 0x407412: ms_exec (ms_exec.c:28)
-==51347==    by 0x407602: main (ms_main.c:35)
-==51347== 
-==51347== 5 bytes in 1 blocks are still reachable in loss record 5 of 80
-==51347==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==51347==    by 0x405EF0: ft_strdup (ft_strdup.c:24)
-==51347==    by 0x401A63: fill_args (at_utils_ast.c:42)
-==51347==    by 0x401B5F: handle_command (at_utils_ast.c:67)
-==51347==    by 0x4015E1: build_ast (at_build_ast.c:92)
-==51347==    by 0x40741B: ms_exec (ms_exec.c:29)
-==51347==    by 0x407602: main (ms_main.c:35)
-==51347== 
-==51347== 5 bytes in 1 blocks are still reachable in loss record 6 of 80
-==51347==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==51347==    by 0x405EF0: ft_strdup (ft_strdup.c:24)
-==51347==    by 0x409BA9: token_to_struct (tk_tokenizer.c:50)
-==51347==    by 0x4026A8: execute_builtin (bi_exec_2.c:56)
-==51347==    by 0x4018BA: execute_ast (at_execute_ast.c:80)
-==51347==    by 0x40742C: ms_exec (ms_exec.c:30)
-==51347==    by 0x407602: main (ms_main.c:35)
-==51347== 
-==51347== 9 bytes in 3 blocks are definitely lost in loss record 9 of 80
-==51347==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==51347==    by 0x403BD3: append_char_to_string (ft_append_char_to_string.c:24)
-==51347==    by 0x408351: remove_quotes_and_expand (ps_remove_quotes.c:120)
-==51347==    by 0x4080C8: replace_values (ps_remove_quotes.c:62)
-==51347==    by 0x407FFB: verify_quotes (ps_remove_quotes.c:43)
-==51347==    by 0x407EFB: quote_fix (ps_remove_quotes.c:22)
-==51347==    by 0x407412: ms_exec (ms_exec.c:28)
-==51347==    by 0x407602: main (ms_main.c:35)
-==51347== 
-==51347== 16 bytes in 1 blocks are still reachable in loss record 16 of 80
-==51347==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==51347==    by 0x40419D: ft_calloc (ft_calloc.c:20)
-==51347==    by 0x4095E4: tk_splitter (tk_split.c:58)
-==51347==    by 0x4073CC: ms_exec (ms_exec.c:21)
-==51347==    by 0x407602: main (ms_main.c:35)
-==51347== 
-==51347== 16 bytes in 1 blocks are still reachable in loss record 17 of 80
-==51347==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==51347==    by 0x40419D: ft_calloc (ft_calloc.c:20)
-==51347==    by 0x401B27: handle_command (at_utils_ast.c:64)
-==51347==    by 0x4015E1: build_ast (at_build_ast.c:92)
-==51347==    by 0x40741B: ms_exec (ms_exec.c:29)
-==51347==    by 0x407602: main (ms_main.c:35)
-==51347== 
-==51347== 24 bytes in 1 blocks are still reachable in loss record 21 of 80
-==51347==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==51347==    by 0x40419D: ft_calloc (ft_calloc.c:20)
-==51347==    by 0x409B7C: token_to_struct (tk_tokenizer.c:47)
-==51347==    by 0x407405: ms_exec (ms_exec.c:27)
-==51347==    by 0x407602: main (ms_main.c:35)
-==51347== 
-==51347== 24 bytes in 1 blocks are still reachable in loss record 22 of 80
-==51347==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==51347==    by 0x40419D: ft_calloc (ft_calloc.c:20)
-==51347==    by 0x409B7C: token_to_struct (tk_tokenizer.c:47)
-==51347==    by 0x4026A8: execute_builtin (bi_exec_2.c:56)
-==51347==    by 0x4018BA: execute_ast (at_execute_ast.c:80)
-==51347==    by 0x40742C: ms_exec (ms_exec.c:30)
-==51347==    by 0x407602: main (ms_main.c:35)
-==51347== 
-==51347== 32 bytes in 1 blocks are still reachable in loss record 24 of 80
-==51347==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==51347==    by 0x40419D: ft_calloc (ft_calloc.c:20)
-==51347==    by 0x4012E9: create_node (at_build_ast.c:19)
-==51347==    by 0x401AF1: handle_command (at_utils_ast.c:60)
-==51347==    by 0x4015E1: build_ast (at_build_ast.c:92)
-==51347==    by 0x40741B: ms_exec (ms_exec.c:29)
-==51347==    by 0x407602: main (ms_main.c:35)
-==51347== 
-==51347== 781 bytes in 61 blocks are still reachable in loss record 40 of 80
-==51347==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==51347==    by 0x405EF0: ft_strdup (ft_strdup.c:24)
-==51347==    by 0x403466: env_to_struct (ev_env_to_struct.c:32)
-==51347==    by 0x40757B: main (ms_main.c:23)
-==51347== 
-==51347== 1,952 bytes in 61 blocks are still reachable in loss record 52 of 80
-==51347==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==51347==    by 0x40419D: ft_calloc (ft_calloc.c:20)
-==51347==    by 0x40343E: env_to_struct (ev_env_to_struct.c:29)
-==51347==    by 0x40757B: main (ms_main.c:23)
-==51347== 
-==51347== 2,926 bytes in 61 blocks are still reachable in loss record 55 of 80
-==51347==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
-==51347==    by 0x405EF0: ft_strdup (ft_strdup.c:24)
-==51347==    by 0x40347D: env_to_struct (ev_env_to_struct.c:33)
-==51347==    by 0x40757B: main (ms_main.c:23)
-==51347== 
-==51347== LEAK SUMMARY:
-==51347==    definitely lost: 9 bytes in 3 blocks
-==51347==    indirectly lost: 0 bytes in 0 blocks
-==51347==      possibly lost: 0 bytes in 0 blocks
-==51347==    still reachable: 5,791 bytes in 192 blocks
-==51347==         suppressed: 208,281 bytes in 226 blocks
-==51347== 
-==51347== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
---51347-- 
---51347-- used_suppression:     63 leak readline readline_supressor:2 suppressed: 204,224 bytes in 222 blocks
---51347-- used_suppression:      4 readline_leaks readline_supressor:8 suppressed: 4,057 bytes in 4 blocks
-==51347== 
-==51347== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+==56003== Memcheck, a memory error detector
+==56003== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==56003== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==56003== Command: ./minishell
+==56003== Parent PID: 56000
+==56003== 
+==56003== 
+==56003== HEAP SUMMARY:
+==56003==     in use at exit: 214,060 bytes in 419 blocks
+==56003==   total heap usage: 812 allocs, 393 frees, 239,616 bytes allocated
+==56003== 
+==56003== 5 bytes in 1 blocks are still reachable in loss record 3 of 78
+==56003==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==56003==    by 0x403AB3: append_char_to_string (ft_append_char_to_string.c:24)
+==56003==    by 0x408231: remove_quotes_and_expand (ps_remove_quotes.c:120)
+==56003==    by 0x407FA8: replace_values (ps_remove_quotes.c:62)
+==56003==    by 0x407EDB: verify_quotes (ps_remove_quotes.c:43)
+==56003==    by 0x407DDB: quote_fix (ps_remove_quotes.c:22)
+==56003==    by 0x4072FB: ms_exec (ms_exec.c:29)
+==56003==    by 0x4074E2: main (ms_main.c:35)
+==56003== 
+==56003== 5 bytes in 1 blocks are still reachable in loss record 4 of 78
+==56003==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==56003==    by 0x405DD0: ft_strdup (ft_strdup.c:24)
+==56003==    by 0x4019F3: fill_args (at_utils_ast.c:42)
+==56003==    by 0x401AEF: handle_command (at_utils_ast.c:67)
+==56003==    by 0x4015E1: build_ast (at_build_ast.c:92)
+==56003==    by 0x407304: ms_exec (ms_exec.c:30)
+==56003==    by 0x4074E2: main (ms_main.c:35)
+==56003== 
+==56003== 5 bytes in 1 blocks are still reachable in loss record 5 of 78
+==56003==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==56003==    by 0x405DD0: ft_strdup (ft_strdup.c:24)
+==56003==    by 0x409A89: token_to_struct (tk_tokenizer.c:50)
+==56003==    by 0x402638: execute_builtin (bi_exec_2.c:56)
+==56003==    by 0x4018BA: execute_ast (at_execute_ast.c:80)
+==56003==    by 0x407315: ms_exec (ms_exec.c:31)
+==56003==    by 0x4074E2: main (ms_main.c:35)
+==56003== 
+==56003== 9 bytes in 3 blocks are definitely lost in loss record 8 of 78
+==56003==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==56003==    by 0x403AB3: append_char_to_string (ft_append_char_to_string.c:24)
+==56003==    by 0x408231: remove_quotes_and_expand (ps_remove_quotes.c:120)
+==56003==    by 0x407FA8: replace_values (ps_remove_quotes.c:62)
+==56003==    by 0x407EDB: verify_quotes (ps_remove_quotes.c:43)
+==56003==    by 0x407DDB: quote_fix (ps_remove_quotes.c:22)
+==56003==    by 0x4072FB: ms_exec (ms_exec.c:29)
+==56003==    by 0x4074E2: main (ms_main.c:35)
+==56003== 
+==56003== 16 bytes in 1 blocks are still reachable in loss record 15 of 78
+==56003==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==56003==    by 0x40407D: ft_calloc (ft_calloc.c:20)
+==56003==    by 0x401AB7: handle_command (at_utils_ast.c:64)
+==56003==    by 0x4015E1: build_ast (at_build_ast.c:92)
+==56003==    by 0x407304: ms_exec (ms_exec.c:30)
+==56003==    by 0x4074E2: main (ms_main.c:35)
+==56003== 
+==56003== 24 bytes in 1 blocks are still reachable in loss record 19 of 78
+==56003==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==56003==    by 0x40407D: ft_calloc (ft_calloc.c:20)
+==56003==    by 0x409A5C: token_to_struct (tk_tokenizer.c:47)
+==56003==    by 0x4072E5: ms_exec (ms_exec.c:27)
+==56003==    by 0x4074E2: main (ms_main.c:35)
+==56003== 
+==56003== 24 bytes in 1 blocks are still reachable in loss record 20 of 78
+==56003==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==56003==    by 0x40407D: ft_calloc (ft_calloc.c:20)
+==56003==    by 0x409A5C: token_to_struct (tk_tokenizer.c:47)
+==56003==    by 0x402638: execute_builtin (bi_exec_2.c:56)
+==56003==    by 0x4018BA: execute_ast (at_execute_ast.c:80)
+==56003==    by 0x407315: ms_exec (ms_exec.c:31)
+==56003==    by 0x4074E2: main (ms_main.c:35)
+==56003== 
+==56003== 32 bytes in 1 blocks are still reachable in loss record 22 of 78
+==56003==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==56003==    by 0x40407D: ft_calloc (ft_calloc.c:20)
+==56003==    by 0x4012E9: create_node (at_build_ast.c:19)
+==56003==    by 0x401A81: handle_command (at_utils_ast.c:60)
+==56003==    by 0x4015E1: build_ast (at_build_ast.c:92)
+==56003==    by 0x407304: ms_exec (ms_exec.c:30)
+==56003==    by 0x4074E2: main (ms_main.c:35)
+==56003== 
+==56003== 781 bytes in 61 blocks are still reachable in loss record 38 of 78
+==56003==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==56003==    by 0x405DD0: ft_strdup (ft_strdup.c:24)
+==56003==    by 0x403406: env_to_struct (ev_env_to_struct.c:32)
+==56003==    by 0x40745B: main (ms_main.c:23)
+==56003== 
+==56003== 1,952 bytes in 61 blocks are still reachable in loss record 50 of 78
+==56003==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==56003==    by 0x40407D: ft_calloc (ft_calloc.c:20)
+==56003==    by 0x4033DE: env_to_struct (ev_env_to_struct.c:29)
+==56003==    by 0x40745B: main (ms_main.c:23)
+==56003== 
+==56003== 2,926 bytes in 61 blocks are still reachable in loss record 53 of 78
+==56003==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==56003==    by 0x405DD0: ft_strdup (ft_strdup.c:24)
+==56003==    by 0x40341D: env_to_struct (ev_env_to_struct.c:33)
+==56003==    by 0x40745B: main (ms_main.c:23)
+==56003== 
+==56003== LEAK SUMMARY:
+==56003==    definitely lost: 9 bytes in 3 blocks
+==56003==    indirectly lost: 0 bytes in 0 blocks
+==56003==      possibly lost: 0 bytes in 0 blocks
+==56003==    still reachable: 5,770 bytes in 190 blocks
+==56003==         suppressed: 208,281 bytes in 226 blocks
+==56003== 
+==56003== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+--56003-- 
+--56003-- used_suppression:     63 leak readline readline_supressor:2 suppressed: 204,224 bytes in 222 blocks
+--56003-- used_suppression:      4 readline_leaks readline_supressor:8 suppressed: 4,057 bytes in 4 blocks
+==56003== 
+==56003== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
