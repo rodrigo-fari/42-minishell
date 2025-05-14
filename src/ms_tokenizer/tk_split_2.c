@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tk_split_2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 18:30:14 by aeberius          #+#    #+#             */
-/*   Updated: 2025/05/07 18:37:51 by aeberius         ###   ########.fr       */
+/*   Updated: 2025/05/14 20:24:21 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ char	*extract_word(char *input, int *i)
 		else
 			cursor++;
 	}
+	word = NULL;
 	word = ft_substr(input, start, cursor - start);
 	if (!word)
 		return (NULL);

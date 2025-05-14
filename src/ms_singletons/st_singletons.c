@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ms_free.c                                          :+:      :+:    :+:   */
+/*   st_singletons.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 10:24:21 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/04/21 16:28:31 by rde-fari         ###   ########.fr       */
+/*   Created: 2025/05/14 21:08:28 by rde-fari          #+#    #+#             */
+/*   Updated: 2025/05/14 21:37:44 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	ms_free(t_env *env, char *input, char **commands, t_token *tokens)
+t_env	*get_env(t_env *env)
 {
-	if (tokens)
-		free_token_struct(tokens);
+	static t_env	*static_env;
+
 	if (env)
-		free_env_struct(env);
-	if (input)
-	{
-		free(input);
-		input = NULL;
-	}
-	if (commands)
-		free_splits(commands);
-	return ;
+		static_env = env;
+	return (static_env);
+}
+
+t_shell	*get_shell(void)
+{
+	static t_shell shell;
+	return (&shell);
 }

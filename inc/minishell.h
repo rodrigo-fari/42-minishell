@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 21:08:08 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/05/13 18:55:20 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/05/14 21:43:11 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,28 @@ typedef struct s_env
 	struct s_env		*next;
 }	t_env;
 
+//【Definition of a general struct, containing pointers to every single other struct】
+typedef struct s_shell
+{
+	t_token		*tokens;
+	t_ast_node	*ast_root;
+	t_env		*env_list;
+	char		**envp;
+	int			heredoc_fd;
+}	t_shell;
+
+
+
+void		free_tokens(t_token *token);
+void		free_ast(t_ast_node *node);
+void		free_env_list(t_env *env);
+void		free_envp(char **envp);
+void		cleanup_shell(t_shell *shell);
+t_shell		*get_shell(void);
+
+
+
+
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫ ABSTRACT SYNTAX TREE FUNCTIONS ┃
 //【at_build_ats.c】-【5 function limit achived on this file.】
 t_ast_node	*create_node(t_type type);
@@ -172,8 +194,8 @@ void		bi_unset(char **user_input, t_env *env);
 void		env_remove(t_env *env, char *key);
 
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫ ENV FUNCTIONS ┃
-//【ev_env_manager.c】
-t_env		*env_manager(t_env *env);
+//【ev_get_env.c】
+t_env		*get_env(t_env *env);
 void		update_shell_level(void);
 
 //【ev_env_to_struct.c】

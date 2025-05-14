@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 18:41:39 by aeberius          #+#    #+#             */
-/*   Updated: 2025/05/14 20:11:39 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/05/14 21:13:27 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	bi_exec(char **commands, t_env *env)
 	if (!command_path)
 		handle_command_not_found(commands[0]);
 	check_command_path(command_path, commands);
-	env = env_manager(NULL);
+	env = get_env(NULL);
 	execve(command_path, commands, array_envs(env));
 	if (ft_strcmp(commands[0], "") != 0)
 	{
@@ -54,7 +54,7 @@ void	execute_builtin(char **commands, t_env *env)
 	t_token	*helper;
 
 	helper = token_to_struct(commands);
-	env = env_manager(NULL);
+	env = get_env(NULL);
 	if (ft_strcmp(commands[0], "echo") == 0)
 		bi_echo(helper);
 	else if (ft_strcmp(commands[0], "pwd") == 0)

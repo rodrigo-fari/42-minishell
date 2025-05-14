@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bi_unset.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 15:39:38 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/02/23 13:40:26 by aeberius         ###   ########.fr       */
+/*   Updated: 2025/05/14 21:13:27 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,5 @@ void	env_remove(t_env *env, char *key)
 		prev = tmp;
 		tmp = tmp->next;
 	}
-	env_manager(tmp);
+	get_env(tmp);
 }

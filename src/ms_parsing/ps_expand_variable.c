@@ -6,7 +6,7 @@
 /*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 11:34:15 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/05/10 19:27:11 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/05/14 21:13:27 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*var_expand(char *input)
 {
 	t_env	*tmp;
 
-	tmp = env_manager(NULL);
+	tmp = get_env(NULL);
 	while (tmp)
 	{
 		if (ft_strcmp(input, tmp->key) == 0)

@@ -40,7 +40,7 @@ char	*verify_quotes(char *input)
 		key = bool_changer(key);
 		i++;
 	}
-	return (replace_values(input, current_quote, key, env_manager(NULL)));
+	return (replace_values(input, current_quote, key, get_env(NULL)));
 }
 
 char	*replace_values(char *input, char current_quote, bool key, t_env *env)
