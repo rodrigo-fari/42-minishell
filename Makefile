@@ -27,22 +27,7 @@ RESET				= "\033[0m"
 
 #===================================================================================| Commands |
 
-all:				$(NAME)
-					@clear
-					@echo ""
-					@echo " "
-					@echo $(GREEN) "     ███▄ ▄███▓    ██▓    ███▄    █     ██▓       ██░ ██    ▓█████     ██▓        ██▓         "
-					@echo "     ▓██▒▀█▀ ██▒   ▓██▒    ██ ▀█   █    ▓██▒      ▓██░ ██▒   ▓█   ▀    ▓██▒       ▓██▒        "
-					@echo "     ▓██    ▓██░   ▒██▒   ▓██  ▀█ ██▒   ▒██▒      ▒██▀▀██░   ▒███      ▒██░       ▒██░        "
-					@echo "     ▒██    ▒██    ░██░   ▓██▒  ▐▌██▒   ░██░      ░▓█ ░██    ▒▓█  ▄    ▒██░       ▒██░        "
-					@echo "     ▒██▒   ░██▒   ░██░   ▒██░   ▓██░   ░██░      ░▓█▒░██▓   ░▒████▒   ░██████▒   ░██████▒    "
-					@echo "     ░ ▒░   ░  ░   ░▓     ░ ▒░   ▒ ▒    ░▓         ▒ ░░▒░▒   ░░ ▒░ ░   ░ ▒░▓  ░   ░ ▒░▓  ░    "
-					@echo "     ░  ░      ░    ▒ ░   ░ ░░   ░ ▒░    ▒ ░       ▒ ░▒░ ░    ░ ░  ░   ░ ░ ▒  ░   ░ ░ ▒  ░    "
-					@echo "     ░      ░       ▒ ░      ░   ░ ░     ▒ ░       ░  ░░ ░      ░        ░ ░        ░ ░       "
-					@echo "            ░       ░              ░     ░         ░  ░  ░      ░  ░       ░  ░       ░  ░    "
-					@echo "                                                                                              "
-					@echo " "
-					@echo " " $(RESET)
+all:				$(NAME) animate
 					sleep 1
 					./$(NAME)
 
@@ -81,11 +66,196 @@ norm:
 val:
 					valgrind --leak-check=full \
 						--show-leak-kinds=all -s \
-						--log-file=valgrind_out.txt \
 						--suppressions=readline_supressor ./$(NAME)
+
+# Colors
+GREEN=\033[32m
+RED=\033[31m
+RESET=\033[0m
+
+.PHONY: animate
+animate:
+	@# Frame 1 - HELL verde completo
+	@clear
+	@echo " "
+	@echo " "
+	@echo "${GREEN}       ███▄ ▄███▓    ██▓    ███▄    █     ██▓     ██████     ██░ ██    ▓█████     ██▓        ██▓${RESET}"    
+	@echo "${GREEN}     ▓██▒▀█▀ ██▒   ▓██▒    ██ ▀█   █    ▓██▒   ▒██    ▒    ▓██░ ██▒   ▓█   ▀    ▓██▒       ▓██▒${RESET}"    
+	@echo "${GREEN}     ▓██    ▓██░   ▒██▒   ▓██  ▀█ ██▒   ▒██▒   ░ ▓██▄      ▒██▀▀██░   ▒███      ▒██░       ▒██░${RESET}"    
+	@echo "${GREEN}     ▒██    ▒██    ░██░   ▓██▒  ▐▌██▒   ░██░     ▒   ██▒   ░▓█ ░██    ▒▓█  ▄    ▒██░       ▒██░${RESET}"   
+	@echo "${GREEN}     ▒██▒   ░██▒   ░██░   ▒██░   ▓██░   ░██░   ▒██████▒▒   ░▓█▒░██▓   ░▒████▒   ░██████▒   ░██████▒${RESET}"
+	@echo "${GREEN}     ░ ▒░   ░  ░   ░▓     ░ ▒░   ▒ ▒    ░▓     ▒ ▒▓▒ ▒ ░    ▒ ░░▒░▒   ░░ ▒░ ░   ░ ▒░▓  ░   ░ ▒░▓  ░${RESET}"
+	@echo "${GREEN}     ░  ░      ░    ▒ ░   ░ ░░   ░ ▒░    ▒ ░   ░ ░▒  ░ ░    ▒ ░▒░ ░    ░ ░  ░   ░ ░ ▒  ░   ░ ░ ▒  ░${RESET}"
+	@echo "${GREEN}     ░      ░       ▒ ░      ░   ░ ░     ▒ ░   ░  ░  ░      ░  ░░ ░      ░        ░ ░        ░ ░${RESET}"   
+	@echo "${GREEN}            ░       ░              ░     ░           ░      ░  ░  ░      ░  ░       ░  ░       ░  ░${RESET}"
+	@echo "                                                                                            "
+	@echo " "
+	@echo " "
+	@sleep 1
+
+	@# Frame 2 - HELL verde completo
+	@clear
+	@echo " "
+	@echo " "
+	@echo "${GREEN}       ███▄ ▄███▓    ██▓    ███▄    █     ██▓     ██████     ${RED}██░ ██    ▓█████     ██▓        ██▓${RESET}"    
+	@echo "${GREEN}     ▓██▒▀█▀ ██▒   ▓██▒    ██ ▀█   █    ▓██▒   ▒██    ▒    ${GREEN}▓██░ ██▒   ▓█   ▀    ▓██▒       ▓██▒${RESET}"    
+	@echo "${GREEN}     ▓██    ▓██░   ▒██▒   ▓██  ▀█ ██▒   ▒██▒   ░ ▓██▄      ${GREEN}▒██▀▀██░   ▒███      ▒██░       ▒██░${RESET}"    
+	@echo "${GREEN}     ▒██    ▒██    ░██░   ▓██▒  ▐▌██▒   ░██░     ▒   ██▒   ${GREEN}░▓█ ░██    ▒▓█  ▄    ▒██░       ▒██░${RESET}"   
+	@echo "${GREEN}     ▒██▒   ░██▒   ░██░   ▒██░   ▓██░   ░██░   ▒██████▒▒   ${GREEN}░▓█▒░██▓   ░▒████▒   ░██████▒   ░██████▒${RESET}"
+	@echo "${GREEN}     ░ ▒░   ░  ░   ░▓     ░ ▒░   ▒ ▒    ░▓     ▒ ▒▓▒ ▒ ░    ${GREEN}▒ ░░▒░▒   ░░ ▒░ ░   ░ ▒░▓  ░   ░ ▒░▓  ░${RESET}"
+	@echo "${GREEN}     ░  ░      ░    ▒ ░   ░ ░░   ░ ▒░    ▒ ░   ░ ░▒  ░ ░    ${GREEN}▒ ░▒░ ░    ░ ░  ░   ░ ░ ▒  ░   ░ ░ ▒  ░${RESET}"
+	@echo "${GREEN}     ░      ░       ▒ ░      ░   ░ ░     ▒ ░   ░  ░  ░      ${GREEN}░  ░░ ░      ░        ░ ░        ░ ░${RESET}"   
+	@echo "${GREEN}            ░       ░              ░     ░           ░      ${GREEN}░  ░  ░      ░  ░       ░  ░       ░  ░${RESET}"
+	@echo "${GREEN}                                                                                            "
+	@echo " "
+	@echo " "
+	@sleep 0.2
+
+	@# Frame 3 - Primeira linha do HELL vermelha
+	@clear
+	@echo " "
+	@echo " "
+	@echo "${GREEN}       ███▄ ▄███▓    ██▓    ███▄    █     ██▓     ██████     ${RED}██░ ██    ▓█████     ██▓        ██▓${RESET}"    
+	@echo "${GREEN}     ▓██▒▀█▀ ██▒   ▓██▒    ██ ▀█   █    ▓██▒   ▒██    ▒    ${RED}▓██░ ██▒   ▓█   ▀    ▓██▒       ▓██▒${RESET}"    
+	@echo "${GREEN}     ▓██    ▓██░   ▒██▒   ▓██  ▀█ ██▒   ▒██▒   ░ ▓██▄      ${GREEN}▒██▀▀██░   ▒███      ▒██░       ▒██░${RESET}"    
+	@echo "${GREEN}     ▒██    ▒██    ░██░   ▓██▒  ▐▌██▒   ░██░     ▒   ██▒   ${GREEN}░▓█ ░██    ▒▓█  ▄    ▒██░       ▒██░${RESET}"   
+	@echo "${GREEN}     ▒██▒   ░██▒   ░██░   ▒██░   ▓██░   ░██░   ▒██████▒▒   ${GREEN}░▓█▒░██▓   ░▒████▒   ░██████▒   ░██████▒${RESET}"
+	@echo "${GREEN}     ░ ▒░   ░  ░   ░▓     ░ ▒░   ▒ ▒    ░▓     ▒ ▒▓▒ ▒ ░    ${GREEN}▒ ░░▒░▒   ░░ ▒░ ░   ░ ▒░▓  ░   ░ ▒░▓  ░${RESET}"
+	@echo "${GREEN}     ░  ░      ░    ▒ ░   ░ ░░   ░ ▒░    ▒ ░   ░ ░▒  ░ ░    ${GREEN}▒ ░▒░ ░    ░ ░  ░   ░ ░ ▒  ░   ░ ░ ▒  ░${RESET}"
+	@echo "${GREEN}     ░      ░       ▒ ░      ░   ░ ░     ▒ ░   ░  ░  ░      ${GREEN}░  ░░ ░      ░        ░ ░        ░ ░${RESET}"   
+	@echo "${GREEN}            ░       ░              ░     ░           ░      ${GREEN}░  ░  ░      ░  ░       ░  ░       ░  ░${RESET}"
+	@echo "${GREEN}                                                                                            "
+	@echo " "
+	@echo " "
+	@sleep 0.2
+
+	@# Frame 4 - Duas primeiras linhas do HELL vermelhas
+	@clear
+	@echo " "
+	@echo " "
+	@echo "${GREEN}       ███▄ ▄███▓    ██▓    ███▄    █     ██▓     ██████     ${RED}██░ ██    ▓█████     ██▓        ██▓${RESET}"    
+	@echo "${GREEN}     ▓██▒▀█▀ ██▒   ▓██▒    ██ ▀█   █    ▓██▒   ▒██    ▒    ${RED}▓██░ ██▒   ▓█   ▀    ▓██▒       ▓██▒${RESET}"    
+	@echo "${GREEN}     ▓██    ▓██░   ▒██▒   ▓██  ▀█ ██▒   ▒██▒   ░ ▓██▄      ${RED}▒██▀▀██░   ▒███      ▒██░       ▒██░${RESET}"    
+	@echo "${GREEN}     ▒██    ▒██    ░██░   ▓██▒  ▐▌██▒   ░██░     ▒   ██▒   ${GREEN}░▓█ ░██    ▒▓█  ▄    ▒██░       ▒██░${RESET}"   
+	@echo "${GREEN}     ▒██▒   ░██▒   ░██░   ▒██░   ▓██░   ░██░   ▒██████▒▒   ${GREEN}░▓█▒░██▓   ░▒████▒   ░██████▒   ░██████▒${RESET}"
+	@echo "${GREEN}     ░ ▒░   ░  ░   ░▓     ░ ▒░   ▒ ▒    ░▓     ▒ ▒▓▒ ▒ ░    ${GREEN}▒ ░░▒░▒   ░░ ▒░ ░   ░ ▒░▓  ░   ░ ▒░▓  ░${RESET}"
+	@echo "${GREEN}     ░  ░      ░    ▒ ░   ░ ░░   ░ ▒░    ▒ ░   ░ ░▒  ░ ░    ${GREEN}▒ ░▒░ ░    ░ ░  ░   ░ ░ ▒  ░   ░ ░ ▒  ░${RESET}"
+	@echo "${GREEN}     ░      ░       ▒ ░      ░   ░ ░     ▒ ░   ░  ░  ░      ${GREEN}░  ░░ ░      ░        ░ ░        ░ ░${RESET}"   
+	@echo "${GREEN}            ░       ░              ░     ░           ░      ${GREEN}░  ░  ░      ░  ░       ░  ░       ░  ░${RESET}"
+	@echo "${GREEN}                                                                                            "
+	@echo " "
+	@echo " "
+	@sleep 0.2
+
+	@# Frame 5 - Três primeiras linhas do HELL vermelhas
+	@clear
+	@echo " "
+	@echo " "
+	@echo "${GREEN}       ███▄ ▄███▓    ██▓    ███▄    █     ██▓     ██████     ${RED}██░ ██    ▓█████     ██▓        ██▓${RESET}"    
+	@echo "${GREEN}     ▓██▒▀█▀ ██▒   ▓██▒    ██ ▀█   █    ▓██▒   ▒██    ▒    ${RED}▓██░ ██▒   ▓█   ▀    ▓██▒       ▓██▒${RESET}"    
+	@echo "${GREEN}     ▓██    ▓██░   ▒██▒   ▓██  ▀█ ██▒   ▒██▒   ░ ▓██▄      ${RED}▒██▀▀██░   ▒███      ▒██░       ▒██░${RESET}"    
+	@echo "${GREEN}     ▒██    ▒██    ░██░   ▓██▒  ▐▌██▒   ░██░     ▒   ██▒   ${RED}░▓█ ░██    ▒▓█  ▄    ▒██░       ▒██░${RESET}"   
+	@echo "${GREEN}     ▒██▒   ░██▒   ░██░   ▒██░   ▓██░   ░██░   ▒██████▒▒   ${GREEN}░▓█▒░██▓   ░▒████▒   ░██████▒   ░██████▒${RESET}"
+	@echo "${GREEN}     ░ ▒░   ░  ░   ░▓     ░ ▒░   ▒ ▒    ░▓     ▒ ▒▓▒ ▒ ░    ${GREEN}▒ ░░▒░▒   ░░ ▒░ ░   ░ ▒░▓  ░   ░ ▒░▓  ░${RESET}"
+	@echo "${GREEN}     ░  ░      ░    ▒ ░   ░ ░░   ░ ▒░    ▒ ░   ░ ░▒  ░ ░    ${GREEN}▒ ░▒░ ░    ░ ░  ░   ░ ░ ▒  ░   ░ ░ ▒  ░${RESET}"
+	@echo "${GREEN}     ░      ░       ▒ ░      ░   ░ ░     ▒ ░   ░  ░  ░      ${GREEN}░  ░░ ░      ░        ░ ░        ░ ░${RESET}"   
+	@echo "${GREEN}            ░       ░              ░     ░           ░      ${GREEN}░  ░  ░      ░  ░       ░  ░       ░  ░${RESET}"
+	@echo "${GREEN}                                                                                            "
+	@echo " "
+	@echo " "
+	@sleep 0.2
+
+	@# Frame 6 - Quatro primeiras linhas do HELL vermelhas
+	@clear
+	@echo " "
+	@echo " "
+	@echo "${GREEN}       ███▄ ▄███▓    ██▓    ███▄    █     ██▓     ██████     ${RED}██░ ██    ▓█████     ██▓        ██▓${RESET}"    
+	@echo "${GREEN}     ▓██▒▀█▀ ██▒   ▓██▒    ██ ▀█   █    ▓██▒   ▒██    ▒    ${RED}▓██░ ██▒   ▓█   ▀    ▓██▒       ▓██▒${RESET}"    
+	@echo "${GREEN}     ▓██    ▓██░   ▒██▒   ▓██  ▀█ ██▒   ▒██▒   ░ ▓██▄      ${RED}▒██▀▀██░   ▒███      ▒██░       ▒██░${RESET}"    
+	@echo "${GREEN}     ▒██    ▒██    ░██░   ▓██▒  ▐▌██▒   ░██░     ▒   ██▒   ${RED}░▓█ ░██    ▒▓█  ▄    ▒██░       ▒██░${RESET}"   
+	@echo "${GREEN}     ▒██▒   ░██▒   ░██░   ▒██░   ▓██░   ░██░   ▒██████▒▒   ${RED}░▓█▒░██▓   ░▒████▒   ░██████▒   ░██████▒${RESET}"
+	@echo "${GREEN}     ░ ▒░   ░  ░   ░▓     ░ ▒░   ▒ ▒    ░▓     ▒ ▒▓▒ ▒ ░    ${GREEN}▒ ░░▒░▒   ░░ ▒░ ░   ░ ▒░▓  ░   ░ ▒░▓  ░${RESET}"
+	@echo "${GREEN}     ░  ░      ░    ▒ ░   ░ ░░   ░ ▒░    ▒ ░   ░ ░▒  ░ ░    ${GREEN}▒ ░▒░ ░    ░ ░  ░   ░ ░ ▒  ░   ░ ░ ▒  ░${RESET}"
+	@echo "${GREEN}     ░      ░       ▒ ░      ░   ░ ░     ▒ ░   ░  ░  ░      ${GREEN}░  ░░ ░      ░        ░ ░        ░ ░${RESET}"   
+	@echo "${GREEN}            ░       ░              ░     ░           ░      ${GREEN}░  ░  ░      ░  ░       ░  ░       ░  ░${RESET}"
+	@echo "${GREEN}                                                                                            "
+	@echo " "
+	@echo " "
+	@sleep 0.2
+
+	@# Frame 7 - Cinco primeiras linhas do HELL vermelhas
+	@clear
+	@echo " "
+	@echo " "
+	@echo "${GREEN}       ███▄ ▄███▓    ██▓    ███▄    █     ██▓     ██████     ${RED}██░ ██    ▓█████     ██▓        ██▓${RESET}"    
+	@echo "${GREEN}     ▓██▒▀█▀ ██▒   ▓██▒    ██ ▀█   █    ▓██▒   ▒██    ▒    ${RED}▓██░ ██▒   ▓█   ▀    ▓██▒       ▓██▒${RESET}"    
+	@echo "${GREEN}     ▓██    ▓██░   ▒██▒   ▓██  ▀█ ██▒   ▒██▒   ░ ▓██▄      ${RED}▒██▀▀██░   ▒███      ▒██░       ▒██░${RESET}"    
+	@echo "${GREEN}     ▒██    ▒██    ░██░   ▓██▒  ▐▌██▒   ░██░     ▒   ██▒   ${RED}░▓█ ░██    ▒▓█  ▄    ▒██░       ▒██░${RESET}"   
+	@echo "${GREEN}     ▒██▒   ░██▒   ░██░   ▒██░   ▓██░   ░██░   ▒██████▒▒   ${RED}░▓█▒░██▓   ░▒████▒   ░██████▒   ░██████▒${RESET}"
+	@echo "${GREEN}     ░ ▒░   ░  ░   ░▓     ░ ▒░   ▒ ▒    ░▓     ▒ ▒▓▒ ▒ ░    ${RED}▒ ░░▒░▒   ░░ ▒░ ░   ░ ▒░▓  ░   ░ ▒░▓  ░${RESET}"
+	@echo "${GREEN}     ░  ░      ░    ▒ ░   ░ ░░   ░ ▒░    ▒ ░   ░ ░▒  ░ ░    ${GREEN}▒ ░▒░ ░    ░ ░  ░   ░ ░ ▒  ░   ░ ░ ▒  ░${RESET}"
+	@echo "${GREEN}     ░      ░       ▒ ░      ░   ░ ░     ▒ ░   ░  ░  ░      ${GREEN}░  ░░ ░      ░        ░ ░        ░ ░${RESET}"   
+	@echo "${GREEN}            ░       ░              ░     ░           ░      ${GREEN}░  ░  ░      ░  ░       ░  ░       ░  ░${RESET}"
+	@echo "${GREEN}                                                                                            "
+	@echo " "
+	@echo " "
+	@sleep 0.2
+
+	@# Frame 8 - Seis primeiras linhas do HELL vermelhas
+	@clear
+	@echo " "
+	@echo " "
+	@echo "${GREEN}       ███▄ ▄███▓    ██▓    ███▄    █     ██▓     ██████     ${RED}██░ ██    ▓█████     ██▓        ██▓${RESET}"    
+	@echo "${GREEN}     ▓██▒▀█▀ ██▒   ▓██▒    ██ ▀█   █    ▓██▒   ▒██    ▒    ${RED}▓██░ ██▒   ▓█   ▀    ▓██▒       ▓██▒${RESET}"    
+	@echo "${GREEN}     ▓██    ▓██░   ▒██▒   ▓██  ▀█ ██▒   ▒██▒   ░ ▓██▄      ${RED}▒██▀▀██░   ▒███      ▒██░       ▒██░${RESET}"    
+	@echo "${GREEN}     ▒██    ▒██    ░██░   ▓██▒  ▐▌██▒   ░██░     ▒   ██▒   ${RED}░▓█ ░██    ▒▓█  ▄    ▒██░       ▒██░${RESET}"   
+	@echo "${GREEN}     ▒██▒   ░██▒   ░██░   ▒██░   ▓██░   ░██░   ▒██████▒▒   ${RED}░▓█▒░██▓   ░▒████▒   ░██████▒   ░██████▒${RESET}"
+	@echo "${GREEN}     ░ ▒░   ░  ░   ░▓     ░ ▒░   ▒ ▒    ░▓     ▒ ▒▓▒ ▒ ░    ${RED}▒ ░░▒░▒   ░░ ▒░ ░   ░ ▒░▓  ░   ░ ▒░▓  ░${RESET}"
+	@echo "${GREEN}     ░  ░      ░    ▒ ░   ░ ░░   ░ ▒░    ▒ ░   ░ ░▒  ░ ░    ${RED}▒ ░▒░ ░    ░ ░  ░   ░ ░ ▒  ░   ░ ░ ▒  ░${RESET}"
+	@echo "${GREEN}     ░      ░       ▒ ░      ░   ░ ░     ▒ ░   ░  ░  ░      ${GREEN}░  ░░ ░      ░        ░ ░        ░ ░${RESET}"   
+	@echo "${GREEN}            ░       ░              ░     ░           ░      ${GREEN}░  ░  ░      ░  ░       ░  ░       ░  ░${RESET}"
+	@echo "${GREEN}                                                                                            "
+	@echo " "
+	@echo " "
+	@sleep 0.2
+
+	@# Frame 9 - Sete primeiras linhas do HELL vermelhas
+	@clear
+	@echo " "
+	@echo " "
+	@echo "${GREEN}       ███▄ ▄███▓    ██▓    ███▄    █     ██▓     ██████     ${RED}██░ ██    ▓█████     ██▓        ██▓${RESET}"    
+	@echo "${GREEN}     ▓██▒▀█▀ ██▒   ▓██▒    ██ ▀█   █    ▓██▒   ▒██    ▒    ${RED}▓██░ ██▒   ▓█   ▀    ▓██▒       ▓██▒${RESET}"    
+	@echo "${GREEN}     ▓██    ▓██░   ▒██▒   ▓██  ▀█ ██▒   ▒██▒   ░ ▓██▄      ${RED}▒██▀▀██░   ▒███      ▒██░       ▒██░${RESET}"    
+	@echo "${GREEN}     ▒██    ▒██    ░██░   ▓██▒  ▐▌██▒   ░██░     ▒   ██▒   ${RED}░▓█ ░██    ▒▓█  ▄    ▒██░       ▒██░${RESET}"   
+	@echo "${GREEN}     ▒██▒   ░██▒   ░██░   ▒██░   ▓██░   ░██░   ▒██████▒▒   ${RED}░▓█▒░██▓   ░▒████▒   ░██████▒   ░██████▒${RESET}"
+	@echo "${GREEN}     ░ ▒░   ░  ░   ░▓     ░ ▒░   ▒ ▒    ░▓     ▒ ▒▓▒ ▒ ░    ${RED}▒ ░░▒░▒   ░░ ▒░ ░   ░ ▒░▓  ░   ░ ▒░▓  ░${RESET}"
+	@echo "${GREEN}     ░  ░      ░    ▒ ░   ░ ░░   ░ ▒░    ▒ ░   ░ ░▒  ░ ░    ${RED}▒ ░▒░ ░    ░ ░  ░   ░ ░ ▒  ░   ░ ░ ▒  ░${RESET}"
+	@echo "${GREEN}     ░      ░       ▒ ░      ░   ░ ░     ▒ ░   ░  ░  ░      ${RED}░  ░░ ░      ░        ░ ░        ░ ░${RESET}"   
+	@echo "${GREEN}            ░       ░              ░     ░           ░      ${GREEN}░  ░  ░      ░  ░       ░  ░       ░  ░${RESET}"
+	@echo "${GREEN}                                                                                            "
+	@echo " "
+	@echo " "
+	@sleep 0.2
+
+	@# Frame 10 - HELL quase todo vermelho (exceto primeira linha)
+	@clear
+	@echo " "
+	@echo " "
+	@echo "${GREEN}       ███▄ ▄███▓    ██▓    ███▄    █     ██▓     ██████     ${RED}██░ ██    ▓█████     ██▓        ██▓${RESET}"    
+	@echo "${GREEN}     ▓██▒▀█▀ ██▒   ▓██▒    ██ ▀█   █    ▓██▒   ▒██    ▒    ${RED}▓██░ ██▒   ▓█   ▀    ▓██▒       ▓██▒${RESET}"    
+	@echo "${GREEN}     ▓██    ▓██░   ▒██▒   ▓██  ▀█ ██▒   ▒██▒   ░ ▓██▄      ${RED}▒██▀▀██░   ▒███      ▒██░       ▒██░${RESET}"    
+	@echo "${GREEN}     ▒██    ▒██    ░██░   ▓██▒  ▐▌██▒   ░██░     ▒   ██▒   ${RED}░▓█ ░██    ▒▓█  ▄    ▒██░       ▒██░${RESET}"   
+	@echo "${GREEN}     ▒██▒   ░██▒   ░██░   ▒██░   ▓██░   ░██░   ▒██████▒▒   ${RED}░▓█▒░██▓   ░▒████▒   ░██████▒   ░██████▒${RESET}"
+	@echo "${GREEN}     ░ ▒░   ░  ░   ░▓     ░ ▒░   ▒ ▒    ░▓     ▒ ▒▓▒ ▒ ░    ${RED}▒ ░░▒░▒   ░░ ▒░ ░   ░ ▒░▓  ░   ░ ▒░▓  ░${RESET}"
+	@echo "${GREEN}     ░  ░      ░    ▒ ░   ░ ░░   ░ ▒░    ▒ ░   ░ ░▒  ░ ░    ${RED}▒ ░▒░ ░    ░ ░  ░   ░ ░ ▒  ░   ░ ░ ▒  ░${RESET}"
+	@echo "${GREEN}     ░      ░       ▒ ░      ░   ░ ░     ▒ ░   ░  ░  ░      ${RED}░  ░░ ░      ░        ░ ░        ░ ░${RESET}"   
+	@echo "${GREEN}            ░       ░              ░     ░           ░      ${RED}░  ░  ░      ░  ░       ░  ░       ░  ░${RESET}"
+	@echo "${GREEN}                                                                                            "
+	@echo " "
+	@echo " "
 
 #|=============================================================================|
 #|
-#|i hate this project ...
+#|i hate shell ...
 #|
 #|=============================================================================|
