@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ev_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 10:16:33 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/04/21 16:27:28 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/05/14 18:59:28 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	free_env_struct(t_env *env)
 {
 	t_env	*tmp;
 
-	while (env->next)
+	while (env)
 	{
 		if (env->key)
 			free(env->key);

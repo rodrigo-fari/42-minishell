@@ -14,28 +14,28 @@
 
 void	pipe_child1(int *pipefd, t_ast_node *left, t_env *env)
 {
-    if (!apply_redirections(left, 1))
-        exit(1); // <-- importante: só o filho morre, não o pipeline inteiro
-    close(pipefd[0]);
-    dup2(pipefd[1], STDOUT_FILENO);
-    close(pipefd[1]);
-    execute_ast(left, env);
-    exit(g_exit_status);
+	if (!apply_redirections(left, 1))
+		exit(1);
+	close(pipefd[0]);
+	dup2(pipefd[1], STDOUT_FILENO);
+	close(pipefd[1]);
+	execute_ast(left, env);
+	exit(g_exit_status);
 }
 
 void	pipe_child2(int *pipefd, t_ast_node *right, t_env *env)
 {
-    int has_in_redir;
-	
+	int	has_in_redir;
+
 	has_in_redir = node_has_in_redir(right);
-    if (!apply_redirections(right, 1))
-        exit(1);
-    close(pipefd[1]);
-    if (!has_in_redir)
-        dup2(pipefd[0], STDIN_FILENO);
-    close(pipefd[0]);
-    execute_ast(right, env);
-    exit(g_exit_status);
+	if (!apply_redirections(right, 1))
+		exit(1);
+	close(pipefd[1]);
+	if (!has_in_redir)
+		dup2(pipefd[0], STDIN_FILENO);
+	close(pipefd[0]);
+	execute_ast(right, env);
+	exit(g_exit_status);
 }
 
 void	execute_pipe(t_ast_node *left, t_ast_node *right, t_env *env)

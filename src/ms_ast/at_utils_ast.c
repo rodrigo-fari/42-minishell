@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   at_utils_ast.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 19:55:37 by aeberius          #+#    #+#             */
-/*   Updated: 2025/05/12 22:40:00 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/05/14 20:13:18 by rde-fari         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 int	count_tokens(t_token *token)
 {
-	int	count = 0;
+	int	count;
 
+	count = 0;
 	while (token && token->type != TOKEN_PIPE)
 	{
 		if (!is_redir(token->type))
@@ -29,9 +30,11 @@ int	count_tokens(t_token *token)
 
 void	fill_args(t_ast_node *node, t_token **token, int count)
 {
-	int	i = 0;
-	t_token *curr = *token;
+	int		i;
+	t_token	*curr;
 
+	i = 0;
+	curr = *token;
 	while (curr && curr->type != TOKEN_PIPE && i < count)
 	{
 		if (!is_redir(curr->type))
@@ -41,7 +44,7 @@ void	fill_args(t_ast_node *node, t_token **token, int count)
 		}
 		else
 		{
-			curr = curr->next; // pula o arquivo do redir
+			curr = curr->next;
 			if (curr)
 				curr = curr->next;
 		}
