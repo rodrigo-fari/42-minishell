@@ -126,7 +126,7 @@ t_ast_node	*build_ast(t_token *tokens);
 //【at_execute_ast.c】
 int			validate_cmd(char *cmd);
 void		execute_forked_cmd(t_ast_node *node, t_env *env);
-void		execute_ast(t_ast_node *node, t_env *env);
+void		execute_ast(t_ast_node *node, t_env *env, t_token *tokens);
 void		free_ast(t_ast_node *node);
 
 //【at_utils_ast.c】
@@ -157,7 +157,7 @@ void		bi_error(char *str);
 void		handle_directory_error(char *command);
 void		check_command_path(char *command_path, char **commands);
 void		bi_exec(char **commands, t_env *env);
-void		execute_builtin(char **commands, t_env *env);
+void		execute_builtin(char **commands, t_env *env, t_token *tokens);
 
 //【bi_exec.c】-【5 function limit achived on this file.】
 char		*check_direct_path(const char *cmd);
@@ -323,4 +323,4 @@ int			skip_whitespace(char *input, int i);
 
 //━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫ END IF ┃
 #endif
-//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫ END IF ┃	
+//━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┫ END IF ┃

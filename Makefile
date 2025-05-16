@@ -28,8 +28,6 @@ RESET				= "\033[0m"
 #===================================================================================| Commands |
 
 all:				$(NAME) animate
-					sleep 1
-					./$(NAME)
 
 $(NAME): 			$(OBJS) $(LIBFT)
 					@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -lreadline -o $(NAME)

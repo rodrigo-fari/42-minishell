@@ -17,6 +17,7 @@ void	ms_exec(char *input, t_env *env)
 	char		**commands;
 	t_token		*tokens;
 	t_ast_node	*ast_root;
+    t_shell		*shell;
 
 	commands = tk_splitter(input, 0, 0);
 	if (!ps_parsing(commands, 0))
@@ -28,7 +29,11 @@ void	ms_exec(char *input, t_env *env)
 	free_splits(commands);
 	quote_fix(tokens);
 	ast_root = build_ast(tokens);
-	execute_ast(ast_root, env);
+	shell = get_shell();
+	shell->tokens = tokens;
+	shell->ast_root = ast_root;
+	shell->env_list = env;
+	execute_ast(ast_root, env, tokens);
 	free_ast(ast_root);
 	ms_free(NULL, input, NULL, tokens);
 	return ;

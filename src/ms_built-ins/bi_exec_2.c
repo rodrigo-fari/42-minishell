@@ -49,18 +49,15 @@ void	bi_exec(char **commands, t_env *env)
 	exit(g_exit_status);
 }
 
-void	execute_builtin(char **commands, t_env *env)
+void	execute_builtin(char **commands, t_env *env, t_token *tokens)
 {
-	t_token	*helper;
-
-	helper = token_to_struct(commands);
 	env = get_env(NULL);
 	if (ft_strcmp(commands[0], "echo") == 0)
-		bi_echo(helper);
+		bi_echo(tokens);
 	else if (ft_strcmp(commands[0], "pwd") == 0)
 		bi_pwd();
 	else if (ft_strcmp(commands[0], "exit") == 0)
-		bi_exit(helper);
+		bi_exit(tokens);
 	else if (ft_strcmp(commands[0], "env") == 0)
 		print_env(env);
 	else if (ft_strcmp(commands[0], "cd") == 0)

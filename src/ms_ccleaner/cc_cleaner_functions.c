@@ -12,23 +12,23 @@
 
 #include "minishell.h"
 
-void	free_tokens(t_token *token)
+void free_tokens(t_token *token)
 {
-	t_token	*tmp;
+	t_token *tmp;
 
 	while (token)
 	{
 		tmp = token->next;
-		free(token->value);
+		if (token->value)
+			free(token->value);
 		free(token);
-		token = NULL;
 		token = tmp;
 	}
 }
 
-void	free_ast(t_ast_node *node)
+void free_ast(t_ast_node *node)
 {
-	int	i;
+	int i;
 
 	if (!node)
 		return;
@@ -47,9 +47,9 @@ void	free_ast(t_ast_node *node)
 	free(node);
 }
 
-void	free_env_list(t_env *env)
+void free_env_list(t_env *env)
 {
-	t_env	*tmp;
+	t_env *tmp;
 
 	while (env)
 	{
@@ -61,9 +61,9 @@ void	free_env_list(t_env *env)
 	}
 }
 
-void	free_envp(char **envp)
+void free_envp(char **envp)
 {
-	int	i;
+	int i;
 
 	if (!envp)
 		return;

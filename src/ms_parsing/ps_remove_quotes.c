@@ -15,11 +15,14 @@
 void	quote_fix(t_token *tokens)
 {
 	t_token		*temp;
+    char        *new_value;
 
 	temp = tokens;
 	while (temp)
 	{
-		temp->value = verify_quotes(temp->value);
+        new_value = verify_quotes(temp->value);
+        temp->value = ft_strdup(new_value);
+        free(new_value);
 		temp = temp->next;
 	}
 }
@@ -83,14 +86,18 @@ char	*remove_quotes_and_expand(char *input, t_env *env)
 			{
 				char *exit_status_str = ft_itoa(g_exit_status); // Convert exit status to string
 				tmp = append_string_to_string(ret_str, exit_status_str);
-				free(ret_str);
+                if (ret_str)
+				    free(ret_str);
 				ret_str = tmp;
-				free(exit_status_str);
+				if (exit_status_str)
+                    free(exit_status_str);
 				i += 2; // Skip the $? characters
 			}
 			else if (!input[i + 1] || (!ft_isalnum(input[i + 1]) && input[i + 1] != '_'))
 			{
 				tmp = append_char_to_string(ret_str, '$');
+                if (ret_str)
+                    free(ret_str);
 				ret_str = tmp;
 				i++;
 			}
@@ -103,14 +110,16 @@ char	*remove_quotes_and_expand(char *input, t_env *env)
 				if (var_value)
 				{
 					tmp = append_string_to_string(ret_str, var_value);
-					free(ret_str);
+                    if (ret_str)
+					    free(ret_str);
 					ret_str = tmp;
 				}
 				else
 				{
 					// If var_value is NULL, append an empty string
 					tmp = append_string_to_string(ret_str, "");
-					free(ret_str);
+                    if (ret_str)
+					    free(ret_str);
 					ret_str = tmp;
 				}
 			}
@@ -118,6 +127,8 @@ char	*remove_quotes_and_expand(char *input, t_env *env)
 		else
 		{
 			tmp = append_char_to_string(ret_str, input[i]);
+            if (ret_str)
+                free(ret_str);
 			ret_str = tmp;
 			i++;
 		}
@@ -145,5 +156,6 @@ char	*remove_quotes(char *input)
 		}
 		i++;
 	}
+    free(tmp);
 	return (ret_str);
 }

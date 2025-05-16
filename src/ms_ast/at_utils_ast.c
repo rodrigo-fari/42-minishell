@@ -39,7 +39,8 @@ void	fill_args(t_ast_node *node, t_token **token, int count)
 	{
 		if (!is_redir(curr->type))
 		{
-			node->args[i++] = ft_strdup(curr->value);
+            if (curr->value && curr->value[0] != '\0')
+			    node->args[i++] = ft_strdup(curr->value);
 			curr = curr->next;
 		}
 		else

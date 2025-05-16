@@ -68,7 +68,7 @@ void	execute_forked_cmd(t_ast_node *node, t_env *env)
 	}
 }
 
-void	execute_ast(t_ast_node *node, t_env *env)
+void	execute_ast(t_ast_node *node, t_env *env, t_token *tokens)
 {
 	if (!node)
 		return ;
@@ -77,7 +77,7 @@ void	execute_ast(t_ast_node *node, t_env *env)
 	else if (is_redir(node->type))
 		execute_redirection(node, env);
 	else if (is_builtin(node->args[0]))
-		execute_builtin(node->args, env);
+		execute_builtin(node->args, env, tokens);
 	else
 		execute_forked_cmd(node, env);
 }
