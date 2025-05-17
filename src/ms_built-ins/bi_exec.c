@@ -6,7 +6,7 @@
 /*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 12:18:54 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/05/06 18:48:29 by aeberius         ###   ########.fr       */
+/*   Updated: 2025/05/17 15:51:05 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	handle_builtin_or_empty(char **commands, t_env *env)
 	}
 	if (is_builtin(commands[0]))
 	{
-		execute_builtin(commands, env);
+		execute_builtin(commands, env, NULL);
 		exit(0);
 	}
 }

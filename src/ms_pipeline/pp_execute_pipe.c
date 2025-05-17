@@ -19,7 +19,7 @@ void	pipe_child1(int *pipefd, t_ast_node *left, t_env *env)
 	close(pipefd[0]);
 	dup2(pipefd[1], STDOUT_FILENO);
 	close(pipefd[1]);
-	execute_ast(left, env);
+	execute_ast(left, env, NULL);
 	exit(g_exit_status);
 }
 
@@ -34,7 +34,7 @@ void	pipe_child2(int *pipefd, t_ast_node *right, t_env *env)
 	if (!has_in_redir)
 		dup2(pipefd[0], STDIN_FILENO);
 	close(pipefd[0]);
-	execute_ast(right, env);
+	execute_ast(right, env, NULL);
 	exit(g_exit_status);
 }
 

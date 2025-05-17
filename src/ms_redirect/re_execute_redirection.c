@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   re_execute_redirection.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rde-fari <rde-fari@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: aeberius <aeberius@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 20:04:14 by rde-fari          #+#    #+#             */
-/*   Updated: 2025/05/14 20:07:14 by rde-fari         ###   ########.fr       */
+/*   Updated: 2025/05/17 15:52:11 by aeberius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	child_process(t_ast_node *node, t_env *env)
 	if (cmd && cmd->args && cmd->args[0])
 	{
 		if (is_builtin(cmd->args[0]))
-			execute_builtin(cmd->args, env);
+			execute_builtin(cmd->args, env, NULL);
 		else
 			bi_exec(cmd->args, env);
 	}
