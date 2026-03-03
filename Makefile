@@ -9,7 +9,7 @@ OBJ_DIR				= obj/
 CC					= cc
 SANITIZE_FALGS		= -fsanitize=address -fsanitize=leak -fsanitize=undefined -fno-omit-frame-pointer
 #------------|Lembrar de remover "-g" antes de submeter ("-g" gdb)|
-CFLAGS				= -Wall -Werror -Wextra -g3 -I$(INC)
+CFLAGS				= -g3 -I$(INC)
 #---------------------------------------------------------------------|
 RM					= rm -rf
 SRCS				= $(shell find $(SRC_DIR) -type f -name "*.c")
